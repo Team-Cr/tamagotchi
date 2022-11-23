@@ -1,3 +1,4 @@
+import { TestComponent } from '@/shared/ui/TestComponent';
 import { useEffect } from 'react';
 import './styles/index.scss';
 
@@ -13,5 +14,10 @@ export const App = () => {
     fetchServerData();
   }, []);
 
-  return <div className='App'>Вот тут будет жить ваше приложение :)</div>;
+  return (
+    <>
+      <div className='App'>Вот тут будет жить ваше приложение :)</div>
+      <TestComponent>a</TestComponent>
+    </>
+  );
 };
