@@ -1,0 +1,8 @@
+@import 'normalize.css';
+@import './variables/global';
+@import './themes/dark';
+
+/* test */
+.App {
+  background-color: var(--example-color);
+}
