@@ -1,6 +1,7 @@
-import { TestComponent } from '@/shared/ui/TestComponent';
 import { useEffect } from 'react';
 import './styles/index.scss';
+
+import { SignInPage } from '@/pages/SignInPage/ui/SignInPage';
 
 export const App = () => {
   useEffect(() => {
@@ -16,8 +17,7 @@ export const App = () => {
 
   return (
     <>
-      <div className='App'>Вот тут будет жить ваше приложение :)</div>
-      <TestComponent>a</TestComponent>
+      <SignInPage />
     </>
   );
 };

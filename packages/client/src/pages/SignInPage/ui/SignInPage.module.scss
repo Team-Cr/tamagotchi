@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'VT323';
+  src: url('../../../shared/assets/fonts/VT323-Regular.ttf');
+}
+
+body,
+html {
+  height: 100%;
+  font-family: 'VT323';
+  background-color: #ffe761;
+  background-image: url('../../../shared/assets/images/fish-pattern-inversed.png');
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  column-gap: 10%;
+  padding: 5%;
+}
+
+.column {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 0;
+}
+
+.button {
+  width: 100%;
+}
+
+.title {
+  width: 100%;
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+}
+
+.signup {
+  margin: 0;
+}
+
+@media screen and (max-width: 575px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .column {
+    display: block;
+    text-align: center;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .signup {
+    margin-bottom: 10px;
+  }
+}
