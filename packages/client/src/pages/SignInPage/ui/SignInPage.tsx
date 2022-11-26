@@ -19,7 +19,7 @@ const SignInPage = () => {
             <Input name='password' type='password' value='' placeholder='Password' />
           </div>
           <div>
-            <button className={styles.button}>Login</button>
+            <button className={styles.button}>Visit my cat</button>
           </div>
         </div>
       </div>
