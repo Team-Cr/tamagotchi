@@ -1,4 +1,3 @@
-import { TestComponent } from '@/shared/ui/TestComponent';
 import { useEffect } from 'react';
 import './styles/index.scss';
 import { withProviders } from './providers'

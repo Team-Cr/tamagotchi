@@ -5,7 +5,7 @@ import { ProfileInput } from '@/pages/profile/profile-input'
 import React from 'react'
 import { Modal } from '@/shared/ui/Modal'
 
-const Profile = () => {
+export const Profile = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -52,5 +52,3 @@ const Profile = () => {
     </div>
   )
 }
-
-export default Profile;

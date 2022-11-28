@@ -1,11 +1,11 @@
 import styles from './Button.module.scss';
 import React from 'react';
-import { ComponentProps, Dimensions } from '@/shared/ui/types'
+import { Colors, ComponentProps, Dimensions } from '@/shared/ui/types'
 import { useClassNames } from '@/shared/lib/classname/useClassName'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLElement>, ComponentProps {
   size?: Dimensions,
-  color?: 'primary' | 'secondary' | 'success' | 'transparent'
+  color?: Colors,
   disabled?: boolean
 }
 

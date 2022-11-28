@@ -1,6 +1,6 @@
 import React, { KeyboardEventHandler } from 'react'
 import styles from "./Modal.module.scss";
-import * as events from 'events'
+
 type ModalProps = {
   show: boolean,
   setModalActive(bool: boolean): void,

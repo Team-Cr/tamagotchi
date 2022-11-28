@@ -15,3 +15,5 @@ export interface ComponentProps {
 }
 
 export type Dimensions = 'small' | 'medium' | 'large';
+
+export type Colors = 'primary' | 'secondary' | 'success' | 'transparent';

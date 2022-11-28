@@ -26,7 +26,8 @@
     "import/no-unresolved": "off",
     "import/no-default-export": "error",
     "import/prefer-default-export": "off",
-    "import/no-named-as-default-member": "off"
+    "import/no-named-as-default-member": "off",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.ts", "**/*.test.tsx"]}]
   },
   "settings": {
     "react": {
