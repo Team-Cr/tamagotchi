@@ -1,0 +1,28 @@
+.link {
+  font-family: 'VT323';
+  font-size: 100%;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.icon {
+  width: 20px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.container {
+  position: relative;
+  height: 40px;
+}
+
+.link-centered {
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
