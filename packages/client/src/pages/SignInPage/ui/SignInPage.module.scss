@@ -1,11 +1,12 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 :root {
   --body-bg-color: #ffe761;
+  --font-family: 'VT323';
 }
 
 @font-face {
@@ -16,24 +17,29 @@
 body,
 html {
   height: 100%;
-  font-family: 'VT323';
+
+  font-family: var(--font-family);
+
   background-color: var(--body-bg-color);
   background-image: url('../../../shared/assets/images/fish-pattern-inversed.png');
 }
 
 .container {
-  text-align: center;
   display: grid;
-  column-gap: 100px;
   grid-template-columns: auto 300px 300px auto;
+  column-gap: 100px;
+
+  text-align: center;
 }
 
 .title {
-  text-align: center;
-  padding: 80px 0px 80px 0px;
-  font-size: 80px;
   grid-column: 1 / 5;
   grid-row: 1;
+
+  padding: 80px 0;
+
+  font-size: 80px;
+  text-align: center;
 }
 
 .gatito {
@@ -58,11 +64,13 @@ html {
 
 @media screen and (max-width: 575px) {
   .container {
-    text-align: center;
     display: grid;
     grid-template-columns: auto;
-    padding: 30px;
+
     width: 100%;
+    padding: 30px;
+
+    text-align: center;
   }
 
   .title {
@@ -77,19 +85,22 @@ html {
   .fields {
     grid-column: 1;
     grid-row: 2;
+
     width: 100%;
   }
 
   .button {
     grid-column: 1;
     grid-row: 3;
+
     width: 100%;
   }
 
   .new-gatito {
     grid-column: 1;
     grid-row: 4;
-    padding-top: 10px;
+
     width: 100%;
+    padding-top: 10px;
   }
 }
