@@ -1,19 +1,25 @@
+:root {
+  --border-btn-color: #cf5c36;
+  --btn-color-red: #cf5c36;
+  --btn-color-grey: #484848;
+}
+
 .button {
   width: 100%;
-  border: solid 1px #cf5c36;
+  border: solid 1px var(--border-btn-color);
   border-radius: 50px;
   line-height: 30px;
   margin-bottom: 10px;
   padding: 5px;
-  color: #ffffff;
+  color: white;
 }
 
 .red {
-  background-color: #cf5c36;
+  background-color: var(--btn-color-red);
 }
 
 .grey {
-  background-color: #484848;
+  background-color: var(--btn-color-grey);
 }
 
 .container {

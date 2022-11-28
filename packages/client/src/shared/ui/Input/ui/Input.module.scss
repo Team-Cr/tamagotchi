@@ -1,7 +1,11 @@
+:root {
+  --input-color: #fff9c7;
+}
+
 .input {
   width: 100%;
-  background-color: #fff9c7;
-  border: solid 1px #fff9c7;
+  background-color: var(--input-color);
+  border: solid 1px var(--input-color);
   border-radius: 50px;
   line-height: 30px;
   margin-bottom: 10px;

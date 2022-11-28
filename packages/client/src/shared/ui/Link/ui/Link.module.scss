@@ -1,7 +1,13 @@
+:root {
+  --border-btn-color: #cf5c36;
+  --btn-color-red: #cf5c36;
+  --btn-color-grey: #484848;
+}
+
 .link {
   font-family: 'VT323';
   font-size: 100%;
-  color: #000000;
+  color: black;
   text-decoration: none;
   cursor: pointer;
 }
