@@ -5,8 +5,11 @@ import iconBtn from '@/shared/assets/images/pow2.png';
 import iconLnk from '@/shared/assets/images/cat.png';
 import { Button } from '@/shared/ui/Button';
 import { Link } from '@/shared/ui/Link';
+import { useState } from 'react';
 
 const SignInPage = () => {
+  const [form, setForm] = useState({ login: '', password: '' });
+
   return (
     <form>
       <div className={styles.container}>
@@ -21,8 +24,20 @@ const SignInPage = () => {
         </div>
 
         <div className={styles.fields}>
-          <Input name='login' type='text' value='' placeholder='Login' />
-          <Input name='password' type='password' value='' placeholder='Password' />
+          <Input
+            name='login'
+            type='text'
+            value={form.login}
+            placeholder='Login'
+            onChange={(e) => setForm({ ...form, login: e.target.value })}
+          />
+          <Input
+            name='password'
+            type='password'
+            value={form.password}
+            placeholder='Password'
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+          />
         </div>
 
         <div className={styles.button}>
