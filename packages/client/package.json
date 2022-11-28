@@ -10,7 +10,7 @@
     "lint:eslint": "eslint .",
     "lint:stylelint": "stylelint \"**/*.scss\"",
     "format": "prettier --write .",
-    "test": "jest ./"
+    "test": "jest ./ --passWithNoTests"
   },
   "dependencies": {
     "react": "18.2.0",
