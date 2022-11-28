@@ -3,12 +3,21 @@ import styles from './SignInPage.module.scss';
 import image from '@/shared/assets/images/gatito_paradax3.gif';
 import iconBtn from '@/shared/assets/images/pow2.png';
 import iconLnk from '@/shared/assets/images/cat.png';
+import { signIn, SigninData } from '@/shared/lib/auth/AuthAPI';
+import { useState } from 'react';
 import { Button } from '@/shared/ui/Button';
 import { Link } from '@/shared/ui/Link';
 
+const onSubmit = (e: React.FormEvent<HTMLFormElement>, form: SigninData) => {
+  e.preventDefault();
+  signIn(form);
+};
+
 const SignInPage = () => {
+  const [form, setForm] = useState<SigninData>({ login: '', password: '' });
+
   return (
-    <form>
+    <form onSubmit={(e) => onSubmit(e, form)}>
       <div className={styles.container}>
         <div className={styles.title}>Welcome, catlover</div>
 
@@ -21,8 +30,20 @@ const SignInPage = () => {
         </div>
 
         <div className={styles.fields}>
-          <Input name='login' type='text' value='' placeholder='Login' />
-          <Input name='password' type='password' value='' placeholder='Password' />
+          <Input
+            name='login'
+            type='text'
+            value={form.login}
+            placeholder='Login'
+            onChange={(e) => setForm({ ...form, login: e.target.value })}
+          />
+          <Input
+            name='password'
+            type='password'
+            value={form.password}
+            placeholder='Password'
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+          />
         </div>
 
         <div className={styles.button}>
