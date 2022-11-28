@@ -8,6 +8,7 @@ import { Modal } from '@/shared/ui/Modal'
 export const Profile = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
+  // TODO add default layout
   return (
     <div className={styles.root}>
       <div className={styles.profile__container}>
