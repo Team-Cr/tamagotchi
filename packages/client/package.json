@@ -12,12 +12,17 @@
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-router": "6.4.3",
+    "react-router-dom": "6.4.3",
+    "compose-function": "3.0.3",
+    "classnames": "2.3.2"
   },
   "devDependencies": {
     "@testing-library/react": "13.3.0",
     "@types/jest": "28.1.8",
     "@types/react": "18.0.17",
+    "@types/compose-function": "0.0.30",
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "5.35.1",
     "@typescript-eslint/parser": "5.35.1",

@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.input {
+  display: flex;
+  align-items: baseline;
+  padding: 4px 24px 8px 24px;
+  gap: 12px;
+  color: #636671;
+
+  user-select: none;
+  white-space: nowrap;
+
+  font-family: 'VT323', serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 36px;
+
+  border-bottom: 1px solid #201D0C;
+
+  &:hover {
+    cursor: text;
+  }
+
+  &:focus-within {
+    background: rgba(255,255,255,0.3);
+  }
+}
+
+.input__value {
+  width: 100%;
+  border: none;
+
+  cursor: inherit;
+
+  background: transparent;
+
+  &:focus-visible {
+    outline: none;
+  }
+}

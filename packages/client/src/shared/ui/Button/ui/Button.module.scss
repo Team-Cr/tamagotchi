@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  font-family: 'VT323', serif;
+  font-weight: 400;
+
+  border: 0;
+  border-radius: 50px;
+  transition: all .2s;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(1.2);
+  }
+}
+
+.button-large {
+  padding: 20px 80px;
+  height: 88px;
+  font-size: 48px;
+  line-height: 48px;
+}
+
+.button-medium {
+  padding: 20px 60px;
+  height: 60px;
+  font-size: 36px;
+  line-height: 36px;
+}
+
+.button-small {
+  padding: 20px 40px;
+  height: 32px;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+// TODO change to variable
+.button-primary {
+  background: #CF5C36;
+  color: #fff;
+}
+
+.button-transparent {
+  background: transparent;
+  color: #000;
+}
+
+.button-success {
+  background: #4AB00B;
+  color: #fff;
+}
+
+.button-secondary {
+  background: #636671;
+  color: #fff;
+}

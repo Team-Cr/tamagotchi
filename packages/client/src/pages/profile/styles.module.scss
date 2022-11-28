@@ -1,0 +1,39 @@
+.root {
+  overflow: auto;
+  background: #FFE761;
+  width: 100vw;
+  height: 100vh;
+}
+
+.profile__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+  margin: 84px auto;
+
+  width: 875px;
+}
+
+.profile__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  min-width: 600px;
+}
+
+.profile__modal_fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile__modal_footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 24px 0;
+}

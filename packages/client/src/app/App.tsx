@@ -1,8 +1,10 @@
 import { TestComponent } from '@/shared/ui/TestComponent';
 import { useEffect } from 'react';
 import './styles/index.scss';
+import { withProviders } from './providers'
+import { Routing } from '@/pages'
 
-export const App = () => {
+const App = () => {
   useEffect(() => {
     const fetchServerData = async () => {
       const url = `http://localhost:${__SERVER_PORT__}`;
@@ -16,8 +18,12 @@ export const App = () => {
 
   return (
     <>
-      <div className='App'>Вот тут будет жить ваше приложение :)</div>
-      <TestComponent>a</TestComponent>
+      {/*<div className='App'>Вот тут будет жить ваше приложение :)</div>*/}
+      <Routing/>
     </>
   );
 };
+
+
+// eslint-disable-next-line import/no-default-export
+export default withProviders(App);
