@@ -60,7 +60,6 @@ export function useClassNames(str: string, module?: CSSModuleClasses) {
     [prefix, module, str]
   );
 
-
   return {
     withClassPrefix,
     merge: classNames,
