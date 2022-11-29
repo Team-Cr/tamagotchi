@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import './styles/index.scss';
-import { withProviders } from './providers'
+// import { withProviders } from './providers'
 import { Routing } from '@/pages'
+import { withRouter } from '@/app/providers/with-router'
 
-export const App = withProviders(() => {
+export const App = withRouter(() => {
   useEffect(() => {
     const fetchServerData = async () => {
       const url = `http://localhost:${__SERVER_PORT__}`;
@@ -17,7 +18,7 @@ export const App = withProviders(() => {
 
   return (
     <>
-      {/*<div className='App'>Вот тут будет жить ваше приложение :)</div>*/}
+      <div className='App'>Вот тут будет жить ваше приложение :)</div>
       <Routing/>
     </>
   );
