@@ -8,7 +8,7 @@
   cursor: pointer;
 
   font-family: var(--font-family);
-  font-size: 100%;
+  font-size: 48px;
   color: black;
   text-decoration: none;
 }
@@ -18,7 +18,7 @@
   top: 50%;
   transform: translateY(-50%);
 
-  width: 20px;
+  width: 50px;
   margin: 0;
 }
 
@@ -35,4 +35,14 @@
 
   width: 100%;
   margin: 0;
+}
+
+@media screen and (max-width: 575px) {
+  .link {
+    font-size: 36px;
+  }
+
+  .icon {
+    width: 36px;
+  }
 }

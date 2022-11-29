@@ -22,12 +22,13 @@ html {
 
   background-color: var(--body-bg-color);
   background-image: url('../../../shared/assets/images/fish-pattern-inversed.png');
+  background-repeat: repeat;
 }
 
 .container {
   display: grid;
-  grid-template-columns: auto 300px 300px auto;
-  column-gap: 100px;
+  grid-template-columns: auto 500px 500px auto;
+  column-gap: 300px;
 
   text-align: center;
 }
@@ -38,28 +39,28 @@ html {
 
   padding: 80px 0;
 
-  font-size: 80px;
+  font-size: 96px;
   text-align: center;
 }
 
 .gatito {
   grid-column: 2;
-  grid-row: 2 / 4;
+  grid-row: 2 / 6;
 }
 
 .new-gatito {
   grid-column: 2;
-  grid-row: 4;
+  grid-row: 6;
 }
 
 .fields {
   grid-column: 3;
-  grid-row: 2;
+  grid-row: 3/4;
 }
 
 .button {
   grid-column: 3;
-  grid-row: 4;
+  grid-row: 6;
 }
 
 @media screen and (max-width: 575px) {
@@ -69,8 +70,6 @@ html {
 
     width: 100%;
     padding: 30px;
-
-    text-align: center;
   }
 
   .title {
@@ -80,27 +79,27 @@ html {
   .gatito {
     grid-column: 1;
     grid-row: 1;
+
+    margin-bottom: 50px;
   }
 
   .fields {
     grid-column: 1;
     grid-row: 2;
 
-    width: 100%;
+    margin-bottom: 30px;
   }
 
   .button {
     grid-column: 1;
     grid-row: 3;
-
-    width: 100%;
   }
 
   .new-gatito {
     grid-column: 1;
     grid-row: 4;
 
-    width: 100%;
     padding-top: 10px;
   }
 }
+
