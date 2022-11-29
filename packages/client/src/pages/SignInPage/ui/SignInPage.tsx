@@ -4,20 +4,23 @@ import image from '@/shared/assets/images/gatito_paradax3.gif';
 import iconBtn from '@/shared/assets/images/pow2.png';
 import iconLnk from '@/shared/assets/images/cat.png';
 import { signIn, SigninData } from '@/shared/lib/auth/AuthAPI';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Button } from '@/shared/ui/Button';
 import { Link } from '@/shared/ui/Link';
-
-const onSubmit = (e: React.FormEvent<HTMLFormElement>, form: SigninData) => {
-  e.preventDefault();
-  signIn(form);
-};
 
 const SignInPage = () => {
   const [form, setForm] = useState<SigninData>({ login: '', password: '' });
 
+  const onSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      signIn(form);
+    },
+    [form],
+  );
+
   return (
-    <form onSubmit={(e) => onSubmit(e, form)}>
+    <form onSubmit={onSubmit}>
       <div className={styles.container}>
         <div className={styles.title}>Welcome, catlover</div>
 
