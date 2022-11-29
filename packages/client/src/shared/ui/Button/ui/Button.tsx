@@ -12,8 +12,7 @@ interface ButtonProps {
 const Button = (props: ButtonProps) => {
   return (
     <>
-      {' '}
-      <div className={styles.container}>
+      <div className={styles.button__container}>
         <button
           className={`${styles.button} ${styles[props.color]}`}
           onClick={props.onClick}
@@ -21,7 +20,7 @@ const Button = (props: ButtonProps) => {
           disabled={props.disabled}
         >
           {props.text}&nbsp;
-          {props.icon ? <img className={styles.icon} src={props.icon} alt='gatito' /> : ''}
+          {props.icon ? <img className={styles.button__icon} src={props.icon} alt='gatito' /> : ''}
         </button>
       </div>
     </>
