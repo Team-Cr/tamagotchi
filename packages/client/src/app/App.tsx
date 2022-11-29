@@ -3,7 +3,7 @@ import './styles/index.scss';
 import { withProviders } from './providers'
 import { Routing } from '@/pages'
 
-const App = () => {
+export const App = withProviders(() => {
   useEffect(() => {
     const fetchServerData = async () => {
       const url = `http://localhost:${__SERVER_PORT__}`;
@@ -21,6 +21,4 @@ const App = () => {
       <Routing/>
     </>
   );
-};
-
-export withProviders(App);
+});

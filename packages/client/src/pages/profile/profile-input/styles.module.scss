@@ -1,19 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=VT323&display=swap';
 
 .input {
-  display: flex;
-  align-items: baseline;
-  padding: 4px 24px 8px 24px;
-  gap: 12px;
-  color: #636671;
-
   user-select: none;
-  white-space: nowrap;
+
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+
+  padding: 4px 24px 8px;
 
   font-family: 'VT323', serif;
-  font-weight: 400;
   font-size: 36px;
+  font-weight: 400;
   line-height: 36px;
+  color: #636671;
+  white-space: nowrap;
 
   border-bottom: 1px solid #201D0C;
 
@@ -22,17 +23,17 @@
   }
 
   &:focus-within {
-    background: rgba(255,255,255,0.3);
+    background: rgb(255 255 255 / 30%);
   }
 }
 
 .input__value {
-  width: 100%;
-  border: none;
-
   cursor: inherit;
 
+  width: 100%;
+
   background: transparent;
+  border: none;
 
   &:focus-visible {
     outline: none;

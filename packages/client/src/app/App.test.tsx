@@ -3,7 +3,7 @@ import { App } from './App';
 
 const appContent = 'Вот тут будет жить ваше приложение :)';
 
-// @ts-ignore
+// @ts-expect-error: mock for fetch
 global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve('hey') }));
 
 test('Example test', async () => {

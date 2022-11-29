@@ -1,12 +1,10 @@
 import { Routes, Route } from "react-router";
-import { lazy } from "react";
-
-const ProfilePage = lazy(() => import('./profile'))
+import { Profile } from '@/pages/profile'
 
 export const Routing = () => {
   return (
     <Routes>
-      <Route path='/profile' element={<ProfilePage/>}/>
+      <Route path='/profile' element={<Profile/>}/>
     </Routes>
   )
 }
