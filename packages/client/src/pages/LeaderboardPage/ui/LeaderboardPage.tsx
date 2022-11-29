@@ -69,10 +69,10 @@ export const LeaderboardPage = () => {
       </a>
       <div className={css.layout}>
         <header>
-          <h1 className={css.title}>Cats leaderboard</h1>
+          <h1 className={css.layout__title}>Cats leaderboard</h1>
         </header>
 
-        <main className={css.entries}>
+        <main className={css.layout__entries}>
           {mockData.map(({ id, name, daysActive, level }) => (
             <LeaderboardEntry
               key={id}

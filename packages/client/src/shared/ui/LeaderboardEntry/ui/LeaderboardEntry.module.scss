@@ -14,15 +14,15 @@
   border-radius: 15px;
 }
 
-.left_group,
-.right_group {
+.entry__left_group,
+.entry__right_group {
   display: flex;
   flex: 1;
   gap: 30px;
   align-items: center;
 }
 
-.left_group {
+.entry__left_group {
   span {
     overflow: hidden;
     flex: 1;
@@ -34,7 +34,7 @@
   }
 }
 
-.avatar {
+.entry__avatar {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -49,13 +49,13 @@
   border-radius: 75px;
 }
 
-.daysActive {
+.entry__daysActive {
   flex: 1;
 
   white-space: nowrap;
 }
 
-.level {
+.entry__level {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -72,13 +72,13 @@
   border-radius: 75px;
 }
 
-.checked {
+.entry__checked {
   color: var(--dark-color);
 
   background: var(--light-pink-color);
 
-  .level,
-  .avatar {
+  .entry__level,
+  .entry__avatar {
     color: white;
 
     background: var(--medium-pink-color);
@@ -92,28 +92,28 @@
     padding: 5px 10px;
   }
 
-  .left_group,
-  .right_group {
+  .entry__left_group,
+  .entry__right_group {
     gap: 10px;
   }
 
-  .left_group {
+  .entry__left_group {
     span {
       max-width: 120px;
     }
   }
 
-  .right_group {
+  .entry__right_group {
     flex-direction: row-reverse;
   }
 
-  .avatar,
-  .level {
+  .entry__avatar,
+  .entry__level {
     width: 60px;
     height: 60px;
   }
 
-  .daysActive {
+  .entry__daysActive {
     display: none;
   }
 }
