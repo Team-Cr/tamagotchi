@@ -16,11 +16,11 @@ const SignInPage = () => {
         <div className={styles.title}>Welcome, catlover</div>
 
         <div className={styles.gatito}>
-          <img src={image} alt='gatito' />
+          <img className={styles.img} src={image} alt='gatito' />
         </div>
 
         <div className={styles['new-gatito']}>
-          <Link name='signUpLink' href='#' label='I want a new' icon={iconLnk} />
+          <Link name='signUpLink' href='#' label='I want new' icon={iconLnk} />
         </div>
 
         <div className={styles.fields}>
