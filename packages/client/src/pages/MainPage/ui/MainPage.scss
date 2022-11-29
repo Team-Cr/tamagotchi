@@ -7,7 +7,7 @@
   width: 100vw;
   height: 100vh;
 
-  background: #ffe761;
+  background: var(--background-color, #ffe761);
   background-image: url('../../../shared/assets/images/BackgroundFishPattern.png');
   background-repeat: repeat;
 

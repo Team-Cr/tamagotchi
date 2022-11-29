@@ -24,14 +24,17 @@
     "paths": {
       "@/*": [
         "src/*"
-      ]
+      ],
     }
   },
   "include": [
     "vite.config.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "src",
+    "typings/add.d.ts"
   ],
+  "typeRoots": ["node_modules/@types", "./typings/add.d.ts"],
   "exclude": [
     "node_modules"
   ],

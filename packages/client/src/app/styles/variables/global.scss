@@ -4,11 +4,44 @@
   // colors
   --medium-pink-color: #d58383;
   --dark-color: #201d0c;
+  --brown-color: #793c3b;
   --light-pink-color: #ffefef;
   --background-color: #ffe761;
   --secondary-color: #484848;
   --primary-color: #cf5c36;
   --success-color: #4ab00b;
+
+  // gradient colors
+  --blue-gradient: linear-gradient(
+    180deg,
+    #5f9fff 0%,
+    #65a3ff 20.65%,
+    #a3c8ff 20.66%,
+    #b6d3ff 52.08%,
+    #b6d3ff 80.84%,
+    #2f82ff 81.26%,
+    #1b75fb 100%
+  );
+  --red-gradient: linear-gradient(
+    180deg,
+    #ff5f5f 0%,
+    #ff6565 18.81%,
+    #ffa3a3 19.01%,
+    #ffb6b6 52.08%,
+    #ffb6b6 80.84%,
+    #ff2f2f 80.85%,
+    #fb1b1b 100%
+  );
+  --gray-gradient: linear-gradient(
+    180deg,
+    #5b5b5b 0%,
+    #5b5b5b 20.65%,
+    #969696 20.66%,
+    #969696 52.08%,
+    #969696 81.09%,
+    #5b5b5b 81.1%,
+    #5b5b5b 100%
+  );
 
   // app padding
   --padding-top: 110px;
@@ -32,6 +65,18 @@
   --title-line-height: 96px;
   --title-font: var(--title-font-weight) var(--title-font-size) / var(--title-line-height)
     var(--font-family);
+
+  // main header title
+  --main-header-title-font-size: 150px;
+  --main-header-title-font-weight: 400;
+  --main-header-title-line-height: 165px;
+  --main-header-title-font: var(--main-header-title-font-weight) var(--main-header-title-font-size) / var(--main-header-title-line-height) var(--font-family);
+
+  // action block title
+  --action-block-title-size: 80px;
+  --action-block-title-font-weight: 400;
+  --action-block-title-line-height: 80px;
+  --action-block-title-font: var(--action-block-title-font-weight) var(--action-block-title-size) / var(--action-block-title-line-height) var(--font-family);
 
   // regular
   --regular-font-size: 48px;

@@ -12,12 +12,12 @@ import { ActionBlock } from '@/widgets';
 import './MainContainer.scss';
 
 type MainContainerProps = {
-  barsPoints: { level: number; hp: number };
-  setBarsPoints: Dispatch<SetStateAction<{ level: number; hp: number }>>;
+  barsPoints: BarsPointsType;
+  setBarsPoints: Dispatch<SetStateAction<BarsPointsType>>;
   setCurrentLevel: Dispatch<SetStateAction<number>>;
 };
 
-export type handleUpdateBarsPointsType = ({ level, hp }: { level: number; hp: number }) => void;
+export type handleUpdateBarsPointsType = ({ level, hp }: BarsPointsType) => void;
 
 export const MainContainer = (props: MainContainerProps) => {
   const { barsPoints, setBarsPoints, setCurrentLevel } = props;
@@ -36,45 +36,57 @@ export const MainContainer = (props: MainContainerProps) => {
     }));
   };
 
+  const ActionsConfig: {
+    image: string;
+    text: string;
+    pointsForAction: BarsPointsType;
+    keyboardKey: string;
+  }[] = [
+    {
+      image: CatBowl,
+      text: 'FEED',
+      pointsForAction: { level: 10, hp: 10 },
+      keyboardKey: 'q',
+    },
+    {
+      image: CatFace,
+      text: 'PLAY',
+      pointsForAction: { level: 10, hp: 10 },
+      keyboardKey: 'w',
+    },
+    {
+      image: PixelBed,
+      text: 'SLEEP',
+      pointsForAction: { level: 5, hp: 20 },
+      keyboardKey: 'e',
+    },
+    {
+      image: PixelDumbell,
+      text: 'SPORT',
+      pointsForAction: { level: 15, hp: 10 },
+      keyboardKey: 'r',
+    },
+    {
+      image: CatPawWithFish,
+      text: 'ATTACK',
+      pointsForAction: { level: 10, hp: -5 },
+      keyboardKey: 'f',
+    },
+  ];
   return (
     <div className='main__container'>
       <img className='main__container__image' src={CatPicture} alt='Cat' />
       <div className='main__container__actions'>
-        <ActionBlock
-          image={CatBowl}
-          text='FEED'
-          handleUpdateBarsPoints={handleUpdateBarsPoints}
-          pointsForAction={{ level: 10, hp: 10 }}
-          keyboardKey="q"
-        />
-        <ActionBlock
-          image={CatFace}
-          text='PLAY'
-          handleUpdateBarsPoints={handleUpdateBarsPoints}
-          pointsForAction={{ level: 10, hp: 10 }}
-          keyboardKey="w"
-        />
-        <ActionBlock
-          image={PixelBed}
-          text='SLEEP'
-          handleUpdateBarsPoints={handleUpdateBarsPoints}
-          pointsForAction={{ level: 5, hp: 20 }}
-          keyboardKey="e"
-        />
-        <ActionBlock
-          image={PixelDumbell}
-          text='SPORT'
-          handleUpdateBarsPoints={handleUpdateBarsPoints}
-          pointsForAction={{ level: 15, hp: 10 }}
-          keyboardKey="r"
-        />
-        <ActionBlock
-          image={CatPawWithFish}
-          text='ATTACK'
-          handleUpdateBarsPoints={handleUpdateBarsPoints}
-          pointsForAction={{ level: 10, hp: -5 }}
-          keyboardKey="f"
-        />
+        {ActionsConfig.map((item) => (
+          <ActionBlock
+            image={item.image}
+            text={item.text}
+            key={item.text}
+            handleUpdateBarsPoints={handleUpdateBarsPoints}
+            pointsForAction={item.pointsForAction}
+            keyboardKey={item.keyboardKey}
+          />
+        ))}
       </div>
     </div>
   );
