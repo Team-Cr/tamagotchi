@@ -189,7 +189,7 @@ select { /* 1 */
 }
 
 /**
- * Correct the inability to style clickable typicode in iOS and Safari.
+ * Correct the inability to style clickable types in iOS and Safari.
  */
 
 button,
@@ -281,7 +281,7 @@ textarea {
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
-
+ 
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
@@ -301,7 +301,7 @@ textarea {
 }
 
 /**
- * 1. Correct the inability to style clickable typicode in iOS and Safari.
+ * 1. Correct the inability to style clickable types in iOS and Safari.
  * 2. Change font properties to `inherit` in Safari.
  */
 
