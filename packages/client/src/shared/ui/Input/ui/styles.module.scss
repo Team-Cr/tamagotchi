@@ -1,0 +1,23 @@
+$horizontal-padding: 40px;
+$vertical-padding: 20px;
+$input-height: 88px;
+
+$default-size: 48px;
+$default-color: #FFF9C7;
+
+$bg-color: var(--light-yellow, $default-color);
+$font-size: var(--text-mss, $default-size);
+
+.input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: $input-height;
+    padding: $vertical-padding $horizontal-padding;
+    background: $bg-color;
+    border-radius: 50px;
+    border: none;
+    font-size: $font-size;
+    font-family: unset;
+}
