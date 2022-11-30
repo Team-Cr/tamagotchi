@@ -10,13 +10,11 @@ import { useCallback, useState } from 'react';
 const SignInPage = () => {
   const [form, setForm] = useState({ login: '', password: '' });
 
-  const onChangeLogin = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, login: e.target.value }),
-    [form],
-  );
-
-  const onChangePassword = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, password: e.target.value }),
+  const onChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setForm({ ...form, [name]: value });
+    },
     [form],
   );
 
@@ -39,14 +37,14 @@ const SignInPage = () => {
             type='text'
             value={form.login}
             placeholder='Login'
-            onChange={onChangeLogin}
+            onChange={onChange}
           />
           <Input
             name='password'
             type='password'
             value={form.password}
             placeholder='Password'
-            onChange={onChangePassword}
+            onChange={onChange}
           />
         </div>
 
