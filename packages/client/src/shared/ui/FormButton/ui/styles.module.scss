@@ -1,18 +1,17 @@
 $button-height: 88px;
 $default-btn-bg-color: #cf5c36;
-
 $btn-bg-color: var(--primary-color, $default-btn-bg-color);
 
 .button {
-    width: 100%;
-    height: $button-height;
-    background: $btn-bg-color;
-    border-radius: 50px;
-    border: none;
-    font-family: unset;
-    cursor: pointer;
+  width: 100%;
+  height: $button-height;
+  background: $btn-bg-color;
+  border-radius: 50px;
+  border: none;
+  font-family: unset;
+  cursor: pointer;
 
-    &:hover {
-        opacity: 0.9;
-    }
+  &:hover {
+    opacity: 0.9;
+  }
 }
