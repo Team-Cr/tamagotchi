@@ -2,7 +2,41 @@
 @import './variables/global';
 @import './themes/dark';
 
-/* test */
-.App {
-  background-color: var(--example-color);
+@import 'https://fonts.googleapis.com/css2?family=VT323&display=swap';
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 1440px;
+  height: 100vh;
+  height: fill-available;
+  margin: 0 auto;
+
+  font: var(--regular-font);
+  color: var(--dark-color);
+
+  background-color: var(--background-color);
+  background-image: url('../../shared/assets/images/fish-pattern-inversed.png');
+  background-repeat: repeat;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0;
+
+  font: var(--title-font);
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font: var(--m-regular-font);
+  }
+
+  h1 {
+    font: var(--m-title-font);
+  }
 }
