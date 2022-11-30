@@ -72,10 +72,11 @@ export class HTTP {
   }
 
   private _send<T>(url: string, options: Options = { method: Method.GET }): Promise<Response<T>> {
-    let { method, data, headers = {}, timeout } = options;
+    let { headers } = options;
+    const { method, data, timeout } = options;
 
     return new Promise((resolve, reject) => {
-      if (Object.keys(headers).length === 0 && !(data instanceof FormData)) {
+      if (headers && Object.keys(headers).length === 0 && !(data instanceof FormData)) {
         headers = {
           'Content-Type': 'application/json',
         };
