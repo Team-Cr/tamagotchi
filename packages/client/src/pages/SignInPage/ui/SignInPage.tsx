@@ -7,7 +7,6 @@ import { signIn, SigninData } from '@/shared/lib/auth/AuthAPI';
 import { useCallback, useState } from 'react';
 import { Button } from '@/shared/ui/Button';
 import { Link } from '@/shared/ui/Link';
-import { useCallback, useState } from 'react';
 
 const SignInPage = () => {
   const [form, setForm] = useState<SigninData>({ login: '', password: '' });
