@@ -1,0 +1,17 @@
+.input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+
+  font: var(--regular-font);
+
+  background-color: var(--input-color);
+  border: solid 1px var(--input-color);
+  border-radius: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .input {
+    font: var(--m-regular-sm-font);
+  }
+}
