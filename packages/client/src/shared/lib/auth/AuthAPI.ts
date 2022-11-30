@@ -7,9 +7,9 @@ const AUTH_URL = '/auth';
 
 export const API_URL = 'https://ya-praktikum.tech/api/v2';
 
-export const signIn = async (data: SigninData) => {
-  const endpoint = '/signin';
+const endpoint = '/signin';
 
+export const signIn = async (data: SigninData) => {
   fetch(API_URL + AUTH_URL + endpoint, {
     body: JSON.stringify(data),
     headers: { 'Content-type': 'application/json' },

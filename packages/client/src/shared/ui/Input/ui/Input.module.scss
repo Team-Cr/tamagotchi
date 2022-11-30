@@ -1,24 +1,17 @@
-:root {
-  --input-color: #fff9c7;
-}
-
 .input {
   width: 100%;
   margin-bottom: 10px;
   padding: 10px 20px;
 
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 48px;
+  font: var(--regular-font);
 
   background-color: var(--input-color);
   border: solid 1px var(--input-color);
   border-radius: 50px;
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 768px) {
   .input {
-    font-size: 28px;
-    line-height: 28px;
+    font: var(--m-regular-sm-font);
   }
 }

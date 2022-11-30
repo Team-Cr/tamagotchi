@@ -10,14 +10,14 @@ interface LinkProps {
 const Link = (props: LinkProps) => {
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles['link-centered']}>
+      <div className={styles.link__container}>
+        <div className={styles.link__centered}>
           <a className={styles.link} href={props.href}>
             {props.label}
             &nbsp;
             {props.icon ? (
               <span>
-                <img className={styles.icon} src={props.icon} alt='gatito' />
+                <img className={styles.link__icon} src={props.icon} alt='gatito' />
               </span>
             ) : (
               ''

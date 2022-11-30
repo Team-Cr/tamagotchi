@@ -1,70 +1,51 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --body-bg-color: #ffe761;
-  --font-family: 'VT323';
-}
-
-@font-face {
-  font-family: 'VT323';
-  src: url('../../../shared/assets/fonts/VT323-Regular.ttf');
-}
-
-body,
-html {
-  height: 100%;
-
-  font-family: var(--font-family);
-
-  background-color: var(--body-bg-color);
-  background-image: url('../../../shared/assets/images/fish-pattern-inversed.png');
-  background-repeat: repeat;
-}
-
-.container {
+.signin__container {
   display: grid;
   grid-template-columns: auto 500px 500px auto;
   column-gap: 300px;
 
+  margin: 0;
+
   text-align: center;
 }
 
-.title {
+.signin__title {
   grid-column: 1 / 5;
   grid-row: 1;
 
   padding: 80px 0;
 
-  font-size: 96px;
+  font: var(--title-font);
   text-align: center;
 }
 
-.gatito {
+.signin__pet {
   grid-column: 2;
   grid-row: 2 / 6;
 }
 
-.new-gatito {
+.signin__pet__create {
   grid-column: 2;
   grid-row: 6;
 }
 
-.fields {
+.signin__fields {
   grid-column: 3;
   grid-row: 3/4;
 }
 
-.button {
+.signin__button {
   grid-column: 3;
   grid-row: 6;
 }
 
-@media screen and (max-width: 575px) {
-  .container {
+@media screen and (max-width: 768px) {
+  form {
+    gap: 20px;
+
+    padding: var(--m-padding);
+  }
+
+  .signin__container {
     display: grid;
     grid-template-columns: auto;
 
@@ -72,34 +53,38 @@ html {
     padding: 30px;
   }
 
-  .title {
+  .signin__title {
     display: none;
   }
 
-  .gatito {
+  .signin__pet {
     grid-column: 1;
     grid-row: 1;
 
     margin-bottom: 50px;
   }
 
-  .fields {
+  .signin__fields {
     grid-column: 1;
     grid-row: 2;
 
     margin-bottom: 30px;
   }
 
-  .button {
+  .signin__button {
     grid-column: 1;
     grid-row: 3;
   }
 
-  .new-gatito {
+  .signin__pet__create {
     grid-column: 1;
     grid-row: 4;
 
     padding-top: 10px;
+  }
+  
+  .signin__img {
+    width: 200px;
   }
 }
 

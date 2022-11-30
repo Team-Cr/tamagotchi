@@ -7,6 +7,7 @@ import { signIn, SigninData } from '@/shared/lib/auth/AuthAPI';
 import { useCallback, useState } from 'react';
 import { Button } from '@/shared/ui/Button';
 import { Link } from '@/shared/ui/Link';
+import { useCallback, useState } from 'react';
 
 const SignInPage = () => {
   const [form, setForm] = useState<SigninData>({ login: '', password: '' });
@@ -19,37 +20,45 @@ const SignInPage = () => {
     [form],
   );
 
+  const onChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setForm({ ...form, [name]: value });
+    },
+    [form],
+  );
+
   return (
     <form onSubmit={onSubmit}>
-      <div className={styles.container}>
-        <div className={styles.title}>Welcome, catlover</div>
+      <div className={styles.signin__container}>
+        <div className={styles.signin__title}>Welcome, catlover</div>
 
-        <div className={styles.gatito}>
-          <img className={styles.img} src={image} alt='gatito' />
+        <div className={styles.signin__pet}>
+          <img className={styles.signin__img} src={image} alt='gatito' />
         </div>
 
-        <div className={styles['new-gatito']}>
+        <div className={styles.signin__pet__create}>
           <Link name='signUpLink' href='#' label='I want new' icon={iconLnk} />
         </div>
 
-        <div className={styles.fields}>
+        <div className={styles.signin__fields}>
           <Input
             name='login'
             type='text'
             value={form.login}
             placeholder='Login'
-            onChange={(e) => setForm({ ...form, login: e.target.value })}
+            onChange={onChange}
           />
           <Input
             name='password'
             type='password'
             value={form.password}
             placeholder='Password'
-            onChange={(e) => setForm({ ...form, password: e.target.value })}
+            onChange={onChange}
           />
         </div>
 
-        <div className={styles.button}>
+        <div className={styles.signin__button}>
           <Button name='loginBtn' color='red' text={'Visit my cat'} icon={iconBtn} />
         </div>
       </div>

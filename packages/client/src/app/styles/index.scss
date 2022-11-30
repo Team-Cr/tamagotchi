@@ -2,7 +2,41 @@
 @import './variables/global';
 @import './themes/dark';
 
-/* test */
-.App {
-  background-color: var(--example-color);
+:root {
+  --font-family: 'VT323';
+  --background-color: #ffe761;
+  --secondary-color: #484848;
+  --primary-color: #cf5c36;
+  --input-color: #fff9c7;
+
+  // title
+  --title-font-size: 96px;
+  --title-font-weight: 400;
+  --title-line-height: 96px;
+  --title-font: var(--title-font-weight) var(--title-font-size) / var(--title-line-height)
+    var(--font-family);
+
+  // regular
+  --regular-font-size: 48px;
+  --regular-font-weight: 400;
+  --regular-line-height: 48px;
+  /* stylelint-disable-next-line scss/operator-no-newline-after */
+  --regular-font: var(--regular-font-weight) var(--regular-font-size) / var(--regular-line-height)
+    var(--font-family);
+
+  // m-regular
+  --m-regular-font-size: 36px;
+  --m-regular-font-weight: 400;
+  --m-regular-line-height: 36px;
+  /* stylelint-disable-next-line scss/operator-no-newline-after */
+  --m-regular-font: var(--m-regular-font-weight) var(--m-regular-font-size) /
+    var(--m-regular-line-height) var(--font-family);
+
+  // m-regular-sm
+  --m-regular-sm-sm-font-size: 28px;
+  --m-regular-sm-font-weight: 400;
+  --m-regular-sm-line-height: 28px;
+  /* stylelint-disable-next-line scss/operator-no-newline-after */
+  --m-regular-sm-font: var(--m-regular-sm-font-weight) var(--m-regular-sm-font-size) /
+    var(--m-regular-sm-line-height) var(--font-family);
 }
