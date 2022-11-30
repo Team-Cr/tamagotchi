@@ -16,3 +16,7 @@ export interface GetLeaderboardProps {
   cursor: number;
   limit: number;
 }
+
+export interface GetLeaderboardResponse {
+  data: LeaderboardData;
+}

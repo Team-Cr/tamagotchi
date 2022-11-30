@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://ya-praktikum.tech/api/v2/';
-
 export const axiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: __BASE_URL__,
   headers: {
     'content-type': 'application/json',
   },

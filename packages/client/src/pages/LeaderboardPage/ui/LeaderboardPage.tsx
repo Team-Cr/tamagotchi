@@ -18,7 +18,7 @@ export const LeaderboardPage = () => {
   useEffect(() => {
     LeaderboardAPI.all(LeaderboardConfig)
       .then((res) => {
-        const data = res.data.map((entry: { data: LeaderboardData }) => entry.data);
+        const data = res.data.map((entry) => entry.data);
         setEntries(data);
       })
       .catch((e) => console.log({ e }));
