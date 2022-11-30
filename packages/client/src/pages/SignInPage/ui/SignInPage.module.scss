@@ -1,8 +1,9 @@
 .signin__container {
-  margin: 0;
   display: grid;
   grid-template-columns: auto 500px 500px auto;
   column-gap: 300px;
+
+  margin: 0;
 
   text-align: center;
 }
