@@ -19,7 +19,7 @@ export type handleUpdateBarsPointsType = ({ level, hp }: { level: number; hp: nu
 
 export const MainContainer = (props: MainContainerProps) => {
   const { barsPoints, setBarsPoints, setCurrentLevel } = props;
-  console.log(barsPoints, setBarsPoints, setCurrentLevel);
+  
   return (
     <div className='main__container'>
       <img className='main__container__image' src={CatPicture} alt='Cat' />
