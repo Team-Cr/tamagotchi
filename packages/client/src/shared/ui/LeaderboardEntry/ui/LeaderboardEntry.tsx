@@ -1,20 +1,18 @@
+import { LeaderboardData } from '@/shared/lib/api';
 import classNames from 'classnames';
 import css from './LeaderboardEntry.module.scss';
 
-interface LeaderboardEntryProps {
-  name: string;
-  daysActive: number;
-  level: number;
-  checked: boolean;
-}
+type LeaderboardEntryProps = Omit<LeaderboardData, 'id'> & { checked: boolean };
 
 export const LeaderboardEntry = (props: LeaderboardEntryProps) => {
-  const { name, daysActive, level, checked } = props;
+  const { avatarUrl, name, daysActive, level, checked } = props;
 
   return (
     <div className={classNames(css.entry, { [css.checked]: checked })}>
       <div className={css.entry__left_group}>
-        <div className={css.entry__avatar}></div>
+        <div className={css.entry__avatar}>
+          <img src={avatarUrl} alt='Avatar' />
+        </div>
         <span>{name}</span>
       </div>
 
