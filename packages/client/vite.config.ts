@@ -12,7 +12,8 @@ export default defineConfig({
   },
   define: {
     __SERVER_PORT__: process.env.SERVER_PORT,
-    __BASE_URL__: process.env.BASE_URL
+    __TEAM_NAME__: JSON.stringify(process.env.TEAM_NAME),
+    __BASE_URL__: JSON.stringify(process.env.BASE_URL),
   },
   plugins: [react(), tsconfigPaths()],
 });
