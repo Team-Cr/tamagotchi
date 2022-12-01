@@ -1,15 +1,18 @@
 import styles from './styles.module.scss';
+import { ChangeEvent } from 'react'
 
 export type ProfileInputProps = {
-  name: string,
-  value?: string
+  label: string,
+  name?: string,
+  value?: string,
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const ProfileInput = ({ name, value }: ProfileInputProps) => {
+export const ProfileInput = ({ name, value, onChange, label }: ProfileInputProps) => {
   return (
     <label className={styles.input}>
-      <span>{name}</span>
-      <input dir='rtl' type='text' className={styles.input__value} value={value}/>
+      <span>{label}</span>
+      <input defaultValue={value} name={name} type='text' className={styles.input__value} onChange={onChange}/>
     </label>
   )
 }

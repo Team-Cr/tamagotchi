@@ -1,1 +1,1 @@
-export * as apiTypes from "./typicode";
+export * as apiTypes from "./swagger";

@@ -1,1 +1,1 @@
-export * from "./typicode/models";
+export * from "./swagger/models";

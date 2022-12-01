@@ -6,6 +6,7 @@
   display: flex;
   gap: 12px;
   align-items: baseline;
+  justify-content: space-between;
 
   padding: 4px 24px 8px;
 
@@ -29,8 +30,6 @@
 
 .input__value {
   cursor: inherit;
-
-  width: 100%;
 
   background: transparent;
   border: none;

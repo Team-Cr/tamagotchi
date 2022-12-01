@@ -1,14 +1,14 @@
-import React, { KeyboardEventHandler } from 'react'
+import { FC, KeyboardEventHandler, ReactNode } from 'react'
 import styles from "./Modal.module.scss";
 
-type ModalProps = {
+export type ModalProps = {
   show: boolean,
   setModalActive(bool: boolean): void,
-  children: React.ReactNode
+  children: ReactNode
   title?: string,
 }
 
-export const Modal: React.FC<ModalProps> = (props: ModalProps) => {
+export const Modal: FC<ModalProps> = (props: ModalProps) => {
   const {
     title = 'Modal',
     setModalActive,

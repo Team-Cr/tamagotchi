@@ -2,7 +2,7 @@ import classNames from 'classnames'
 
 export function addPrefix(pre: string, className: string | string[], delimiter = '-'): string {
 
-  if (!pre || !className) {
+  if (!pre && !className) {
     return '';
   }
 

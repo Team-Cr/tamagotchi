@@ -1,0 +1,13 @@
+.profile__modal_fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile__modal_footer {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+
+  padding: 24px 0;
+}
