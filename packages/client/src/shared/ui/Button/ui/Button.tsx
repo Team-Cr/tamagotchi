@@ -2,6 +2,7 @@ import styles from './Button.module.scss';
 
 interface ButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  type: 'button' | 'reset' | 'submit';
   name: string;
   color: 'grey' | 'red';
   disabled?: boolean;
