@@ -35,6 +35,7 @@
 }
 
 .entry__avatar {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -47,6 +48,12 @@
 
   background: var(--light-pink-color);
   border-radius: 75px;
+
+  img {
+    height: calc(100% + 10px * 2);
+
+    object-fit: contain;
+  }
 }
 
 .entry__daysActive {
@@ -72,7 +79,7 @@
   border-radius: 75px;
 }
 
-.entry__checked {
+.checked {
   color: var(--dark-color);
 
   background: var(--light-pink-color);
