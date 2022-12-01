@@ -2,7 +2,7 @@ import { LevelOrHpBar } from '@/shared/ui/LevelOrHpBar';
 import './MainHeader.scss';
 
 type MainHeaderProps = {
-  barsPoints: { level: number; hp: number };
+  barsPoints: BarsPointsType;
   currentLevel: number;
 };
 export const MainHeader = (props: MainHeaderProps) => {

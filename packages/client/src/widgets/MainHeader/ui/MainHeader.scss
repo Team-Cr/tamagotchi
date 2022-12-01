@@ -7,9 +7,7 @@
   height: 20vh;
 
   &__title {
-    font-size: 150px;
-    font-weight: 400;
-    line-height: 165px;
-    color: #793c3b;
+    font: var(--main-header-title-font);
+    color: var(--brown-color);
   }
 }
