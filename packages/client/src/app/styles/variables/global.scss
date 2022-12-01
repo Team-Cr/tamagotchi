@@ -4,6 +4,7 @@
   // colors
   --medium-pink-color: #d58383;
   --dark-color: #201d0c;
+  --brown-color: #793c3b;
   --light-pink-color: #ffefef;
   --background-color: #ffe761;
   --secondary-color: #484848;
@@ -33,6 +34,18 @@
   --title-line-height: 96px;
   --title-font: var(--title-font-weight) var(--title-font-size) / var(--title-line-height)
     var(--font-family);
+
+  // main header title
+  --main-header-title-font-size: 150px;
+  --main-header-title-font-weight: 400;
+  --main-header-title-line-height: 165px;
+  --main-header-title-font: var(--main-header-title-font-weight) var(--main-header-title-font-size) / var(--main-header-title-line-height) var(--font-family);
+
+  // action block title
+  --action-block-title-size: 80px;
+  --action-block-title-font-weight: 400;
+  --action-block-title-line-height: 80px;
+  --action-block-title-font: var(--action-block-title-font-weight) var(--action-block-title-size) / var(--action-block-title-line-height) var(--font-family);
 
   // regular
   --regular-font-size: 48px;

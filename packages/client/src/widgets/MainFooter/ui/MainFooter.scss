@@ -1,0 +1,16 @@
+.main__footer {
+  display: flex;
+  justify-content: space-between;
+
+  width: 90vw;
+  height: 15vh;
+
+  &__image {
+    cursor: pointer;
+
+    width: 80px;
+    height: 80px;
+
+    object-fit: cover;
+  }
+}

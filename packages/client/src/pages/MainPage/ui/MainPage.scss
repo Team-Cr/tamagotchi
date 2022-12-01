@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: var(--background-color, #ffe761);
+  background-image: url('../../../shared/assets/images/BackgroundFishPattern.png');
+  background-repeat: repeat;
+
+  & > * {
+    user-select: none;
+  }
+}
