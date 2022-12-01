@@ -1,0 +1,83 @@
+.signin__container {
+  display: grid;
+  grid-template-columns: auto 500px 200px 500px auto;
+  column-gap: 50px;
+
+  margin: 0;
+
+  text-align: center;
+}
+
+.signin__title {
+  grid-column: 1 / 6;
+  grid-row: 1;
+
+  padding: 80px 0;
+
+  font: var(--title-font);
+  text-align: center;
+}
+
+.signin__pet {
+  grid-column: 2;
+  grid-row: 2 / 6;
+}
+
+.signin__pet__create {
+  grid-column: 2;
+  grid-row: 6;
+}
+
+.signin__fields {
+  grid-column: 4;
+  grid-row: 3/4;
+}
+
+.signin__button {
+  grid-column: 4;
+  grid-row: 6;
+}
+
+@media screen and (max-width: 768px) {
+  .signin__container {
+    display: grid;
+    grid-template-columns: auto;
+
+    width: 100%;
+    padding: 30px;
+  }
+
+  .signin__title {
+    display: none;
+  }
+
+  .signin__pet {
+    grid-column: 1;
+    grid-row: 1;
+
+    margin-bottom: 50px;
+  }
+
+  .signin__fields {
+    grid-column: 1;
+    grid-row: 2;
+
+    margin-bottom: 30px;
+  }
+
+  .signin__button {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .signin__pet__create {
+    grid-column: 1;
+    grid-row: 4;
+
+    padding-top: 10px;
+  }
+
+  .signin__img {
+    width: 200px;
+  }
+}

@@ -1,0 +1,41 @@
+.link {
+  cursor: pointer;
+
+  font: var(--regular-font);
+  color: black;
+  text-decoration: none;
+}
+
+.link__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 50px;
+  margin: 0;
+}
+
+.link__container {
+  position: relative;
+
+  height: 40px;
+}
+
+.link__centered {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 100%;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .link {
+    font: var(--m-regular-font);
+  }
+
+  .link__icon {
+    width: 36px;
+  }
+}
