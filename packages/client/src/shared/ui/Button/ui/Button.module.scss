@@ -1,0 +1,49 @@
+.button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+
+  font: var(--regular-font);
+  color: white;
+
+  border: solid 1px var(--primary-color);
+  border-radius: 50px;
+}
+
+.red {
+  background-color: var(--primary-color);
+}
+
+.grey {
+  background-color: var(--secondary-color);
+}
+
+.button__container {
+  position: relative;
+
+  height: 60px;
+}
+
+.button__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 50px;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    font: var(--m-regular-font);
+  }
+
+  .button__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 36px;
+    margin: 0;
+  }
+}
