@@ -24,6 +24,7 @@ export const LeaderboardPage = () => {
       .catch((e) => console.log({ e }));
   }, [setEntries]);
 
+
   return (
     <>
       <a className={css.back} href='/#'>
