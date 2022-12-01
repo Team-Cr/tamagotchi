@@ -11,10 +11,10 @@
   font: var(--regular-font);
   font-size: 36px;
   line-height: 36px;
-  color: #636671;
+  color: var(--secondary-color);
   white-space: nowrap;
 
-  border-bottom: 1px solid #201D0C;
+  border-bottom: 1px solid var(--dark-color);
 
   &:hover {
     cursor: text;

@@ -4,10 +4,10 @@ import { Button } from '@/shared/ui/Button'
 import { ChangeEvent, FC, useState } from 'react'
 import { ModalProps } from '@/shared/ui/Modal/ui/Modal'
 import { User } from '@/shared/api/swagger/models'
-import { AuthAPI, SigninData } from '@/shared/api/swagger/auth'
 import { PasswordUpdate, ProfileAPI } from '@/shared/api/swagger/user'
 import { AxiosError } from 'axios'
 import { ErrorResponse } from '@/shared/api/swagger/api'
+import { Input } from '@/shared/ui/Input'
 
 type ProfileModalProps = {
   login: string
@@ -22,8 +22,7 @@ type newPasswordProps = {
 export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileModalProps> = (props) => {
   const {
     show,
-    setModalActive,
-    login
+    setModalActive
   } = props;
 
   const [password, setPassword] = useState<newPasswordProps>({
@@ -62,9 +61,9 @@ export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileMo
     <Modal show={show} setModalActive={setModalActive} title={"Change password"}>
       {/* TODO change to global input */}
       <div className={styles.profile__modal_fields}>
-        <input type='password' name={'old'} placeholder='Old password' onChange={handleChange}/>
-        <input type='password' name={'new'} placeholder='New password' onChange={handleChange}/>
-        <input type='password' name={'confirm'} placeholder='Confirm password' onChange={handleChange}/>
+        <Input type='password' name={'old'} placeholder='Old password' onChange={handleChange}/>
+        <Input type='password' name={'new'} placeholder='New password' onChange={handleChange}/>
+        <Input type='password' name={'confirm'} placeholder='Confirm password' onChange={handleChange}/>
       </div>
       <div className={styles.profile__modal_footer}>
         <Button size='small'

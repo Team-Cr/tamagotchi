@@ -52,7 +52,7 @@ export const Profile = () => {
   }, [user])
 
   return (
-    <div className={styles.root}>
+    <>
       <div className={styles.profile__container}>
         <ProfileAvatar avatar={user.avatar}/>
 
@@ -73,6 +73,6 @@ export const Profile = () => {
 
         <ProfileModal login={user.login} show={modalIsOpen}  setModalActive={setIsOpen}/>
       </div>
-    </div>
+    </>
   )
 }
