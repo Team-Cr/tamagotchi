@@ -15,6 +15,8 @@ type ActionBlockType = {
 export const ActionBlock = (props: ActionBlockType) => {
   const { handleUpdateBarsPoints, image, pointsForAction, text, keyboardKey } = props;
 
+  const handleClick = useCallback(() => handleUpdateBarsPoints(pointsForAction), [handleUpdateBarsPoints, pointsForAction])
+
   const handleKeyboardClick = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.key === keyboardKey) {
@@ -30,7 +32,7 @@ export const ActionBlock = (props: ActionBlockType) => {
       onKeyDown={handleKeyboardClick}
       tabIndex={0}
       role='button'
-      onClick={() => handleUpdateBarsPoints(pointsForAction)}
+      onClick={handleClick}
     >
       <img className='action-block__image' src={image} alt={`Icon-${text}`} />
       <p className='action-block__text'>{text}</p>
