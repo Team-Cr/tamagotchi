@@ -33,39 +33,48 @@ const SignInPage = () => {
         <div className={styles.signin__container}>
           <div className={styles.signin__title}>Welcome, catlover</div>
 
-          <div className={styles.signin__pet}>
-            <img className={styles.signin__img} src={image} alt='gatito' />
-          </div>
+          <div className={styles.signin__body}>
+            <div className={styles.signin__left__column}>
+              <div>
+                <img className={styles.signin__img} src={image} alt='gatito' />
+              </div>
 
-          <div className={styles.signin__pet__create}>
+              <div className={styles.signin__pet__create}>
+                <Link name='signUpLink' href='#' label='I want new' icon={iconLnk} />
+              </div>
+            </div>
+
+            <div className={styles.signin__right__column}>
+              <div>
+                <Input
+                  name='login'
+                  type='text'
+                  value={form.login}
+                  placeholder='Login'
+                  onChange={onChange}
+                />
+                <Input
+                  name='password'
+                  type='password'
+                  value={form.password}
+                  placeholder='Password'
+                  onChange={onChange}
+                />
+              </div>
+
+              <div className={styles.signin__button}>
+                <Button
+                  type='button'
+                  name='loginBtn'
+                  color='red'
+                  text={'Visit my cat'}
+                  icon={iconBtn}
+                />
+              </div>
+            </div>
+          </div>
+          <div className={styles.signin__pet__create__mobile}>
             <Link name='signUpLink' href='#' label='I want new' icon={iconLnk} />
-          </div>
-
-          <div className={styles.signin__fields}>
-            <Input
-              name='login'
-              type='text'
-              value={form.login}
-              placeholder='Login'
-              onChange={onChange}
-            />
-            <Input
-              name='password'
-              type='password'
-              value={form.password}
-              placeholder='Password'
-              onChange={onChange}
-            />
-          </div>
-
-          <div className={styles.signin__button}>
-            <Button
-              type='button'
-              name='loginBtn'
-              color='red'
-              text={'Visit my cat'}
-              icon={iconBtn}
-            />
           </div>
         </div>
       </form>
