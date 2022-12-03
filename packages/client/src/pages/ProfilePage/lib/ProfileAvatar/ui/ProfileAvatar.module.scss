@@ -1,0 +1,15 @@
+.avatar {
+  width: 220px;
+  height: 220px;
+
+  background-color: var(--light-pink-color);
+  border-radius: 100%;
+
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    cursor: pointer;
+
+    filter: brightness(0.7);
+  }
+}

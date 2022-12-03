@@ -1,18 +1,20 @@
 .profile__container {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 40px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
-  width: 875px;
-  margin: 84px auto;
+  max-width: 900px;
+  height: 100%;
+  margin: var(--padding-top) auto;
 }
 
 .profile__fields {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
 
+  width: 100%;
   min-width: 600px;
 }

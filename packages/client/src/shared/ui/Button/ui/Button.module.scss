@@ -3,13 +3,16 @@
   flex-direction: row;
   gap: 20px;
   align-items: center;
+  justify-content: center;
+
+  padding: var(--padding-top-button) var(--padding-left-button);
 
   font: var(--regular-font);
 
   border: 0;
   border-radius: 50px;
 
-  transition: all .2s;
+  transition: all 0.2s;
 
   &:hover {
     cursor: pointer;
@@ -19,27 +22,38 @@
 }
 
 .button-large {
-  height: 88px;
-  padding: 20px 80px;
+  padding: var(--padding-top-button) var(--padding-left-button);
 
-  font-size: 48px;
-  line-height: 48px;
+  font-size: var(--regular-font-size);
+  line-height: var(--regular-line-height);
+
+  .button_icon {
+    height: var(--regular-font-size);
+  }
 }
 
 .button-medium {
-  height: 60px;
-  padding: 20px 60px;
+  padding: calc(var(--padding-top-button) * 0.8)
+    calc(var(--padding-left-button) * 0.8);
 
-  font-size: 36px;
-  line-height: 36px;
+  font-size: calc(var(--regular-font-size) * 0.8);
+  line-height: calc(var(--regular-line-height) * 0.8);
+
+  .button_icon {
+    height: calc(var(--regular-font-size) * 0.8);
+  }
 }
 
 .button-small {
-  height: 32px;
-  padding: 20px 40px;
+  padding: calc(var(--padding-top-button) * 0.6)
+    calc(var(--padding-left-button) * 0.6);
 
-  font-size: 24px;
-  line-height: 24px;
+  font-size: calc(var(--regular-font-size) * 0.6);
+  line-height: calc(var(--regular-line-height) * 0.6);
+
+  .button_icon {
+    height: calc(var(--regular-font-size) * 0.6);
+  }
 }
 
 .button-primary {

@@ -1,19 +1,22 @@
-import { FC, KeyboardEventHandler, ReactNode } from 'react'
-import styles from "./Modal.module.scss";
+import CrossSvg from '@/shared/assets/images/cross.svg';
+import { FC, KeyboardEventHandler, ReactNode } from 'react';
+import css from './Modal.module.scss';
 
 export type ModalProps = {
-  show: boolean,
-  setModalActive(bool: boolean): void,
-  children: ReactNode
-  title?: string,
-}
+  show: boolean;
+  setModalActive(bool: boolean): void;
+  isCloseButtonShown?: boolean;
+  children: ReactNode;
+  title?: string;
+};
 
 export const Modal: FC<ModalProps> = (props: ModalProps) => {
   const {
     title = 'Modal',
     setModalActive,
     children,
-    show
+    show,
+    isCloseButtonShown = true,
   } = props;
 
   const closeOnEsc: KeyboardEventHandler<HTMLDivElement> = (e) => {
@@ -21,49 +24,35 @@ export const Modal: FC<ModalProps> = (props: ModalProps) => {
       e.preventDefault();
       setModalActive(false);
     }
-}
+  };
 
   return (
-    <div className={`${styles.modal__container} ${show ? styles.active : ""}`}
-         role={'button'}
-         onKeyUp={closeOnEsc}
-         tabIndex={0}
-         onClick={() => {
-           setModalActive(false)
-         }}
+    <div
+      className={`${css.modal__container} ${show ? css.active : ''}`}
+      role={'button'}
+      onKeyUp={closeOnEsc}
+      tabIndex={0}
+      onClick={() => {
+        setModalActive(false);
+      }}
     >
       <div
-        className={`${styles.modal__body} ${show ? styles.active : ""}`}
+        className={`${css.modal__body} ${show ? css.active : ''}`}
         onClick={(e) => e.stopPropagation()}
         role={'button'}
         onKeyUp={closeOnEsc}
         tabIndex={-1}
       >
-        <div className={styles.modal__header}>
+        <div className={css.modal__header}>
           <span>{title}</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            onClick={() => {
-              setModalActive(false)
-            }}
-            className={styles.modal__close}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          {isCloseButtonShown && (
+            <div className={css.modal__close}>
+              <CrossSvg />
+            </div>
+          )}
         </div>
-        {/* Тестовый див. ВАЖНО: Задавай высоту именно нижнего(тестового) дива, а не modal__body */}
         {children}
-        <div style={{ minWidth: "20vw"}}>
-        </div>
       </div>
     </div>
-  )
-}
+  );
+};

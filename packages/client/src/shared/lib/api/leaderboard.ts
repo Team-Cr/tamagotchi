@@ -10,7 +10,7 @@ const Routes = {
 
 export const LeaderboardAPI = {
   addUser: (payload: AddUserProps) =>
-    axiosInstance.post(Routes.ADD_USER, {
+    axiosInstance.post<string>(Routes.ADD_USER, {
       teamName: __TEAM_NAME__,
       ...payload,
     }),

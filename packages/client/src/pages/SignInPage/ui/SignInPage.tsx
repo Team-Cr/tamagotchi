@@ -14,7 +14,13 @@ const SignInPage = () => {
   const onSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      AuthAPI.signIn(form);
+      AuthAPI.signIn(form)
+        .then(function (response) {
+          return response; // здесь должен быть переход на страницу профиля или главную
+        })
+        .catch(function (error) {
+          console.warn(error);
+        });
     },
     [form],
   );
@@ -33,11 +39,19 @@ const SignInPage = () => {
         <div className={styles.signin__title}>Welcome, catlover</div>
 
         <div className={styles.signin__pet}>
-          <img className={styles.signin__img} src={image} alt='gatito' />
+          <img
+            className={styles.signin__img}
+            src={image}
+            alt='gatito'
+          />
         </div>
 
         <div className={styles.signin__pet__create}>
-          <Link name='signUpLink' href='#' label='I want new' icon={iconLnk} />
+          <Link
+            href='#'
+            label='I want a new'
+            icon={iconLnk}
+          />
         </div>
 
         <div className={styles.signin__fields}>
@@ -57,9 +71,15 @@ const SignInPage = () => {
           />
         </div>
 
-        <div className={styles.signin__button}>
-          <Button name='loginBtn' color='red' text={'Visit my cat'} icon={iconBtn} />
-        </div>
+        <Button
+          className={styles.signin__button}
+          name='loginBtn'
+          size='large'
+          color='primary'
+          icon={iconBtn}
+        >
+          Visit my cat
+        </Button>
       </div>
     </form>
   );
