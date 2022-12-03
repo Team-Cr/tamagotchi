@@ -71,8 +71,9 @@
   .signin__fields {
     grid-column: 1;
     grid-row: 2;
+    gap: 15px;
 
-    margin-bottom: 30px;
+    margin-bottom: 70px;
   }
 
   .signin__button {
@@ -84,7 +85,7 @@
     grid-column: 1;
     grid-row: 4;
 
-    padding-top: 10px;
+    padding-top: 20px;
   }
 
   .signin__img {
