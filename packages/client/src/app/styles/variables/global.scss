@@ -49,23 +49,53 @@
   --padding-bottom: 110px;
   --padding-left: 70px;
   --padding-right: 70px;
-  --padding: var(--padding-top) var(--padding-right) var(--padding-bottom)
-    var(--padding-left);
+  --padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
   --m-padding-top: 30px;
   --m-padding-bottom: 30px;
   --m-padding-left: 20px;
   --m-padding-right: 20px;
-  --m-padding: var(--m-padding-top) var(--m-padding-right)
-    var(--m-padding-bottom) var(--m-padding-left);
+  --m-padding: var(--m-padding-top) var(--m-padding-right) var(--m-padding-bottom)
+    var(--m-padding-left);
 
   // buttons
   --padding-top-button: 20px;
   --padding-left-button: 80px;
-
-  // --large-button-font-size
-
   --m-padding-top-button: 20px;
-  --m-padding-left-button: 80px;
+  --m-padding-left-button: 20px;
+
+  // large
+  --large-button-font-size: var(--regular-font-size);
+  --large-button-line-height: var(--regular-font-size);
+  --large-button-padding: var(--padding-top-button) var(--padding-left-button);
+
+  // m-large
+  --m-large-button-font-size: var(--m-regular-font-size);
+  --m-large-button-line-height: var(--m-regular-font-size);
+  --m-large-button-padding: var(--m-padding-top-button) var(--m-padding-left-button);
+
+  // medium
+  --medium-button-font-size: calc(var(--regular-font-size) * 0.8);
+  --medium-button-line-height: calc(var(--regular-font-size) * 0.8);
+  --medium-button-padding: calc(var(--padding-top-button) * 0.8)
+    calc(var(--padding-left-button) * 0.8);
+
+  // m-medium
+  --m-medium-button-font-size: calc(var(--m-regular-font-size) * 0.8);
+  --m-medium-button-line-height: calc(var(--m-regular-font-size) * 0.8);
+  --m-medium-button-padding: calc(var(--m-padding-top-button) * 0.8)
+    calc(var(--m-padding-left-button) * 0.8);
+
+  // small
+  --small-button-font-size: calc(var(--regular-font-size) * 0.6);
+  --small-button-line-height: calc(var(--regular-font-size) * 0.6);
+  --small-button-padding: calc(var(--padding-top-button) * 0.6)
+    calc(var(--padding-left-button) * 0.6);
+
+  // m-small
+  --m-small-button-font-size: calc(var(--m-regular-font-size) * 0.6);
+  --m-small-button-line-height: calc(var(--m-regular-font-size) * 0.6);
+  --m-small-button-padding: calc(var(--m-padding-top-button) * 0.6)
+    calc(var(--m-padding-left-button) * 0.6);
 
   // inputs
   --padding-top-input: 20px;
@@ -81,32 +111,30 @@
   --title-font-weight: 400;
   --title-line-height: 96px;
   /* stylelint-disable-next-line scss/operator-no-newline-after */
-  --title-font: var(--title-font-weight) var(--title-font-size) /
-    var(--title-line-height) var(--font-family);
+  --title-font: var(--title-font-weight) var(--title-font-size) / var(--title-line-height)
+    var(--font-family);
 
   // main header title
   --main-header-title-font-size: 150px;
   --main-header-title-font-weight: 400;
   --main-header-title-line-height: 165px;
-  --main-header-title-font: var(--main-header-title-font-weight)
-    var(--main-header-title-font-size) / var(--main-header-title-line-height)
-    var(--font-family);
+  --main-header-title-font: var(--main-header-title-font-weight) var(--main-header-title-font-size) /
+    var(--main-header-title-line-height) var(--font-family);
 
   // action block title
   --action-block-title-size: 80px;
   --action-block-title-font-weight: 400;
   --action-block-title-line-height: 80px;
-  --action-block-title-font: var(--action-block-title-font-weight)
-    var(--action-block-title-size) / var(--action-block-title-line-height)
-    var(--font-family);
+  --action-block-title-font: var(--action-block-title-font-weight) var(--action-block-title-size) /
+    var(--action-block-title-line-height) var(--font-family);
 
   // regular
   --regular-font-size: 48px;
   --regular-font-weight: 400;
   --regular-line-height: 48px;
   /* stylelint-disable-next-line scss/operator-no-newline-after */
-  --regular-font: var(--regular-font-weight) var(--regular-font-size) /
-    var(--regular-line-height) var(--font-family);
+  --regular-font: var(--regular-font-weight) var(--regular-font-size) / var(--regular-line-height)
+    var(--font-family);
 
   // regular-sm
   --regular-sm-font-size: 40px;
@@ -122,8 +150,8 @@
   --m-title-font-weight: 400;
   --m-title-line-height: 64px;
   /* stylelint-disable-next-line scss/operator-no-newline-after */
-  --m-title-font: var(--m-title-font-weight) var(--m-title-font-size) /
-    var(--m-title-line-height) var(--font-family);
+  --m-title-font: var(--m-title-font-weight) var(--m-title-font-size) / var(--m-title-line-height)
+    var(--font-family);
 
   // m-regular
   --m-regular-font-size: 36px;
@@ -138,7 +166,6 @@
   --m-regular-sm-font-weight: 400;
   --m-regular-sm-line-height: 28px;
   /* stylelint-disable-next-line scss/operator-no-newline-after */
-  --m-regular-sm-font: var(--m-regular-sm-font-weight)
-    var(--m-regular-sm-font-size) / var(--m-regular-sm-line-height)
-    var(--font-family);
+  --m-regular-sm-font: var(--m-regular-sm-font-weight) var(--m-regular-sm-font-size) /
+    var(--m-regular-sm-line-height) var(--font-family);
 }

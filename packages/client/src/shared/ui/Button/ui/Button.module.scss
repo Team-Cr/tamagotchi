@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
 
-  padding: var(--padding-top-button) var(--padding-left-button);
+  padding: var(--large-button-padding);
 
   font: var(--regular-font);
 
@@ -21,38 +21,81 @@
   }
 }
 
-.button-large {
-  padding: var(--padding-top-button) var(--padding-left-button);
+@media screen and (max-width: 768px) {
+  .button {
+    gap: 10px;
 
-  font-size: var(--regular-font-size);
-  line-height: var(--regular-line-height);
+    padding: var(--m-large-button-padding);
+
+    font: var(--m-regular-font);
+  }
+}
+
+.button-large {
+  font-size: var(--large-button-font-size);
+  line-height: var(--large-button-line-height);
 
   .button_icon {
-    height: var(--regular-font-size);
+    height: var(--large-button-font-size);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button-large {
+    font-size: var(--m-large-button-font-size);
+    line-height: var(--m-large-button-line-height);
+
+    .button_icon {
+      height: var(--m-large-button-font-size);
+    }
   }
 }
 
 .button-medium {
-  padding: calc(var(--padding-top-button) * 0.8)
-    calc(var(--padding-left-button) * 0.8);
+  padding: var(--medium-button-padding);
 
-  font-size: calc(var(--regular-font-size) * 0.8);
-  line-height: calc(var(--regular-line-height) * 0.8);
+  font-size: var(--medium-button-font-size);
+  line-height: var(--medium-button-line-height);
 
   .button_icon {
-    height: calc(var(--regular-font-size) * 0.8);
+    height: var(--medium-button-font-size);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button-medium {
+    padding: var(--m-medium-button-padding);
+
+    font-size: var(--m-medium-button-font-size);
+    line-height: var(--m-medium-button-line-height);
+
+    .button_icon {
+      height: var(--m-medium-button-font-size);
+    }
   }
 }
 
 .button-small {
-  padding: calc(var(--padding-top-button) * 0.6)
-    calc(var(--padding-left-button) * 0.6);
+  padding: var(--small-button-padding);
 
-  font-size: calc(var(--regular-font-size) * 0.6);
-  line-height: calc(var(--regular-line-height) * 0.6);
+  font-size: var(--small-button-font-size);
+  line-height: var(--small-button-line-height);
 
   .button_icon {
-    height: calc(var(--regular-font-size) * 0.6);
+    height: var(--small-button-font-size);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button-small {
+    padding: var(--m-small-button-padding);
+
+    font-size: var(--m-small-button-font-size);
+    line-height: var(--m-small-button-line-height);
+
+    .button_icon {
+      height: var(--m-small-button-font-size);
+    }
   }
 }
 
