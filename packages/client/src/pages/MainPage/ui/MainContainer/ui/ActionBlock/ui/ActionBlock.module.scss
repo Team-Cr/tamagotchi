@@ -1,4 +1,4 @@
-.action-block {
+.actionBlock {
   cursor: pointer;
 
   position: absolute;
@@ -24,12 +24,12 @@
   }
 
   &:hover {
-    .action-block__image {
+    .actionBlock__image {
       animation-name: bowl;
       animation-duration: 1s;
     }
 
-    .action-block__text {
+    .actionBlock__text {
       transform: translateY(-2px);
     }
   }

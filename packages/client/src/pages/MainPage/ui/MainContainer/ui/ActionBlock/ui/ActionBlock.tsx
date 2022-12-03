@@ -1,21 +1,23 @@
 import { KeyboardEvent, useCallback } from 'react';
+import { BarsPointsType, HandleUpdateBarsPointsType } from '../../../../../types';
 
-import { handleUpdateBarsPointsType } from '@/widgets/MainContainer/ui/MainContainer';
+import css from './ActionBlock.module.scss';
 
-import './ActionBlock.scss';
-
-type ActionBlockType = {
+interface ActionBlockProps {
   image: string;
   text: string;
   pointsForAction: BarsPointsType;
-  handleUpdateBarsPoints: handleUpdateBarsPointsType;
+  handleUpdateBarsPoints: HandleUpdateBarsPointsType;
   keyboardKey: string;
-};
+}
 
-export const ActionBlock = (props: ActionBlockType) => {
+export const ActionBlock = (props: ActionBlockProps) => {
   const { handleUpdateBarsPoints, image, pointsForAction, text, keyboardKey } = props;
 
-  const handleClick = useCallback(() => handleUpdateBarsPoints(pointsForAction), [handleUpdateBarsPoints, pointsForAction])
+  const handleClick = useCallback(
+    () => handleUpdateBarsPoints(pointsForAction),
+    [handleUpdateBarsPoints, pointsForAction],
+  );
 
   const handleKeyboardClick = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
@@ -28,14 +30,14 @@ export const ActionBlock = (props: ActionBlockType) => {
 
   return (
     <div
-      className='action-block'
+      className={css.actionBlock}
       onKeyDown={handleKeyboardClick}
       tabIndex={0}
       role='button'
       onClick={handleClick}
     >
-      <img className='action-block__image' src={image} alt={`Icon-${text}`} />
-      <p className='action-block__text'>{text}</p>
+      <img className={css.actionBlock__image} src={image} alt={`Icon-${text}`} />
+      <p className={css.actionBlock__text}>{text}</p>
     </div>
   );
 };

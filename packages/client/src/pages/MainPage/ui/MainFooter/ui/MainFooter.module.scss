@@ -3,13 +3,13 @@
   justify-content: space-between;
 
   width: 90vw;
-  height: 15vh;
+  height: 10vh;
 
-  &__image {
+  svg {
     cursor: pointer;
 
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
 
     object-fit: cover;
   }
