@@ -1,9 +1,9 @@
 import { AuthAPI, ProfileAPI, User } from '@/shared/lib/api';
 import { Button } from '@/shared/ui/Button';
 import React, { ChangeEvent, useCallback, useEffect } from 'react';
-import { ProfileAvatar } from '../lib/ProfileAvatar';
-import { ProfileInput } from '../lib/ProfileInput';
-import { ProfileModal } from '../lib/ProfileModal';
+import { ProfileAvatar } from './ProfileAvatar';
+import { ProfileInput } from './ProfileInput';
+import { ProfileModal } from './ProfileModal';
 import css from './ProfilePage.module.scss';
 
 const userInitialState: User = {
@@ -35,22 +35,22 @@ export const ProfilePage = () => {
       });
   }, []);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setUser((prevState) => ({
       ...prevState,
       [name as keyof User]: value,
     }));
-  };
+  }, []);
 
-  const saveChanges = useCallback(() => {
+  const saveChanges = () => {
     ProfileAPI.updateData(user)
       .then(() => {
         alert('Profile is updated');
       })
       .catch((err) => console.error(err));
-  }, [user]);
+  };
 
   return (
     <>

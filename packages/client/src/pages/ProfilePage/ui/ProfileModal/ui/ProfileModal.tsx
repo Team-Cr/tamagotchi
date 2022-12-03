@@ -3,7 +3,7 @@ import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Modal } from '@/shared/ui/Modal';
 import { ModalProps } from '@/shared/ui/Modal/ui/Modal';
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useState } from 'react'
 import css from './ProfileModal.module.scss';
 
 interface ProfileModalProps {
@@ -62,7 +62,6 @@ export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileMo
       title={'Change password'}
       isCloseButtonShown={false}
     >
-      {/* TODO change to global input */}
       <div className={css.profile__modal_fields}>
         <Input type='password' name={'old'} placeholder='Old password' onChange={handleChange} />
         <Input type='password' name={'new'} placeholder='New password' onChange={handleChange} />

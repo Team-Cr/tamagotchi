@@ -1,7 +1,7 @@
+import { AxiosPromise } from 'axios'
+
 export interface ErrorResponse {
   reason: string;
 }
 
-export type SuccessResponse<T> = string | T;
-
-export type AxiosResponse<T> = ErrorResponse | SuccessResponse<T>;
+export type AxiosResponse<T = 'OK'> = AxiosPromise<T>

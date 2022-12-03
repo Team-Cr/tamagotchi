@@ -1,6 +1,7 @@
 import { axiosInstance } from '../axios';
 import { SigninData } from './types/auth';
 import { User } from './types/profile';
+import { AxiosResponse } from '@/shared/lib/api/types/axios'
 
 const AUTH_URL = 'auth';
 
@@ -10,13 +11,14 @@ const Routes = {
 };
 
 export const AuthAPI = {
-  signIn: (data: SigninData) =>
-    axiosInstance.post<string>(Routes.SIGN_IN, data, {
+  signIn: (data: SigninData): AxiosResponse =>
+    axiosInstance.post(Routes.SIGN_IN, data, {
       headers: {
         'Cache-Control': 'no-cache',
         Pragma: 'no-cache',
         Expires: '0',
       },
     }),
-  getUser: () => axiosInstance.get<User>(Routes.GET_USER),
+  getUser: (): AxiosResponse<User> =>
+    axiosInstance.get(Routes.GET_USER),
 };

@@ -1,5 +1,6 @@
 import { axiosInstance } from '../axios';
 import { AddUserProps, GetLeaderboardProps, GetLeaderboardResponse } from './types/leaderboard';
+import { AxiosResponse } from '@/shared/lib/api/types/axios'
 
 const LEADERBOARD_URL = 'leaderboard';
 
@@ -9,11 +10,11 @@ const Routes = {
 };
 
 export const LeaderboardAPI = {
-  addUser: (payload: AddUserProps) =>
-    axiosInstance.post<string>(Routes.ADD_USER, {
+  addUser: (payload: AddUserProps): AxiosResponse =>
+    axiosInstance.post(Routes.ADD_USER, {
       teamName: __TEAM_NAME__,
       ...payload,
     }),
-  all: (payload: GetLeaderboardProps) =>
-    axiosInstance.post<GetLeaderboardResponse[]>(Routes.ALL, payload),
+  all: (payload: GetLeaderboardProps): AxiosResponse<GetLeaderboardResponse[]> =>
+    axiosInstance.post(Routes.ALL, payload),
 };

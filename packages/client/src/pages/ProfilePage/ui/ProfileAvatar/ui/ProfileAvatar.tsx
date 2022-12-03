@@ -1,6 +1,6 @@
-import emptyAvatar from '@/shared/assets/images/empty-avatar.jpeg';
+import emptyAvatar from '@/shared/assets/images/empty-avatar.png';
 import { ProfileAPI, ResourceAPI } from '@/shared/lib/api';
-import { ChangeEvent, FC, SyntheticEvent, useState } from 'react';
+import { ChangeEvent, FC, SyntheticEvent, useCallback, useState } from 'react'
 import css from './ProfileAvatar.module.scss';
 
 type ProfileAvatarProps = {
@@ -15,7 +15,7 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
     const { files } = event.target;
 
     if (!files) {
-      alert('File no found');
+      alert('File not found');
       return;
     }
 
