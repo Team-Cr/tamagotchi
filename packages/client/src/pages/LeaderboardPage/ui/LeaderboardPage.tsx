@@ -1,4 +1,4 @@
-import arrowSrc from '@/shared/assets/images/arrow.png';
+import BackSvg from '@/shared/assets/images/arrow.svg';
 import { GetLeaderboardProps, LeaderboardAPI, LeaderboardData } from '@/shared/lib/api';
 import { LeaderboardEntry } from '@/shared/ui/LeaderboardEntry';
 import { useEffect, useState } from 'react';
@@ -27,7 +27,7 @@ export const LeaderboardPage = () => {
   return (
     <>
       <a className={css.back} href='/#'>
-        <img src={arrowSrc} alt='Назад' />
+        <BackSvg />
       </a>
       <div className={css.layout}>
         <header>

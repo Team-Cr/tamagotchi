@@ -118,6 +118,7 @@
   --main-header-title-font-size: 150px;
   --main-header-title-font-weight: 400;
   --main-header-title-line-height: 165px;
+  /* stylelint-disable-next-line scss/operator-no-newline-after */
   --main-header-title-font: var(--main-header-title-font-weight) var(--main-header-title-font-size) /
     var(--main-header-title-line-height) var(--font-family);
 
@@ -125,6 +126,7 @@
   --action-block-title-size: 80px;
   --action-block-title-font-weight: 400;
   --action-block-title-line-height: 80px;
+  /* stylelint-disable-next-line scss/operator-no-newline-after */
   --action-block-title-font: var(--action-block-title-font-weight) var(--action-block-title-size) /
     var(--action-block-title-line-height) var(--font-family);
 

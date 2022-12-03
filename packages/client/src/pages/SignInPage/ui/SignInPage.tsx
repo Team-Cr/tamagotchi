@@ -39,19 +39,11 @@ const SignInPage = () => {
         <div className={styles.signin__title}>Welcome, catlover</div>
 
         <div className={styles.signin__pet}>
-          <img
-            className={styles.signin__img}
-            src={image}
-            alt='gatito'
-          />
+          <img className={styles.signin__img} src={image} alt='gatito' />
         </div>
 
         <div className={styles.signin__pet__create}>
-          <Link
-            href='#'
-            label='I want a new'
-            icon={iconLnk}
-          />
+          <Link href='#' label='I want a new' icon={iconLnk} />
         </div>
 
         <div className={styles.signin__fields}>
@@ -77,6 +69,7 @@ const SignInPage = () => {
           size='large'
           color='primary'
           icon={iconBtn}
+          type='submit'
         >
           Visit my cat
         </Button>

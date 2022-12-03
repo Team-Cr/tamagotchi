@@ -11,13 +11,7 @@ export type ModalProps = {
 };
 
 export const Modal: FC<ModalProps> = (props: ModalProps) => {
-  const {
-    title = 'Modal',
-    setModalActive,
-    children,
-    show,
-    isCloseButtonShown = true,
-  } = props;
+  const { title = 'Modal', setModalActive, children, show, isCloseButtonShown = true } = props;
 
   const closeOnEsc: KeyboardEventHandler<HTMLDivElement> = (e) => {
     if (e.key === 'Escape') {

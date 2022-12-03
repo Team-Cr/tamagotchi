@@ -16,9 +16,9 @@ interface newPasswordProps {
   confirm: string;
 }
 
-export const ProfileModal: FC<
-  Omit<ModalProps, 'children' | 'title'> & ProfileModalProps
-> = (props) => {
+export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileModalProps> = (
+  props,
+) => {
   const { show, setModalActive } = props;
 
   const [password, setPassword] = useState<newPasswordProps>({
@@ -64,18 +64,8 @@ export const ProfileModal: FC<
     >
       {/* TODO change to global input */}
       <div className={css.profile__modal_fields}>
-        <Input
-          type='password'
-          name={'old'}
-          placeholder='Old password'
-          onChange={handleChange}
-        />
-        <Input
-          type='password'
-          name={'new'}
-          placeholder='New password'
-          onChange={handleChange}
-        />
+        <Input type='password' name={'old'} placeholder='Old password' onChange={handleChange} />
+        <Input type='password' name={'new'} placeholder='New password' onChange={handleChange} />
         <Input
           type='password'
           name={'confirm'}
@@ -93,11 +83,7 @@ export const ProfileModal: FC<
         >
           Cancel
         </Button>
-        <Button
-          size='medium'
-          color='success'
-          onClick={updatePassword}
-        >
+        <Button size='medium' color='success' onClick={updatePassword}>
           Save
         </Button>
       </div>
