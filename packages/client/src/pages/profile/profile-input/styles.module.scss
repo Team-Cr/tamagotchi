@@ -1,0 +1,41 @@
+.input {
+  user-select: none;
+
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  justify-content: space-between;
+
+  padding: 4px 24px 8px;
+
+  font: var(--regular-font);
+  font-size: 36px;
+  line-height: 36px;
+  color: var(--secondary-color);
+  white-space: nowrap;
+
+  border-bottom: 1px solid var(--dark-color);
+
+  &:hover {
+    cursor: text;
+  }
+
+  &:focus-within {
+    background: rgb(255 255 255 / 30%);
+  }
+}
+
+.input__value {
+  cursor: inherit;
+
+  width: 100%;
+
+  text-align: right;
+
+  background: transparent;
+  border: none;
+
+  &:focus-visible {
+    outline: none;
+  }
+}

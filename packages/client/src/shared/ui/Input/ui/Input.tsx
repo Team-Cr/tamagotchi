@@ -5,8 +5,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   name: string;
   type: 'text' | 'password';
-  value: string;
   placeholder: string;
+  value?: string;
   disabled?: boolean;
 }
 
