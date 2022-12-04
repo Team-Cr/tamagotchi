@@ -1,5 +1,6 @@
 import CrossSvg from '@/shared/assets/images/cross.svg';
-import { FC, KeyboardEventHandler, ReactNode } from 'react';
+import classNames from 'classnames';
+import { FC, KeyboardEventHandler, ReactNode, useCallback } from 'react';
 import css from './Modal.module.scss';
 
 export type ModalProps = {
@@ -8,30 +9,45 @@ export type ModalProps = {
   isCloseButtonShown?: boolean;
   children: ReactNode;
   title?: string;
+  isClosable?: boolean;
 };
 
 export const Modal: FC<ModalProps> = (props: ModalProps) => {
-  const { title = 'Modal', setModalActive, children, show, isCloseButtonShown = true } = props;
+  const {
+    title = 'Modal',
+    setModalActive,
+    children,
+    show,
+    isCloseButtonShown = true,
+    isClosable = true,
+  } = props;
 
-  const closeOnEsc: KeyboardEventHandler<HTMLDivElement> = (e) => {
-    if (e.key === 'Escape') {
-      e.preventDefault();
+  const closeModal = useCallback(() => {
+    if (isClosable) {
       setModalActive(false);
     }
-  };
+  }, [isClosable, setModalActive]);
+
+  const closeOnEsc: KeyboardEventHandler<HTMLDivElement> = useCallback(
+    (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeModal();
+      }
+    },
+    [closeModal],
+  );
 
   return (
     <div
-      className={`${css.modal__container} ${show ? css.active : ''}`}
+      className={classNames(css.modal__container, { [css.active]: show })}
       role={'button'}
       onKeyUp={closeOnEsc}
       tabIndex={0}
-      onClick={() => {
-        setModalActive(false);
-      }}
+      onClick={closeModal}
     >
       <div
-        className={`${css.modal__body} ${show ? css.active : ''}`}
+        className={classNames(css.modal__body, { [css.active]: show })}
         onClick={(e) => e.stopPropagation()}
         role={'button'}
         onKeyUp={closeOnEsc}
