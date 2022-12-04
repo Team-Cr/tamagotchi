@@ -3,8 +3,8 @@ $vertical-padding: 20px;
 $input-height: 88px;
 $default-size: 48px;
 $default-color: #FFF9C7;
-$bg-color: var(--light-yellow, $default-color);
-$font-size: var(--text-mss, $default-size);
+$bg-color: var(--input-color, $default-color);
+$font-size: var(--regular-font-size, $default-size);
 
 .input {
 	display: flex;

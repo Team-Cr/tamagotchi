@@ -1,0 +1,77 @@
+.info-line {
+  position: relative;
+
+  width: 310px;
+  height: 37px;
+
+  border: 4px solid black;
+
+  &.level {
+    background: var(--blue-gradient,linear-gradient(
+      180deg,
+      #5f9fff 0%,
+      #65a3ff 20.65%,
+      #a3c8ff 20.66%,
+      #b6d3ff 52.08%,
+      #b6d3ff 80.84%,
+      #2f82ff 81.26%,
+      #1b75fb 100%
+    ));
+  }
+
+  &.hp {
+    background: var(--red-gradient,linear-gradient(
+      180deg,
+      #ff5f5f 0%,
+      #ff6565 18.81%,
+      #ffa3a3 19.01%,
+      #ffb6b6 52.08%,
+      #ffb6b6 80.84%,
+      #ff2f2f 80.85%,
+      #fb1b1b 100%
+    ));
+  }
+
+  &__empty {
+    width: 40%;
+    height: 100%;
+    margin-left: auto;
+
+    background: var(--gray-gradient,linear-gradient(
+      180deg,
+      #5b5b5b 0%,
+      #5b5b5b 20.65%,
+      #969696 20.66%,
+      #969696 52.08%,
+      #969696 81.09%,
+      #5b5b5b 81.1%,
+      #5b5b5b 100%
+    ));
+  }
+
+  &__text {
+    position: absolute;
+    right: 90%;
+    bottom: 35%;
+
+    font:var(--title-font);
+
+    filter: drop-shadow(3px 3px 0 #000);
+
+    &.level {
+      background: linear-gradient(180deg, #accdff 0%, #accdff 67.71%, #1f77fb 67.72%, #1f77fb 100%);
+      // stylelint-disable-next-line
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+    }
+
+    &.hp {
+      background: linear-gradient(180deg, #ffb1b1 0%, #ffb5b5 67.69%, #fd2424 67.7%, #fd2626 100%);
+      // stylelint-disable-next-line
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}

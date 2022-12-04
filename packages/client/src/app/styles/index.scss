@@ -2,30 +2,44 @@
 @import './variables/global';
 @import './themes/dark';
 
-@import url('https://fonts.googleapis.com/css2?family=VT323:wght@400&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import 'https://fonts.googleapis.com/css2?family=VT323&display=swap';
 
 body {
-  font-family: 'VT323', monospace;
-  background-color: var(--background-color);
-  background-image: url('@/shared/assets/images/Fishes.webp');
-  background-size: cover;
+    display: flex;
+    flex-direction: column;
+    
+    max-width: 1440px;
+    height: 100vh;
+    height: fill-available;
+    margin: 0 auto;
+    
+    font: var(--regular-font);
+    color: var(--dark-color);
+    
+    background-color: var(--background-color);
+    background-image: url('../../shared/assets/images/fish-pattern-inversed.png');
+    background-repeat: repeat;
 }
 
-.root-container {
-  height: 100vh;
-  width: 100vw;
-  max-width: 1920px;
-  padding: var(--main-padding-vertical) var(--main-padding-horizontal);
-  margin: 0 auto;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
-  font-size: var(--text-l);
-  font-weight: 400;
+    margin: 0;
+    
+    font: var(--title-font);
+    font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font: var(--m-regular-font);
+  }
+
+  h1 {
+    font: var(--m-title-font);
+  }
 }

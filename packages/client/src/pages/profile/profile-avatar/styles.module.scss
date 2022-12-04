@@ -1,0 +1,14 @@
+.avatar {
+  width: 140px;
+  height: 140px;
+
+  border-radius: 100%;
+
+  transition: all .2s ease-in;
+
+  &:hover {
+    cursor: pointer;
+
+    filter: brightness(0.7);
+  }
+}

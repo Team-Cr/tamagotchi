@@ -281,7 +281,7 @@ textarea {
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
-
+ 
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
