@@ -1,0 +1,23 @@
+.main__container {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 75vw;
+  height: 65vh;
+
+  &__image {
+    width: auto;
+    height: 300px;
+    height: 30vh;
+
+    object-fit: contain;
+  }
+
+  &__actions {
+    width: 75vw;
+    margin-top: 15vh;
+  }
+}

@@ -1,53 +1,50 @@
 $default-fs-l: 96px;
 $default-fs-m: 48px;
 $default-fs-s: 40px;
-
-$default-c-white: #FFFFFF;
-$default-c-black: #201D0C;
-
+$default-c-white: #fff;
+$default-c-black: #201d0c;
 $fs-s: var(--text-s, $default-fs-s);
 $fs-m: var(--text-m, $default-fs-m);
 $fs-l: var(--text-l, $default-fs-l);
-
 $c-white: var(--white-color, $default-c-white);
 $c-black: var(--black-color, $default-c-black);
 
 .typography {
-    &_size {
-        &_s {
-            font-size: $fs-s;
-        }
-
-        &_m {
-            font-size: $fs-m;
-        }
-
-        &_l {
-            font-size: $fs-l;
-        }
+  &_size {
+    &_s {
+      font-size: $fs-s;
     }
 
-    &_color {
-        &_white {
-            color: $c-white;
-        }
-
-        &_black {
-            color: $c-black;
-        }
+    &_m {
+      font-size: $fs-m;
     }
 
-    &_align {
-        &_left {
-            text-align: left;
-        }
-
-        &_right {
-            text-align: right;
-        }
-
-        &_center {
-            text-align: center;
-        }
+    &_l {
+      font-size: $fs-l;
     }
+  }
+
+  &_color {
+    &_white {
+      color: $c-white;
+    }
+
+    &_black {
+      color: $c-black;
+    }
+  }
+
+  &_align {
+    &_left {
+      text-align: left;
+    }
+
+    &_right {
+      text-align: right;
+    }
+
+    &_center {
+      text-align: center;
+    }
+  }
 }
