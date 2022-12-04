@@ -3,13 +3,17 @@ $default-btn-bg-color: #cf5c36;
 $btn-bg-color: var(--primary-color, $default-btn-bg-color);
 
 .button {
+  cursor: pointer;
+
   width: 100%;
   height: $button-height;
-  background: $btn-bg-color;
-  border-radius: 50px;
-  border: none;
+  
   font-family: unset;
-  cursor: pointer;
+
+  background: $btn-bg-color;
+  border: none;
+  border-radius: 50px;
+
 
   &:hover {
     opacity: 0.9;
