@@ -3,10 +3,12 @@ import image from '@/shared/assets/images/gatito_paradax3.gif';
 import iconBtn from '@/shared/assets/images/pow2.png';
 import { AuthAPI, SigninData } from '@/shared/lib/api';
 import { Button } from '@/shared/ui/Button';
+import { Canvas } from '@/shared/ui/Canvas';
 import { Input } from '@/shared/ui/Input/ui/Input';
 import { Link } from '@/shared/ui/Link';
 import { useCallback, useState } from 'react';
 import styles from './SignInPage.module.scss';
+import asset from '@/shared/assets/assets/gatito_paradaA_3.png';
 
 const SignInPage = () => {
   const [form, setForm] = useState<SigninData>({ login: '', password: '' });
@@ -35,8 +37,19 @@ const SignInPage = () => {
 
           <div className={styles.signin__body}>
             <div className={styles.signin__left__column}>
-              <div>
-                <img className={styles.signin__img} src={image} alt='gatito' />
+              <div className={styles.signin__img}>
+                <Canvas
+                  styles={styles.signin__canvas}
+                  name='idle'
+                  asset={asset}
+                  canvasWidth={450}
+                  canvasHeight={450}
+                  spriteWidth={450}
+                  spriteHeight={450}
+                  frameY={0}
+                  staggerFrames={14}
+                  framesCount={5}
+                />
               </div>
 
               <div className={styles.signin__pet__create}>

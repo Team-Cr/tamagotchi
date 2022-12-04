@@ -40,6 +40,21 @@
   display: none;
 }
 
+.signin__img {
+  width: 450px;
+  height: 450px;
+  position: relative;
+}
+
+.signin__canvas {
+  width: 890px;
+  height: 890px;
+  position: absolute;
+  top: -50%;
+  left: -30%;
+  margin: auto;
+}
+
 @media screen and (max-width: 992px) {
   .signin__img {
     width: 300px;
