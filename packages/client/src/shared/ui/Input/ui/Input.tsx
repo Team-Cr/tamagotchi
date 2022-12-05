@@ -10,12 +10,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
 }
 
-const Input = (props: InputProps) => {
+export const Input = (props: InputProps) => {
   return (
     <>
       <input className={styles.input} {...props} />
     </>
   );
 };
-
-export { Input };

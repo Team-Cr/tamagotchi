@@ -1,12 +1,13 @@
 import { axiosInstance } from '../axios';
 import { SigninData } from './types/auth';
 import { User } from './types/profile';
-import { AxiosResponse } from '@/shared/lib/api/types/axios'
+import { AxiosResponse } from '@/shared/lib/api/types/axios';
 
 const AUTH_URL = 'auth';
 
 const Routes = {
   SIGN_IN: `${AUTH_URL}/signin`,
+  LOGOUT: `${AUTH_URL}/logout`,
   GET_USER: `${AUTH_URL}/user`,
 };
 
@@ -19,6 +20,6 @@ export const AuthAPI = {
         Expires: '0',
       },
     }),
-  getUser: (): AxiosResponse<User> =>
-    axiosInstance.get(Routes.GET_USER),
+  logout: (): AxiosResponse => axiosInstance.post(Routes.LOGOUT),
+  getUser: (): AxiosResponse<User> => axiosInstance.get(Routes.GET_USER),
 };

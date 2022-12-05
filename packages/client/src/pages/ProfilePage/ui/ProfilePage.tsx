@@ -5,6 +5,7 @@ import { ProfileAvatar } from './ProfileAvatar';
 import { ProfileInput } from './ProfileInput';
 import { ProfileModal } from './ProfileModal';
 import css from './ProfilePage.module.scss';
+import { ArrowBack } from '@/shared/ui/ArrowBack';
 
 const userInitialState: User = {
   id: -1,
@@ -44,6 +45,13 @@ export const ProfilePage = () => {
     }));
   }, []);
 
+  const logout = useCallback(() => {
+    AuthAPI.logout().then(() => {
+      // TODO redirect to login
+      console.log('Logout');
+    });
+  }, []);
+
   const saveChanges = useCallback(() => {
     ProfileAPI.updateData(user)
       .then(() => {
@@ -54,6 +62,7 @@ export const ProfilePage = () => {
 
   return (
     <>
+      <ArrowBack />
       <div className={css.profile__container}>
         <ProfileAvatar avatar={user.avatar} />
 
@@ -84,8 +93,12 @@ export const ProfilePage = () => {
           <ProfileInput label='Number' name={'phone'} value={user.phone} onChange={handleChange} />
         </div>
 
-        <Button color='success' onClick={saveChanges}>
+        <Button color={'success'} onClick={saveChanges}>
           Save changes
+        </Button>
+
+        <Button color={'transparent'} onClick={logout}>
+          &#60; Logout
         </Button>
 
         <ProfileModal

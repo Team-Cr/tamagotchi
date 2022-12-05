@@ -1,7 +1,8 @@
 import { ResourceAPI } from '@/shared/lib/api';
 import classNames from 'classnames';
-import { ImgHTMLAttributes, useEffect, useState } from 'react';
+import { ImgHTMLAttributes, SyntheticEvent, useCallback, useEffect, useState } from 'react';
 import css from './Avatar.module.scss';
+import emptyAvatar from '@/shared/assets/images/empty-avatar.png';
 
 interface AvatarProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -17,9 +18,14 @@ export const Avatar = (props: AvatarProps) => {
     setImgSrc(ResourceAPI.getResource(src));
   }, [src]);
 
+  const noImageHandler = useCallback((e: SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = emptyAvatar;
+  }, []);
+
   return (
     <div className={classNames(css.avatar, className)}>
-      <img src={imgSrc} alt='Avatar' {...rest} />
+      <img src={imgSrc} alt='Avatar' onError={noImageHandler} {...rest} />
     </div>
   );
 };

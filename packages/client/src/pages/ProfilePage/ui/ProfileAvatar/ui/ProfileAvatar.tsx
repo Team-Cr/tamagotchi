@@ -36,20 +36,9 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
       });
   }, []);
 
-  const noImageHandler = useCallback((e: SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.onerror = null;
-    e.currentTarget.src = emptyAvatar;
-  }, []);
-
   return (
     <label>
-      <Avatar
-        src={image}
-        className={css.avatar}
-        onError={noImageHandler}
-        alt='change avatar'
-        title='Change avatar'
-      />
+      <Avatar src={image} className={css.avatar} alt='change avatar' title='Change avatar' />
       <input type='file' name='avatar' hidden={true} onChange={handleChange} />
     </label>
   );

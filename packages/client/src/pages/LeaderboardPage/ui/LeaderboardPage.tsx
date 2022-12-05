@@ -1,8 +1,8 @@
-import BackSvg from '@/shared/assets/images/arrow.svg';
 import { GetLeaderboardProps, LeaderboardAPI, LeaderboardData } from '@/shared/lib/api';
 import { useEffect, useState } from 'react';
 import { LeaderboardEntry } from './LeaderboardEntry';
 import css from './LeaderboardPage.module.scss';
+import { ArrowBack } from '@/shared/ui/ArrowBack';
 
 const userId = 2;
 
@@ -26,9 +26,7 @@ export const LeaderboardPage = () => {
 
   return (
     <>
-      <a className={css.back} href='/#'>
-        <BackSvg />
-      </a>
+      <ArrowBack />
       <div className={css.layout}>
         <header>
           <h1 className={css.layout__title}>Cats leaderboard</h1>
