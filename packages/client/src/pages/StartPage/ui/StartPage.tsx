@@ -10,15 +10,15 @@ const screensNumber = StartScreens.length;
 
 export const StartPage = () => {
   const [screenId, setScreenId] = useState(0);
-  const [show, setModalActive] = useState(true);
+  const [isStartPageActive, setIsStartPageActive] = useState(true);
 
-  const closeModal = useCallback(() => setModalActive(false), []);
+  const closeModal = useCallback(() => setIsStartPageActive(false), []);
 
   const switchScreen = useCallback(() => {
     const nextId = screenId + 1;
 
     if (nextId >= screensNumber) {
-      setModalActive(false);
+      setIsStartPageActive(false);
     } else {
       setScreenId(nextId);
     }
@@ -29,8 +29,8 @@ export const StartPage = () => {
 
   return (
     <Modal
-      show={show}
-      setModalActive={setModalActive}
+      isActive={isStartPageActive}
+      setIsActive={setIsStartPageActive}
       title={title}
       isCloseButtonShown={false}
       isClosable={false}
