@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { authApi, RegData } from '@/shared/api/AuthApi';
 import { convertingDataToSend } from '../lib/convertingDataToSend';
+import { AuthAPI, SignUpData } from '../lib/api';
 
 export type RegFormType = {
   firstName: string;
@@ -13,9 +13,9 @@ export type RegFormType = {
 
 export const useAuth = () => {
   const registerUser = React.useCallback((data: RegFormType) => {
-    const formattedData = convertingDataToSend(data) as RegData;
+    const formattedData = convertingDataToSend(data) as SignUpData;
 
-    return authApi.signUp(formattedData);
+    return AuthAPI.signUp(formattedData);
   }, []);
 
   return { registerUser };

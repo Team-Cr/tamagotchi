@@ -23,7 +23,7 @@ export const RegistrationForm: FC<Props> = ({ onSubmit, ...props }) => {
         <Input placeholder='Login' name='login' />
         <Input placeholder='Password' type='password' name='password' />
       </div>
-      <Button className={styles.form__btn}>
+      <Button className={styles.form__btn} type="submit">
         <div className={styles['form__btn-wrapper']}>
           <Typography color='white' oneLine>Hello, a new Friend</Typography>
           <img src={images.CatPixelImage} alt='cat-pixel-icon' />
