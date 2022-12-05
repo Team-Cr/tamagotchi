@@ -10,41 +10,35 @@ $c-white: var(--white-color, $default-c-white);
 $c-black: var(--black-color, $default-c-black);
 
 .typography {
-  &_size {
-    &_s {
-      font-size: $fs-s;
-    }
-
-    &_m {
-      font-size: $fs-m;
-    }
-
-    &_l {
-      font-size: $fs-l;
-    }
+  &_s {
+    font-size: $fs-s;
   }
 
-  &_color {
-    &_white {
-      color: $c-white;
-    }
-
-    &_black {
-      color: $c-black;
-    }
+  &_m {
+    font-size: $fs-m;
   }
 
-  &_align {
-    &_left {
-      text-align: left;
-    }
+  &_l {
+    font-size: $fs-l;
+  }
 
-    &_right {
-      text-align: right;
-    }
+  &-white {
+    color: $c-white;
+  }
 
-    &_center {
-      text-align: center;
-    }
+  &-black {
+    color: $c-black;
+  }
+
+  &_left {
+    text-align: left;
+  }
+
+  &_right {
+    text-align: right;
+  }
+
+  &_center {
+    text-align: center;
   }
 }

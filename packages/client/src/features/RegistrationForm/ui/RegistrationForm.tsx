@@ -1,7 +1,6 @@
-import * as React from 'react';
+import { FC } from 'react';
 
-import { RegFormType } from '@/shared/hooks/useAuth';
-import { FormButton } from '@/shared/ui/FormButton';
+import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Typography } from '@/shared/ui/Typography';
 import { Form } from '@/shared/ui/Form';
@@ -10,10 +9,10 @@ import { images } from '@/shared/assets';
 import styles from './styles.module.scss';
 
 type Props = {
-  onSubmit: (values: RegFormType) => void;
+  onSubmit: (values: any) => void;
 };
 
-export const RegistrationForm: React.FC<Props> = ({ onSubmit, ...props }) => {
+export const RegistrationForm: FC<Props> = ({ onSubmit, ...props }) => {
   return (
     <Form {...props} className={styles.form} onSubmit={onSubmit}>
       <div className={styles.form__fields}>
@@ -24,12 +23,12 @@ export const RegistrationForm: React.FC<Props> = ({ onSubmit, ...props }) => {
         <Input placeholder='Login' name='login' />
         <Input placeholder='Password' type='password' name='password' />
       </div>
-      <FormButton>
+      <Button className={styles.form__btn}>
         <div className={styles['form__btn-wrapper']}>
-          <Typography color='white'>Hello, a new Friend</Typography>
+          <Typography color='white' oneLine>Hello, a new Friend</Typography>
           <img src={images.CatPixelImage} alt='cat-pixel-icon' />
         </div>
-      </FormButton>
+      </Button>
     </Form>
   );
 };

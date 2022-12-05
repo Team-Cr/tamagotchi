@@ -1,4 +1,5 @@
-import { cn } from '@/shared/utils/classnames';
+import classNames from 'classnames';
+
 import styles from './styles.module.scss';
 
 type Sizes = 'l' | 'm' | 's';
@@ -10,6 +11,7 @@ type Props = {
   color?: Colors;
   align?: Aligns;
   className?: string;
+  oneLine?: boolean;
 };
 
 export const Typography = ({
@@ -18,15 +20,17 @@ export const Typography = ({
   align,
   children,
   className,
+  oneLine
 }: React.PropsWithChildren<Props>) => {
   return (
     <span
-      className={cn(
+      className={classNames(
         styles.typography,
         styles[`typography_size_${size}`],
         styles[`typography_color_${color}`],
         {
           [styles[`typography_align_${align}`]]: align,
+          [styles[`typography_oneLine`]]: oneLine,
         },
         className,
       )}

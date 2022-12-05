@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { authApi, RegData } from '@/shared/api/AuthApi';
-import { convertingDataToSend } from '@/shared/utils/convertingDataToSend';
+import { convertingDataToSend } from '../lib/convertingDataToSend';
 
 export type RegFormType = {
   firstName: string;

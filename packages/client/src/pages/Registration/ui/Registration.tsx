@@ -1,5 +1,5 @@
 import { Typography } from '@/shared/ui/Typography';
-import { RegistrationForm } from '@/widgets/RegistrationForm';
+import { RegistrationForm } from '@/features';
 import { images } from '@/shared/assets';
 
 import styles from './styles.module.scss';
