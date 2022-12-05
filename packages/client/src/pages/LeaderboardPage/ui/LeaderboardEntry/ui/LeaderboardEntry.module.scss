@@ -34,28 +34,6 @@
   }
 }
 
-.entry__avatar {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-
-  width: 75px;
-  height: 75px;
-  padding: 10px;
-
-  background: var(--light-pink-color);
-  border-radius: 100%;
-
-  img {
-    height: calc(100% + 10px * 2);
-
-    object-fit: contain;
-  }
-}
-
 .entry__daysActive {
   flex: 1;
 
