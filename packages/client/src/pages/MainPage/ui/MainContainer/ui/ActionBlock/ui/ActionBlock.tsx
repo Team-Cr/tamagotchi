@@ -1,9 +1,9 @@
 import { KeyboardEvent, useCallback } from 'react';
-import { BarsPointsType, HandleUpdateBarsPointsType } from '../../../../../types';
-
 import css from './ActionBlock.module.scss';
 
-interface ActionBlockProps {
+type HandleUpdateBarsPointsType = ({ level, hp }: BarsPointsType) => void;
+
+export interface ActionBlockProps {
   image: string;
   text: string;
   pointsForAction: BarsPointsType;
