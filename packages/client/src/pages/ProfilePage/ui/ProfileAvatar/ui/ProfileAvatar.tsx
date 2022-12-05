@@ -42,17 +42,15 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
   }, []);
 
   return (
-    <>
-      <label>
-        <Avatar
-          src={image}
-          className={css.avatar}
-          onError={noImageHandler}
-          alt='change avatar'
-          title='Change avatar'
-        />
-        <input type='file' name='avatar' hidden={true} onChange={handleChange} />
-      </label>
-    </>
+    <label>
+      <Avatar
+        src={image}
+        className={css.avatar}
+        onError={noImageHandler}
+        alt='change avatar'
+        title='Change avatar'
+      />
+      <input type='file' name='avatar' hidden={true} onChange={handleChange} />
+    </label>
   );
 };
