@@ -1,6 +1,7 @@
 import emptyAvatar from '@/shared/assets/images/empty-avatar.png';
-import { ProfileAPI, ResourceAPI } from '@/shared/lib/api';
-import { ChangeEvent, FC, SyntheticEvent, useCallback, useState } from 'react';
+import { ProfileAPI } from '@/shared/lib/api';
+import { Avatar } from '@/shared/ui/Avatar';
+import { ChangeEvent, FC, SyntheticEvent, useCallback, useEffect, useState } from 'react';
 import css from './ProfileAvatar.module.scss';
 
 type ProfileAvatarProps = {
@@ -8,8 +9,12 @@ type ProfileAvatarProps = {
 };
 
 export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
-  const { avatar } = props;
+  const { avatar = '' } = props;
   const [image, setImage] = useState('');
+
+  useEffect(() => {
+    setImage(avatar);
+  }, [avatar]);
 
   const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
@@ -24,7 +29,7 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
 
     ProfileAPI.updateAvatar(formData)
       .then((res) => {
-        setImage(ResourceAPI.getResource(res.data.avatar || ''));
+        setImage(res.data.avatar);
       })
       .catch((err) => {
         console.error(err);
@@ -39,9 +44,9 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
   return (
     <>
       <label>
-        <img
+        <Avatar
+          src={image}
           className={css.avatar}
-          src={image || ResourceAPI.getResource(avatar || '')}
           onError={noImageHandler}
           alt='change avatar'
           title='Change avatar'

@@ -1,4 +1,5 @@
 import { LeaderboardData } from '@/shared/lib/api';
+import { Avatar } from '@/shared/ui/Avatar';
 import classNames from 'classnames';
 import css from './LeaderboardEntry.module.scss';
 
@@ -10,9 +11,7 @@ export const LeaderboardEntry = (props: LeaderboardEntryProps) => {
   return (
     <div className={classNames(css.entry, { [css.checked]: checked })}>
       <div className={css.entry__left_group}>
-        <div className={css.entry__avatar}>
-          <img src={avatarUrl} alt='Avatar' />
-        </div>
+        <Avatar src={avatarUrl} />
         <span>{name}</span>
       </div>
 

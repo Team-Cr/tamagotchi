@@ -1,7 +1,7 @@
 import BackSvg from '@/shared/assets/images/arrow.svg';
 import { GetLeaderboardProps, LeaderboardAPI, LeaderboardData } from '@/shared/lib/api';
-import { LeaderboardEntry } from '@/shared/ui/LeaderboardEntry';
 import { useEffect, useState } from 'react';
+import { LeaderboardEntry } from './LeaderboardEntry';
 import css from './LeaderboardPage.module.scss';
 
 const userId = 2;
