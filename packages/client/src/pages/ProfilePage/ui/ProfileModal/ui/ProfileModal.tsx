@@ -3,7 +3,7 @@ import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Modal } from '@/shared/ui/Modal';
 import { ModalProps } from '@/shared/ui/Modal/ui/Modal';
-import { ChangeEvent, FC, useCallback, useState } from 'react'
+import { ChangeEvent, FC, useCallback, useState } from 'react';
 import css from './ProfileModal.module.scss';
 
 interface ProfileModalProps {
@@ -19,7 +19,7 @@ interface newPasswordProps {
 export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileModalProps> = (
   props,
 ) => {
-  const { show, setModalActive } = props;
+  const { isActive, setIsActive } = props;
 
   const [password, setPassword] = useState<newPasswordProps>({
     old: '',
@@ -27,15 +27,19 @@ export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileMo
     confirm: '',
   });
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const closeModal = useCallback(() => {
+    setIsActive(false);
+  }, [setIsActive]);
+
+  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name as keyof User;
     setPassword((prevState) => ({
       ...prevState,
       [name]: event.target.value,
     }));
-  };
+  }, []);
 
-  const updatePassword = () => {
+  const updatePassword = useCallback(() => {
     // TODO pass error to inputs
     if (password.new !== password.confirm) {
       return;
@@ -47,18 +51,18 @@ export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileMo
 
     ProfileAPI.updatePassword(data)
       .then(() => {
-        setModalActive(false);
+        setIsActive(false);
         alert('Password is changed');
       })
       .catch((err) => {
         alert(err.response?.data.reason || err.message);
       });
-  };
+  }, [password, setIsActive]);
 
   return (
     <Modal
-      show={show}
-      setModalActive={setModalActive}
+      isActive={isActive}
+      setIsActive={setIsActive}
       title={'Change password'}
       isCloseButtonShown={false}
     >
@@ -73,13 +77,7 @@ export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileMo
         />
       </div>
       <div className={css.profile__modal_footer}>
-        <Button
-          size='medium'
-          color='secondary'
-          onClick={() => {
-            setModalActive(false);
-          }}
-        >
+        <Button size='medium' color='secondary' onClick={closeModal}>
           Cancel
         </Button>
         <Button size='medium' color='success' onClick={updatePassword}>

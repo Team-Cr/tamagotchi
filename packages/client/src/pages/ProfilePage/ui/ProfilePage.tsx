@@ -1,6 +1,6 @@
 import { AuthAPI, ProfileAPI, User } from '@/shared/lib/api';
 import { Button } from '@/shared/ui/Button';
-import React, { ChangeEvent, useCallback, useEffect } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { ProfileAvatar } from './ProfileAvatar';
 import { ProfileInput } from './ProfileInput';
 import { ProfileModal } from './ProfileModal';
@@ -18,11 +18,11 @@ const userInitialState: User = {
 };
 
 export const ProfilePage = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [user, setUser] = React.useState<User>(userInitialState);
+  const [isChangePasswordModalActive, setIsChangePasswordModalActive] = useState(false);
+  const [user, setUser] = useState<User>(userInitialState);
 
-  const toggleModal = useCallback(() => {
-    setIsOpen(true);
+  const showModal = useCallback(() => {
+    setIsChangePasswordModalActive(true);
   }, []);
 
   useEffect(() => {
@@ -44,23 +44,20 @@ export const ProfilePage = () => {
     }));
   }, []);
 
-  const saveChanges = () => {
+  const saveChanges = useCallback(() => {
     ProfileAPI.updateData(user)
       .then(() => {
         alert('Profile is updated');
       })
       .catch((err) => console.error(err));
-  };
+  }, [user]);
 
   return (
     <>
       <div className={css.profile__container}>
         <ProfileAvatar avatar={user.avatar} />
 
-        <Button
-          size={'small'}
-          onClick={toggleModal}
-        >
+        <Button size={'small'} onClick={showModal}>
           Change password
         </Button>
 
@@ -83,31 +80,18 @@ export const ProfilePage = () => {
             value={user.display_name}
             onChange={handleChange}
           />
-          <ProfileInput
-            label='Email'
-            name={'email'}
-            value={user.email}
-            onChange={handleChange}
-          />
-          <ProfileInput
-            label='Number'
-            name={'phone'}
-            value={user.phone}
-            onChange={handleChange}
-          />
+          <ProfileInput label='Email' name={'email'} value={user.email} onChange={handleChange} />
+          <ProfileInput label='Number' name={'phone'} value={user.phone} onChange={handleChange} />
         </div>
 
-        <Button
-          color='success'
-          onClick={saveChanges}
-        >
+        <Button color='success' onClick={saveChanges}>
           Save changes
         </Button>
 
         <ProfileModal
           login={user.login}
-          show={isOpen}
-          setModalActive={setIsOpen}
+          isActive={isChangePasswordModalActive}
+          setIsActive={setIsChangePasswordModalActive}
         />
       </div>
     </>

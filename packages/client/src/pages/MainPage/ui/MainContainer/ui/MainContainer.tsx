@@ -1,8 +1,7 @@
 import CatPicture from '@/shared/assets/images/mainCat.png';
 import { Dispatch, SetStateAction } from 'react';
-import { BarsPointsType, HandleUpdateBarsPointsType } from '../../../types';
 import { ActionsConfig } from '../config/actionsConfig';
-import { ActionBlock } from './ActionBlock';
+import { ActionBlock, ActionBlockProps } from './ActionBlock';
 import css from './MainContainer.module.scss';
 
 interface MainContainerProps {
@@ -14,7 +13,7 @@ interface MainContainerProps {
 export const MainContainer = (props: MainContainerProps) => {
   const { barsPoints, setBarsPoints, setCurrentLevel } = props;
 
-  const handleUpdateBarsPoints: HandleUpdateBarsPointsType = ({ level, hp }) => {
+  const handleUpdateBarsPoints: ActionBlockProps['handleUpdateBarsPoints'] = ({ level, hp }) => {
     const levelForUpdate =
       barsPoints.level + level > 100 ? barsPoints.level + level - 100 : barsPoints.level + level;
     const hpForUpdate =

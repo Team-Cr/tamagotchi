@@ -1,9 +1,9 @@
 import { KeyboardEvent, useCallback } from 'react';
-import { BarsPointsType, HandleUpdateBarsPointsType } from '../../../../../types';
-
 import css from './ActionBlock.module.scss';
 
-interface ActionBlockProps {
+type HandleUpdateBarsPointsType = ({ level, hp }: BarsPointsType) => void;
+
+export interface ActionBlockProps {
   image: string;
   text: string;
   pointsForAction: BarsPointsType;
@@ -30,14 +30,14 @@ export const ActionBlock = (props: ActionBlockProps) => {
 
   return (
     <div
-      className={css.actionBlock}
+      className={css['action-block']}
       onKeyDown={handleKeyboardClick}
       tabIndex={0}
       role='button'
       onClick={handleClick}
     >
-      <img className={css.actionBlock__image} src={image} alt={`Icon-${text}`} />
-      <p className={css.actionBlock__text}>{text}</p>
+      <img className={css['action-block__image']} src={image} alt={`Icon-${text}`} />
+      <p className={css['action-block__text']}>{text}</p>
     </div>
   );
 };

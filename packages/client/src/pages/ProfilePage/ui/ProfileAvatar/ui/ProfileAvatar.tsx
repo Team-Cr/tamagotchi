@@ -1,6 +1,6 @@
 import emptyAvatar from '@/shared/assets/images/empty-avatar.png';
 import { ProfileAPI, ResourceAPI } from '@/shared/lib/api';
-import { ChangeEvent, FC, SyntheticEvent, useCallback, useState } from 'react'
+import { ChangeEvent, FC, SyntheticEvent, useCallback, useState } from 'react';
 import css from './ProfileAvatar.module.scss';
 
 type ProfileAvatarProps = {
@@ -11,7 +11,7 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
   const { avatar } = props;
   const [image, setImage] = useState('');
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
 
     if (!files) {
@@ -29,12 +29,12 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
       .catch((err) => {
         console.error(err);
       });
-  };
+  }, []);
 
-  const noImageHandler = (e: SyntheticEvent<HTMLImageElement, Event>) => {
+  const noImageHandler = useCallback((e: SyntheticEvent<HTMLImageElement, Event>) => {
     e.currentTarget.onerror = null;
     e.currentTarget.src = emptyAvatar;
-  };
+  }, []);
 
   return (
     <>
@@ -46,12 +46,7 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
           alt='change avatar'
           title='Change avatar'
         />
-        <input
-          type='file'
-          name='avatar'
-          hidden={true}
-          onChange={handleChange}
-        />
+        <input type='file' name='avatar' hidden={true} onChange={handleChange} />
       </label>
     </>
   );
