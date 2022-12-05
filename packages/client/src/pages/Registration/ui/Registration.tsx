@@ -6,10 +6,10 @@ import styles from './styles.module.scss';
 import { RegFormType, useAuth } from '@/shared/hooks/useAuth';
 
 export const Registration = () => {
-  const { registration } = useAuth();
+  const { registerUser } = useAuth();
 
   const onSubmitHandler = (values: RegFormType) => {
-    registration(values);
+    registerUser(values);
   };
 
   return (

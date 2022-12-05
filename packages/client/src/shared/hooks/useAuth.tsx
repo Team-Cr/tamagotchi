@@ -12,11 +12,11 @@ export type RegFormType = {
 };
 
 export const useAuth = () => {
-  const registration = React.useCallback((data: RegFormType) => {
+  const registerUser = React.useCallback((data: RegFormType) => {
     const formattedData = convertingDataToSend(data) as RegData;
 
     return authApi.signUp(formattedData);
   }, []);
 
-  return { registration };
+  return { registerUser };
 };
