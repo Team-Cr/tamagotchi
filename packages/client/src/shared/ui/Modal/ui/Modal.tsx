@@ -1,38 +1,49 @@
 import CrossSvg from '@/shared/assets/images/cross.svg';
-import { FC, KeyboardEventHandler, ReactNode } from 'react';
+import classNames from 'classnames';
+import { FC, KeyboardEventHandler, MouseEventHandler, ReactNode, useCallback } from 'react';
 import css from './Modal.module.scss';
 
 export type ModalProps = {
-  show: boolean;
-  setModalActive(bool: boolean): void;
+  isActive: boolean;
+  setIsActive(bool: boolean): void;
   isCloseButtonShown?: boolean;
   children: ReactNode;
   title?: string;
 };
 
 export const Modal: FC<ModalProps> = (props: ModalProps) => {
-  const { title = 'Modal', setModalActive, children, show, isCloseButtonShown = true } = props;
+  const { title = 'Modal', setIsActive, children, isActive, isCloseButtonShown = true } = props;
 
-  const closeOnEsc: KeyboardEventHandler<HTMLDivElement> = (e) => {
-    if (e.key === 'Escape') {
-      e.preventDefault();
-      setModalActive(false);
-    }
-  };
+  const closeModal = useCallback(() => {
+    setIsActive(false);
+  }, [setIsActive]);
+
+  const closeOnEsc: KeyboardEventHandler<HTMLDivElement> = useCallback(
+    (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeModal();
+      }
+    },
+    [closeModal],
+  );
+
+  const stopClickPropagation: MouseEventHandler<HTMLDivElement> = useCallback(
+    (e) => e.stopPropagation(),
+    [],
+  );
 
   return (
     <div
-      className={`${css.modal__container} ${show ? css.active : ''}`}
+      className={classNames(css.modal__container, { [css.active]: isActive })}
       role={'button'}
       onKeyUp={closeOnEsc}
       tabIndex={0}
-      onClick={() => {
-        setModalActive(false);
-      }}
+      onClick={closeModal}
     >
       <div
-        className={`${css.modal__body} ${show ? css.active : ''}`}
-        onClick={(e) => e.stopPropagation()}
+        className={classNames(css.modal__body, { [css.active]: isActive })}
+        onClick={stopClickPropagation}
         role={'button'}
         onKeyUp={closeOnEsc}
         tabIndex={-1}
