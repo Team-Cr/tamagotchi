@@ -2,7 +2,13 @@ import CatDead from '@/shared/assets/images/CatDead.png';
 import CatStanding from '@/shared/assets/images/CatStanding.png';
 import Leveling from '../assets/images/Leveling.png';
 
-export const StartScreens = [
+export interface StartScreen {
+  title: string;
+  text: string;
+  imgSrc: string;
+}
+
+export const StartScreens: StartScreen[] = [
   {
     title: 'Welcome to Tamagochi!',
     text: 'Here you can relax and spend time with your own virtual cat ;)',
