@@ -43,7 +43,9 @@ const SignInPage = () => {
         </div>
 
         <div className={styles.signin__pet__create}>
-          <Link href='#' label='I want a new' icon={iconLnk} />
+          <Link href='#' icon={iconLnk}>
+            I want a new
+          </Link>
         </div>
 
         <div className={styles.signin__fields}>

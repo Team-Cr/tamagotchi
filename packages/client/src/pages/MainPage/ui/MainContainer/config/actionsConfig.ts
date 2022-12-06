@@ -3,14 +3,15 @@ import CatFace from '@/shared/assets/images/MainIcons/CatFace.png';
 import CatPawWithFish from '@/shared/assets/images/MainIcons/CatPawWithFish.png';
 import PixelBed from '@/shared/assets/images/MainIcons/PixelBed.png';
 import PixelDumbell from '@/shared/assets/images/MainIcons/PixelDumbell.png';
-import { BarsPointsType } from '../../../types';
 
-export const ActionsConfig: {
+export interface ActionConfig {
   image: string;
   text: string;
   pointsForAction: BarsPointsType;
   keyboardKey: string;
-}[] = [
+}
+
+export const ActionsConfig: ActionConfig[] = [
   {
     image: CatBowl,
     text: 'FEED',

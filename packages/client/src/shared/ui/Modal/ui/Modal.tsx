@@ -9,14 +9,24 @@ export type ModalProps = {
   isCloseButtonShown?: boolean;
   children: ReactNode;
   title?: string;
+  isClosable?: boolean;
 };
 
 export const Modal: FC<ModalProps> = (props: ModalProps) => {
-  const { title = 'Modal', setIsActive, children, isActive, isCloseButtonShown = true } = props;
+  const {
+    title = 'Modal',
+    setIsActive,
+    children,
+    isActive,
+    isCloseButtonShown = true,
+    isClosable = true,
+  } = props;
 
   const closeModal = useCallback(() => {
-    setIsActive(false);
-  }, [setIsActive]);
+    if (isClosable) {
+      setIsActive(false);
+    }
+  }, [isClosable, setIsActive]);
 
   const closeOnEsc: KeyboardEventHandler<HTMLDivElement> = useCallback(
     (e) => {
