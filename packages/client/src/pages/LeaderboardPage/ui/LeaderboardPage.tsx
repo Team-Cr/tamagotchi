@@ -1,8 +1,8 @@
 import { GetLeaderboardProps, LeaderboardAPI, LeaderboardData } from '@/shared/lib/api';
+import { ArrowBack } from '@/shared/ui/ArrowBack';
 import { useEffect, useState } from 'react';
 import { LeaderboardEntry } from './LeaderboardEntry';
 import css from './LeaderboardPage.module.scss';
-import { ArrowBack } from '@/shared/ui/ArrowBack';
 
 const userId = 2;
 
@@ -26,7 +26,7 @@ export const LeaderboardPage = () => {
 
   return (
     <>
-      <ArrowBack />
+      <ArrowBack className={css.back} />
       <div className={css.layout}>
         <header>
           <h1 className={css.layout__title}>Cats leaderboard</h1>

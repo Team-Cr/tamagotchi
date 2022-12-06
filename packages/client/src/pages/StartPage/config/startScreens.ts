@@ -10,7 +10,7 @@ export interface StartScreen {
 
 export const StartScreens: StartScreen[] = [
   {
-    title: 'Welcome to Tamagochi!',
+    title: 'Welcome to Tamagotchi!',
     text: 'Here you can relax and spend time with your own virtual cat ;)',
     imgSrc: CatStanding,
   },

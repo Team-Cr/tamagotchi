@@ -30,6 +30,22 @@
 }
 
 @media screen and (max-width: 768px) {
+  .back {
+    align-items: flex-start;
+
+    padding-top: calc(
+      var(--m-padding-top) + var(--m-title-line-height) / 2 - var(--m-regular-line-height) / 2
+    );
+    padding-left: calc(var(--m-padding-left));
+
+    svg {
+      width: var(--m-regular-line-height);
+      height: var(--m-regular-line-height);
+
+      object-fit: contain;
+    }
+  }
+
   .layout {
     gap: 20px;
 

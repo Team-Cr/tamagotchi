@@ -11,7 +11,7 @@ export const LeaderboardEntry = (props: LeaderboardEntryProps) => {
   return (
     <div className={classNames(css.entry, { [css.checked]: checked })}>
       <div className={css.entry__left_group}>
-        <Avatar src={avatarUrl} />
+        <Avatar src={avatarUrl} className={css.entry__avatar} />
         <span>{name}</span>
       </div>
 
