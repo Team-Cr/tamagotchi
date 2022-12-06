@@ -1,5 +1,28 @@
-import { Asset } from './asset';
 import { Sprite } from './sprite';
+
+export enum ObserverTypes {
+  create,
+  update,
+  finish,
+}
+
+class Observer {
+  obj = {
+    [ObserverTypes.create]: [] as (() => void)[],
+    [ObserverTypes.update]: [] as (() => void)[],
+    [ObserverTypes.finish]: [] as (() => void)[],
+  };
+
+  add(o: ObserverTypes, cb: () => void) {
+    this.obj[o].push(cb);
+  }
+
+  emit(o: ObserverTypes) {
+    this.obj[o].forEach((cb) => {
+      cb();
+    });
+  }
+}
 
 function* getSpriteGenerator(sprites: Sprite[]) {
   for (const sprite of sprites) {
@@ -7,14 +30,14 @@ function* getSpriteGenerator(sprites: Sprite[]) {
   }
 }
 
-export class Animate {
-  asset: Asset | null = null;
+export class Animate extends Observer {
   animateTime = 1;
   catSprites: Sprite[] = [];
+  _gen: Generator<Sprite, void, unknown> | undefined;
 
-  setAsset(asset: Asset) {
-    this.asset = asset;
-    this.catSprites = this.asset.crop();
+  setSprites(sprites: Sprite[]) {
+    this.catSprites = sprites;
+    this._gen = getSpriteGenerator(this.catSprites);
   }
 
   setAnimateTime(animateTime: number) {
@@ -25,32 +48,34 @@ export class Animate {
     ctx.scale(scaleFactor, scaleFactor);
   }
 
-  run(canvas: HTMLCanvasElement, scaleFactor?: number, loop = true) {
-    if (!this.asset) {
-      throw Error('No asset!');
+  run(canvas: HTMLCanvasElement, scaleFactor?: number) {
+    if (!this.catSprites || !this._gen) {
+      throw Error('No sprites!');
     }
     let start = 0;
-    let gen = getSpriteGenerator(this.catSprites);
 
-    let sprite = gen.next().value;
+    let sprite = this._gen.next().value;
 
     const ctx = canvas.getContext('2d');
     if (ctx && scaleFactor) {
       this.resizeImage(ctx, scaleFactor);
     }
 
-    const needFrames = (this.animateTime * 1000) / this.asset.chunkCount;
-
     const runWrapper = (time = 0) => {
+      if (!this._gen) {
+        return;
+      }
+      const needFrames = (this.animateTime * 1000) / this.catSprites.length;
       const sec = time;
       const delta = sec - start;
       if (delta > needFrames) {
         start = sec;
-        let spriteGen = gen.next();
+        let spriteGen = this._gen.next();
 
-        if (spriteGen.done && loop) {
-          gen = getSpriteGenerator(this.catSprites);
-          spriteGen = gen.next();
+        if (spriteGen.done) {
+          this.emit(ObserverTypes.finish);
+          this._gen = getSpriteGenerator(this.catSprites);
+          spriteGen = this._gen.next();
         }
         sprite = spriteGen.value;
 

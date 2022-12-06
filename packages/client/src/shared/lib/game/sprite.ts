@@ -40,6 +40,7 @@ export class Sprite {
     const y = this.pos.y;
 
     const image = this.resources.get(this.url);
+
     if (image) {
       ctx.imageSmoothingEnabled = false;
       ctx.drawImage(
