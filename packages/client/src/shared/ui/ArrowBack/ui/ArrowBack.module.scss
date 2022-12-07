@@ -1,0 +1,32 @@
+.arrow {
+  position: fixed;
+
+  display: flex;
+  place-items: center;
+
+  height: 100%;
+  padding-left: var(--padding-left);
+
+  color: var(--dark-color);
+
+  svg {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .back {
+    align-items: flex-start;
+
+    padding-top: calc(var(--m-padding-top) + var(--m-title-line-height) / 2 - 25px);
+    padding-left: calc(var(--m-padding-left) - 10px);
+
+    svg {
+      width: 50px;
+      height: 50px;
+
+      object-fit: contain;
+    }
+  }
+}

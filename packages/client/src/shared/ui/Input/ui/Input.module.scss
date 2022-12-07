@@ -1,17 +1,18 @@
 .input {
   width: 100%;
-  margin-bottom: 10px;
-  padding: 10px 20px;
+  padding: var(--padding-top-input) var(--padding-left-input);
 
   font: var(--regular-font);
 
   background-color: var(--input-color);
-  border: solid 1px var(--input-color);
+  border: none;
   border-radius: 50px;
 }
 
 @media screen and (max-width: 768px) {
   .input {
+    padding: var(--m-padding-top-input) var(--m-padding-left-input);
+
     font: var(--m-regular-sm-font);
   }
 }
