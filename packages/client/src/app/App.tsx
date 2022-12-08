@@ -1,17 +1,22 @@
-import { useCallback } from 'react';
+import { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
 import './styles/index.scss';
 
 export const App = () => {
   const { toggleFullscreen } = useFullscreen();
 
-  const toggleFS = useCallback(() => {
-    toggleFullscreen();
+  useEffect(() => {
+    const toggleFullscreenOnKeyUp = (e: KeyboardEvent) => {
+      const isEmittedByInput = !!(e.target as HTMLElement).closest('input, textarea');
+
+      if (e.key === 'f' && !isEmittedByInput) {
+        toggleFullscreen();
+      }
+    };
+
+    document.addEventListener('keyup', toggleFullscreenOnKeyUp);
+    return () => document.removeEventListener('keyup', toggleFullscreenOnKeyUp);
   }, [toggleFullscreen]);
 
-  return (
-    <>
-      <button onClick={toggleFS}>Toggle fullscreen</button>
-    </>
-  );
+  return <></>;
 };
