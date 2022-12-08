@@ -26,7 +26,7 @@ self.addEventListener('fetch', (event) => {
 async function cacheData(request: Request) {
   const cashedRequest = await caches.match(request);
   if (
-    URLS.some((sa) => request.url.indexOf(sa) >= 0) ||
+    URLS.some((searchString) => request.url.indexOf(searchString) >= 0) ||
     request.headers.get('accept')?.includes('text/html')
   ) {
     return cashedRequest || (await caches.match('/offline')) || networkFirst(request);
