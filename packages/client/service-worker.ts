@@ -3,105 +3,44 @@
 export type {};
 declare const self: ServiceWorkerGlobalScope;
 
-const cacheName = 'tamagochi';
-const version = 'v0.0.0';
+const URLS = ['/', 'index.html', 'offline.html'];
 
-const URLS = ['/', 'index.html'];
+const CACHE_NAME = 'tamagochi';
 
-self.addEventListener('install', function (event) {
-  event.waitUntil(
-    caches.open(cacheName + ' ' + version).then(function (cache) {
-      return cache.addAll(URLS);
-    }),
-  );
+self.addEventListener('install', async () => {
+  const cache = await caches.open(CACHE_NAME);
+  console.log('install');
+  cache.addAll(URLS);
 });
 
-self.addEventListener('activate', function (event) {
-  event.waitUntil(
-    caches.keys().then(function (keys) {
-      return Promise.all(
-        keys
-          .filter(function (key) {
-            return key.indexOf(version) !== 0;
-          })
-          .map(function (key) {
-            return caches.delete(key);
-          }),
-      );
-    }),
-  );
+self.addEventListener('activate', () => {
+  console.log('activate');
+  return self.clients.claim();
 });
 
-self.addEventListener('fetch', function (event) {
+self.addEventListener('fetch', (event) => {
   const request = event.request;
-
-  if (request.method !== 'GET') {
-    event.respondWith(
-      fetch(request).catch(function () {
-        return caches.match('/offline');
-      }) as Promise<Response>,
-    );
-    return;
-  }
-
-  // For HTML requests, try the network first, fall back to the cache,
-  // finally the offline page
-  if (
-    request.headers.get('Accept')?.indexOf('text/html') !== -1 &&
-    request.url.startsWith(this.origin)
-  ) {
-    // The request is text/html, so respond by caching the
-    // item or showing the /offline offline
-    event.respondWith(
-      fetch(request)
-        .then(function (response) {
-          // Stash a copy of this page in the cache
-          const copy = response.clone();
-          caches.open(version + cacheName).then(function (cache) {
-            cache.put(request, copy);
-          });
-          return response;
-        })
-        .catch(function () {
-          return caches.match(request).then(function (response) {
-            // return the cache response or the /offline page.
-            return response || caches.match('/offline');
-          });
-        }) as Promise<Response>,
-    );
-    return;
-  }
-
-  // For non-HTML requests, look in the cache first, fall back to the network
-  if (
-    request.headers.get('Accept')?.indexOf('text/plain') === -1 &&
-    request.url.startsWith(this.origin)
-  ) {
-    event.respondWith(
-      caches.match(request).then(function (response) {
-        return (
-          response ||
-          fetch(request)
-            .then(function (response) {
-              const copy = response.clone();
-
-              if (copy.headers.get('Content-Type')?.indexOf('text/plain') === -1) {
-                caches.open(version + cacheName).then(function (cache) {
-                  cache.put(request, copy);
-                });
-              }
-
-              return response;
-            })
-            .catch(function () {
-              // you can return an image placeholder here with
-              // eslint-disable-next-line no-empty
-              if (request.headers.get('Accept')?.indexOf('image') !== -1) {
-              }
-            })
-        );
-      }) as Promise<Response>,
-    );
-    return;
-  }
+  event.respondWith(cacheData(request) as Promise<Response>);
 });
+
+async function cacheData(request: Request) {
+  const cashedRequest = await caches.match(request);
+  if (
+    URLS.some((sa) => request.url.indexOf(sa) >= 0) ||
+    request.headers.get('accept')?.includes('text/html')
+  ) {
+    return cashedRequest || (await caches.match('/offline')) || networkFirst(request);
+  }
+  return cashedRequest || networkFirst(request);
+}
+
+async function networkFirst(request: Request) {
+  const cache = await caches.open(CACHE_NAME);
+  try {
+    const response = await fetch(request);
+    cache.put(request, response.clone());
+    return response;
+  } catch (error) {
+    return await cache.match(request);
+  }
+}
