@@ -1,12 +1,12 @@
 $default-color: #fff9c7;
-$bg-color: var(--input-color, $default-color);
 $default-horizontal-padding: 40px;
-$horizontal-padding: var(--padding-left-input, $default-horizontal-padding);
 $default-vertical-padding: 20px;
-$vertical-padding: var(--padding-top-input, $default-vertical-padding);
 $m-default-horizontal-padding: 40px;
-$m-horizontal-padding: var(--m-padding-left-input, $m-default-horizontal-padding);
 $m-default-vertical-padding: 10px;
+$bg-color: var(--input-color, $default-color);
+$horizontal-padding: var(--padding-left-input, $default-horizontal-padding);
+$vertical-padding: var(--padding-top-input, $default-vertical-padding);
+$m-horizontal-padding: var(--m-padding-left-input, $m-default-horizontal-padding);
 $m-vertical-padding: var(--m-padding-top-input, $m-default-vertical-padding);
 
 
@@ -26,8 +26,8 @@ $m-vertical-padding: var(--m-padding-top-input, $m-default-vertical-padding);
 
   @media screen and (max-width: 768px) {
     .input {
-        padding: $m-vertical-padding $m-horizontal-padding;
-  
+      padding: $m-vertical-padding $m-horizontal-padding;
+    
       font: var(--m-regular-sm-font);
     }
   }
