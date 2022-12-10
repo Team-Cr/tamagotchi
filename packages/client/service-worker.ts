@@ -9,12 +9,10 @@ const CACHE_NAME = 'tamagochi';
 
 self.addEventListener('install', async () => {
   const cache = await caches.open(CACHE_NAME);
-  console.log('install');
   cache.addAll(URLS);
 });
 
 self.addEventListener('activate', () => {
-  console.log('activate');
   return self.clients.claim();
 });
 
