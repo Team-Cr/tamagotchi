@@ -1,11 +1,10 @@
-import emptyAvatar from '@/shared/assets/images/empty-avatar.png';
 import { ProfileAPI } from '@/shared/lib/api';
 import { Avatar } from '@/shared/ui/Avatar';
-import { ChangeEvent, FC, SyntheticEvent, useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useEffect, useState } from 'react';
 import css from './ProfileAvatar.module.scss';
 
 type ProfileAvatarProps = {
-  avatar: string;
+  avatar?: string;
 };
 
 export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
@@ -29,7 +28,9 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
 
     ProfileAPI.updateAvatar(formData)
       .then((res) => {
-        setImage(res.data.avatar);
+        if (res.data.avatar) {
+          setImage(res.data.avatar);
+        }
       })
       .catch((err) => {
         console.error(err);

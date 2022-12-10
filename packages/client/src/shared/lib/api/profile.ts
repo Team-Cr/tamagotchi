@@ -1,5 +1,5 @@
 import { axiosInstance } from '../axios';
-import { PasswordUpdate, User, UserRequest } from './types/profile';
+import { PasswordUpdate, User, UserBasicData } from './types/profile';
 import { AxiosResponse } from '@/shared/lib/api/types/axios'
 
 const USER_URL = 'user';
@@ -12,7 +12,7 @@ const Routes = {
 };
 
 export const ProfileAPI = {
-  updateData: (payload: UserRequest): AxiosResponse<User> =>
+  updateData: (payload: UserBasicData): AxiosResponse<User> =>
     axiosInstance.put(Routes.UPDATE_DATA, payload),
   updateAvatar: (payload: FormData): AxiosResponse<User> =>
     axiosInstance.put(Routes.UPDATE_AVATAR, payload, {

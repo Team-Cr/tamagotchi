@@ -6,4 +6,4 @@ export { ResourceAPI } from './resource';
 export type { SigninData } from './types/auth';
 export type { ErrorResponse } from './types/axios';
 export type { AddUserProps, GetLeaderboardProps, LeaderboardData } from './types/leaderboard';
-export type { PasswordUpdate, ProfileAvatarUpdate, User } from './types/profile';
+export type { PasswordUpdate, User } from './types/profile';

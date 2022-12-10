@@ -4,16 +4,12 @@ export interface User {
   second_name: string;
   login: string;
   email: string;
-  display_name: string;
   phone: string;
-  avatar: string;
+  display_name?: string;
+  avatar?: string;
 }
 
-export type UserRequest = Omit<User, 'id' | 'avatar'>;
-
-export interface ProfileAvatarUpdate {
-  avatar: FormData;
-}
+export type UserBasicData = Omit<User, 'id' | 'avatar'>;
 
 export interface PasswordUpdate {
   oldPassword: string;
