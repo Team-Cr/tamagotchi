@@ -1,6 +1,9 @@
+import { startServiceWorker } from './services/startServiceWorker';
 import { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
 import './styles/index.scss';
+
+startServiceWorker();
 
 export const App = () => {
   const { toggleFullscreen } = useFullscreen();
