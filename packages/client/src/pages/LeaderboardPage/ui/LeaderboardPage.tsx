@@ -1,7 +1,7 @@
-import arrowSrc from '@/shared/assets/images/arrow.png';
 import { GetLeaderboardProps, LeaderboardAPI, LeaderboardData } from '@/shared/lib/api';
-import { LeaderboardEntry } from '@/shared/ui/LeaderboardEntry';
+import { ArrowBack } from '@/shared/ui/ArrowBack';
 import { useEffect, useState } from 'react';
+import { LeaderboardEntry } from './LeaderboardEntry';
 import css from './LeaderboardPage.module.scss';
 
 const userId = 2;
@@ -24,12 +24,9 @@ export const LeaderboardPage = () => {
       .catch((e) => console.log({ e }));
   }, [setEntries]);
 
-
   return (
     <>
-      <a className={css.back} href='/#'>
-        <img src={arrowSrc} alt='Назад' />
-      </a>
+      <ArrowBack className={css.back} />
       <div className={css.layout}>
         <header>
           <h1 className={css.layout__title}>Cats leaderboard</h1>

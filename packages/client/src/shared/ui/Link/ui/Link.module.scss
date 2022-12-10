@@ -1,33 +1,23 @@
 .link {
   cursor: pointer;
 
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+
   font: var(--regular-font);
-  color: black;
+  color: var(--dark-color);
   text-decoration: none;
 }
 
 .link__icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-
   width: 50px;
-  margin: 0;
 }
 
 .link__container {
   position: relative;
 
   height: 40px;
-}
-
-.link__centered {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-
-  width: 100%;
-  margin: 0;
 }
 
 @media screen and (max-width: 768px) {

@@ -1,0 +1,34 @@
+$default-color: #fff9c7;
+$bg-color: var(--input-color, $default-color);
+$default-horizontal-padding: 40px;
+$horizontal-padding: var(--padding-left-input, $default-horizontal-padding);
+$default-vertical-padding: 20px;
+$vertical-padding: var(--padding-top-input, $default-vertical-padding);
+$m-default-horizontal-padding: 40px;
+$m-horizontal-padding: var(--m-padding-left-input, $m-default-horizontal-padding);
+$m-default-vertical-padding: 10px;
+$m-vertical-padding: var(--m-padding-top-input, $m-default-vertical-padding);
+
+
+.input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  width: 100%;
+  padding: $vertical-padding $horizontal-padding;
+
+  font: var(--regular-font);
+
+  background: $bg-color;
+  border: none;
+  border-radius: 50px;
+
+  @media screen and (max-width: 768px) {
+    .input {
+        padding: $m-vertical-padding $m-horizontal-padding;
+  
+      font: var(--m-regular-sm-font);
+    }
+  }
+}
