@@ -1,20 +1,22 @@
-import { FC } from 'react';
+import { FC, DetailedHTMLProps, FormHTMLAttributes } from 'react';
 
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Typography } from '@/shared/ui/Typography';
 import { Form } from '@/shared/ui/Form';
-import { images } from '@/shared/assets';
+import { images } from '@/shared/assets/images';
 
 import styles from './styles.module.scss';
 
-type Props = {
-  onSubmit: (values: any) => void;
-};
+type Props = DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
 
-export const RegistrationForm: FC<Props> = ({ onSubmit, ...props }) => {
+export const RegistrationForm: FC<Props> = ({ ...props }) => {
+  const onSubmitHandler = (values: unknown) => {
+    console.log(values);
+  };
+
   return (
-    <Form {...props} className={styles.form} onSubmit={onSubmit}>
+    <Form {...props} className={styles.form} onSubmit={onSubmitHandler}>
       <div className={styles.form__fields}>
         <Input placeholder='Name' name='firstName' />
         <Input placeholder='Surname' name='secondName' />
@@ -25,7 +27,9 @@ export const RegistrationForm: FC<Props> = ({ onSubmit, ...props }) => {
       </div>
       <Button className={styles.form__btn}>
         <div className={styles['form__btn-wrapper']}>
-          <Typography color='white' oneLine>Hello, a new Friend</Typography>
+          <Typography color='white' oneLine>
+            Hello, a new Friend
+          </Typography>
           <img src={images.CatPixelImage} alt='cat-pixel-icon' />
         </div>
       </Button>
