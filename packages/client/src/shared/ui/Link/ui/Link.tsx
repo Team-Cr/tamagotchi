@@ -1,31 +1,23 @@
-import styles from './Link.module.scss';
+import classNames from 'classnames';
+import { ReactNode } from 'react';
+import css from './Link.module.scss';
 
 interface LinkProps {
-  name: string;
   href: string;
-  label: string;
-  icon: string;
+  children: ReactNode;
+  icon?: string;
+  className?: string;
 }
 
 const Link = (props: LinkProps) => {
+  const { href, children, icon, className = '' } = props;
   return (
-    <>
-      <div className={styles.link__container}>
-        <div className={styles.link__centered}>
-          <a className={styles.link} href={props.href}>
-            {props.label}
-            &nbsp;
-            {props.icon ? (
-              <span>
-                <img className={styles.link__icon} src={props.icon} alt='gatito' />
-              </span>
-            ) : (
-              ''
-            )}
-          </a>
-        </div>
-      </div>
-    </>
+    <div className={classNames(css.link__container, className)}>
+      <a className={css.link} href={href}>
+        <span>{children}</span>
+        {icon && <img className={css.link__icon} src={icon} alt='Icon' />}
+      </a>
+    </div>
   );
 };
 

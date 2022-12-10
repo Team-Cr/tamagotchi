@@ -3,6 +3,9 @@
   flex-direction: row;
   gap: 20px;
   align-items: center;
+  justify-content: center;
+
+  padding: var(--large-button-padding);
 
   font: var(--regular-font);
 
@@ -18,28 +21,80 @@
   }
 }
 
-.button-large {
-  height: 88px;
-  padding: 20px 80px;
+@media screen and (max-width: 768px) {
+  .button {
+    padding: var(--m-large-button-padding);
 
-  font-size: 48px;
-  line-height: 48px;
+    font: var(--m-regular-font);
+  }
+}
+
+.button-large {
+  font-size: var(--large-button-font-size);
+  line-height: var(--large-button-line-height);
+
+  .button_icon {
+    height: var(--large-button-font-size);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button-large {
+    font-size: var(--m-large-button-font-size);
+    line-height: var(--m-large-button-line-height);
+
+    .button_icon {
+      height: var(--m-large-button-font-size);
+    }
+  }
 }
 
 .button-medium {
-  height: 60px;
-  padding: 20px 60px;
+  padding: var(--medium-button-padding);
 
-  font-size: 36px;
-  line-height: 36px;
+  font-size: var(--medium-button-font-size);
+  line-height: var(--medium-button-line-height);
+
+  .button_icon {
+    height: var(--medium-button-font-size);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button-medium {
+    padding: var(--m-medium-button-padding);
+
+    font-size: var(--m-medium-button-font-size);
+    line-height: var(--m-medium-button-line-height);
+
+    .button_icon {
+      height: var(--m-medium-button-font-size);
+    }
+  }
 }
 
 .button-small {
-  height: 32px;
-  padding: 20px 40px;
+  padding: var(--small-button-padding);
 
-  font-size: 24px;
-  line-height: 24px;
+  font-size: var(--small-button-font-size);
+  line-height: var(--small-button-line-height);
+
+  .button_icon {
+    height: var(--small-button-font-size);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button-small {
+    padding: var(--m-small-button-padding);
+
+    font-size: var(--m-small-button-font-size);
+    line-height: var(--m-small-button-line-height);
+
+    .button_icon {
+      height: var(--m-small-button-font-size);
+    }
+  }
 }
 
 .button-primary {

@@ -1,0 +1,20 @@
+.profile__container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: flex-start;
+
+  max-width: 900px;
+  height: 100%;
+  margin: var(--padding-top) auto 0 auto;
+}
+
+.profile__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  width: 100%;
+  min-width: 600px;
+}

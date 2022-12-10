@@ -1,69 +1,73 @@
-import { FC, KeyboardEventHandler, ReactNode } from 'react'
-import styles from "./Modal.module.scss";
+import CrossSvg from '@/shared/assets/images/cross.svg';
+import classNames from 'classnames';
+import { FC, KeyboardEventHandler, MouseEventHandler, ReactNode, useCallback } from 'react';
+import css from './Modal.module.scss';
 
 export type ModalProps = {
-  show: boolean,
-  setModalActive(bool: boolean): void,
-  children: ReactNode
-  title?: string,
-}
+  isActive: boolean;
+  setIsActive(bool: boolean): void;
+  isCloseButtonShown?: boolean;
+  children: ReactNode;
+  title?: string;
+  isClosable?: boolean;
+};
 
 export const Modal: FC<ModalProps> = (props: ModalProps) => {
   const {
     title = 'Modal',
-    setModalActive,
+    setIsActive,
     children,
-    show
+    isActive,
+    isCloseButtonShown = true,
+    isClosable = true,
   } = props;
 
-  const closeOnEsc: KeyboardEventHandler<HTMLDivElement> = (e) => {
-    if (e.key === 'Escape') {
-      e.preventDefault();
-      setModalActive(false);
+  const closeModal = useCallback(() => {
+    if (isClosable) {
+      setIsActive(false);
     }
-}
+  }, [isClosable, setIsActive]);
+
+  const closeOnEsc: KeyboardEventHandler<HTMLDivElement> = useCallback(
+    (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeModal();
+      }
+    },
+    [closeModal],
+  );
+
+  const stopClickPropagation: MouseEventHandler<HTMLDivElement> = useCallback(
+    (e) => e.stopPropagation(),
+    [],
+  );
 
   return (
-    <div className={`${styles.modal__container} ${show ? styles.active : ""}`}
-         role={'button'}
-         onKeyUp={closeOnEsc}
-         tabIndex={0}
-         onClick={() => {
-           setModalActive(false)
-         }}
+    <div
+      className={classNames(css.modal__container, { [css.active]: isActive })}
+      role={'button'}
+      onKeyUp={closeOnEsc}
+      tabIndex={0}
+      onClick={closeModal}
     >
       <div
-        className={`${styles.modal__body} ${show ? styles.active : ""}`}
-        onClick={(e) => e.stopPropagation()}
+        className={classNames(css.modal__body, { [css.active]: isActive })}
+        onClick={stopClickPropagation}
         role={'button'}
         onKeyUp={closeOnEsc}
         tabIndex={-1}
       >
-        <div className={styles.modal__header}>
+        <div className={css.modal__header}>
           <span>{title}</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            onClick={() => {
-              setModalActive(false)
-            }}
-            className={styles.modal__close}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          {isCloseButtonShown && (
+            <div className={css.modal__close}>
+              <CrossSvg />
+            </div>
+          )}
         </div>
-        {/* Тестовый див. ВАЖНО: Задавай высоту именно нижнего(тестового) дива, а не modal__body */}
         {children}
-        <div style={{ minWidth: "20vw"}}>
-        </div>
       </div>
     </div>
-  )
-}
+  );
+};

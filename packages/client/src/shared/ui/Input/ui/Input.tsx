@@ -1,7 +1,7 @@
 
 import classNames from 'classnames';
 
-import styles from './styles.module.scss';
+import styles from './Input.module.scss';
 
 type Props = React.HTMLProps<HTMLInputElement>;
 
