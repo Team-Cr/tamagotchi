@@ -1,4 +1,4 @@
-import { FC, useRef, useCallback, useEffect, useMemo } from 'react';
+import { FC, useRef, useCallback, useEffect } from 'react';
 
 import { Cat, CatConditions } from '@/shared/lib/game/cat';
 import { Resources } from '@/shared/lib/game/resources';
@@ -19,8 +19,16 @@ class Builder {
                 this.assets.push(assets.SleepCatAsset)
                 break
             }
+            case CatConditions.Eat: {
+                this.assets.push(assets.EatCatAsset)
+                break
+            }
+            case CatConditions.Spin: {
+                this.assets.push(assets.SpinCatAsset)
+                break
+            }
             case CatConditions.Pending: {
-                this.assets.push(assets.SleepCatBlackAsset)
+                this.assets.push(assets.PendingCatAsset)
                 break
             }
             default: {
@@ -41,14 +49,9 @@ type Props = {
     imageWidth: number,
     imageHeight: number,
     canvasScale?: number,
-    conditions: CatConditions | CatConditions[]
 }
 
-const AnimateCanvas: FC<Props> = ({ imageWidth, imageHeight, canvasScale = 1, conditions }) => {
-    const conditionsArray = useMemo(() => {
-        return Array.isArray(conditions) ? conditions : [conditions]
-    }, [conditions])
-
+const AnimateCanvas: FC<Props> = ({ imageWidth, imageHeight, canvasScale = 1 }) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const isRender = useRef(false)
     const catRef = useRef<Cat | null>(null)
@@ -58,14 +61,29 @@ const AnimateCanvas: FC<Props> = ({ imageWidth, imageHeight, canvasScale = 1, co
         if (canvasRef.current && resRef.current) {
             const cat = new Cat(resRef.current)
             catRef.current = cat;
-            cat.setConditions(conditionsArray[0]);
+            cat.setConditions(CatConditions.Pending);
+            cat.setDefaultConditions(CatConditions.Pending);
             cat.run(canvasRef.current, canvasScale);
         }
-    }, [canvasScale, conditionsArray])
+    }, [canvasScale])
 
-    const click = () => {
-        if(catRef.current){
-            catRef.current.setConditions(conditionsArray[1])
+    const clickLoop = () => {
+        if (catRef.current) {
+            catRef.current.setConditions(CatConditions.Eat)
+        }
+    }
+
+    const clickOne = () => {
+        if (catRef.current) {
+            catRef.current.setDefaultConditions(CatConditions.Pending)
+            catRef.current.setConditions(CatConditions.Eat, false)
+        }
+    }
+
+    const clickGoSleep = () => {
+        if (catRef.current) {
+            catRef.current.setDefaultConditions(CatConditions.Sleep)
+            catRef.current.setConditions([CatConditions.Spin, CatConditions.Sleep], false)
         }
     }
 
@@ -73,8 +91,13 @@ const AnimateCanvas: FC<Props> = ({ imageWidth, imageHeight, canvasScale = 1, co
         if (!isRender.current) {
             isRender.current = true
             resRef.current = new Resources();
-            const builder = new Builder()
-            conditionsArray.forEach(condition => {
+            const builder = new Builder();
+            [
+                CatConditions.Sleep,
+                CatConditions.Eat,
+                CatConditions.Spin,
+                CatConditions.Pending
+            ].forEach(condition => {
                 builder.add(condition)
             })
 
@@ -82,12 +105,14 @@ const AnimateCanvas: FC<Props> = ({ imageWidth, imageHeight, canvasScale = 1, co
             resRef.current.onReady(renderApp);
             resRef.current.load(assets);
         }
-    }, [renderApp, conditionsArray]);
+    }, [renderApp]);
 
     return (
         <>
             <canvas ref={canvasRef} width={imageWidth} height={imageHeight} />
-            <button onClick={click}>Ешь!</button>
+            <button onClick={clickLoop}>Ешь!</button>
+            <button onClick={clickOne}>Ешь один раз!</button>
+            <button onClick={clickGoSleep}>Уход ко сну</button>
         </>
     );
 }
@@ -98,7 +123,6 @@ export const AnimationSleepCat = () => {
             imageWidth={imageWidth}
             imageHeight={imageHeight}
             canvasScale={canvasScale}
-            conditions={[CatConditions.Sleep, CatConditions.Pending]}
         />
     )
 };

@@ -1,7 +1,9 @@
 import CatPixelImage from './images/catPixel.webp';
 import CatImage from './images/gatito_dormirx.webp';
-import SleepCatAsset from './assets/gatito_dormirx.png';
-import SleepCatBlackAsset from './assets/gatito_dormirx_black.png';
+import SleepCatAsset from './assets/sleep.png';
+import EatCatAsset from './assets/eat.png';
+import SpinCatAsset from './assets/spin.png';
+import PendingCatAsset from './assets/pending.png';
 
 export const images = {
   CatPixelImage,
@@ -10,5 +12,7 @@ export const images = {
 
 export const assets = {
   SleepCatAsset,
-  SleepCatBlackAsset,
+  EatCatAsset,
+  SpinCatAsset,
+  PendingCatAsset,
 };
