@@ -1,16 +1,20 @@
 import './LevelOrHpBar.scss';
 
 type LevelOrHpBarProps = {
-  stat: number;
+  state: number;
+  maxState: number;
   theme: 'level' | 'hp';
-  text: number | string;
+  label: number | string;
 };
 export const LevelOrHpBar = (props: LevelOrHpBarProps) => {
-  const { stat, text, theme } = props;
+  const { label, theme, state, maxState } = props;
+
+  const percent = 100 - state / (maxState / 100);
+
   return (
     <div className={`info-line ${theme}`}>
-      <p className={`info-line__text ${theme}`}>{text}</p>
-      <div className='info-line__empty' style={{ width: `${100 - stat}%` }}></div>
+      <p className={`info-line__text ${theme}`}>{label}</p>
+      <div className='info-line__empty' style={{ width: `${percent}%` }}></div>
     </div>
   );
 };

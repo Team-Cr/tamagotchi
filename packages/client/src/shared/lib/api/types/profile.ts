@@ -11,7 +11,7 @@ export interface User {
 
 export type UserBasicData = Omit<User, 'id' | 'avatar'>;
 
-export interface PasswordUpdate {
+export interface UserPasswordUpdate {
   oldPassword: string;
   newPassword: string;
 }

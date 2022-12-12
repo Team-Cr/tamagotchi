@@ -3,6 +3,8 @@ import { Dispatch, SetStateAction } from 'react';
 import { ActionsConfig } from '../config/actionsConfig';
 import { ActionBlock, ActionBlockProps } from './ActionBlock';
 import css from './MainContainer.module.scss';
+import { useAppDispatch } from '@/shared/lib/redux';
+import { addPoints } from '@/entities/tamagotchi/model';
 
 interface MainContainerProps {
   barsPoints: BarsPointsType;
@@ -10,21 +12,12 @@ interface MainContainerProps {
   setCurrentLevel: Dispatch<SetStateAction<number>>;
 }
 
-export const MainContainer = (props: MainContainerProps) => {
-  const { barsPoints, setBarsPoints, setCurrentLevel } = props;
+export const MainContainer = () => {
+  const dispatch = useAppDispatch();
 
-  const handleUpdateBarsPoints: ActionBlockProps['handleUpdateBarsPoints'] = ({ level, hp }) => {
-    const levelForUpdate =
-      barsPoints.level + level > 100 ? barsPoints.level + level - 100 : barsPoints.level + level;
-    const hpForUpdate =
-      barsPoints.hp + hp > 100 ? 100 : barsPoints.hp + hp < 0 ? 0 : barsPoints.hp + hp;
-    if (barsPoints.level + level > 100) {
-      setCurrentLevel((prev: number) => prev + 1);
-    }
-    setBarsPoints(() => ({
-      level: levelForUpdate,
-      hp: hpForUpdate,
-    }));
+  const handleUpdateBarsPoints: ActionBlockProps['handleUpdateBarsPoints'] = (points) => {
+    console.log(points);
+    dispatch(addPoints(points))
   };
 
   return (

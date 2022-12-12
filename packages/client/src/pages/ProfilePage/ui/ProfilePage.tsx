@@ -1,4 +1,4 @@
-import { AuthAPI, ProfileAPI, User } from '@/shared/lib/api';
+import { AuthAPI } from '@/shared/lib/api';
 import { Button } from '@/shared/ui/Button';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { ProfileAvatar } from './ProfileAvatar';
@@ -7,24 +7,13 @@ import { ProfileModal } from './ProfileModal';
 import css from './ProfilePage.module.scss';
 import { ArrowBack } from '@/shared/ui/ArrowBack';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
-import { updateUserData } from '@/entities/user/model/user';
 import { UserBasicData } from '@/shared/lib/api/types/profile';
-
-// const userInitialState: User = {
-//   id: -1,
-//   first_name: '',
-//   second_name: '',
-//   display_name: '',
-//   login: '',
-//   email: '',
-//   phone: '',
-//   avatar: '',
-// };
+import { updateUserData } from '@/entities/user/model';
 
 export const ProfilePage = () => {
-  const [isChangePasswordModalActive, setIsChangePasswordModalActive] = useState(false);
   const user = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
+  const [isChangePasswordModalActive, setIsChangePasswordModalActive] = useState(false);
   const [basicData, setBasicData] = useState<UserBasicData>(user)
 
   const showModal = useCallback(() => {
@@ -54,6 +43,7 @@ export const ProfilePage = () => {
 
   const saveChanges = useCallback(() => {
     dispatch(updateUserData(basicData));
+
   }, [basicData, dispatch]);
 
   return (

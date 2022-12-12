@@ -3,7 +3,7 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 import { AuthAPI, ProfileAPI, User } from '@/shared/lib/api';
-import { UserBasicData } from '@/shared/lib/api/types/profile';
+import { UserBasicData, UserPasswordUpdate } from '@/shared/lib/api/types/profile';
 
 const initialState: User = {
   id: 0,
@@ -29,6 +29,11 @@ export const updateUserAvatar = createAsyncThunk('user/update_avatar', async (pa
   return response.data;
 })
 
+export const updateUserPassword = createAsyncThunk('user/update_password', async (payload: UserPasswordUpdate) => {
+  const response = await ProfileAPI.updatePassword(payload);
+  return response.data;
+})
+
 export const userModel = createSlice({
   initialState,
   name: '@@USER',
@@ -44,7 +49,10 @@ export const userModel = createSlice({
         return payload;
       })
       .addCase(updateUserAvatar.fulfilled, (state, {payload}) => {
-        return payload
+        return payload;
+      })
+      .addCase(updateUserPassword.fulfilled, () => {
+        alert('Password is changed');
       })
   }
 })

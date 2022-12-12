@@ -1,9 +1,8 @@
-import { ProfileAPI } from '@/shared/lib/api';
 import { Avatar } from '@/shared/ui/Avatar';
-import { ChangeEvent, FC, useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useCallback } from 'react';
 import css from './ProfileAvatar.module.scss';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { updateUserAvatar } from '@/entities/user/model/user';
+import { updateUserAvatar } from '@/entities/user/model';
 
 type ProfileAvatarProps = {
   avatar?: string;
