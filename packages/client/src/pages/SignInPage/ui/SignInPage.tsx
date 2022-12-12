@@ -5,14 +5,14 @@ import { AuthAPI, SigninData } from '@/shared/lib/api';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input/ui/Input';
 import { Link } from '@/shared/ui/Link';
-import { useCallback, useState } from 'react';
+import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import styles from './SignInPage.module.scss';
 
 const SignInPage = () => {
   const [form, setForm] = useState<SigninData>({ login: '', password: '' });
 
   const onSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
+    (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       AuthAPI.signIn(form)
         .then(function (response) {
@@ -26,7 +26,7 @@ const SignInPage = () => {
   );
 
   const onChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e: ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target;
       setForm({ ...form, [name]: value });
     },

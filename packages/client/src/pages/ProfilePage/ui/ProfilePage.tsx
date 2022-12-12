@@ -7,32 +7,34 @@ import { ProfileModal } from './ProfileModal';
 import css from './ProfilePage.module.scss';
 import { ArrowBack } from '@/shared/ui/ArrowBack';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
-import { fetchUser, updateBasicData } from '@/entities/user/model/user';
+import { updateUserData } from '@/entities/user/model/user';
 import { UserBasicData } from '@/shared/lib/api/types/profile';
 
-const userInitialState: User = {
-  id: -1,
-  first_name: '',
-  second_name: '',
-  display_name: '',
-  login: '',
-  email: '',
-  phone: '',
-  avatar: '',
-};
+// const userInitialState: User = {
+//   id: -1,
+//   first_name: '',
+//   second_name: '',
+//   display_name: '',
+//   login: '',
+//   email: '',
+//   phone: '',
+//   avatar: '',
+// };
 
 export const ProfilePage = () => {
   const [isChangePasswordModalActive, setIsChangePasswordModalActive] = useState(false);
   const user = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
   const [basicData, setBasicData] = useState<UserBasicData>(user)
 
   const showModal = useCallback(() => {
     setIsChangePasswordModalActive(true);
   }, []);
 
-  // useEffect(() => {
-  //   setBasicData(user)
-  // }, [user]);
+  useEffect(() => {
+    setBasicData(user)
+  }, [user]);
+
 
   const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -51,9 +53,8 @@ export const ProfilePage = () => {
   }, []);
 
   const saveChanges = useCallback(() => {
-    console.log(basicData);
-    console.log(user);
-  }, []);
+    dispatch(updateUserData(basicData));
+  }, [basicData, dispatch]);
 
   return (
     <>

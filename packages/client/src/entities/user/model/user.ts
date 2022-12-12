@@ -1,9 +1,8 @@
 import {
   createAsyncThunk,
   createSlice,
-  PayloadAction,
 } from '@reduxjs/toolkit';
-import { AuthAPI, User } from '@/shared/lib/api';
+import { AuthAPI, ProfileAPI, User } from '@/shared/lib/api';
 import { UserBasicData } from '@/shared/lib/api/types/profile';
 
 const initialState: User = {
@@ -20,24 +19,32 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
   return response.data;
 })
 
+export const updateUserData = createAsyncThunk('user/update', async (payload: UserBasicData) => {
+  const response = await ProfileAPI.updateData(payload);
+  return response.data;
+})
+
+export const updateUserAvatar = createAsyncThunk('user/update_avatar', async (payload: FormData) => {
+  const response = await ProfileAPI.updateAvatar(payload);
+  return response.data;
+})
+
 export const userModel = createSlice({
   initialState,
   name: '@@USER',
   reducers: {
-    updateAvatar: (state, { payload: userAvatar }: PayloadAction<string>) => {
-      state.avatar = userAvatar;
-    },
-    updateBasicData: (state, { payload: userBasicData }: PayloadAction<UserBasicData>) => {
-      state = { ...state, ...userBasicData };
-    },
+
   },
   extraReducers: builder => {
     builder
       .addCase(fetchUser.fulfilled, (state, { payload }) => {
-        console.log(payload);
         return payload;
+      })
+      .addCase(updateUserData.fulfilled, (state, {payload}) => {
+        return payload;
+      })
+      .addCase(updateUserAvatar.fulfilled, (state, {payload}) => {
+        return payload
       })
   }
 })
-
-export const {updateBasicData, updateAvatar} = userModel.actions;
