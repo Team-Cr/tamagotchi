@@ -30,8 +30,8 @@ export const tamagotchiModel = createSlice({
 
       if (expSum >= expMax) {
         state.level += 1;
-        state.hpMax = Math.round(hpMax * 1.1);
-        state.expMax = Math.round(expMax * 1.5);
+        state.hpCurrent = state.hpMax = Math.floor(hpMax * 1.1);
+        state.expMax = Math.floor(expMax * 1.5);
         state.expCurrent = 0
       }
     }
