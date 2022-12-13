@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 66px;
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__btn {
+    justify-content: center;
+
+    &-wrapper {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
