@@ -16,7 +16,6 @@ export const MainContainer = () => {
   const dispatch = useAppDispatch();
 
   const handleUpdateBarsPoints: ActionBlockProps['handleUpdateBarsPoints'] = (points) => {
-    console.log(points);
     dispatch(addPoints(points))
   };
 

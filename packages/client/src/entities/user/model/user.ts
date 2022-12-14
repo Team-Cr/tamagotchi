@@ -2,57 +2,49 @@ import {
   createAsyncThunk,
   createSlice,
 } from '@reduxjs/toolkit';
-import { AuthAPI, ProfileAPI, User } from '@/shared/lib/api';
-import { UserBasicData, UserPasswordUpdate } from '@/shared/lib/api/types/profile';
+import { User } from '@/shared/lib/api';
+import { UserThunk } from '@/entities/user/api';
+import { AuthThunk } from '@/processes/auth/api';
 
-const initialState: User = {
+export const emptyUserState: User = {
   id: 0,
   first_name: '',
   second_name: '',
   login: '',
   phone: '',
   email: '',
+  avatar: '',
 }
 
-export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
-  const response = await AuthAPI.getUser();
-  return response.data;
-})
-
-export const updateUserData = createAsyncThunk('user/update', async (payload: UserBasicData) => {
-  const response = await ProfileAPI.updateData(payload);
-  return response.data;
-})
-
-export const updateUserAvatar = createAsyncThunk('user/update_avatar', async (payload: FormData) => {
-  const response = await ProfileAPI.updateAvatar(payload);
-  return response.data;
-})
-
-export const updateUserPassword = createAsyncThunk('user/update_password', async (payload: UserPasswordUpdate) => {
-  const response = await ProfileAPI.updatePassword(payload);
-  return response.data;
-})
-
 export const userModel = createSlice({
-  initialState,
+  initialState: emptyUserState,
   name: '@@USER',
-  reducers: {
-
-  },
-  extraReducers: builder => {
+  reducers: {},
+  extraReducers: (builder) => {
     builder
-      .addCase(fetchUser.fulfilled, (state, { payload }) => {
+      .addCase(UserThunk.updateBasicData.fulfilled, (state, {payload}) => {
         return payload;
       })
-      .addCase(updateUserData.fulfilled, (state, {payload}) => {
+      .addCase(UserThunk.updateAvatar.fulfilled, (state, {payload}) => {
         return payload;
       })
-      .addCase(updateUserAvatar.fulfilled, (state, {payload}) => {
-        return payload;
-      })
-      .addCase(updateUserPassword.fulfilled, () => {
+      .addCase(UserThunk.updatePassword.fulfilled, () => {
         alert('Password is changed');
+      })
+      .addCase(AuthThunk.getUser.fulfilled, (state, { payload }) => {
+        return payload;
+      })
+      .addCase(AuthThunk.signIn.fulfilled, (state, { payload }) => {
+        alert('login success');
+        return payload;
+      })
+      .addCase(AuthThunk.signUp.fulfilled, (state, { payload }) => {
+        alert('register success');
+        return payload;
+      })
+      .addCase(AuthThunk.logout.fulfilled, (state, { payload }) => {
+        alert('logout');
+        return payload;
       })
   }
 })

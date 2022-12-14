@@ -1,4 +1,3 @@
-import { AuthAPI } from '@/shared/lib/api';
 import { Button } from '@/shared/ui/Button';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { ProfileAvatar } from './ProfileAvatar';
@@ -7,8 +6,9 @@ import { ProfileModal } from './ProfileModal';
 import css from './ProfilePage.module.scss';
 import { ArrowBack } from '@/shared/ui/ArrowBack';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
-import { UserBasicData } from '@/shared/lib/api/types/profile';
-import { updateUserData } from '@/entities/user/model';
+import { UserBasicData } from '@/shared/lib/api/types/user';
+import { AuthAPI, AuthThunk } from '@/processes/auth/api';
+import { UserThunk } from '@/entities/user/api';
 
 export const ProfilePage = () => {
   const user = useAppSelector((state) => state.user);
@@ -35,14 +35,11 @@ export const ProfilePage = () => {
   }, []);
 
   const logout = useCallback(() => {
-    AuthAPI.logout().then(() => {
-      // TODO redirect to login
-      console.log('Logout');
-    });
-  }, []);
+    dispatch(AuthThunk.logout())
+  }, [dispatch]);
 
   const saveChanges = useCallback(() => {
-    dispatch(updateUserData(basicData));
+    dispatch(UserThunk.updateBasicData(basicData));
 
   }, [basicData, dispatch]);
 

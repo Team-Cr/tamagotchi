@@ -2,7 +2,7 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { ChangeEvent, FC, useCallback } from 'react';
 import css from './ProfileAvatar.module.scss';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { updateUserAvatar } from '@/entities/user/model';
+import { UserThunk } from '@/entities/user/api';
 
 type ProfileAvatarProps = {
   avatar?: string;
@@ -23,7 +23,7 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
     const formData = new FormData();
     formData.append('avatar', files[0]);
 
-    dispatch(updateUserAvatar(formData))
+    dispatch(UserThunk.updateAvatar(formData))
   }, [dispatch]);
 
   return (

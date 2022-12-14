@@ -7,25 +7,29 @@ import { Form } from '@/shared/ui/Form';
 import { images } from '@/shared/assets/images';
 
 import styles from './styles.module.scss';
+import { useAppDispatch } from '@/shared/lib/redux';
+import { AuthThunk } from '@/processes/auth/api';
+import { SignUpData } from '@/shared/lib/api/types/auth';
 
 type Props = DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
 
 export const RegistrationForm: FC<Props> = ({ ...props }) => {
+  const dispatch = useAppDispatch();
   const onSubmitHandler = (values: unknown) => {
-    console.log(values);
+    dispatch(AuthThunk.signUp(values as SignUpData))
   };
 
   return (
     <Form {...props} className={styles.form} onSubmit={onSubmitHandler}>
       <div className={styles.form__fields}>
-        <Input placeholder='Name' name='firstName' />
-        <Input placeholder='Surname' name='secondName' />
+        <Input placeholder='Name' name='first_name' />
+        <Input placeholder='Surname' name='second_name' />
         <Input placeholder='Email' type='email' name='email' />
         <Input placeholder='Phone number' name='phone' />
         <Input placeholder='Login' name='login' />
         <Input placeholder='Password' type='password' name='password' />
       </div>
-      <Button className={styles.form__btn}>
+      <Button type={'submit'} className={styles.form__btn}>
         <div className={styles['form__btn-wrapper']}>
           <Typography color='white' oneLine>
             Hello, a new Friend

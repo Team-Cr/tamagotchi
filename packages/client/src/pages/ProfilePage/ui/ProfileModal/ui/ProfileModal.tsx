@@ -6,7 +6,7 @@ import { ModalProps } from '@/shared/ui/Modal/ui/Modal';
 import { ChangeEvent, FC, useCallback, useState } from 'react';
 import css from './ProfileModal.module.scss';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { updateUserPassword } from '@/entities/user/model';
+import { UserThunk } from '@/entities/user/api';
 
 interface ProfileModalProps {
   login: string;
@@ -52,7 +52,7 @@ export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileMo
     }
 
     // тут возможно лишний диспатч...
-    dispatch(updateUserPassword(updatePassword));
+    dispatch(UserThunk.updatePassword(updatePassword));
 
     setIsActive(false);
 
