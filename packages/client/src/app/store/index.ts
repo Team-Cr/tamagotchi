@@ -7,7 +7,13 @@ import { tamagotchiModel } from '@/entities/tamagotchi/model';
 export const store = configureStore({
   reducer: {
     user: userModel.reducer,
-    tamagotchi: tamagotchiModel.reducer
+    tamagotchi: tamagotchiModel.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
-})
+  middleware: (getDefaultMiddleware) => {
+    const middlewares = [];
+    if (__MODE__ === 'development') {
+      middlewares.push(logger);
+    }
+    return getDefaultMiddleware().concat(middlewares);
+  },
+});

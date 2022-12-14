@@ -3,8 +3,7 @@ import { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
 import './styles/index.scss';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { AuthThunk } from '@/processes/auth/api';
-import { StartPage } from '@/pages/StartPage';
+import { AuthThunk } from '@/processes/auth';
 
 startServiceWorker();
 
@@ -12,7 +11,7 @@ export const App = () => {
   const { toggleFullscreen } = useFullscreen();
 
   const dispatch = useAppDispatch();
-  dispatch(AuthThunk.getUser())
+  dispatch(AuthThunk.getUser());
 
   useEffect(() => {
     const toggleFullscreenOnKeyUp = (e: KeyboardEvent) => {
@@ -27,5 +26,5 @@ export const App = () => {
     return () => document.removeEventListener('keyup', toggleFullscreenOnKeyUp);
   }, [toggleFullscreen]);
 
-  return <><StartPage/></>;
+  return <></>;
 };

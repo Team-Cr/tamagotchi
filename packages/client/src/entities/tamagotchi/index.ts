@@ -1,1 +1,1 @@
-export * as tamagotchi from './model';
+export * from './model';

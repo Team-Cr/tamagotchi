@@ -6,7 +6,7 @@ import { ModalProps } from '@/shared/ui/Modal/ui/Modal';
 import { ChangeEvent, FC, useCallback, useState } from 'react';
 import css from './ProfileModal.module.scss';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { UserThunk } from '@/entities/user/api';
+import { UserThunk } from '@/entities/user';
 
 interface ProfileModalProps {
   login: string;
@@ -23,7 +23,6 @@ export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileMo
 ) => {
   const dispatch = useAppDispatch();
   const { isActive, setIsActive } = props;
-
 
   const [password, setPassword] = useState<newPasswordProps>({
     oldPassword: '',
@@ -44,7 +43,7 @@ export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileMo
   }, []);
 
   const updatePassword = useCallback(() => {
-    const {confirm, ...updatePassword} = password;
+    const { confirm, ...updatePassword } = password;
 
     // TODO pass error to inputs
     if (updatePassword.newPassword !== confirm) {
@@ -55,7 +54,6 @@ export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileMo
     dispatch(UserThunk.updatePassword(updatePassword));
 
     setIsActive(false);
-
   }, [dispatch, password, setIsActive]);
 
   return (
@@ -66,8 +64,18 @@ export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileMo
       isCloseButtonShown={false}
     >
       <div className={css.profile__modal_fields}>
-        <Input type='password' name={'oldPassword'} placeholder='Old password' onChange={handleChange} />
-        <Input type='password' name={'newPassword'} placeholder='New password' onChange={handleChange} />
+        <Input
+          type='password'
+          name={'oldPassword'}
+          placeholder='Old password'
+          onChange={handleChange}
+        />
+        <Input
+          type='password'
+          name={'newPassword'}
+          placeholder='New password'
+          onChange={handleChange}
+        />
         <Input
           type='password'
           name={'confirm'}

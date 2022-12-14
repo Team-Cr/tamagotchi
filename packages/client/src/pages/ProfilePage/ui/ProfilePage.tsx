@@ -6,24 +6,24 @@ import { ProfileModal } from './ProfileModal';
 import css from './ProfilePage.module.scss';
 import { ArrowBack } from '@/shared/ui/ArrowBack';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
-import { UserBasicData } from '@/shared/lib/api/types/user';
-import { AuthAPI, AuthThunk } from '@/processes/auth/api';
-import { UserThunk } from '@/entities/user/api';
+import { UserThunk } from '@/entities/user';
+import { AuthThunk } from '@/processes/auth';
+import { UserBasicData } from '@/shared/lib/api';
 
 export const ProfilePage = () => {
   const user = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const [isChangePasswordModalActive, setIsChangePasswordModalActive] = useState(false);
-  const [basicData, setBasicData] = useState<UserBasicData>(user)
+  const [basicData, setBasicData] = useState<UserBasicData>(user);
+  const { phone, display_name, first_name, second_name, email } = basicData;
 
   const showModal = useCallback(() => {
     setIsChangePasswordModalActive(true);
   }, []);
 
   useEffect(() => {
-    setBasicData(user)
+    setBasicData(user);
   }, [user]);
-
 
   const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -35,12 +35,11 @@ export const ProfilePage = () => {
   }, []);
 
   const logout = useCallback(() => {
-    dispatch(AuthThunk.logout())
+    dispatch(AuthThunk.logout());
   }, [dispatch]);
 
   const saveChanges = useCallback(() => {
     dispatch(UserThunk.updateBasicData(basicData));
-
   }, [basicData, dispatch]);
 
   return (
@@ -57,23 +56,23 @@ export const ProfilePage = () => {
           <ProfileInput
             label='Name'
             name={'first_name'}
-            value={basicData.first_name}
+            value={first_name}
             onChange={handleChange}
           />
           <ProfileInput
             label='Surname'
             name={'second_name'}
-            value={basicData.second_name}
+            value={second_name}
             onChange={handleChange}
           />
           <ProfileInput
             label='Cat name'
             name={'display_name'}
-            value={basicData.display_name || ''}
+            value={display_name || ''}
             onChange={handleChange}
           />
-          <ProfileInput label='Email' name={'email'} value={basicData.email} onChange={handleChange} />
-          <ProfileInput label='Number' name={'phone'} value={basicData.phone} onChange={handleChange} />
+          <ProfileInput label='Email' name={'email'} value={email} onChange={handleChange} />
+          <ProfileInput label='Number' name={'phone'} value={phone} onChange={handleChange} />
         </div>
 
         <Button color={'success'} onClick={saveChanges}>

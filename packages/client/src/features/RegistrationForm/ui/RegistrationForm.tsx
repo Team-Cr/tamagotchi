@@ -9,14 +9,14 @@ import { images } from '@/shared/assets/images';
 import styles from './styles.module.scss';
 import { useAppDispatch } from '@/shared/lib/redux';
 import { AuthThunk } from '@/processes/auth/api';
-import { SignUpData } from '@/shared/lib/api/types/auth';
+import { SignUpData } from '@/shared/lib/api';
 
 type Props = DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
 
 export const RegistrationForm: FC<Props> = ({ ...props }) => {
   const dispatch = useAppDispatch();
   const onSubmitHandler = (values: unknown) => {
-    dispatch(AuthThunk.signUp(values as SignUpData))
+    dispatch(AuthThunk.signUp(values as SignUpData));
   };
 
   return (

@@ -4,7 +4,7 @@ import { ActionsConfig } from '../config/actionsConfig';
 import { ActionBlock, ActionBlockProps } from './ActionBlock';
 import css from './MainContainer.module.scss';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { addPoints } from '@/entities/tamagotchi/model';
+import { addPoints } from '@/entities/tamagotchi';
 
 interface MainContainerProps {
   barsPoints: BarsPointsType;
@@ -16,7 +16,7 @@ export const MainContainer = () => {
   const dispatch = useAppDispatch();
 
   const handleUpdateBarsPoints: ActionBlockProps['handleUpdateBarsPoints'] = (points) => {
-    dispatch(addPoints(points))
+    dispatch(addPoints(points));
   };
 
   return (

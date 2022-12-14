@@ -2,7 +2,7 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { ChangeEvent, FC, useCallback } from 'react';
 import css from './ProfileAvatar.module.scss';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { UserThunk } from '@/entities/user/api';
+import { UserThunk } from '@/entities/user';
 
 type ProfileAvatarProps = {
   avatar?: string;
@@ -12,19 +12,22 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
   const { avatar } = props;
   const dispatch = useAppDispatch();
 
-  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.target;
+  const handleChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { files } = event.target;
 
-    if (!files) {
-      alert('File not found');
-      return;
-    }
+      if (!files) {
+        alert('File not found');
+        return;
+      }
 
-    const formData = new FormData();
-    formData.append('avatar', files[0]);
+      const formData = new FormData();
+      formData.append('avatar', files[0]);
 
-    dispatch(UserThunk.updateAvatar(formData))
-  }, [dispatch]);
+      dispatch(UserThunk.updateAvatar(formData));
+    },
+    [dispatch],
+  );
 
   return (
     <label>

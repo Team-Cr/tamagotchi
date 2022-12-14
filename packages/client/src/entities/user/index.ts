@@ -1,1 +1,2 @@
-export * as userModel from './model';
+export * from './model';
+export * from './api';

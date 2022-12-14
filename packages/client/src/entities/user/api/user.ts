@@ -1,8 +1,7 @@
-import { AxiosResponse } from '@/shared/lib/api/types/axios'
+import { AxiosResponse } from '@/shared/lib/api/types/axios';
 import { axiosInstance } from '@/shared/lib/axios';
 import { User, UserBasicData, UserPasswordUpdate } from '@/shared/lib/api/types/user';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AuthAPI } from '@/processes/auth/api';
 
 const USER_URL = 'user';
 const PROFILE_URL = `${USER_URL}/profile`;
@@ -38,5 +37,5 @@ export const UserThunk = {
   updatePassword: createAsyncThunk('user/update_password', async (payload: UserPasswordUpdate) => {
     const response = await UserAPI.updatePassword(payload);
     return response.data;
-  })
-}
+  }),
+};
