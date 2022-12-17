@@ -1,44 +1,37 @@
-import emptyAvatar from '@/shared/assets/images/empty-avatar.png';
-import { ProfileAPI } from '@/shared/lib/api';
 import { Avatar } from '@/shared/ui/Avatar';
-import { ChangeEvent, FC, SyntheticEvent, useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useCallback } from 'react';
 import css from './ProfileAvatar.module.scss';
+import { useAppDispatch } from '@/shared/lib/redux';
+import { UserThunk } from '@/entities/user';
 
 type ProfileAvatarProps = {
-  avatar: string;
+  avatar?: string;
 };
 
 export const ProfileAvatar: FC<ProfileAvatarProps> = (props) => {
-  const { avatar = '' } = props;
-  const [image, setImage] = useState('');
+  const { avatar } = props;
+  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    setImage(avatar);
-  }, [avatar]);
+  const handleChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { files } = event.target;
 
-  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.target;
+      if (!files) {
+        alert('File not found');
+        return;
+      }
 
-    if (!files) {
-      alert('File not found');
-      return;
-    }
+      const formData = new FormData();
+      formData.append('avatar', files[0]);
 
-    const formData = new FormData();
-    formData.append('avatar', files[0]);
-
-    ProfileAPI.updateAvatar(formData)
-      .then((res) => {
-        setImage(res.data.avatar);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+      dispatch(UserThunk.updateAvatar(formData));
+    },
+    [dispatch],
+  );
 
   return (
     <label>
-      <Avatar src={image} className={css.avatar} alt='change avatar' title='Change avatar' />
+      <Avatar src={avatar || ''} className={css.avatar} alt='change avatar' title='Change avatar' />
       <input type='file' name='avatar' hidden={true} onChange={handleChange} />
     </label>
   );

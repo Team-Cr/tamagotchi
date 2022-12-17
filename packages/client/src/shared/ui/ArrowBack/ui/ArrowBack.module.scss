@@ -1,4 +1,6 @@
 .arrow {
+  cursor: pointer;
+
   position: fixed;
 
   display: flex;
@@ -8,6 +10,9 @@
   padding-left: var(--padding-left);
 
   color: var(--dark-color);
+
+  background: none;
+  border: none;
 
   svg {
     width: 75px;

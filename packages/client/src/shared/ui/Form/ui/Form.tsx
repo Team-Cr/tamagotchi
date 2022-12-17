@@ -1,7 +1,7 @@
 import { FC, useRef, useCallback, DetailedHTMLProps, FormHTMLAttributes, PropsWithChildren } from 'react';
 import { getFormValues } from '@/shared/lib/getFormValues';
 
-export type OnSubmitType = (values: unknown) => void;
+export type OnSubmitType<T = unknown> = (values: T) => void;
 
 type Props = Omit<
   DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>,
