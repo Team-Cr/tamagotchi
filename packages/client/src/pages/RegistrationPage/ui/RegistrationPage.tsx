@@ -5,10 +5,11 @@ import { images } from '@/shared/assets/images';
 import styles from './styles.module.scss';
 import { Link } from '@/shared/ui/Link';
 import { ROUTES } from '@/shared/constants/routes';
+import { TransitionBlock } from '@/widgets/Transitions/ui/TransitionBlock';
 
 export const RegistrationPage = () => {
   return (
-    <div className={styles.reg}>
+    <TransitionBlock className={styles.reg}>
       <section className={styles.reg__left}>
         <h1>Create a new story</h1>
         <img className={styles.reg__image} src={images.CatImage} alt='cat-temporary' />
@@ -20,6 +21,6 @@ export const RegistrationPage = () => {
       <section className={styles.reg__right}>
         <RegistrationForm />
       </section>
-    </div>
+    </TransitionBlock>
   );
 };

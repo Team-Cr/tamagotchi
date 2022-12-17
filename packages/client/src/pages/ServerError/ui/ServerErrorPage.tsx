@@ -1,14 +1,15 @@
 import ServerErrorImage from '@/shared/assets/images/ServerError.png'
+import { TransitionBlock } from '@/widgets/Transitions/ui/TransitionBlock';
 
 import './ServerErrorPage.scss';
 
 export const ServerErrorPage = () => {
   return (
-    <div className='not-found'>
+    <TransitionBlock className='not-found'>
       <h1 className='not-found__title'>505</h1>
       <img src={ServerErrorImage} alt="Server error icon" className='not-found__image'/>
       <p className='not-found__text'>Server currently not working</p>
       <p className='not-found__text blue'>We will fix it soon</p>
-    </div>
+    </TransitionBlock>
   );
 };
