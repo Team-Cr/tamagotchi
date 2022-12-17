@@ -1,0 +1,14 @@
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   scope: 'client',
+0 silly argv   globs: [],
+0 silly argv   lernaVersion: '6.0.3',
+0 silly argv   '$0': 'node_modules\\lerna\\cli.js',
+0 silly argv   pkg: '@redux/toolkit'
+0 silly argv }
+1 notice cli v6.0.3
+2 verbose rootPath D:\Projects\YandexPracticum\tamagotchi
+3 error HttpErrorGeneral: 404 Not Found - GET https://registry.yarnpkg.com/@redux%2ftoolkit - Not found
+3 error     at D:\Projects\YandexPracticum\tamagotchi\node_modules\npm-registry-fetch\lib\check-response.js:95:15
+3 error     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+3 error     at async RegistryFetcher.packument (D:\Projects\YandexPracticum\tamagotchi\node_modules\pacote\lib\registry.js:92:19)

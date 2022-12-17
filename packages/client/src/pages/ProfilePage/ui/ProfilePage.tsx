@@ -1,4 +1,3 @@
-import { AuthAPI, ProfileAPI, User } from '@/shared/lib/api';
 import { Button } from '@/shared/ui/Button';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { ProfileAvatar } from './ProfileAvatar';
@@ -6,59 +5,42 @@ import { ProfileInput } from './ProfileInput';
 import { ProfileModal } from './ProfileModal';
 import css from './ProfilePage.module.scss';
 import { ArrowBack } from '@/shared/ui/ArrowBack';
-
-const userInitialState: User = {
-  id: -1,
-  first_name: '',
-  second_name: '',
-  display_name: '',
-  login: '',
-  email: '',
-  phone: '',
-  avatar: '',
-};
+import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
+import { UserThunk } from '@/entities/user';
+import { AuthThunk } from '@/processes/auth';
+import { UserBasicData } from '@/shared/lib/api';
 
 export const ProfilePage = () => {
+  const user = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
   const [isChangePasswordModalActive, setIsChangePasswordModalActive] = useState(false);
-  const [user, setUser] = useState<User>(userInitialState);
+  const [basicData, setBasicData] = useState<UserBasicData>(user);
+  const { phone, display_name, first_name, second_name, email } = basicData;
 
   const showModal = useCallback(() => {
     setIsChangePasswordModalActive(true);
   }, []);
 
   useEffect(() => {
-    AuthAPI.getUser()
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+    setBasicData(user);
+  }, [user]);
 
   const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
-    setUser((prevState) => ({
+    setBasicData((prevState) => ({
       ...prevState,
-      [name as keyof User]: value,
+      [name as keyof UserBasicData]: value,
     }));
   }, []);
 
   const logout = useCallback(() => {
-    AuthAPI.logout().then(() => {
-      // TODO redirect to login
-      console.log('Logout');
-    });
-  }, []);
+    dispatch(AuthThunk.logout());
+  }, [dispatch]);
 
   const saveChanges = useCallback(() => {
-    ProfileAPI.updateData(user)
-      .then(() => {
-        alert('Profile is updated');
-      })
-      .catch((err) => console.error(err));
-  }, [user]);
+    dispatch(UserThunk.updateBasicData(basicData));
+  }, [basicData, dispatch]);
 
   return (
     <>
@@ -74,23 +56,23 @@ export const ProfilePage = () => {
           <ProfileInput
             label='Name'
             name={'first_name'}
-            value={user.first_name}
+            value={first_name}
             onChange={handleChange}
           />
           <ProfileInput
             label='Surname'
             name={'second_name'}
-            value={user.second_name}
+            value={second_name}
             onChange={handleChange}
           />
           <ProfileInput
             label='Cat name'
             name={'display_name'}
-            value={user.display_name}
+            value={display_name || ''}
             onChange={handleChange}
           />
-          <ProfileInput label='Email' name={'email'} value={user.email} onChange={handleChange} />
-          <ProfileInput label='Number' name={'phone'} value={user.phone} onChange={handleChange} />
+          <ProfileInput label='Email' name={'email'} value={email} onChange={handleChange} />
+          <ProfileInput label='Number' name={'phone'} value={phone} onChange={handleChange} />
         </div>
 
         <Button color={'success'} onClick={saveChanges}>
@@ -102,7 +84,7 @@ export const ProfilePage = () => {
         </Button>
 
         <ProfileModal
-          login={user.login}
+          login={basicData.login}
           isActive={isChangePasswordModalActive}
           setIsActive={setIsChangePasswordModalActive}
         />

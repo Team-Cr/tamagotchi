@@ -1,29 +1,32 @@
-import { PasswordUpdate, ProfileAPI, User } from '@/shared/lib/api';
+import { User } from '@/shared/lib/api';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Modal } from '@/shared/ui/Modal';
 import { ModalProps } from '@/shared/ui/Modal/ui/Modal';
 import { ChangeEvent, FC, useCallback, useState } from 'react';
 import css from './ProfileModal.module.scss';
+import { useAppDispatch } from '@/shared/lib/redux';
+import { UserThunk } from '@/entities/user';
 
 interface ProfileModalProps {
   login: string;
 }
 
 interface newPasswordProps {
-  old: string;
-  new: string;
+  oldPassword: string;
+  newPassword: string;
   confirm: string;
 }
 
 export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileModalProps> = (
   props,
 ) => {
+  const dispatch = useAppDispatch();
   const { isActive, setIsActive } = props;
 
   const [password, setPassword] = useState<newPasswordProps>({
-    old: '',
-    new: '',
+    oldPassword: '',
+    newPassword: '',
     confirm: '',
   });
 
@@ -40,24 +43,18 @@ export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileMo
   }, []);
 
   const updatePassword = useCallback(() => {
+    const { confirm, ...updatePassword } = password;
+
     // TODO pass error to inputs
-    if (password.new !== password.confirm) {
+    if (updatePassword.newPassword !== confirm) {
       return;
     }
-    const data: PasswordUpdate = {
-      oldPassword: password.old,
-      newPassword: password.new,
-    };
 
-    ProfileAPI.updatePassword(data)
-      .then(() => {
-        setIsActive(false);
-        alert('Password is changed');
-      })
-      .catch((err) => {
-        alert(err.response?.data.reason || err.message);
-      });
-  }, [password, setIsActive]);
+    // тут возможно лишний диспатч...
+    dispatch(UserThunk.updatePassword(updatePassword));
+
+    setIsActive(false);
+  }, [dispatch, password, setIsActive]);
 
   return (
     <Modal
@@ -67,8 +64,18 @@ export const ProfileModal: FC<Omit<ModalProps, 'children' | 'title'> & ProfileMo
       isCloseButtonShown={false}
     >
       <div className={css.profile__modal_fields}>
-        <Input type='password' name={'old'} placeholder='Old password' onChange={handleChange} />
-        <Input type='password' name={'new'} placeholder='New password' onChange={handleChange} />
+        <Input
+          type='password'
+          name={'oldPassword'}
+          placeholder='Old password'
+          onChange={handleChange}
+        />
+        <Input
+          type='password'
+          name={'newPassword'}
+          placeholder='New password'
+          onChange={handleChange}
+        />
         <Input
           type='password'
           name={'confirm'}

@@ -15,7 +15,9 @@ export const Avatar = (props: AvatarProps) => {
   const [imgSrc, setImgSrc] = useState('');
 
   useEffect(() => {
-    setImgSrc(ResourceAPI.getResource(src));
+    if (src) {
+      setImgSrc(ResourceAPI.getResource(src));
+    }
   }, [src]);
 
   const noImageHandler = useCallback((e: SyntheticEvent<HTMLImageElement, Event>) => {

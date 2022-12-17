@@ -2,11 +2,16 @@ import { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
 import { startServiceWorker } from './services/startServiceWorker';
 import './styles/index.scss';
+import { useAppDispatch } from '@/shared/lib/redux';
+import { AuthThunk } from '@/processes/auth';
 
 startServiceWorker();
 
 export const App = () => {
   const { toggleFullscreen } = useFullscreen();
+
+  const dispatch = useAppDispatch();
+  dispatch(AuthThunk.getUser());
 
   useEffect(() => {
     const toggleFullscreenOnKeyUp = (e: KeyboardEvent) => {
