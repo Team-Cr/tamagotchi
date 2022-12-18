@@ -1,4 +1,4 @@
-import { TransitionBlock } from '@/widgets/Transitions/ui/TransitionBlock';
+import { TransitionBlock } from '@/widgets/Transitions';
 import { MainContainer } from './MainContainer';
 import { MainFooter } from './MainFooter';
 import { MainHeader } from './MainHeader';

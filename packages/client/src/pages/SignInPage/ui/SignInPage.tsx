@@ -3,14 +3,14 @@ import image from '@/shared/assets/images/gatito_paradax3.gif';
 import iconBtn from '@/shared/assets/images/pow2.png';
 import { SigninData } from '@/shared/lib/api';
 import { Button } from '@/shared/ui/Button';
-import { Input } from '@/shared/ui/Input/ui/Input';
+import { Input } from '@/shared/ui/Input';
 import { Link } from '@/shared/ui/Link';
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import styles from './SignInPage.module.scss';
-import { AuthThunk } from '@/processes/auth/api';
+import { AuthThunk } from '@/processes/auth';
 import { useAppDispatch } from '@/shared/lib/redux';
 import { ROUTES } from '@/shared/constants/routes';
-import { TransitionBlock } from '@/widgets/Transitions/ui/TransitionBlock';
+import { TransitionBlock } from '@/widgets/Transitions';
 
 const SignInPage = () => {
   const [form, setForm] = useState<SigninData>({ login: '', password: '' });

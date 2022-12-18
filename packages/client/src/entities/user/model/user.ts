@@ -1,10 +1,9 @@
 import {
-  createAsyncThunk,
   createSlice,
 } from '@reduxjs/toolkit';
 import { User } from '@/shared/lib/api';
-import { UserThunk } from '@/entities/user/api';
-import { AuthThunk } from '@/processes/auth/api';
+import { UserThunk } from '@/entities/user';
+import { AuthThunk } from '@/processes/auth';
 
 export const emptyUserState: User = {
   id: 0,

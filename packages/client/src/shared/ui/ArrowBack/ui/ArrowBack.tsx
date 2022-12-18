@@ -13,12 +13,12 @@ export const ArrowBack = (props: ArrowBackProps) => {
   const { className = '' } = props;
   const navigate = useNavigate();
 
-  const handleClick = useCallback(() => {
+  const goBack = useCallback(() => {
     navigate(-1);
   }, [navigate]);
 
   return (
-    <button className={classNames(css.arrow, className)} onClick={handleClick}>
+    <button className={classNames(css.arrow, className)} onClick={goBack}>
       <BackSvg />
     </button>
   );

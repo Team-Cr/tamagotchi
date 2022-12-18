@@ -8,7 +8,7 @@ import { images } from '@/shared/assets/images';
 
 import styles from './styles.module.scss';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { AuthThunk } from '@/processes/auth/api';
+import { AuthThunk } from '@/processes/auth';
 import { SignUpData } from '@/shared/lib/api';
 
 type Props = DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;

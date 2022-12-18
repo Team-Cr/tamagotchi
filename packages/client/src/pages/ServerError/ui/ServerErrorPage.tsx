@@ -1,5 +1,5 @@
 import ServerErrorImage from '@/shared/assets/images/ServerError.png'
-import { TransitionBlock } from '@/widgets/Transitions/ui/TransitionBlock';
+import { TransitionBlock } from '@/widgets/Transitions';
 
 import './ServerErrorPage.scss';
 

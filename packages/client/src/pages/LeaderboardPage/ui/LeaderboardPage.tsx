@@ -1,6 +1,6 @@
 import { GetLeaderboardProps, LeaderboardAPI, LeaderboardData } from '@/shared/lib/api';
 import { ArrowBack } from '@/shared/ui/ArrowBack';
-import { TransitionBlock } from '@/widgets/Transitions/ui/TransitionBlock';
+import { TransitionBlock } from '@/widgets/Transitions';
 import { useEffect, useState } from 'react';
 import { LeaderboardEntry } from './LeaderboardEntry';
 import css from './LeaderboardPage.module.scss';

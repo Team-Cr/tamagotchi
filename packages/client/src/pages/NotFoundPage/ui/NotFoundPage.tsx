@@ -1,5 +1,5 @@
 import NotFoundImage from '@/shared/assets/images/NotFound.png';
-import { TransitionBlock } from '@/widgets/Transitions/ui/TransitionBlock';
+import { TransitionBlock } from '@/widgets/Transitions';
 import { Link } from 'react-router-dom';
 
 import './NotFoundPage.scss';

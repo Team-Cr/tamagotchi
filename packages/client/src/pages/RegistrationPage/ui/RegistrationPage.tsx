@@ -5,7 +5,7 @@ import { images } from '@/shared/assets/images';
 import styles from './styles.module.scss';
 import { Link } from '@/shared/ui/Link';
 import { ROUTES } from '@/shared/constants/routes';
-import { TransitionBlock } from '@/widgets/Transitions/ui/TransitionBlock';
+import { TransitionBlock } from '@/widgets/Transitions';
 
 export const RegistrationPage = () => {
   return (
