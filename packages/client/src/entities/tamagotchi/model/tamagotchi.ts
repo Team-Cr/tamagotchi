@@ -1,3 +1,5 @@
+import { store } from '@/app/store';
+import { playActionSound } from '@/entities/sounds';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type Tamagotchi = {
@@ -20,6 +22,7 @@ export const tamagotchiModel = createSlice({
   name: '@@TAMAGOTCHI',
   reducers: {
     addPoints: (state, { payload: { hp, level } }: PayloadAction<BarsPointsType>) => {
+      // store.dispatch(playActionSound())
       const {hpCurrent, hpMax, expCurrent, expMax} = state;
 
       const hpSum = hpCurrent + hp;

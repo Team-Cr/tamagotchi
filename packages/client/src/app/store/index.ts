@@ -3,17 +3,21 @@ import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import { userModel } from '@/entities/user/model';
 import { tamagotchiModel } from '@/entities/tamagotchi/model';
+import { animationRefModel } from '@/entities/animationRef';
+import { soundsModel } from '@/entities/sounds';
 
 export const store = configureStore({
   reducer: {
     user: userModel.reducer,
     tamagotchi: tamagotchiModel.reducer,
+    animationRef: animationRefModel.reducer,
+    sounds: soundsModel.reducer,
   },
   middleware: (getDefaultMiddleware) => {
     const middlewares = [];
     if (__MODE__ === 'development') {
       middlewares.push(logger);
     }
-    return getDefaultMiddleware().concat(middlewares);
+    return getDefaultMiddleware({ serializableCheck: false }).concat(middlewares);
   },
 });

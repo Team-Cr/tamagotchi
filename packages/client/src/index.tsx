@@ -6,6 +6,7 @@ import { store } from '@/app/store';
 import { FullscreenProvider } from './app/providers/FullscreenProvider';
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
