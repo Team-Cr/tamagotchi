@@ -2,7 +2,7 @@ import { NotFoundPage } from '@/pages';
 import { ROUTES } from '@/shared/constants/routes';
 import { AnimatePresence } from 'framer-motion';
 import { Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { appRoutes } from '../lib/appRoutes';
 import { ProtectedLoginRoute } from '../lib/protectedLoginRoute';
 import { ProtectedMainRoute } from '../lib/protectedMainRoute';
@@ -13,7 +13,7 @@ interface WithRouterProps {
 
 export const RouterProvider = (props: WithRouterProps) => {
   return (
-    <>
+    <Router>
       <AnimatePresence mode='wait'>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes location={location} key={location.pathname}>
@@ -21,9 +21,9 @@ export const RouterProvider = (props: WithRouterProps) => {
               <Route
                 path={route.route}
                 element={
-                  route.isProtected === 'main' ? <ProtectedMainRoute /> : <ProtectedLoginRoute />
+                  route.protectedType === 'main' ? <ProtectedMainRoute /> : <ProtectedLoginRoute />
                 }
-                key={Date.now()}
+                key={`${route.route}-${Date.now()}`}
               >
                 <Route path={route.route} element={route.element} />
               </Route>
@@ -34,6 +34,6 @@ export const RouterProvider = (props: WithRouterProps) => {
         </Suspense>
       </AnimatePresence>
       {props.children}
-    </>
+    </Router>
   );
 };

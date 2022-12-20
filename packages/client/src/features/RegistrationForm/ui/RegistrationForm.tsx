@@ -24,7 +24,7 @@ export const RegistrationForm: FC<Props> = ({ ...props }) => {
       <div className={styles.form__fields}>
         <Input placeholder='Name' type='text' name='first_name' />
         <Input placeholder='Surname' type='text' name='second_name' />
-        <Input placeholder='Email' type='text' name='email' />
+        <Input placeholder='Email' type='email' name='email' />
         <Input placeholder='Phone number' type='number' name='phone' />
         <Input placeholder='Login' type='text' name='login' />
         <Input placeholder='Password' type='password' name='password' />

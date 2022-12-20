@@ -5,7 +5,7 @@ import './styles/index.scss';
 import { useAppDispatch } from '@/shared/lib/redux';
 import { AuthThunk } from '@/processes/auth';
 
-// startServiceWorker();
+startServiceWorker();
 
 export const App = () => {
   const { toggleFullscreen } = useFullscreen();

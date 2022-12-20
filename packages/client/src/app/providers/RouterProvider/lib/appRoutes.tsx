@@ -1,36 +1,36 @@
-import { LeaderboardPage, MainPage, ProfilePage, RegistrationPage, SignInPage } from "@/pages";
-import { ROUTES } from "@/shared/constants/routes";
+import { LeaderboardPage, MainPage, ProfilePage, RegistrationPage, SignInPage } from '@/pages';
+import { ROUTES } from '@/shared/constants/routes';
 
 interface AppRoute {
   element: React.ReactNode;
   route: ROUTES;
-  isProtected?: 'main' | 'login' ;
+  protectedType?: 'main' | 'login';
 }
 
 export const appRoutes: AppRoute[] = [
   {
     element: <MainPage />,
     route: ROUTES.Main,
-    isProtected: "main",
+    protectedType: 'main',
   },
   {
     element: <ProfilePage />,
     route: ROUTES.Profile,
-    isProtected: "main",
+    protectedType: 'main',
   },
   {
     element: <LeaderboardPage />,
     route: ROUTES.LeaderBoard,
-    isProtected: "main",
+    protectedType: 'main',
   },
   {
     element: <SignInPage />,
     route: ROUTES.Login,
-    isProtected: "login",
+    protectedType: 'login',
   },
   {
-    element: <RegistrationPage/>,
+    element: <RegistrationPage />,
     route: ROUTES.SignUp,
-    isProtected: "login",
+    protectedType: 'login',
   },
 ];
