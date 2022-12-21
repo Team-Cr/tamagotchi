@@ -1,0 +1,26 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  &__title {
+    font-size: 130px;
+  }
+
+  &__image {
+    height: 40vh;
+
+    object-fit: contain;
+  }
+
+  &__text {
+    &.blue {
+      color: #4e6eac;
+    }
+  }
+}

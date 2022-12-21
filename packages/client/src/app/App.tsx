@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import {  useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
 import { startServiceWorker } from './services/startServiceWorker';
 import './styles/index.scss';

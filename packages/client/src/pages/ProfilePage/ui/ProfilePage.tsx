@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
 import { UserThunk } from '@/entities/user';
 import { AuthThunk } from '@/processes/auth';
 import { UserBasicData } from '@/shared/lib/api';
+import { TransitionBlock } from '@/widgets/Transitions';
 
 export const ProfilePage = () => {
   const user = useAppSelector((state) => state.user);
@@ -43,7 +44,7 @@ export const ProfilePage = () => {
   }, [basicData, dispatch]);
 
   return (
-    <>
+    <TransitionBlock>
       <ArrowBack />
       <div className={css.profile__container}>
         <ProfileAvatar avatar={user.avatar} />
@@ -89,6 +90,6 @@ export const ProfilePage = () => {
           setIsActive={setIsChangePasswordModalActive}
         />
       </div>
-    </>
+    </TransitionBlock>
   );
 };
