@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import * as process from 'process';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ export default defineConfig({
     __TEAM_NAME__: JSON.stringify(process.env.TEAM_NAME),
     __BASE_URL__: JSON.stringify(process.env.BASE_URL),
     __MODE__: JSON.stringify(process.env.MODE),
+    __APP_URL__: JSON.stringify(process.env.APP_URL)
   },
   plugins: [react(), tsconfigPaths(), svgr({ exportAsDefault: true })],
 });

@@ -13,9 +13,8 @@ export const RegistrationPage = () => {
       <section className={styles.reg__left}>
         <h1>Create a new story</h1>
         <img className={styles.reg__image} src={images.CatImage} alt='cat-temporary' />
-        <Link href={ROUTES.Login} className={styles.reg__desc}>
-          <Typography>I already have a</Typography>
-          <img src={images.CatPixelImage} alt='cat-pixel-icon' />
+        <Link href={ROUTES.Login} className={styles.reg__desc} icon={images.CatPixelImage}>
+          <Typography>I already have a </Typography>
         </Link>
       </section>
       <section className={styles.reg__right}>

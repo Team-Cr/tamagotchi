@@ -27,7 +27,7 @@ export const AuthAPI = {
   signUp: (data: SignUpData): AxiosResponse =>
     axiosInstance.post(Routes.SIGN_UP, data),
   logout: (): AxiosResponse => axiosInstance.post(Routes.LOGOUT),
-  getUser: (): AxiosResponse<User> => axiosInstance.get(Routes.GET_USER),
+  getUser: (): AxiosResponse<User> => axiosInstance.get(Routes.GET_USER)
 };
 
 
@@ -50,4 +50,5 @@ export const AuthThunk = {
     const response = await AuthAPI.getUser();
     return response.data;
   }),
+
 }
