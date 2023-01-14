@@ -4631,7 +4631,7 @@ forwarded@0.2.0:
   resolved "https://registry.npmjs.org/forwarded/-/forwarded-0.2.0.tgz"
   integrity sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==
 
-framer-motion@^7.10.2:
+framer-motion@7.10.2:
   version "7.10.2"
   resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.10.2.tgz#e89d17ba98737355b09334c579e2317e0d4c171f"
   integrity sha512-2OAII9hjpMNz2Nbl2w09uKo7A0bD6xRtGnCZbPzuGGueucWgmSBLjAwzPhXwzCQWMpL3LU8jmXHjxAwIyjslxg==
@@ -7786,7 +7786,7 @@ react-refresh@^0.14.0:
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz"
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
 
-react-router-dom@^6.5.0:
+react-router-dom@6.5.0:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.5.0.tgz#3970bdcaa7c710a6e0b478a833ba0b4b8ae61a6f"
   integrity sha512-/XzRc5fq80gW1ctiIGilyKFZC/j4kfe75uivMsTChFbkvrK4ZrF3P3cGIc1f/SSkQ4JiJozPrf+AwUHHWVehVg==

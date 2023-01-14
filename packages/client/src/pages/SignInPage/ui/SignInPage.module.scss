@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: auto 1fr 0.4fr 1fr auto;
   column-gap: 50px;
+  row-gap: 10px;
 
   margin: 0;
 
@@ -91,4 +92,5 @@
   .signin__img {
     width: 200px;
   }
+
 }

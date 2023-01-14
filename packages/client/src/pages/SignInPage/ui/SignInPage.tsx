@@ -1,6 +1,7 @@
 import iconLnk from '@/shared/assets/images/cat.png';
 import image from '@/shared/assets/images/gatito_paradax3.gif';
 import iconBtn from '@/shared/assets/images/pow2.png';
+
 import { SigninData } from '@/shared/lib/api';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
@@ -11,6 +12,7 @@ import { AuthThunk } from '@/processes/auth';
 import { useAppDispatch } from '@/shared/lib/redux';
 import { ROUTES } from '@/shared/constants/routes';
 import { TransitionBlock } from '@/widgets/Transitions';
+import { SignInOAuth } from '@/pages/SignInPage/ui/SignInOAuth/ui/SignInOAuth';
 
 const SignInPage = () => {
   const [form, setForm] = useState<SigninData>({ login: '', password: '' });
@@ -32,6 +34,8 @@ const SignInPage = () => {
     [form],
   );
 
+
+
   return (
     <TransitionBlock>
       <form onSubmit={onSubmit}>
@@ -49,6 +53,8 @@ const SignInPage = () => {
           </div>
 
           <div className={styles.signin__fields}>
+            <SignInOAuth/>
+
             <Input
               name='login'
               type='text'

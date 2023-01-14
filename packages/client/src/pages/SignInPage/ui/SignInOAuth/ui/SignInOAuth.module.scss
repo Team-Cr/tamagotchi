@@ -1,0 +1,38 @@
+.signin__oauth {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+
+  padding: 14px;
+
+  border-bottom: 8px solid var(--primary-color);
+
+  &_title {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    color: var(--secondary-color);
+  }
+
+  &_item {
+    width: 64px;
+    height: 64px;
+
+    border-radius: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .signin__oauth_item {
+    width: 48px;
+    height: 48px;
+  }
+}
