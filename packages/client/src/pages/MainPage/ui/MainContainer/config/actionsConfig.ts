@@ -39,7 +39,7 @@ export const ActionsConfig: ActionConfig[] = [
   {
     image: CatPawWithFish,
     text: 'ATTACK',
-    pointsForAction: { level: 10, hp: -5 },
+    pointsForAction: { level: 10, hp: -15 },
     keyboardKey: 'f',
   },
 ];
