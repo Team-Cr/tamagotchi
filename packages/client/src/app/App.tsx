@@ -1,13 +1,21 @@
-import {  useEffect } from 'react';
+/* eslint-disable react-hooks/rules-of-hooks */
+import { AuthThunk } from '@/processes/auth';
+import { useAppDispatch } from '@/shared/lib/redux';
+import { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
+import { AppRouter } from './providers/RouterProvider';
 import { startServiceWorker } from './services/startServiceWorker';
 import './styles/index.scss';
-import { useAppDispatch } from '@/shared/lib/redux';
-import { AuthThunk } from '@/processes/auth';
 
-startServiceWorker();
+if (typeof navigator !== 'undefined') {
+  startServiceWorker();
+}
 
 export const App = () => {
+  if (typeof window === 'undefined') {
+    return <div>SSR</div>;
+  }
+
   const { toggleFullscreen } = useFullscreen();
 
   const dispatch = useAppDispatch();
@@ -26,5 +34,9 @@ export const App = () => {
     return () => document.removeEventListener('keyup', toggleFullscreenOnKeyUp);
   }, [toggleFullscreen]);
 
-  return <></>;
+  return (
+    <>
+      <AppRouter />
+    </>
+  );
 };

@@ -2,9 +2,12 @@
   "name": "client",
   "version": "0.0.0",
   "type": "module",
+  "main": "src/entry-client.tsx",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "cross-env NODE_ENV=development vite",
+    "build:client": "cross-env NODE_ENV=production tsc && vite build --config vite.config.ts",
+    "build:ssr": "cross-env NODE_ENV=production tsc && vite build --config vite-ssr.config.ts",
+    "build": "rm -rf ./dist && yarn build:client && yarn build:ssr",
     "preview": "vite preview",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint .",
@@ -56,8 +59,7 @@
     "ts-jest": "28.0.8",
     "typescript": "4.8.2",
     "vite": "3.0.7",
-    "vite-plugin-svgr": "2.2.2",
-    "vite-tsconfig-paths": "3.6.0"
+    "vite-plugin-svgr": "2.2.2"
   },
   "license": "MIT"
 }
