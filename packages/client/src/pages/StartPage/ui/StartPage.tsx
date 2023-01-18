@@ -8,7 +8,7 @@ import css from './StartPage.module.scss';
 
 const screensNumber = StartScreens.length;
 
-export const StartPage = () => {
+const StartPage = () => {
   const [screenId, setScreenId] = useState(0);
   const [isStartPageActive, setIsStartPageActive] = useState(true);
 
@@ -59,3 +59,6 @@ export const StartPage = () => {
     </Modal>
   );
 };
+
+// eslint-disable-next-line import/no-default-export
+export default StartPage;

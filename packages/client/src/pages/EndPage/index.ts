@@ -1,1 +1,1 @@
-export { EndPage } from './ui/EndPage';
+export { EndPageAsync as EndPage } from './ui/EndPage.async';

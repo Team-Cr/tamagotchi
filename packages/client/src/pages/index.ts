@@ -1,7 +1,7 @@
-export { NotFoundPage } from './NotFoundPage';
-export { ServerErrorPage } from './ServerError';
+export { LeaderboardPage } from './LeaderboardPage';
 export { MainPage } from './MainPage';
+export { NotFoundPage } from './NotFoundPage';
 export { ProfilePage } from './ProfilePage';
 export { RegistrationPage } from './RegistrationPage';
+export { ServerErrorPage } from './ServerError';
 export { SignInPage } from './SignInPage';
-export { LeaderboardPage } from './LeaderboardPage';

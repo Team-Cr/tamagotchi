@@ -1,5 +1,6 @@
 import { NotFoundPage } from '@/pages';
 import { ROUTES } from '@/shared/constants/routes';
+import { Loader } from '@/shared/ui/Loader';
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { appRoutes } from '../lib/appRoutes';
@@ -8,7 +9,7 @@ import { ProtectedMainRoute } from '../lib/protectedMainRoute';
 
 export const AppRouter = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loader />}>
       <Routes location={location} key={location.pathname}>
         {appRoutes.map((route) => (
           <Route

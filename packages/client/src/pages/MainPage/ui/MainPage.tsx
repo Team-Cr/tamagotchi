@@ -5,7 +5,7 @@ import { MainHeader } from './MainHeader';
 
 import css from './MainPage.module.scss';
 
-export const MainPage = () => {
+const MainPage = () => {
   return (
     <TransitionBlock className={css.main}>
       <MainHeader />
@@ -14,3 +14,6 @@ export const MainPage = () => {
     </TransitionBlock>
   );
 };
+
+// eslint-disable-next-line import/no-default-export
+export default MainPage;
