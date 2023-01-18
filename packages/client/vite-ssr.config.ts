@@ -13,6 +13,7 @@ export default defineConfig({
     __MODE__: JSON.stringify(process.env.NODE_ENV),
   },
   build: {
+    ssr: true,
     emptyOutDir: false,
     lib: {
       entry: path.resolve(__dirname, './src/entry-server.tsx'),
@@ -27,6 +28,9 @@ export default defineConfig({
         dir: 'dist/ssr',
       },
     },
+  },
+  ssr: {
+    format: 'cjs',
   },
   plugins: [react(), svgr({ exportAsDefault: true })],
   resolve: {
