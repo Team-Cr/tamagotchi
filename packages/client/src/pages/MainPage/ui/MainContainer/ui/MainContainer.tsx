@@ -1,16 +1,9 @@
+import { addPoints } from '@/entities/tamagotchi';
 import CatPicture from '@/shared/assets/images/mainCat.png';
-import { Dispatch, SetStateAction } from 'react';
+import { useAppDispatch } from '@/shared/lib/redux';
 import { ActionsConfig } from '../config/actionsConfig';
 import { ActionBlock, ActionBlockProps } from './ActionBlock';
 import css from './MainContainer.module.scss';
-import { useAppDispatch } from '@/shared/lib/redux';
-import { addPoints } from '@/entities/tamagotchi';
-
-interface MainContainerProps {
-  barsPoints: BarsPointsType;
-  setBarsPoints: Dispatch<SetStateAction<BarsPointsType>>;
-  setCurrentLevel: Dispatch<SetStateAction<number>>;
-}
 
 export const MainContainer = () => {
   const dispatch = useAppDispatch();
