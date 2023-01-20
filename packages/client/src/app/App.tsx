@@ -1,14 +1,16 @@
+import { AuthThunk } from '@/processes/auth';
+import { useAppDispatch } from '@/shared/lib/redux';
 import { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
+import { useNotifications } from './providers/NotificationsProvider';
+import { startServiceWorker } from './services/startServiceWorker';
 import './styles/index.scss';
-import { useAppDispatch } from '@/shared/lib/redux';
-import { AuthThunk } from '@/processes/auth';
-import { startServiceWorker } from '@/app/services/startServiceWorker';
 
 startServiceWorker();
 
 export const App = () => {
   const { toggleFullscreen } = useFullscreen();
+  const { isEnabled, enableNotifications } = useNotifications();
 
   const dispatch = useAppDispatch();
   dispatch(AuthThunk.getUser());
@@ -25,6 +27,12 @@ export const App = () => {
     document.addEventListener('keyup', toggleFullscreenOnKeyUp);
     return () => document.removeEventListener('keyup', toggleFullscreenOnKeyUp);
   }, [toggleFullscreen]);
+
+  useEffect(() => {
+    if (!isEnabled) {
+      enableNotifications();
+    }
+  }, [isEnabled, enableNotifications]);
 
   return <></>;
 };
