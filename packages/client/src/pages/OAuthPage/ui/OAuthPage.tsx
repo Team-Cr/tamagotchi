@@ -6,21 +6,15 @@ import { TransitionBlock } from '@/widgets/Transitions';
 import { ROUTES } from '@/shared/constants/routes';
 import { ErrorBanner } from '@/shared/ui/ErrorBanner';
 import { SpinnerPaw } from '@/shared/ui/SpinnerPaw';
-import { useAppSelector } from '@/shared/lib/redux';
 
 export const OAuthPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [error, setError] = useState('');
-  const user = useAppSelector((state) => state.user);
 
   const code = searchParams.get('code');
 
   const checkCode = () => {
-    console.log(user);
-    if (user.login) {
-      navigate(ROUTES.Main);
-    }
     if (code) {
       YandexOAuth.auth(code)
         .then(() => navigate(ROUTES.Main))
