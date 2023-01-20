@@ -4,5 +4,6 @@ export enum ROUTES {
   SignUp = '/sign-up',
   Profile = '/profile',
   LeaderBoard = '/leaderboard',
+  OAuth = '/oauth',
   NotFound = '*',
 }

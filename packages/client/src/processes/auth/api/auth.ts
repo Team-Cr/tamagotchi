@@ -2,9 +2,9 @@ import { AxiosResponse } from '@/shared/lib/api/types/axios';
 import { SigninData, User } from '@/shared/lib/api';
 import { axiosInstance } from '@/shared/lib/axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { UserBasicData } from '@/shared/lib/api/types/user';
 import { emptyUserState, userModel } from '@/entities/user/model';
 import { SignUpData } from '@/shared/lib/api/types/auth';
+import { YandexOAuthResponse } from '@/processes/auth';
 
 const AUTH_URL = 'auth';
 
@@ -15,6 +15,10 @@ const Routes = {
   GET_USER: `${AUTH_URL}/user`,
 };
 
+// combine OAuth responses
+// example:  OAuthResponse = YandexOAuthResponse | GoogleOAuthResponse | etc.
+export type OAuthResponse = YandexOAuthResponse;
+
 export const AuthAPI = {
   signIn: (data: SigninData): AxiosResponse =>
     axiosInstance.post(Routes.SIGN_IN, data, {
@@ -24,12 +28,10 @@ export const AuthAPI = {
         Expires: '0',
       },
     }),
-  signUp: (data: SignUpData): AxiosResponse =>
-    axiosInstance.post(Routes.SIGN_UP, data),
+  signUp: (data: SignUpData): AxiosResponse => axiosInstance.post(Routes.SIGN_UP, data),
   logout: (): AxiosResponse => axiosInstance.post(Routes.LOGOUT),
-  getUser: (): AxiosResponse<User> => axiosInstance.get(Routes.GET_USER)
+  getUser: (): AxiosResponse<User> => axiosInstance.get(Routes.GET_USER),
 };
-
 
 export const AuthThunk = {
   signIn: createAsyncThunk('auth/sign_in', async (payload: SigninData) => {
@@ -50,5 +52,4 @@ export const AuthThunk = {
     const response = await AuthAPI.getUser();
     return response.data;
   }),
-
-}
+};

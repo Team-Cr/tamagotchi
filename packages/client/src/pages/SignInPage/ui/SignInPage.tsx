@@ -12,7 +12,7 @@ import { AuthThunk } from '@/processes/auth';
 import { useAppDispatch } from '@/shared/lib/redux';
 import { ROUTES } from '@/shared/constants/routes';
 import { TransitionBlock } from '@/widgets/Transitions';
-import { SignInOAuth } from '@/pages/SignInPage/ui/SignInOAuth/ui/SignInOAuth';
+import { OAuthPanel } from '@/pages/SignInPage/ui/OAuthPanel';
 
 const SignInPage = () => {
   const [form, setForm] = useState<SigninData>({ login: '', password: '' });
@@ -34,8 +34,6 @@ const SignInPage = () => {
     [form],
   );
 
-
-
   return (
     <TransitionBlock>
       <form onSubmit={onSubmit}>
@@ -53,7 +51,7 @@ const SignInPage = () => {
           </div>
 
           <div className={styles.signin__fields}>
-            <SignInOAuth/>
+            <OAuthPanel />
 
             <Input
               name='login'

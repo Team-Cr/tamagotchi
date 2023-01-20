@@ -1,5 +1,6 @@
 import { LeaderboardPage, MainPage, ProfilePage, RegistrationPage, SignInPage } from '@/pages';
 import { ROUTES } from '@/shared/constants/routes';
+import { OAuthPage } from '@/pages/OAuthPage';
 
 interface AppRoute {
   element: React.ReactNode;
@@ -31,6 +32,11 @@ export const appRoutes: AppRoute[] = [
   {
     element: <RegistrationPage />,
     route: ROUTES.SignUp,
+    protectedType: 'login',
+  },
+  {
+    element: <OAuthPage />,
+    route: ROUTES.OAuth,
     protectedType: 'login',
   },
 ];

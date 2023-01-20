@@ -1,9 +1,9 @@
-import {  useEffect } from 'react';
+import { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
-import { startServiceWorker } from './services/startServiceWorker';
 import './styles/index.scss';
 import { useAppDispatch } from '@/shared/lib/redux';
 import { AuthThunk } from '@/processes/auth';
+import { startServiceWorker } from '@/app/services/startServiceWorker';
 
 startServiceWorker();
 
