@@ -1,7 +1,6 @@
 import { ROUTES } from '@/shared/constants/routes';
 import { axiosInstance } from '@/shared/lib/axios';
 import { AxiosResponse } from '@/shared/lib/api/types/axios';
-import { redirect } from 'react-router-dom';
 
 const BASE_URL = '/oauth/yandex';
 const BASE_REDIRECT = `${__APP_URL__}${ROUTES.OAuth}`;
@@ -27,15 +26,19 @@ export const YandexOAuth = {
       },
     }),
   getOAuthLink: (client_id: string, redirect_uri: string = BASE_REDIRECT): string => {
-    const query = {
+    const url = new URL('https://oauth.yandex.ru/authorize');
+
+    const query: Record<string, string> = {
       response_type: 'code',
       client_id,
       redirect_uri,
     };
 
-    const uri = 'https://oauth.yandex.ru/authorize?' + new URLSearchParams(query);
+    Object.keys(query).forEach((key) => {
+      url.searchParams.append(key, query[key]);
+    });
 
-    return 'https://oauth.yandex.ru/authorize?' + new URLSearchParams(query);
+    return url.href;
   },
   auth: (code: string, redirect_uri: string = BASE_REDIRECT): AxiosResponse =>
     axiosInstance.post(Routes.AUTH, {
