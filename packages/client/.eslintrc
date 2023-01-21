@@ -39,6 +39,16 @@
       }
     ]
   },
+  "overrides": [
+    {
+      "files": [
+        "./src/pages/*/ui/*.tsx"
+      ],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    }
+  ],
   "settings": {
     "react": {
       "pragma": "React",
