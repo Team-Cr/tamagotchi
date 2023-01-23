@@ -1,17 +1,17 @@
+import { UserThunk } from '@/entities/user';
+import { AuthThunk } from '@/processes/auth';
+import { UserBasicData } from '@/shared/lib/api';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
+import { ArrowBack } from '@/shared/ui/ArrowBack';
 import { Button } from '@/shared/ui/Button';
+import { TransitionBlock } from '@/widgets/Transitions';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { ProfileAvatar } from './ProfileAvatar';
 import { ProfileInput } from './ProfileInput';
 import { ProfileModal } from './ProfileModal';
 import css from './ProfilePage.module.scss';
-import { ArrowBack } from '@/shared/ui/ArrowBack';
-import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
-import { UserThunk } from '@/entities/user';
-import { AuthThunk } from '@/processes/auth';
-import { UserBasicData } from '@/shared/lib/api';
-import { TransitionBlock } from '@/widgets/Transitions';
 
-export const ProfilePage = () => {
+const ProfilePage = () => {
   const user = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const [isChangePasswordModalActive, setIsChangePasswordModalActive] = useState(false);
@@ -93,3 +93,5 @@ export const ProfilePage = () => {
     </TransitionBlock>
   );
 };
+
+export default ProfilePage;

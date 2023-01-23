@@ -7,9 +7,11 @@
       "DOM.Iterable",
       "ESNext"
     ],
-    "plugins": [{
-      "name": "typescript-plugin-css-modules"
-    }],
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": false,
@@ -23,21 +25,25 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@/*": [
-        "src/*"
+        "./src/*"
       ],
     }
   },
   "include": [
     "vite.config.ts",
+    "vite-ssr.config.ts",
     "**/*.ts",
     "**/*.tsx",
     "src",
     "typings/add.d.ts"
   ],
-  "typeRoots": ["node_modules/@types", "./typings/add.d.ts"],
+  "typeRoots": [
+    "node_modules/@types",
+    "./typings/add.d.ts"
+  ],
   "exclude": [
     "node_modules"
   ],
