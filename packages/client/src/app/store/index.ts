@@ -1,14 +1,27 @@
 import { configureStore } from '@reduxjs/toolkit';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import logger from 'redux-logger';
-import { userModel } from '@/entities/user/model';
-import { tamagotchiModel } from '@/entities/tamagotchi/model';
+import { emptyUserState, userModel } from '@/entities/user/model';
+import { initialState, tamagotchiModel } from '@/entities/tamagotchi/model';
+
+export const appInitialState = {
+  user: emptyUserState,
+  tamagotchi: initialState,
+};
+
+const preloadedState = typeof window !== 'undefined' ? window.__PRELOADED_STATE__ : undefined;
+
+// @ts-ignore
+if (typeof window !== 'undefined') {
+  delete window.__PRELOADED_STATE__;
+}
 
 export const store = configureStore({
   reducer: {
     user: userModel.reducer,
     tamagotchi: tamagotchiModel.reducer,
   },
+  preloadedState,
   middleware: (getDefaultMiddleware) => {
     const middlewares = [];
     if (__MODE__ === 'development') {
