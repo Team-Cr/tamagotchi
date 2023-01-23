@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { endScreen } from '../config/endScreens';
 import css from './EndPage.module.scss';
 
-export const EndPage = () => {
+const EndPage = () => {
   const [isEndPageActive, setIsEndPageActive] = useState(true);
 
   const { title, text, imgSrc } = endScreen;
@@ -30,3 +30,5 @@ export const EndPage = () => {
     </Modal>
   );
 };
+
+export default EndPage;

@@ -1,16 +1,15 @@
+import { AuthThunk } from '@/processes/auth';
 import iconLnk from '@/shared/assets/images/cat.png';
 import image from '@/shared/assets/images/gatito_paradax3.gif';
 import iconBtn from '@/shared/assets/images/pow2.png';
-
+import { ROUTES } from '@/shared/constants/routes';
 import { SigninData } from '@/shared/lib/api';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Link } from '@/shared/ui/Link';
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import styles from './SignInPage.module.scss';
-import { AuthThunk } from '@/processes/auth';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { ROUTES } from '@/shared/constants/routes';
 import { TransitionBlock } from '@/widgets/Transitions';
 import { OAuthPanel } from '@/pages/SignInPage/ui/OAuthPanel';
 
@@ -85,4 +84,4 @@ const SignInPage = () => {
   );
 };
 
-export { SignInPage };
+export default SignInPage;

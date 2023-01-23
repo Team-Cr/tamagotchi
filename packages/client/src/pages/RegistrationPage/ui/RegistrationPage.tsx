@@ -1,13 +1,12 @@
-import { Typography } from '@/shared/ui/Typography';
 import { RegistrationForm } from '@/features/RegistrationForm';
 import { images } from '@/shared/assets/images';
-
-import styles from './styles.module.scss';
-import { Link } from '@/shared/ui/Link';
 import { ROUTES } from '@/shared/constants/routes';
+import { Link } from '@/shared/ui/Link';
+import { Typography } from '@/shared/ui/Typography';
 import { TransitionBlock } from '@/widgets/Transitions';
+import styles from './styles.module.scss';
 
-export const RegistrationPage = () => {
+const RegistrationPage = () => {
   return (
     <TransitionBlock className={styles.reg}>
       <section className={styles.reg__left}>
@@ -23,3 +22,5 @@ export const RegistrationPage = () => {
     </TransitionBlock>
   );
 };
+
+export default RegistrationPage;

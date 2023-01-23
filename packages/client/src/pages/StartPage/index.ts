@@ -1,1 +1,1 @@
-export { StartPage } from './ui/StartPage';
+export { StartPageAsync as StartPage } from './ui/StartPage.async';

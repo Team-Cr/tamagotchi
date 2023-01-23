@@ -13,7 +13,7 @@ const LeaderboardConfig: GetLeaderboardProps = {
   ratingFieldName: 'level',
 };
 
-export const LeaderboardPage = () => {
+const LeaderboardPage = () => {
   const [entries, setEntries] = useState<LeaderboardData[]>([]);
 
   useEffect(() => {
@@ -53,3 +53,5 @@ export const LeaderboardPage = () => {
     </TransitionBlock>
   );
 };
+
+export default LeaderboardPage;

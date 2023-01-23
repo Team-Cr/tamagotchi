@@ -1,31 +1,36 @@
 import react from '@vitejs/plugin-react';
-import dotenv from 'dotenv';
 import path from 'path';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 
-dotenv.config();
-
 // https://vitejs.dev/config/
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
-  server: {
-    port: Number(process.env.CLIENT_PORT) || 3000,
-  },
   define: {
-    __SERVER_PORT__: process.env.SERVER_PORT || 3001,
+    __SERVER_PORT__: process.env.SERVER_PORT,
     __TEAM_NAME__: JSON.stringify(process.env.TEAM_NAME),
     __BASE_URL__: JSON.stringify(process.env.BASE_URL),
-    __APP_URL__: JSON.stringify(process.env.APP_URL),
     __MODE__: JSON.stringify(process.env.NODE_ENV),
   },
   build: {
+    ssr: true,
     emptyOutDir: false,
+    lib: {
+      entry: path.resolve(__dirname, './src/entry-server.tsx'),
+      name: 'Client',
+      formats: ['cjs'],
+    },
     rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, './src/index.html'),
+      },
       output: {
-        dir: 'dist/client',
+        dir: 'dist/ssr',
       },
     },
+  },
+  ssr: {
+    format: 'cjs',
   },
   plugins: [react(), svgr({ exportAsDefault: true })],
   resolve: {

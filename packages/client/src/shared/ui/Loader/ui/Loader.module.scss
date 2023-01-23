@@ -1,0 +1,26 @@
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: inline-block;
+
+  box-sizing: border-box;
+  width: 96px;
+  height: 96px;
+
+  border: 10px dotted var(--dark-color);
+  border-radius: 50%;
+
+  animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
