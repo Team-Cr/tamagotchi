@@ -13,10 +13,6 @@ if (typeof navigator !== 'undefined') {
 }
 
 export const App = () => {
-  if (typeof window === 'undefined') {
-    return <React.Fragment />;
-  }
-
   const { toggleFullscreen } = useFullscreen();
   const { isEnabled, enableNotifications } = useNotifications();
 

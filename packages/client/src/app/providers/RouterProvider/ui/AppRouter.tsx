@@ -1,5 +1,6 @@
 import { NotFoundPage } from '@/pages';
 import { ROUTES } from '@/shared/constants/routes';
+import { SuspenseHelper } from '@/shared/lib/redux/suspenseHelper';
 import { Loader } from '@/shared/ui/Loader';
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -9,8 +10,8 @@ import { ProtectedMainRoute } from '../lib/protectedMainRoute';
 
 export const AppRouter = () => {
   return (
-    <Suspense fallback={<Loader />}>
-      <Routes location={location} key={location.pathname}>
+    <SuspenseHelper fallback={<Loader />}>
+      <Routes>
         {appRoutes.map((route) => (
           <Route
             path={route.route}
@@ -25,6 +26,6 @@ export const AppRouter = () => {
 
         <Route path={ROUTES.NotFound} element={<NotFoundPage />} />
       </Routes>
-    </Suspense>
+    </SuspenseHelper>
   );
 };

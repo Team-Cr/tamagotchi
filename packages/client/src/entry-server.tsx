@@ -6,7 +6,7 @@ import { store } from './app/store';
 import { StaticRouter } from 'react-router-dom/server';
 
 export function render(url: string | Partial<Location>) {
-  return (
+  const html =
     ReactDOMServer.renderToString(
       <StaticRouter location={url}>
         <Provider store={store}>
@@ -15,7 +15,8 @@ export function render(url: string | Partial<Location>) {
       </StaticRouter>,
     ) +
     `
-  <script> window.__PRELOADED_STATE__=${JSON.stringify(appInitialState)}</script>
-`
-  );
+<script> window.__PRELOADED_STATE__=${JSON.stringify(appInitialState)}</script>
+`;
+
+  return html;
 }
