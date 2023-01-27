@@ -17,7 +17,7 @@
 .link__container {
   position: relative;
 
-  height: 40px;
+  height: max-content;
 }
 
 @media screen and (max-width: 768px) {

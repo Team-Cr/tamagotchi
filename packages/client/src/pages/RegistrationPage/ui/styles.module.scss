@@ -3,6 +3,10 @@
   align-items: center;
   justify-content: space-between;
 
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-top: var(--padding-top);
+
   &__left {
     display: flex;
     flex-direction: column;

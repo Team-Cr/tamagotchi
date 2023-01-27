@@ -1,0 +1,19 @@
+.header {
+  // position: sticky;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  height: 140px;
+
+  font: var(--title-font);
+  color: white;
+  text-transform: uppercase;
+
+  background-color: var(--dark-color);
+  background-image: url('../../../../shared/assets/images/MessagePattern.png');
+  background-repeat: repeat;
+  background-position-y: 50%;
+}
