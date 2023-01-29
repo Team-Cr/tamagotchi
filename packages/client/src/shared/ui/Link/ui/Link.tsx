@@ -8,13 +8,14 @@ interface LinkProps {
   children?: ReactNode;
   icon?: string;
   className?: string;
+  state?: Record<string, unknown>;
 }
 
 const Link = (props: LinkProps) => {
-  const { href, children, icon, className = '' } = props;
+  const { href, children, icon, className = '', state = {} } = props;
   return (
     <div className={classNames(css.link__container, className)}>
-      <RouterLink className={css.link} to={href}>
+      <RouterLink className={css.link} to={href} state={state}>
         {children && <span>{children}</span>}
         {icon && <img className={css.link__icon} src={icon} alt='Icon' />}
       </RouterLink>

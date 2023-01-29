@@ -2,7 +2,6 @@ import { NotFoundPage } from '@/pages';
 import { ROUTES } from '@/shared/constants/routes';
 import { SuspenseHelper } from '@/shared/lib/redux/suspenseHelper';
 import { Loader } from '@/shared/ui/Loader';
-import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { appRoutes } from '../lib/appRoutes';
 import { ProtectedLoginRoute } from '../lib/protectedLoginRoute';

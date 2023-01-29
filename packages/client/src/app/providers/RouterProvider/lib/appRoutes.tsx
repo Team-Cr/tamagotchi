@@ -1,5 +1,5 @@
 import { LeaderboardPage, MainPage, ProfilePage, RegistrationPage, SignInPage } from '@/pages';
-import { ForumPage } from '@/pages/ForumPage';
+import { ForumPage, TopicListPage, TopicPage } from '@/pages/ForumPage';
 import { OAuthPage } from '@/pages/OAuthPage';
 import { ROUTES } from '@/shared/constants/routes';
 
@@ -31,12 +31,12 @@ export const appRoutes: AppRoute[] = [
     protectedType: 'main',
   },
   {
-    element: <ForumPage />,
-    route: ROUTES.Topics,
+    element: <TopicListPage />,
+    route: ROUTES.TopicList,
     protectedType: 'main',
   },
   {
-    element: <ForumPage />,
+    element: <TopicPage />,
     route: ROUTES.Topic,
     protectedType: 'main',
   },

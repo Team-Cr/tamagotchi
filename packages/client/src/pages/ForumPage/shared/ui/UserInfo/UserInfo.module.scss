@@ -1,0 +1,44 @@
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+
+  width: 300px;
+  padding: 20px;
+
+  border: 4px solid rgb(0 0 0 / 20%);
+  border-radius: 20px;
+
+  &__avatar {
+    width: 70px;
+    height: 70px;
+
+    border-radius: 10px;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    max-width: 170px;
+
+    span {
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &:nth-child(1) {
+        font: var(--regular-font);
+      }
+
+      &:nth-child(2) {
+        font: var(--regular-sm-font);
+        color: #aae2fa;
+      }
+    }
+  }
+}
