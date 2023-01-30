@@ -8,7 +8,7 @@ export type Tamagotchi = {
   expMax: number;
 };
 
-const initialState: Tamagotchi = {
+export const initialState: Tamagotchi = {
   level: 1,
   hpCurrent: 100,
   hpMax: 100,
