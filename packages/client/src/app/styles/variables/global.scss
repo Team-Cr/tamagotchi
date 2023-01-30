@@ -1,7 +1,11 @@
+@import '../themes/dark';
+
 :root {
-  // light theme
-  
-  // colors
+  // gradient colors
+  --light: #d8dbe0;
+  --dark: #28292c;
+  --link: rgb(27 129 112);
+  --link-hover: rgb(24 94 82);
   --medium-pink-color: #d58383;
   --dark-color: #201d0c;
   --brown-color: #793c3b;
@@ -11,8 +15,7 @@
   --primary-color: #cf5c36;
   --success-color: #4ab00b;
   --input-color: #fff9c7;
-  
-  // gradient colors
+  --text-primary: black;
   --blue-gradient: linear-gradient(
     180deg,
     #5f9fff 0%,
@@ -43,7 +46,7 @@
     #5b5b5b 81.1%,
     #5b5b5b 100%
   );
-  
+
   // app padding
   --padding-top: 110px;
   --padding-bottom: 110px;
@@ -105,7 +108,7 @@
 
   // fonts
   --font-family: 'VT323';
-  
+
   // title
   --title-font-size: 96px;
   --title-font-weight: 400;
@@ -113,7 +116,7 @@
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --title-font: var(--title-font-weight) var(--title-font-size) / var(--title-line-height)
     var(--font-family);
-  
+
   // main header title
   --main-header-title-font-size: 150px;
   --main-header-title-font-weight: 400;
@@ -137,7 +140,7 @@
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --regular-font: var(--regular-font-weight) var(--regular-font-size) / var(--regular-line-height)
     var(--font-family);
-  
+
   // regular-sm
   --regular-sm-font-size: 40px;
   --regular-sm-font-weight: 400;
@@ -145,7 +148,7 @@
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --regular-sm-font: var(--regular-sm-font-weight) var(--regular-sm-font-size) /
     var(--regular-sm-line-height) var(--font-family);
-  
+
   // mobile fonts
   // m-title
   --m-title-font-size: 64px;
@@ -154,7 +157,7 @@
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --m-title-font: var(--m-title-font-weight) var(--m-title-font-size) / var(--m-title-line-height)
     var(--font-family);
-  
+
   // m-regular
   --m-regular-font-size: 36px;
   --m-regular-font-weight: 400;
@@ -162,7 +165,7 @@
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --m-regular-font: var(--m-regular-font-weight) var(--m-regular-font-size) /
     var(--m-regular-line-height) var(--font-family);
-  
+
   // m-regular-sm
   --m-regular-sm-sm-font-size: 28px;
   --m-regular-sm-font-weight: 400;
@@ -170,4 +173,31 @@
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --m-regular-sm-font: var(--m-regular-sm-font-weight) var(--m-regular-sm-font-size) /
     var(--m-regular-sm-line-height) var(--font-family);
+
+  // light theme
+
+  // colors
+  .theme-light {
+    --medium-pink-color: #d58383;
+    --dark-color: #201d0c;
+    --brown-color: #793c3b;
+    --light-pink-color: #ffefef;
+    --background-color: #ffe761;
+    --secondary-color: #484848;
+    --primary-color: #cf5c36;
+    --success-color: #4ab00b;
+    --input-color: #fff9c7;
+  }
+
+  .theme-dark {
+    --medium-pink-color: #d58383;
+    --dark-color: #201d0c;
+    --brown-color: #793c3b;
+    --light-pink-color: #ffefef;
+    --background-color: #252630;
+    --secondary-color: #484848;
+    --primary-color: #cf5c36;
+    --success-color: #4ab00b;
+    --input-color: #fff9c7;
+  }
 }
