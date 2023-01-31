@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
 import { Topic } from './Topic';
 

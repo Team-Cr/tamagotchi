@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Column, DataType, HasOne, Model, PrimaryKey, Table } from 'sequelize-typescript';
 import { Character } from './Character';
 
