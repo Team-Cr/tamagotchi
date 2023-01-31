@@ -1,5 +1,14 @@
-import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  HasMany,
+  Model,
+  Table,
+} from 'sequelize-typescript';
 import { Forum } from './Forum';
+import { Comment } from './Comment';
 
 @Table({ tableName: 'topics' })
 export class Topic extends Model {
@@ -15,4 +24,7 @@ export class Topic extends Model {
 
   @BelongsTo(() => Forum)
   forum!: Forum;
+
+  @HasMany(() => Comment)
+  comments!: Comment[];
 }
