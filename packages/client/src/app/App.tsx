@@ -13,9 +13,6 @@ if (typeof navigator !== 'undefined') {
 }
 
 export const App = () => {
-  if (typeof window === 'undefined') {
-    return <div>Todo: add redux in ssr</div>;
-  }
   const { toggleFullscreen } = useFullscreen();
   const { isEnabled, enableNotifications } = useNotifications();
 
