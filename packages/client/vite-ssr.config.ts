@@ -11,6 +11,7 @@ export default defineConfig({
     __TEAM_NAME__: JSON.stringify(process.env.TEAM_NAME),
     __BASE_URL__: JSON.stringify(process.env.BASE_URL),
     __MODE__: JSON.stringify(process.env.NODE_ENV),
+    __APP_URL__: JSON.stringify(process.env.APP_URL),
   },
   build: {
     ssr: true,

@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import type { ViteDevServer } from 'vite';
 import { createServer as createViteServer } from 'vite';
+import { dbConnect } from './database/connect';
 
 dotenv.config();
 
@@ -13,6 +14,8 @@ const port = Number(process.env.SERVER_PORT) || 3001;
 const distPath = path.dirname(require.resolve('client/dist/client/index.html'));
 const srcPath = path.resolve(require.resolve('client'), '../../');
 const ssrClientPath = require.resolve('client/dist/ssr/entry-server.cjs');
+
+dbConnect();
 
 async function startServer(isDev = process.env.NODE_ENV === 'development') {
   const app = express();
