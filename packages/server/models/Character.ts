@@ -9,7 +9,10 @@ export class Character extends Model {
   @Column(DataType.INTEGER)
   hp!: number;
 
-  @Column(DataType.DATE) // DATETIME for mysql / sqlite, TIMESTAMP WITH TIME ZONE for postgres
+  @Column({
+    type: DataType.DATE, // DATETIME for mysql / sqlite, TIMESTAMP WITH TIME ZONE for postgres
+    field: 'last_active_time',
+  })
   lastActiveTime!: Date;
 
   @ForeignKey(() => User)
