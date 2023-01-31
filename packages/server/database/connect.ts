@@ -24,9 +24,10 @@ export async function dbConnect() {
     await sequelize.authenticate(); // Проверка аутентификации в БД
     await sequelize.sync(); // Синхронизация базы данных
     await User.create({
-      id: '1',
+      id: '3',
       name: 'test',
     });
+    console.log(await User.findAll());
     console.log('Connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);

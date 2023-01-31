@@ -1,7 +1,7 @@
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from 'sequelize-typescript';
 import { User } from './User';
 
-@Table({ tableName: 'forums' })
+@Table({ tableName: 'characters' })
 export class Character extends Model {
   @Column(DataType.INTEGER)
   experience!: number;
