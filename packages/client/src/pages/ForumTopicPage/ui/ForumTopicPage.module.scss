@@ -1,0 +1,12 @@
+.topic_comments {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  max-width: 1020px;
+  max-height: 60vh;
+  margin: auto;
+  margin-top: 65px;
+  padding: 0 20px;
+}
