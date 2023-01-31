@@ -1,18 +1,19 @@
+import MessageSrc from '@/shared/assets/images/comment.png';
 import { Link } from '@/shared/ui/Link';
-import MessageSrc from '../../assets/comment.png';
-import { UserInfo, UserInfoProps } from '../UserInfo/UserInfo';
-import css from './Entry.module.scss';
+import { ForumUserInfo, ForumUserInfoProps } from '../../ForumUserInfo';
 
-interface EntryProps {
+import css from './ForumEntry.module.scss';
+
+interface ForumEntryProps {
   title: string;
   topicsNum?: number;
   commentsNum?: number;
-  author: UserInfoProps;
+  author: ForumUserInfoProps;
   id: string;
   state?: Record<string, unknown>;
 }
 
-export const Entry = (props: EntryProps) => {
+export const ForumEntry = (props: ForumEntryProps) => {
   const { title, topicsNum, commentsNum, author, id, state } = props;
 
   return (
@@ -28,7 +29,7 @@ export const Entry = (props: EntryProps) => {
           {topicsNum && <li>{topicsNum} topics</li>}
           {commentsNum && <li>{commentsNum} comments</li>}
         </ul>
-        <UserInfo {...author} />
+        <ForumUserInfo {...author} />
       </div>
     </div>
   );

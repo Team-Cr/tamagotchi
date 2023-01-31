@@ -1,13 +1,13 @@
 import { Avatar } from '@/shared/ui/Avatar';
-import css from './UserInfo.module.scss';
+import css from './ForumUserInfo.module.scss';
 
-export interface UserInfoProps {
+export interface ForumUserInfoProps {
   name: string;
   date?: string;
   avatarUrl: string;
 }
 
-export const UserInfo = (props: UserInfoProps) => {
+export const ForumUserInfo = (props: ForumUserInfoProps) => {
   const { name, date, avatarUrl } = props;
 
   return (

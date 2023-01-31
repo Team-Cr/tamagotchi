@@ -1,6 +1,14 @@
-import { LeaderboardPage, MainPage, ProfilePage, RegistrationPage, SignInPage } from '@/pages';
-import { ForumPage, TopicListPage, TopicPage } from '@/pages/ForumPage';
-import { OAuthPage } from '@/pages/OAuthPage';
+import {
+  ForumPage,
+  ForumTopicPage,
+  ForumTopicsPage,
+  LeaderboardPage,
+  MainPage,
+  OAuthPage,
+  ProfilePage,
+  RegistrationPage,
+  SignInPage,
+} from '@/pages';
 import { ROUTES } from '@/shared/constants/routes';
 
 interface AppRoute {
@@ -31,12 +39,12 @@ export const appRoutes: AppRoute[] = [
     protectedType: 'main',
   },
   {
-    element: <TopicListPage />,
-    route: ROUTES.TopicList,
+    element: <ForumTopicsPage />,
+    route: ROUTES.ForumTopics,
     protectedType: 'main',
   },
   {
-    element: <TopicPage />,
+    element: <ForumTopicPage />,
     route: ROUTES.Topic,
     protectedType: 'main',
   },

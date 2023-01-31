@@ -1,10 +1,10 @@
-import css from './Header.module.scss';
+import css from './ForumHeader.module.scss';
 
-interface HeaderProps {
+interface ForumHeaderProps {
   title: string;
 }
 
-export const Header = (props: HeaderProps) => {
+export const ForumHeader = (props: ForumHeaderProps) => {
   const { title } = props;
 
   return (

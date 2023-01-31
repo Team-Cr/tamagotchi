@@ -1,5 +1,6 @@
-import { Entry } from '../../shared/ui/Entry/Entry';
-import { Header } from '../../shared/ui/Header/Header';
+import { ArrowBack } from '@/shared/ui/ArrowBack';
+import { ForumEntry } from '@/shared/ui/ForumEntry';
+import { ForumHeader } from '@/shared/ui/ForumHeader';
 import css from './ForumPage.module.scss';
 
 const testData = [
@@ -74,10 +75,11 @@ const testData = [
 const ForumPage = () => {
   return (
     <>
-      <Header title='Forums' />
+      <ArrowBack />
+      <ForumHeader title='Forums' />
       <div className={css.forum_entries}>
         {testData.map((data, index) => (
-          <Entry key={index} {...data} state={{ forumTitle: data.title }} />
+          <ForumEntry key={index} {...data} state={{ forumTitle: data.title }} />
         ))}
       </div>
     </>

@@ -1,7 +1,8 @@
+import { ArrowBack } from '@/shared/ui/ArrowBack';
+import { ForumEntry } from '@/shared/ui/ForumEntry';
+import { ForumHeader } from '@/shared/ui/ForumHeader';
 import { useLocation } from 'react-router-dom';
-import { Entry } from '../../shared/ui/Entry/Entry';
-import { Header } from '../../shared/ui/Header/Header';
-import css from './TopicListPage.module.scss';
+import css from './ForumTopicsPage.module.scss';
 
 const testData = [
   {
@@ -26,14 +27,15 @@ const testData = [
   },
 ];
 
-const TopicListPage = () => {
+const ForumTopicsPage = () => {
   const { state } = useLocation();
   return (
     <>
-      <Header title={state.forumTitle || ''} />
+      <ArrowBack />
+      <ForumHeader title={state.forumTitle || ''} />
       <div className={css.topic_entries}>
         {testData.map((data, index) => (
-          <Entry key={index} {...data} state={{ topicTitle: data.title }} />
+          <ForumEntry key={index} {...data} state={{ topicTitle: data.title }} />
         ))}
       </div>
     </>
@@ -41,4 +43,4 @@ const TopicListPage = () => {
 };
 
 // eslint-disable-next-line import/no-default-export
-export default TopicListPage;
+export default ForumTopicsPage;

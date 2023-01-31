@@ -7,6 +7,6 @@ export enum ROUTES {
   OAuth = '/oauth',
   NotFound = '*',
   Forums = '/forums',
-  TopicList = '/forums/:id',
+  ForumTopics = '/forums/:id',
   Topic = '/forums/:forumId/:topicId',
 }
