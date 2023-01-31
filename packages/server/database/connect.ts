@@ -24,6 +24,7 @@ export async function dbConnect() {
     await sequelize.authenticate(); // Проверка аутентификации в БД
     await sequelize.sync(); // Синхронизация базы данных
     await User.create({
+      id: '1',
       name: 'test',
     });
     console.log('Connection has been established successfully.');

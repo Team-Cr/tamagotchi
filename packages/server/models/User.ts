@@ -1,8 +1,8 @@
-import { AllowNull, Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, Model, PrimaryKey, Table } from 'sequelize-typescript';
 
-@Table
+@Table({ tableName: 'users' })
 export class User extends Model {
-  @AllowNull(false)
-  @Column(DataType.STRING)
-  name!: string;
+  @PrimaryKey
+  @Column(DataType.INTEGER)
+  override id!: number;
 }
