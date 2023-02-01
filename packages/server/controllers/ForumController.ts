@@ -1,6 +1,7 @@
 import type { BaseRESTService } from 'service';
 import type { Request, Response } from 'express';
 import { Forum } from '../models/Forum';
+import { Topic } from '../models/Topic';
 
 export class ForumController implements BaseRESTService {
   public static request = async (_request: Request, response: Response) => {
@@ -12,7 +13,7 @@ export class ForumController implements BaseRESTService {
   public static find = async (request: Request, response: Response) => {
     const { id } = request.params;
 
-    const forum = await Forum.findByPk(id);
+    const forum = await Forum.findByPk(id, { include: Topic });
 
     return response.status(200).json(forum);
   };

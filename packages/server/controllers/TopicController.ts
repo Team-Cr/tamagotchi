@@ -2,6 +2,7 @@ import type { BaseRESTService } from 'service';
 import type { Request, Response } from 'express';
 import { Topic } from '../models/Topic';
 import { Forum } from '../models/Forum';
+import { Comment } from '../models/Comment';
 
 export class TopicController implements BaseRESTService {
   public static request = async (_request: Request, response: Response) => {
@@ -13,14 +14,14 @@ export class TopicController implements BaseRESTService {
   public static find = async (request: Request, response: Response) => {
     const { id } = request.params;
 
-    const topic = await Topic.findByPk(id);
+    const topic = await Topic.findByPk(id, { include: Comment });
 
     return response.status(200).json(topic);
   };
 
   public static create = async (request: Request, response: Response) => {
-    const { body } = request;
-    const { forumId } = request.params;
+    const { body, params } = request;
+    const { forumId } = params;
 
     try {
       const forum = await Forum.findByPk(forumId);

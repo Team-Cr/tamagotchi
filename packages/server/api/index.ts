@@ -6,5 +6,6 @@ const ApiRouter = Router();
 
 ApiRouter.use('/forum', ForumAPI);
 ApiRouter.use('/topic', TopicAPI);
+// ApiRouter.use('/comment', CommentAPI);
 
 export { ApiRouter };

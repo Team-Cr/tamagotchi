@@ -20,7 +20,7 @@ export class Topic extends Model {
   @Column(DataType.INTEGER)
   forumId!: number;
 
-  @BelongsTo(() => Forum, { foreignKey: 'forumId' })
+  @BelongsTo(() => Forum)
   forum!: Forum;
 
   @HasMany(() => Comment)

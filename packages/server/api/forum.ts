@@ -3,8 +3,9 @@ import { ForumController, TopicController } from '../controllers';
 
 export const ForumAPI = Router();
 
-ForumAPI.get('/', ForumController.request)
+ForumAPI.get('', ForumController.request)
   .get('/:id', ForumController.find)
-  .post('/', ForumController.create)
-  .post('/:forumId/topic', TopicController.create)
-  .delete('/:id');
+  .post('', ForumController.create)
+  .delete('/:id')
+
+  .post('/:forumId/topic', TopicController.create);
