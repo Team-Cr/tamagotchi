@@ -2,7 +2,7 @@ import { GetLeaderboardProps, LeaderboardAPI, LeaderboardData } from '@/shared/l
 import { ArrowBack } from '@/shared/ui/ArrowBack';
 import { TransitionBlock } from '@/widgets/Transitions';
 import { useEffect, useState } from 'react';
-import { LeaderboardForumEntry } from './LeaderboardForumEntry';
+import { LeaderboardEntry } from './LeaderboardEntry';
 import css from './LeaderboardPage.module.scss';
 
 const userId = 2;
@@ -36,7 +36,7 @@ const LeaderboardPage = () => {
         <div className={css.layout__entries}>
           {entries.length !== 0 ? (
             entries.map(({ id, avatarUrl, name, daysActive, level }) => (
-              <LeaderboardForumEntry
+              <LeaderboardEntry
                 key={id}
                 avatarUrl={avatarUrl}
                 name={name}

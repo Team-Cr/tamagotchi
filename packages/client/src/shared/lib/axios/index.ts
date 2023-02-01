@@ -7,3 +7,11 @@ export const axiosInstance = axios.create({
   },
   withCredentials: true,
 });
+
+export const axiosAPIInstance = axios.create({
+  baseURL: __API_URL__,
+  headers: {
+    'content-type': 'application/json',
+  },
+  withCredentials: true,
+});

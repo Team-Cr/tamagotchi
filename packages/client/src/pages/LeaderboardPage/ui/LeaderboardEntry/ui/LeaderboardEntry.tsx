@@ -1,11 +1,11 @@
 import { LeaderboardData } from '@/shared/lib/api';
 import { Avatar } from '@/shared/ui/Avatar';
 import classNames from 'classnames';
-import css from './LeaderboardForumEntry.module.scss';
+import css from './LeaderboardEntry.module.scss';
 
-type LeaderboardForumEntryProps = Omit<LeaderboardData, 'id'> & { checked: boolean };
+type LeaderboardEntryProps = Omit<LeaderboardData, 'id'> & { checked: boolean };
 
-export const LeaderboardForumEntry = (props: LeaderboardForumEntryProps) => {
+export const LeaderboardEntry = (props: LeaderboardEntryProps) => {
   const { avatarUrl, name, daysActive, level, checked } = props;
 
   return (

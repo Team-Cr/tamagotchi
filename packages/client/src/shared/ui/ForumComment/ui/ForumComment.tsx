@@ -15,8 +15,6 @@ export const ForumComment = (props: ForumCommentProps) => {
   const user = useAppSelector((state) => state.user);
   const { id, senderImgSrc, senderName, text, date } = props;
 
-  console.log({ user });
-
   return (
     <div className={classNames(css.comment, { [css.own]: id === user.id })}>
       <div className={css.comment__header}>
