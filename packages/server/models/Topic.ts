@@ -17,13 +17,10 @@ export class Topic extends Model {
   title!: string;
 
   @ForeignKey(() => Forum)
-  @Column({
-    type: DataType.INTEGER,
-    field: 'forum_id',
-  })
+  @Column(DataType.INTEGER)
   forumId!: number;
 
-  @BelongsTo(() => Forum)
+  @BelongsTo(() => Forum, { foreignKey: 'forumId' })
   forum!: Forum;
 
   @HasMany(() => Comment)

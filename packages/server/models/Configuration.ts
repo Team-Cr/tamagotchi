@@ -6,17 +6,11 @@ import { Theme } from './Theme';
 @Table({ tableName: 'configurations' })
 export class Configuration extends Model {
   @ForeignKey(() => User)
-  @Column({
-    type: DataType.INTEGER,
-    field: 'user_id',
-  })
+  @Column(DataType.INTEGER)
   userId!: number;
 
   @ForeignKey(() => Theme)
-  @Column({
-    type: DataType.INTEGER,
-    field: 'theme_id',
-  })
+  @Column(DataType.INTEGER)
   themeId!: number;
 
   @BelongsTo(() => User)

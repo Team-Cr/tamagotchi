@@ -17,10 +17,7 @@ export class Comment extends Model {
   text!: string;
 
   @ForeignKey(() => User)
-  @Column({
-    type: DataType.INTEGER,
-    field: 'user_id',
-  })
+  @Column(DataType.INTEGER)
   userId!: number;
 
   @ForeignKey(() => Topic)
