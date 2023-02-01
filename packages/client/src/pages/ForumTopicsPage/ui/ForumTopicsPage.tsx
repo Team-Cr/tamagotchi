@@ -13,19 +13,33 @@ const ForumTopicsPage = () => {
   const [entries, setEntries] = useState<Topic[]>([]);
   const [isModalActive, setIsModalActive] = useState(false);
 
-  useEffect(() => {
-    ForumAPI.getTopics(state.forumId)
-      .then((res) => {
-        const data = res.data;
-        console.log(res);
-        setEntries(data);
-      })
-      .catch((e) => console.log({ e }));
-  }, [setEntries, state]);
-
   const toggleModal = useCallback(() => {
     setIsModalActive((isModalActive) => !isModalActive);
   }, []);
+
+  const getTopics = useCallback(() => {
+    ForumAPI.getTopics(state.forumId)
+      .then((res) => {
+        const data = res.data;
+        setEntries(data);
+      })
+      .catch((e) => console.log({ e }));
+  }, [state]);
+
+  const onCreateTopic = useCallback(
+    async (forumId: number, title: string) => {
+      await ForumAPI.createTopic(forumId, {
+        title,
+      });
+      getTopics();
+      setIsModalActive(false);
+    },
+    [getTopics],
+  );
+
+  useEffect(() => {
+    getTopics();
+  }, [getTopics]);
 
   return (
     <>
@@ -38,6 +52,7 @@ const ForumTopicsPage = () => {
         isActive={isModalActive}
         setIsActive={setIsModalActive}
         forumId={state.forumId}
+        onCreateTopic={onCreateTopic}
       />
       <div className={css.topic_entries}>
         {entries.map((data, index) => (

@@ -37,16 +37,13 @@ export class TopicController implements BaseRESTService {
   public static create = async (request: Request, response: Response) => {
     const { body } = request;
     const forumId = Number(request.query['forumId']);
-
     try {
       const forum = await Forum.findByPk(forumId);
       if (!forum) {
         return response.status(404).json({ reason: 'Forum not found' });
       }
 
-      console.log({ ...body, forum_id: forumId });
       const topic = await Topic.create({ ...body, forum_id: forumId });
-      console.log(topic);
       return response.status(200).json({ id: topic.id });
     } catch (err) {
       return response.status(400).json({ reason: 'Wrong request', error: err });

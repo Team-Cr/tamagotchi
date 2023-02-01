@@ -14,7 +14,7 @@ export const ForumAPI = {
     forumId: Forum['id'],
     payload: Pick<Topic, 'title'>,
   ): AxiosResponse<Pick<Topic, 'id'>> =>
-    axiosAPIInstance.post(TOPIC_URL, { params: { forumId }, payload }),
+    axiosAPIInstance.post(TOPIC_URL, payload, { params: { forumId } }),
 };
 
 // .post('/:forumId/topic', TopicController.create);

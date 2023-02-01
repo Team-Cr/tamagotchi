@@ -1,4 +1,3 @@
-import { ForumAPI } from '@/shared/lib/api';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Modal } from '@/shared/ui/Modal';
@@ -8,6 +7,7 @@ import {
   SetStateAction,
   SyntheticEvent,
   useCallback,
+  useEffect,
   useState,
 } from 'react';
 
@@ -15,26 +15,27 @@ interface AddTopicModalProps {
   isActive: boolean;
   setIsActive: Dispatch<SetStateAction<boolean>>;
   forumId: number;
+  onCreateTopic: (forumId: number, title: string) => void;
 }
 
 export const AddTopicModal = (props: AddTopicModalProps) => {
-  const { isActive, setIsActive, forumId } = props;
+  const { isActive, setIsActive, forumId, onCreateTopic } = props;
   const [title, setTitle] = useState('');
 
   const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   }, []);
 
+  useEffect(() => {
+    if (!isActive) setTitle('');
+  }, [isActive]);
+
   const createTopic = useCallback(
     (e: SyntheticEvent<HTMLFormElement>) => {
       e.preventDefault();
-      ForumAPI.createTopic(forumId, {
-        title,
-      });
-      setTitle('');
-      setIsActive(false);
+      onCreateTopic(forumId, title);
     },
-    [forumId, title, setTitle, setIsActive],
+    [onCreateTopic, forumId, title],
   );
 
   return (
