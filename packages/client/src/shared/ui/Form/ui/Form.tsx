@@ -1,4 +1,12 @@
-import { FC, useRef, useCallback, DetailedHTMLProps, FormHTMLAttributes, PropsWithChildren } from 'react';
+import {
+  DetailedHTMLProps,
+  FC,
+  FormHTMLAttributes,
+  PropsWithChildren,
+  SyntheticEvent,
+  useCallback,
+  useRef,
+} from 'react';
 import { getFormValues } from '@/shared/lib/getFormValues';
 
 export type OnSubmitType<T = unknown> = (values: T) => void;
@@ -10,15 +18,11 @@ type Props = Omit<
   onSubmit: OnSubmitType;
 };
 
-export const Form: FC<PropsWithChildren<Props>> = ({
-  onSubmit,
-  children,
-  ...props
-}) => {
-  const formRef = useRef<HTMLFormElement | null>(null);
+export const Form: FC<PropsWithChildren<Props>> = ({ onSubmit, children, ...props }) => {
+  const formRef = useRef<HTMLFormElement>(null);
 
   const onSubmitHandler = useCallback(
-    (e: React.SyntheticEvent) => {
+    (e: SyntheticEvent) => {
       e.preventDefault();
       e.stopPropagation();
       if (formRef.current) {
@@ -31,8 +35,8 @@ export const Form: FC<PropsWithChildren<Props>> = ({
   );
 
   return (
-      <form onSubmit={onSubmitHandler} ref={formRef} {...props}>
-        {children}
-      </form>
+    <form onSubmit={onSubmitHandler} ref={formRef} {...props}>
+      {children}
+    </form>
   );
 };

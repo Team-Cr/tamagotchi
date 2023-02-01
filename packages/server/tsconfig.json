@@ -5,6 +5,8 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
@@ -21,7 +23,7 @@
     "lib": [
       "DOM",
       "es2019",
-      "esnext.asynciterable",
+      "esnext.asynciterable"
     ],
     "types": [
       "node",

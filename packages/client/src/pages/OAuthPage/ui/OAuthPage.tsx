@@ -17,7 +17,10 @@ export const OAuthPage = () => {
   const checkCode = () => {
     if (code) {
       YandexOAuth.auth(code)
-        .then(() => navigate(ROUTES.Main))
+        .then((res) => {
+          console.log(res.data);
+          return navigate(ROUTES.Main);
+        })
         .catch((err) => {
           setError(err.response.data.reason);
         });

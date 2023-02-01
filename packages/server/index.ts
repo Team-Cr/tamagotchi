@@ -5,6 +5,9 @@ import fs from 'fs';
 import path from 'path';
 import type { ViteDevServer } from 'vite';
 import { createServer as createViteServer } from 'vite';
+import { dbConnect } from './database/connect';
+import { ApiRouter } from './api';
+import bodyParser from 'body-parser';
 
 dotenv.config();
 
@@ -17,6 +20,9 @@ const ssrClientPath = require.resolve('client/dist/ssr/entry-server.cjs');
 async function startServer(isDev = process.env.NODE_ENV === 'development') {
   const app = express();
   app.use(cors());
+  app.disable('x-powered-by').enable('trust proxy').use(bodyParser.json());
+
+  await dbConnect();
 
   let vite: ViteDevServer | undefined;
 
@@ -37,6 +43,7 @@ async function startServer(isDev = process.env.NODE_ENV === 'development') {
     app.use(vite.middlewares);
   }
 
+  app.use('/api', ApiRouter);
   app.get('/api', (_, res) => {
     res.json('👋 Howdy from the server :)');
   });
