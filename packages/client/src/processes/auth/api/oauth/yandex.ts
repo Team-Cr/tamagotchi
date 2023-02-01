@@ -26,7 +26,7 @@ export const YandexOAuth = {
       },
     }),
   getOAuthLink: (client_id: string, redirect_uri: string = BASE_REDIRECT): string => {
-    const url = new URL('https://oauth.yandex.ru/authorize');
+    const url = new URL('https://oauth.yandex.ru/authorize  ');
 
     const query: Record<string, string> = {
       response_type: 'code',
