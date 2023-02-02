@@ -24,7 +24,7 @@ const ForumPage = () => {
       <div className={css.forum_entries}>
         {entries.map((data: Forum) => {
           const { id, title } = data;
-          return <ForumEntry key={id} {...data} state={{ forumId: id, forumTitle: title }} />;
+          return <ForumEntry key={id} {...data} state={{ forumId: id, title }} />;
         })}
       </div>
     </>

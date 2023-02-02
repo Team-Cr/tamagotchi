@@ -18,19 +18,22 @@ const ForumTopicsPage = () => {
   }, []);
 
   const getTopics = useCallback(() => {
-    ForumAPI.getTopics(state.forumId)
+    ForumAPI.getForum(state.forumId)
       .then((res) => {
-        const data = res.data;
-        setEntries(data);
+        const { topics } = res.data;
+        console.log(res.data);
+        setEntries(topics ?? []);
       })
       .catch((e) => console.log({ e }));
   }, [state]);
 
   const onCreateTopic = useCallback(
     async (forumId: number, title: string) => {
-      await ForumAPI.createTopic(forumId, {
+      const topic = await ForumAPI.createTopic(forumId, {
         title,
       });
+
+      console.log(topic);
       getTopics();
       setIsModalActive(false);
     },
@@ -44,7 +47,7 @@ const ForumTopicsPage = () => {
   return (
     <>
       <ArrowBack />
-      <ForumHeader title={state.forumTitle || ''} />
+      <ForumHeader title={state.title || ''} />
       <Button size='large' color='success' className={css.topic_add_button} onClick={toggleModal}>
         Create a topic
       </Button>
@@ -56,7 +59,13 @@ const ForumTopicsPage = () => {
       />
       <div className={css.topic_entries}>
         {entries.map((data, index) => (
-          <ForumEntry key={index} {...data} state={{ topicTitle: data.title }} />
+          <ForumEntry
+            link={`/topic/${data.id}`}
+            key={index}
+            {...data}
+            title={data.title}
+            state={{ title: data.title }}
+          />
         ))}
       </div>
     </>

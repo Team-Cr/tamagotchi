@@ -8,5 +8,5 @@ export enum ROUTES {
   NotFound = '*',
   Forums = '/forums',
   ForumTopics = '/forums/:id',
-  Topic = '/forums/:forumId/:topicId',
+  Topic = '/topic/:topicId',
 }

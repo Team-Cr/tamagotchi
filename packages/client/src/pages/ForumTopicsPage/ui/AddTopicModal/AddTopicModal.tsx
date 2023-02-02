@@ -1,6 +1,7 @@
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Modal } from '@/shared/ui/Modal';
+import css from './AddTopicModal.module.scss';
 import {
   ChangeEvent,
   Dispatch,
@@ -46,7 +47,7 @@ export const AddTopicModal = (props: AddTopicModalProps) => {
       isCloseButtonShown={false}
       isClosable={true}
     >
-      <form onSubmit={createTopic}>
+      <form onSubmit={createTopic} className={css.modal__form}>
         <Input name='title' type='text' value={title} onChange={onChange} placeholder='Title' />
         <Button color='success' size='large' type='submit'>
           Create!

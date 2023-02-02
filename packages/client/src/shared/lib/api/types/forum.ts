@@ -1,6 +1,8 @@
 export interface Forum {
   id: number;
   title: string;
+
+  topics?: Topic[];
 }
 
 export interface Topic {

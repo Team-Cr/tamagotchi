@@ -7,14 +7,14 @@ const TOPIC_URL = `topic`;
 
 export const ForumAPI = {
   getForums: (): AxiosResponse<Forum[]> => axiosAPIInstance.get(FORUM_URL),
-  getTopics: (forumId: Forum['id']): AxiosResponse<Topic[]> => {
-    return axiosAPIInstance.get(TOPIC_URL, { params: { forumId } });
+  getForum: (forumId: number): AxiosResponse<Forum> => {
+    return axiosAPIInstance.get(`${FORUM_URL}/${forumId}`);
   },
   createTopic: (
     forumId: Forum['id'],
     payload: Pick<Topic, 'title'>,
   ): AxiosResponse<Pick<Topic, 'id'>> =>
-    axiosAPIInstance.post(TOPIC_URL, payload, { params: { forumId } }),
+    axiosAPIInstance.post(`${FORUM_URL}/${forumId}/${TOPIC_URL}`, payload),
 };
 
 // .post('/:forumId/topic', TopicController.create);

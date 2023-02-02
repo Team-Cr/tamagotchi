@@ -18,7 +18,7 @@ export class Topic extends Model {
 
   @ForeignKey(() => Forum)
   @Column(DataType.INTEGER)
-  forum_id!: number;
+  forumId!: number;
 
   @BelongsTo(() => Forum)
   forum!: Forum;

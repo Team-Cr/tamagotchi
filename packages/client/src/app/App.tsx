@@ -6,10 +6,11 @@ import { useFullscreen } from './providers/FullscreenProvider';
 import { useNotifications } from './providers/NotificationsProvider';
 import { AppRouter } from './providers/RouterProvider';
 import './styles/index.scss';
+import { startServiceWorker } from '@/app/services/startServiceWorker';
 
-// if (typeof navigator !== 'undefined') {
-//   startServiceWorker();
-// }
+if (__MODE__ === 'production' && typeof navigator !== 'undefined') {
+  startServiceWorker();
+}
 
 export const App = () => {
   const { toggleFullscreen } = useFullscreen();

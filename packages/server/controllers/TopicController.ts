@@ -5,8 +5,8 @@ import { Forum } from '../models/Forum';
 import { Topic } from '../models/Topic';
 
 export class TopicController implements BaseRESTService {
-  public static request = async (_request: Request, response: Response) => {
-    const forumId = Number(_request.query['forumId']);
+  public static request = async (request: Request, response: Response) => {
+    const { forumId } = request.params;
 
     if (forumId) {
       try {
@@ -36,14 +36,14 @@ export class TopicController implements BaseRESTService {
 
   public static create = async (request: Request, response: Response) => {
     const { body } = request;
-    const forumId = Number(request.query['forumId']);
+    const { forumId } = request.params;
+
     try {
       const forum = await Forum.findByPk(forumId);
       if (!forum) {
         return response.status(404).json({ reason: 'Forum not found' });
       }
-
-      const topic = await Topic.create({ ...body, forum_id: forumId });
+      const topic = await Topic.create({ ...body, forumId });
       return response.status(200).json({ id: topic.id });
     } catch (err) {
       return response.status(400).json({ reason: 'Wrong request', error: err });

@@ -20,8 +20,6 @@
     gap: 20px;
     align-items: center;
 
-    max-width: 500px;
-
     &:nth-child(2) {
       padding: 0;
     }
@@ -34,7 +32,7 @@
     }
 
     &__link {
-      max-width: 300px;
+      max-width: 90%;
 
       a {
         color: white;
