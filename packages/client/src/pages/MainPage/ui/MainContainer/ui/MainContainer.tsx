@@ -1,13 +1,10 @@
 import { addPoints } from '@/entities/tamagotchi';
-import CatPicture from '@/shared/assets/images/mainCat.png';
-import { useAppDispatch } from '@/shared/lib/redux';
-import { ActionsConfig } from '../config/actionsConfig';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
 import { ActionBlock, ActionBlockProps } from './ActionBlock';
 import css from './MainContainer.module.scss';
 
 import { GetActionsConfig } from '../config/actionsConfig';
 import { AnimationSleepCat } from '@/widgets/AnimationSleepCat';
-
 
 export const MainContainer = () => {
   const dispatch = useAppDispatch();
@@ -24,7 +21,6 @@ export const MainContainer = () => {
         <AnimationSleepCat />
       </div>
 
-      {/* <img className={css.main__container__image} src={CatPicture} alt='Cat' /> */}
       <div className={css.main__container__actions}>
         {ActionConfig.map((item) => (
           <ActionBlock

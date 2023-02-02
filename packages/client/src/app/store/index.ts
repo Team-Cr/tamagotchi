@@ -5,7 +5,7 @@ import { emptyUserState, userModel } from '@/entities/user/model';
 import { initialState, tamagotchiModel } from '@/entities/tamagotchi/model';
 
 import { animationRefModel } from '@/entities/animationRef';
-import { soundsModel } from '@/entities/sounds';
+//import { soundsModel } from '@/entities/sounds';
 
 export const appInitialState = {
   user: emptyUserState,
@@ -24,7 +24,7 @@ export const store = configureStore({
     user: userModel.reducer,
     tamagotchi: tamagotchiModel.reducer,
     animationRef: animationRefModel.reducer,
-    sounds: soundsModel.reducer,
+    // sounds: soundsModel.reducer,
   },
   preloadedState,
   middleware: (getDefaultMiddleware) => {

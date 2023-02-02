@@ -9,8 +9,8 @@ import PlayCatAsset from './assets/play.png';
 import SportCatAsset from './assets/sport.png';
 import AttackCatAsset from './assets/attack.png';
 
-import ActionSound from './sounds/actionSound.wav';
-import BackgroundMusic from './sounds/backgroundMusic.mp3';
+//import ActionSound from './sounds/actionSound.wav';
+//import BackgroundMusic from './sounds/backgroundMusic.mp3';
 
 export const images = {
   CatPixelImage,
@@ -27,7 +27,7 @@ export const assets = {
   PendingCatAsset,
 };
 
-export const sounds = {
+/*export const sounds = {
   BackgroundMusic,
   ActionSound,
-};
+};*/
