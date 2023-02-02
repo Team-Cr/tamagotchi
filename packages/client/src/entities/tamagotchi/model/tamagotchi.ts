@@ -36,7 +36,10 @@ export const tamagotchiModel = createSlice({
         state.expCurrent = 0;
       }
     },
+    addLeaderboardLevel: (state, { payload: { level } }: PayloadAction<LevelType>) => {
+      state.level = level;
+    },
   },
 });
 
-export const { addPoints } = tamagotchiModel.actions;
+export const { addPoints, addLeaderboardLevel } = tamagotchiModel.actions;
