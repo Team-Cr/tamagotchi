@@ -17,6 +17,7 @@ export const App = () => {
   const { isEnabled, enableNotifications } = useNotifications();
 
   const dispatch = useAppDispatch();
+  const { isBackgroundMusicPlaying } = useAppSelector((state) => state.sounds);
   dispatch(AuthThunk.getUser());
 
   useEffect(() => {
@@ -27,7 +28,15 @@ export const App = () => {
         toggleFullscreen();
       }
     };
+    const startBackgroundMusic = () => {
+      dispatch(playBackgroundMusic());
+    };
 
+    window.addEventListener('mousemove', () => {
+      if (!isBackgroundMusicPlaying) {
+        startBackgroundMusic();
+      }
+    });
     document.addEventListener('keyup', toggleFullscreenOnKeyUp);
     return () => document.removeEventListener('keyup', toggleFullscreenOnKeyUp);
   }, [toggleFullscreen]);

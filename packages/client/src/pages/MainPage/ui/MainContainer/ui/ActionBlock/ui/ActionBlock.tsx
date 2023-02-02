@@ -9,23 +9,25 @@ export interface ActionBlockProps {
   pointsForAction: BarsPointsType;
   handleUpdateBarsPoints: HandleUpdateBarsPointsType;
   keyboardKey: string;
+  action: () => void | undefined;
 }
 
 export const ActionBlock = (props: ActionBlockProps) => {
-  const { handleUpdateBarsPoints, image, pointsForAction, text, keyboardKey } = props;
+  const { handleUpdateBarsPoints, image, pointsForAction, text, keyboardKey, action } = props;
 
-  const handleClick = useCallback(
-    () => handleUpdateBarsPoints(pointsForAction),
-    [handleUpdateBarsPoints, pointsForAction],
-  );
+  const handleClick = useCallback(() => {
+    handleUpdateBarsPoints(pointsForAction);
+    action();
+  }, [handleUpdateBarsPoints, pointsForAction, action]);
 
   const handleKeyboardClick = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.key === keyboardKey) {
         handleUpdateBarsPoints(pointsForAction);
+        action();
       }
     },
-    [handleUpdateBarsPoints, pointsForAction, keyboardKey],
+    [handleUpdateBarsPoints, pointsForAction, keyboardKey, action],
   );
 
   return (
