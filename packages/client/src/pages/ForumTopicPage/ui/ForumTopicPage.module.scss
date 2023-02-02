@@ -1,12 +1,29 @@
-.topic_comments {
-  overflow: auto;
+.topic {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
+  justify-content: space-between;
 
-  max-width: 1020px;
-  max-height: 60vh;
+  max-width: 1000px;
+  height: 70vh;
   margin: auto;
-  margin-top: 65px;
-  padding: 0 20px;
+  margin-top: 60px;
+
+  &_comments {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+  }
+
+  &_input_area {
+    display: flex;
+    gap: 10px;
+
+    width: 100%;
+  }
 }
