@@ -1,8 +1,7 @@
-import { ComponentProps } from '@/shared/ui/types';
 import css from './ThemeSwitcher.module.scss';
 import { useCallback, useEffect, useState } from 'react';
 
-export const ThemeSwitcher = (props: ComponentProps) => {
+export const ThemeSwitcher = () => {
   const currentTheme = document.documentElement.dataset.theme;
   const [toggled, setToggled] = useState(currentTheme ? currentTheme === 'light' : true);
 
