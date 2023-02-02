@@ -3,6 +3,10 @@
   align-items: center;
   justify-content: space-between;
 
+  &__title {
+    color: var(--text-primary);
+  }
+
   &__left {
     display: flex;
     flex-direction: column;
