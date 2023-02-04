@@ -1,7 +1,11 @@
-:root {
-  // light theme
+@import '../themes/dark';
 
-  // colors
+:root {
+  // gradient colors
+  --light: #d8dbe0;
+  --dark: #28292c;
+  --link: rgb(27 129 112);
+  --link-hover: rgb(24 94 82);
   --medium-pink-color: #d58383;
   --dark-color: #201d0c;
   --brown-color: #793c3b;
@@ -11,8 +15,7 @@
   --primary-color: #cf5c36;
   --success-color: #4ab00b;
   --input-color: #fff9c7;
-
-  // gradient colors
+  --text-primary: black;
   --blue-gradient: linear-gradient(
     180deg,
     #5f9fff 0%,
@@ -170,4 +173,31 @@
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --m-regular-sm-font: var(--m-regular-sm-font-weight) var(--m-regular-sm-font-size) /
     var(--m-regular-sm-line-height) var(--font-family);
+
+  // light theme
+
+  // colors
+  .theme-light {
+    --medium-pink-color: #d58383;
+    --dark-color: #201d0c;
+    --brown-color: #793c3b;
+    --light-pink-color: #ffefef;
+    --background-color: #ffe761;
+    --secondary-color: #484848;
+    --primary-color: #cf5c36;
+    --success-color: #4ab00b;
+    --input-color: #fff9c7;
+  }
+
+  .theme-dark {
+    --medium-pink-color: #d58383;
+    --dark-color: #201d0c;
+    --brown-color: #793c3b;
+    --light-pink-color: #ffefef;
+    --background-color: #252630;
+    --secondary-color: #484848;
+    --primary-color: #cf5c36;
+    --success-color: #4ab00b;
+    --input-color: #fff9c7;
+  }
 }

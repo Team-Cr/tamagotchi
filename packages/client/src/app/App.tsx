@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import { startServiceWorker } from '@/app/services/startServiceWorker';
 import { AuthThunk } from '@/processes/auth';
 import { useAppDispatch } from '@/shared/lib/redux';
+import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
 import { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
 import { useNotifications } from './providers/NotificationsProvider';
 import { AppRouter } from './providers/RouterProvider';
 import './styles/index.scss';
-import { startServiceWorker } from '@/app/services/startServiceWorker';
 
 if (__MODE__ === 'production' && typeof navigator !== 'undefined') {
   startServiceWorker();
@@ -40,6 +41,7 @@ export const App = () => {
 
   return (
     <>
+      <ThemeSwitcher />
       <AppRouter />
     </>
   );
