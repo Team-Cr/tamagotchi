@@ -1,8 +1,13 @@
-import { AllowNull, Column, DataType, Model, Table } from 'sequelize-typescript';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Column, DataType, HasOne, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { Character } from './Character';
 
-@Table
+@Table({ tableName: 'users' })
 export class User extends Model {
-  @AllowNull(false)
-  @Column(DataType.STRING)
-  name!: string;
+  @PrimaryKey
+  @Column(DataType.INTEGER)
+  override id!: number;
+
+  @HasOne(() => Character)
+  character!: Character;
 }
