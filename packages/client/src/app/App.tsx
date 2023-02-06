@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { AuthThunk } from '@/processes/auth';
 import { useAppDispatch } from '@/shared/lib/redux';
+import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
 import React, { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
 import { useNotifications } from './providers/NotificationsProvider';
@@ -37,9 +38,10 @@ export const App = () => {
       enableNotifications();
     }
   }, [isEnabled, enableNotifications]);
-
+  
   return (
     <>
+      <ThemeSwitcher />
       <AppRouter />
     </>
   );
