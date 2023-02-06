@@ -18,6 +18,7 @@ export const sequelize = new Sequelize(sequelizeOption);
 // TODO add models
 const modelsPath = path.join(__dirname, '../models');
 sequelize.addModels([modelsPath]);
+console.log(sequelizeOption);
 
 export async function dbConnect() {
   try {
