@@ -1,6 +1,7 @@
 import { Sequelize, type SequelizeOptions } from 'sequelize-typescript';
 import path from 'path';
 import { Forum } from '../models/Forum';
+import { Theme } from '../models/Theme';
 
 const { POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB, POSTGRES_PORT, POSTGRES_HOST } = process.env;
 
@@ -28,6 +29,10 @@ export async function dbConnect() {
     const forums = await Forum.findAll();
     if (!forums.length) {
       await Forum.bulkCreate([{ title: 'Game rules' }, { title: 'Bugs' }, { title: 'FAQ' }]);
+    }
+    const themes = await Theme.findAll();
+    if (!themes.length) {
+      await Theme.bulkCreate([{ name: 'light' }, { name: 'dark' }]);
     }
     console.log('Connection has been established successfully.');
   } catch (error) {
