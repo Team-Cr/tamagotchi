@@ -1,7 +1,9 @@
 .arrow {
   cursor: pointer;
 
-  position: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
 
   display: flex;
   place-items: center;
