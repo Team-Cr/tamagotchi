@@ -1,5 +1,6 @@
 import { Router } from 'express';
+import { CommentController } from '../controllers';
 
 export const CommentAPI = Router();
 
-// TODO add edit, delete
+CommentAPI.get('/:topicId', CommentController.getByTopic);

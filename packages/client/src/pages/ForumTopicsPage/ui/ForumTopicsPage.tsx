@@ -21,7 +21,6 @@ const ForumTopicsPage = () => {
     ForumAPI.getForum(state.forumId)
       .then((res) => {
         const { topics } = res.data;
-        console.log(res.data);
         setEntries(topics ?? []);
       })
       .catch((e) => console.log({ e }));
@@ -33,7 +32,6 @@ const ForumTopicsPage = () => {
         title,
       });
 
-      console.log(topic);
       getTopics();
       setIsModalActive(false);
     },
@@ -64,7 +62,7 @@ const ForumTopicsPage = () => {
             key={index}
             {...data}
             title={data.title}
-            state={{ title: data.title }}
+            state={{ title: data.title, topicId: data.id }}
           />
         ))}
       </div>

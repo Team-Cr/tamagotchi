@@ -14,15 +14,17 @@
   &__header {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 50px;
     align-items: center;
     justify-content: space-between;
 
     width: 100%;
     padding: 20px;
 
-    div:nth-child(1) {
-      width: auto;
+    &__userinfo {
+      justify-content: flex-start;
+
+      width: 100%;
       padding: 0;
 
       border: none;
@@ -31,6 +33,25 @@
         width: 70px;
         height: 70px;
       }
+
+      div:nth-child(2) {
+        width: 100%;
+      }
+    }
+
+    &__id {
+      font: var(--regular-sm-font);
+      color: #aae2fa;
+      white-space: nowrap;
+    }
+
+    &__group {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      align-items: center;
+
+      width: 100%;
     }
   }
 

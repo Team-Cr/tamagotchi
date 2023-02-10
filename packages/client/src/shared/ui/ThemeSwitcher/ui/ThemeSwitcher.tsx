@@ -1,5 +1,5 @@
-import css from './ThemeSwitcher.module.scss';
 import { useCallback, useEffect, useState } from 'react';
+import css from './ThemeSwitcher.module.scss';
 
 export const ThemeSwitcher = () => {
   // TODO replace with database
