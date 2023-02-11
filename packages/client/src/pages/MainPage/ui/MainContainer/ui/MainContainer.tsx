@@ -1,9 +1,7 @@
 import { addPoints } from '@/entities/tamagotchi';
-import CatPicture from '@/shared/assets/images/mainCat.png';
 import { LeaderboardAPI } from '@/shared/lib/api';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
 import { useEffect } from 'react';
-import { ActionsConfig } from '../config/actionsConfig';
 import { ActionBlock, ActionBlockProps } from './ActionBlock';
 import css from './MainContainer.module.scss';
 
