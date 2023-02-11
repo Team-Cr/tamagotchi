@@ -2,6 +2,7 @@
 import { AuthThunk } from '@/processes/auth';
 import { useAppDispatch } from '@/shared/lib/redux';
 import { useEffect } from 'react';
+import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
 import { useFullscreen } from './providers/FullscreenProvider';
 import { useNotifications } from './providers/NotificationsProvider';
 import { AppRouter } from './providers/RouterProvider';
@@ -38,9 +39,10 @@ export const App = () => {
       enableNotifications();
     }
   }, [isEnabled, enableNotifications]);
-
+  
   return (
     <>
+      <ThemeSwitcher />
       <AppRouter />
     </>
   );

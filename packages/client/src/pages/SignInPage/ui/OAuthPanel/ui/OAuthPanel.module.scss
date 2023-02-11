@@ -14,7 +14,7 @@
 
     width: 100%;
 
-    color: var(--secondary-color);
+    color: var(--text-secondary);
   }
 
   &_item {
@@ -28,7 +28,6 @@
     }
   }
 }
-
 
 @media screen and (max-width: 768px) {
   .signin__oauth_item {

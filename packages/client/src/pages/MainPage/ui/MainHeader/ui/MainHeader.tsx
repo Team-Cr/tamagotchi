@@ -3,15 +3,42 @@ import {
   HealthState,
   useNotifications,
 } from '@/app/providers/NotificationsProvider';
-import { useAppSelector } from '@/shared/lib/redux';
+import { LeaderboardConfig } from '@/pages/LeaderboardPage/ui/LeaderboardPage';
+import { LeaderboardAPI, LeaderboardData } from '@/shared/lib/api';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
 import { LevelOrHpBar } from '@/shared/ui/LevelOrHpBar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import css from './MainHeader.module.scss';
+import { addLeaderboardLevel } from '@/entities/tamagotchi';
 
 export const MainHeader = () => {
   const { expMax, expCurrent, hpCurrent, hpMax, level } = useAppSelector(
     (state) => state.tamagotchi,
   );
+
+  const { id } = useAppSelector((state) => state.user);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (level !== 1) return;
+    LeaderboardAPI.all(LeaderboardConfig)
+      .then((res) => {
+        const data = res.data.map((entry) => entry.data);
+
+        const user = data.find((element) => {
+          return element.id === id;
+        });
+
+        if (user !== undefined) {
+          const lvl = user.level;
+
+          dispatch(addLeaderboardLevel({ level: lvl }));
+        }
+      })
+
+      .catch((e) => console.log({ e }));
+  }, [dispatch, id, level]);
 
   const { sendNotification } = useNotifications();
 
