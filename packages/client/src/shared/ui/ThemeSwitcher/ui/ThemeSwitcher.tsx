@@ -2,12 +2,13 @@ import css from './ThemeSwitcher.module.scss';
 import { useCallback, useEffect, useState } from 'react';
 
 export const ThemeSwitcher = () => {
-  const currentTheme = document.documentElement.dataset.theme;
+  // const currentTheme = document.documentElement.dataset.theme;
+  const currentTheme = 'light';
   const [toggled, setToggled] = useState(currentTheme ? currentTheme === 'light' : true);
 
   function setTheme(themeName: string) {
     localStorage.setItem('theme', themeName);
-    document.documentElement.setAttribute('data-theme', themeName);
+    // document.documentElement.setAttribute('data-theme', themeName);
   }
 
   const handleThemeSwitch = useCallback(() => {
