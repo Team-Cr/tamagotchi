@@ -1,5 +1,3 @@
-import { store } from '@/app/store';
-//import { playActionSound } from '@/entities/sounds';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type Tamagotchi = {
