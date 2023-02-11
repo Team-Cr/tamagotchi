@@ -49,6 +49,7 @@ services:
     ports:
       - "8080:80"
     volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - pgadmin-data:/var/lib/pgadmin
     depends_on:
       - postgres
