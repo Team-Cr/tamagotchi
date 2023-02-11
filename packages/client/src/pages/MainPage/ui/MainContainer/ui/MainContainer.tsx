@@ -25,9 +25,9 @@ export const MainContainer = () => {
         avatarUrl: avatar ?? '',
         name: display_name ?? first_name,
         daysActive: 0,
-        level: level,
+        userLevel: level,
       },
-      ratingFieldName: 'level',
+      ratingFieldName: 'userLevel',
     });
   }, [avatar, display_name, first_name, id, level]);
 

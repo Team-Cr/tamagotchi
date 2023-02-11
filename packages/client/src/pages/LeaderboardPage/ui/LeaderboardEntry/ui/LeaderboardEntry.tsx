@@ -6,7 +6,7 @@ import css from './LeaderboardEntry.module.scss';
 type LeaderboardEntryProps = Omit<LeaderboardData, 'id'> & { checked: boolean };
 
 export const LeaderboardEntry = (props: LeaderboardEntryProps) => {
-  const { avatarUrl, name, daysActive, level, checked } = props;
+  const { avatarUrl, name, daysActive, userLevel, checked } = props;
 
   return (
     <div className={classNames(css.entry, { [css.checked]: checked })}>
@@ -17,7 +17,7 @@ export const LeaderboardEntry = (props: LeaderboardEntryProps) => {
 
       <div className={css.entry__right_group}>
         <span className={css.entry__daysActive}>Active: {daysActive} days</span>
-        <div className={css.entry__level}>{level}</div>
+        <div className={css.entry__level}>{userLevel}</div>
       </div>
     </div>
   );
