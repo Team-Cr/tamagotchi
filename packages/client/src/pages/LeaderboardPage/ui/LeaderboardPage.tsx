@@ -7,7 +7,7 @@ import css from './LeaderboardPage.module.scss';
 
 const userId = 2;
 
-const LeaderboardConfig: GetLeaderboardProps = {
+export const LeaderboardConfig: GetLeaderboardProps = {
   cursor: 0,
   limit: 5,
   ratingFieldName: 'level',
