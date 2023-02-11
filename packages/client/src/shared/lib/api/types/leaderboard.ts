@@ -3,7 +3,7 @@ export interface LeaderboardData {
   avatarUrl: string;
   name: string;
   daysActive: number;
-  userLevel: number;
+  level: number;
 }
 
 export interface AddUserProps {

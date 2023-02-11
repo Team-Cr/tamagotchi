@@ -10,7 +10,7 @@ const userId = 2;
 export const LeaderboardConfig: GetLeaderboardProps = {
   cursor: 0,
   limit: 5,
-  ratingFieldName: 'userLevel',
+  ratingFieldName: 'level',
 };
 
 const LeaderboardPage = () => {

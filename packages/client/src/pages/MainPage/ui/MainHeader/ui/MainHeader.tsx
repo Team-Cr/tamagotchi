@@ -31,7 +31,7 @@ export const MainHeader = () => {
         });
 
         if (user !== undefined) {
-          const lvl = user.userLevel;
+          const lvl = user.level;
 
           dispatch(addLeaderboardLevel({ level: lvl }));
         }
