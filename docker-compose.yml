@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   server:
-    container_name: prakticum-server
+    container_name: tamagotchi-server
     image: prackicum-server
     build:
       context: .
@@ -25,9 +25,12 @@ services:
       - tamagotchi_connect
 
   postgres:
+    container_name: tamagotchi-postgres
     image: postgres:14
     ports:
       - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    expose:
+      - "80"
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_USER: ${POSTGRES_USER}
@@ -39,7 +42,7 @@ services:
       - tamagotchi_connect
 
   pgadmin:
-    container_name: pgadmin
+    container_name: tamagotchi-pgadmin
     image: dpage/pgadmin4:4.18
     restart: always
     environment:
@@ -57,6 +60,20 @@ services:
       - tamagotchi_connect
     command:
       - "sudo chown -R 8080:80 /var/lib/pgadmin"
+
+  nginx:
+    container_name: tamagotchi-nginx
+    depends_on:
+      - server
+      - postgres
+      - pgadmin
+    image: nginx:alpine
+    ports:
+      - '80:80'
+    volumes:
+      - ./app/nginx.conf:/etc/nginx/conf.d
+      - ./app:/var/www/static
+    restart: always
 
 volumes:
   pgadmin-data:
