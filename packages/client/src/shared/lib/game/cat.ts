@@ -10,7 +10,7 @@ export enum CatConditions {
   Attack,
   Play,
   Pending,
-  Sport
+  Sport,
 }
 
 type AnimateValues = {
@@ -19,6 +19,16 @@ type AnimateValues = {
 };
 
 const chunkSize: [number, number] = [128, 128];
+
+export const ConditionsArray: { asset: string; animateTime: number }[] = [
+  { asset: assets.SleepCatAsset, animateTime: 2.5 },
+  { asset: assets.EatCatAsset, animateTime: 2.5 },
+  { asset: assets.SpinCatAsset, animateTime: 4 },
+  { asset: assets.AttackCatAsset, animateTime: 1 },
+  { asset: assets.PlayCatAsset, animateTime: 1 },
+  { asset: assets.PendingCatAsset, animateTime: 0.8 },
+  { asset: assets.SportCatAsset, animateTime: 1.5 },
+];
 
 export class ConditionFactory {
   resources: Resources;
@@ -32,71 +42,16 @@ export class ConditionFactory {
   }
 
   getCondition(condition: CatConditions): AnimateValues {
-    switch (condition) {
-      case CatConditions.Attack: {
-        const asset = this._createAsset(assets.AttackCatAsset);
-        const animateTime = 1;
-        return {
-          asset,
-          animateTime,
-        };
-      }
-      case CatConditions.Sleep: {
-        const asset = this._createAsset(assets.SleepCatAsset);
-        const animateTime = 2.5;
-        return {
-          asset,
-          animateTime,
-        };
-      }
-      case CatConditions.Play: {
-        const asset = this._createAsset(assets.PlayCatAsset);
-        const animateTime = 1;
-        return {
-          asset,
-          animateTime,
-        };
-      }
-      case CatConditions.Spin: {
-        const asset = this._createAsset(assets.SpinCatAsset);
-        const animateTime = 4;
-        return {
-          asset,
-          animateTime,
-        };
-      }
-      case CatConditions.Sport: {
-        const asset = this._createAsset(assets.SportCatAsset);
-        const animateTime = 1.5;
-        return {
-          asset,
-          animateTime,
-        };
-      }
-      case CatConditions.Eat: {
-        const asset = this._createAsset(assets.EatCatAsset);
-        const animateTime = 2.5;
-        return {
-          asset,
-          animateTime,
-        };
-      }
-      case CatConditions.Pending: {
-        const asset = this._createAsset(assets.PendingCatAsset);
-        const animateTime = 0.8;
-        return {
-          asset,
-          animateTime,
-        };
-      }
-      default: {
-        const asset = this._createAsset(assets.PendingCatAsset);
-        const animateTime = 0.8;
-        return {
-          asset,
-          animateTime,
-        };
-      }
+    try {
+      return {
+        asset: this._createAsset(ConditionsArray[condition].asset),
+        animateTime: ConditionsArray[condition].animateTime,
+      };
+    } catch {
+      return {
+        asset: this._createAsset(assets.PendingCatAsset),
+        animateTime: 0.8,
+      };
     }
   }
 }
@@ -104,9 +59,9 @@ export class ConditionFactory {
 export class Cat {
   private _conditionFactory: ConditionFactory;
   private _animate: Animate;
-  private _catConditions: CatConditions[] | undefined;
+  private _catConditions?: CatConditions[];
   private _currentConditionIndex = 0;
-  private _defaultConditions: CatConditions[] | undefined;
+  private _defaultConditions?: CatConditions[];
 
   constructor(resources: Resources) {
     this._animate = new Animate();
@@ -114,29 +69,29 @@ export class Cat {
   }
 
   _setConditions() {
-    if (this._catConditions) {
-      const condition = this._conditionFactory.getCondition(
-        this._catConditions[this._currentConditionIndex],
-      );
-      const sprites = condition.asset.crop();
-      const animateTime = condition.animateTime;
-      this._animate.setSprites(sprites);
-      this._animate.setAnimateTime(animateTime);
-    }
+    if (!this._catConditions) return;
+
+    const condition = this._conditionFactory.getCondition(
+      this._catConditions[this._currentConditionIndex],
+    );
+    const sprites = condition.asset.crop();
+    const animateTime = condition.animateTime;
+    this._animate.setSprites(sprites);
+    this._animate.setAnimateTime(animateTime);
   }
 
   setDefaultConditions(catConditions: CatConditions | CatConditions[]) {
     this._defaultConditions = Array.isArray(catConditions) ? catConditions : [catConditions];
   }
 
-  cb1() {
+  defaultCallback() {
     if (this._defaultConditions) {
       this.setConditions(this._defaultConditions);
     }
   }
 
   setConditions(catConditions: CatConditions | CatConditions[], loop = true) {
-    this._animate.remove(ObserverTypes.finish, this.cb1.bind(this));
+    this._animate.remove(ObserverTypes.finish, this.defaultCallback.bind(this));
 
     const cb = () => {
       this._currentConditionIndex++;
@@ -158,7 +113,7 @@ export class Cat {
       this._animate.add(ObserverTypes.finish, cb);
     } else {
       if (!loop) {
-        this._animate.add(ObserverTypes.finish, this.cb1.bind(this));
+        this._animate.add(ObserverTypes.finish, this.defaultCallback.bind(this));
       }
     }
     this._currentConditionIndex = 0;

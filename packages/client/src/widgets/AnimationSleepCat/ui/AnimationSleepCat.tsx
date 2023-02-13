@@ -1,6 +1,6 @@
 import { FC, useRef, useCallback, useEffect } from 'react';
 
-import { Cat, CatConditions } from '@/shared/lib/game/cat';
+import { Cat, CatConditions, ConditionsArray } from '@/shared/lib/game/cat';
 import { Resources } from '@/shared/lib/game/resources';
 import { assets } from '@/shared/assets';
 import { useAppDispatch } from '@/shared/lib/redux';
@@ -16,38 +16,10 @@ class Builder {
   conditions: CatConditions[] = [];
 
   add(condition: CatConditions) {
-    switch (condition) {
-      case CatConditions.Sleep: {
-        this.assets.push(assets.SleepCatAsset);
-        break;
-      }
-      case CatConditions.Attack: {
-        this.assets.push(assets.AttackCatAsset);
-        break;
-      }
-      case CatConditions.Play: {
-        this.assets.push(assets.PlayCatAsset);
-        break;
-      }
-      case CatConditions.Sport: {
-        this.assets.push(assets.SportCatAsset);
-        break;
-      }
-      case CatConditions.Eat: {
-        this.assets.push(assets.EatCatAsset);
-        break;
-      }
-      case CatConditions.Spin: {
-        this.assets.push(assets.SpinCatAsset);
-        break;
-      }
-      case CatConditions.Pending: {
-        this.assets.push(assets.PendingCatAsset);
-        break;
-      }
-      default: {
-        return this;
-      }
+    try {
+      this.assets.push(ConditionsArray[condition].asset);
+    } catch {
+      return this;
     }
 
     this.conditions.push(condition);
@@ -81,24 +53,15 @@ const AnimateCanvas: FC<Props> = ({ imageWidth, imageHeight, canvasScale = 1 }) 
       cat.setDefaultConditions(CatConditions.Pending);
       cat.run(canvasRef.current, canvasScale);
     }
-  }, [canvasScale]);
-
+  }, [canvasScale, dispatch]);
 
   useEffect(() => {
     if (!isRender.current) {
       isRender.current = true;
       resRef.current = new Resources();
       const builder = new Builder();
-      [
-        CatConditions.Sleep,
-        CatConditions.Eat,
-        CatConditions.Spin,
-        CatConditions.Attack,
-        CatConditions.Sport,
-        CatConditions.Pending,
-        CatConditions.Play,
-      ].forEach((condition) => {
-        builder.add(condition);
+      Object.values(CatConditions).forEach((condition) => {
+        builder.add(condition as CatConditions);
       });
 
       const [assets] = builder.create();
@@ -107,11 +70,7 @@ const AnimateCanvas: FC<Props> = ({ imageWidth, imageHeight, canvasScale = 1 }) 
     }
   }, [renderApp]);
 
-  return (
-    <>
-      <canvas ref={canvasRef} width={imageWidth} height={imageHeight} />
-    </>
-  );
+  return <canvas ref={canvasRef} width={imageWidth} height={imageHeight} />;
 };
 
 export const AnimationSleepCat = () => {
