@@ -1,25 +1,22 @@
-import { addPoints } from '@/entities/tamagotchi';
+import CatPicture from '@/shared/assets/images/mainCat.png';
 import { LeaderboardAPI } from '@/shared/lib/api';
-import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
+import { useAppSelector } from '@/shared/lib/redux';
 import { useEffect } from 'react';
 import { ActionBlock, ActionBlockProps } from './ActionBlock';
+import { ActionConfig } from '../config/actionsConfig';
+import { useBarsPoints } from '../hooks/useBarsPoints';
 import css from './MainContainer.module.scss';
 
 import { GetActionsConfig } from '../config/actionsConfig';
 import { AnimationSleepCat } from '@/widgets/AnimationSleepCat';
 
 export const MainContainer = () => {
-  const dispatch = useAppDispatch();
   const catRef = useAppSelector((state) => state.animationRef.ref);
   const ActionConfig = GetActionsConfig(catRef);
 
-  const { level } = useAppSelector((state) => state.tamagotchi);
+  const { updateBarsPoints: handleUpdateBarsPoints, level } = useBarsPoints();
 
   const { id, first_name, display_name, avatar } = useAppSelector((state) => state.user);
-
-  const handleUpdateBarsPoints: ActionBlockProps['handleUpdateBarsPoints'] = (points) => {
-    dispatch(addPoints(points));
-  };
 
   useEffect(() => {
     LeaderboardAPI.addUser({
