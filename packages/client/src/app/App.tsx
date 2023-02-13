@@ -9,7 +9,7 @@ import { AppRouter } from './providers/RouterProvider';
 import { startServiceWorker } from './services/startServiceWorker';
 import './styles/index.scss';
 
-if (typeof navigator !== 'undefined') {
+if (typeof navigator !== 'undefined' && __MODE__ === 'production') {
   startServiceWorker();
 }
 
@@ -38,7 +38,7 @@ export const App = () => {
       enableNotifications();
     }
   }, [isEnabled, enableNotifications]);
-  
+
   return (
     <>
       <ThemeSwitcher />

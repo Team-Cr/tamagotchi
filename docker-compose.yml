@@ -52,7 +52,6 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - pgadmin-data:/var/lib/pgadmin
     depends_on:
       - postgres
@@ -71,8 +70,8 @@ services:
     ports:
       - '80:80'
     volumes:
-      - ./app/nginx.conf:/etc/nginx/conf.d
-      - ./app:/var/www/static
+      - ./app/client/nginx.conf:/etc/nginx/conf.d
+      - ./app/client:/var/www/src
     restart: always
 
 volumes:
