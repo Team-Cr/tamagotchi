@@ -9,7 +9,7 @@ export const LeaderboardEntry = (props: LeaderboardEntryProps) => {
   const { avatarUrl, name, daysActive, level, checked } = props;
 
   if (typeof level !== 'number') {
-    return <></>;
+    return null;
   }
 
   return (
