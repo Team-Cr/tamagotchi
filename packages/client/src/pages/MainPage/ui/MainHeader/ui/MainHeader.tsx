@@ -23,21 +23,7 @@ export const MainHeader = () => {
   useEffect(() => {
     if (level !== 1) return;
     LeaderboardAPI.all(LeaderboardConfig)
-      .then((res) => {
-        const data = res.data.map((entry) => entry.data);
-
-        const user = data.find((element) => {
-          return element.id === id;
-        });
-
-        if (user !== undefined) {
-          const lvl = user.level;
-
-          dispatch(addLeaderboardLevel({ level: lvl }));
-        }
-      })
-
-      .catch((e) => console.log({ e }));
+    .catch((e) => console.log({ e }));
   }, [dispatch, id, level]);
 
   const { sendNotification } = useNotifications();
