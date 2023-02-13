@@ -60,20 +60,6 @@ services:
     command:
       - "sudo chown -R 8080:80 /var/lib/pgadmin"
 
-  nginx:
-    container_name: tamagotchi-nginx
-    depends_on:
-      - server
-      - postgres
-      - pgadmin
-    image: nginx:alpine
-    ports:
-      - '80:80'
-    volumes:
-      - ./app/client/nginx.conf:/etc/nginx/conf.d
-      - ./app/client:/var/www/src
-    restart: always
-
 volumes:
   pgadmin-data:
 
