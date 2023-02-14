@@ -28,7 +28,6 @@ COPY --from=builder /app/packages/client/ /app/client/
 RUN sed -i 's/"client": "0.0.0"/"client": "file:.\/client"/g' /app/package.json \
     && yarn install --production=true
 
-EXPOSE $SERVER_PORT
 CMD [ "node", "/app/index.js" ]
 
 FROM nginx:alpine
