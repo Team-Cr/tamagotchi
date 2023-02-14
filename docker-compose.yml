@@ -3,7 +3,7 @@ version: "3.9"
 services:
   server:
     container_name: tamagotchi-server
-    image: prackicum-server
+    image: practicum-server
     build:
       context: .
       dockerfile: Dockerfile.server
@@ -59,6 +59,15 @@ services:
       - tamagotchi_connect
     command:
       - "sudo chown -R 8080:80 /var/lib/pgadmin"
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.ngnx
+    ports:
+      - '80:80'
+    depends_on:
+      - server
 
 volumes:
   pgadmin-data:

@@ -2,9 +2,10 @@
   "name": "client-server-template-with-vite",
   "private": true,
   "scripts": {
-    "bootstrap": "yarn && node init.js && lerna clean && yarn && lerna bootstrap",
+    "bootstrap": "yarn && node init.js && lerna clean --yes && yarn && lerna bootstrap",
     "link:client": "cd packages/client && yarn link && cd ../server && yarn link \"client\"",
     "build": "yarn link:client && lerna run build",
+    "build:docker": "lerna run build",
     "dev:client": "lerna run dev --scope=client",
     "dev:server": "lerna run dev --scope=server",
     "dev": "lerna run dev --parallel",

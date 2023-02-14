@@ -12,10 +12,9 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
-RUN yarn lerna bootstrap \
+RUN yarn bootstrap \
     && rm -rf /app/packages/server/dist/ \
-    && rm -rf /app/packages/client/dist/ \
-    && yarn build
+    && yarn build:docker --scope=server
 
 
 FROM node:$NODE_VERSION-buster-slim as production
@@ -28,16 +27,5 @@ COPY --from=builder /app/packages/client/ /app/client/
 RUN sed -i 's/"client": "0.0.0"/"client": "file:.\/client"/g' /app/package.json \
     && yarn install --production=true
 
-CMD [ "node", "/app/index.js" ]
-
-FROM nginx:alpine
-WORKDIR /app
-
-#!/bin/sh
-
-COPY --from=builder /app/packages/server/nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /app/packages/client/dist /usr/share/nginx/html
-
 EXPOSE $SERVER_PORT
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD [ "node", "/app/index.js" ]
