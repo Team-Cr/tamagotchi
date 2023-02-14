@@ -1,10 +1,10 @@
-import { AxiosResponse } from '@/shared/lib/api/types/axios';
+import { emptyUserState } from '@/entities/user/model';
+import { YandexOAuthResponse } from '@/processes/auth';
 import { SigninData, User } from '@/shared/lib/api';
+import { SignUpData } from '@/shared/lib/api/types/auth';
+import { AxiosResponse } from '@/shared/lib/api/types/axios';
 import { axiosAppInstance, axiosInstance } from '@/shared/lib/axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { emptyUserState } from '@/entities/user/model';
-import { SignUpData } from '@/shared/lib/api/types/auth';
-import { YandexOAuthResponse } from '@/processes/auth';
 
 const AUTH_URL = 'auth';
 

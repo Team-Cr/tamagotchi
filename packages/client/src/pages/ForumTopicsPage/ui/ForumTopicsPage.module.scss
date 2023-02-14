@@ -1,0 +1,18 @@
+.topic_entries {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+
+  max-width: 1020px;
+  max-height: 60vh;
+  margin: auto;
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.topic_add_button {
+  margin: auto;
+  margin-top: 60px;
+}

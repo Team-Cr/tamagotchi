@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import { startServiceWorker } from '@/app/services/startServiceWorker';
 import { setData } from '@/entities/tamagotchi';
 import { AuthThunk } from '@/processes/auth';
 import { CharacterAPI } from '@/shared/lib/api/character';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { useEffect } from 'react';
 import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
+import { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
 import { useNotifications } from './providers/NotificationsProvider';
 import { AppRouter } from './providers/RouterProvider';
-import { startServiceWorker } from './services/startServiceWorker';
 import './styles/index.scss';
 
 if (typeof navigator !== 'undefined' && __MODE__ === 'production') {

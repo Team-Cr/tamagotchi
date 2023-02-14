@@ -1,6 +1,15 @@
-import { LeaderboardPage, MainPage, ProfilePage, RegistrationPage, SignInPage } from '@/pages';
+import {
+  ForumPage,
+  ForumTopicPage,
+  ForumTopicsPage,
+  LeaderboardPage,
+  MainPage,
+  OAuthPage,
+  ProfilePage,
+  RegistrationPage,
+  SignInPage,
+} from '@/pages';
 import { ROUTES } from '@/shared/constants/routes';
-import { OAuthPage } from '@/pages/OAuthPage';
 
 interface AppRoute {
   element: React.ReactNode;
@@ -22,6 +31,21 @@ export const appRoutes: AppRoute[] = [
   {
     element: <LeaderboardPage />,
     route: ROUTES.LeaderBoard,
+    protectedType: 'main',
+  },
+  {
+    element: <ForumPage />,
+    route: ROUTES.Forums,
+    protectedType: 'main',
+  },
+  {
+    element: <ForumTopicsPage />,
+    route: ROUTES.ForumTopics,
+    protectedType: 'main',
+  },
+  {
+    element: <ForumTopicPage />,
+    route: ROUTES.Topic,
     protectedType: 'main',
   },
   {

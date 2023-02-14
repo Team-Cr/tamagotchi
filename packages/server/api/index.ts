@@ -10,6 +10,5 @@ ApiRouter.use('/forum', ForumAPI);
 ApiRouter.use('/topic', TopicAPI);
 ApiRouter.use('/user', UserAPI);
 ApiRouter.use('/character', CharacterAPI);
-// ApiRouter.use('/comment', CommentAPI);
 
 export { ApiRouter };

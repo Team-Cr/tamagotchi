@@ -8,8 +8,8 @@ import {
   Model,
   Table,
 } from 'sequelize-typescript';
-import { Forum } from './Forum';
 import { Comment } from './Comment';
+import { Forum } from './Forum';
 
 @Table({ tableName: 'topics' })
 export class Topic extends Model {

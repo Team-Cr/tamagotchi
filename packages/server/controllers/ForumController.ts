@@ -1,5 +1,5 @@
-import type { BaseRESTService } from 'service';
 import type { Request, Response } from 'express';
+import type { BaseRESTService } from 'service';
 import { Forum } from '../models/Forum';
 import { Topic } from '../models/Topic';
 

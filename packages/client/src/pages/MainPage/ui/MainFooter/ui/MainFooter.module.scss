@@ -1,16 +1,35 @@
 .main__footer {
+  position: relative;
+
   display: flex;
   justify-content: space-between;
 
   width: 90vw;
   height: 15vh;
 
-  &__image {
-    cursor: pointer;
+  &__buttons {
+    position: absolute;
+    top: calc(-100% + 80px);
 
-    width: 80px;
-    height: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    justify-content: end;
 
-    object-fit: cover;
+    height: 100%;
+
+    &:nth-child(2) {
+      right: 0;
+    }
+
+    img {
+      cursor: pointer;
+
+      width: 80px;
+      height: 80px;
+
+      object-fit: cover;
+    }
   }
 }
