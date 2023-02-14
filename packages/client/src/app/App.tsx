@@ -3,8 +3,8 @@ import { setData } from '@/entities/tamagotchi';
 import { AuthThunk } from '@/processes/auth';
 import { CharacterAPI } from '@/shared/lib/api/character';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
 import { useEffect } from 'react';
+import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
 import { useFullscreen } from './providers/FullscreenProvider';
 import { useNotifications } from './providers/NotificationsProvider';
 import { AppRouter } from './providers/RouterProvider';
@@ -20,6 +20,7 @@ export const App = () => {
   const { isEnabled, enableNotifications } = useNotifications();
 
   const dispatch = useAppDispatch();
+
   dispatch(AuthThunk.getUser()).then(async ({ payload }) => {
     // @ts-ignore
     const id = payload?.id as number | undefined;
