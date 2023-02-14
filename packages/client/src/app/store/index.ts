@@ -4,6 +4,8 @@ import logger from 'redux-logger';
 import { emptyUserState, userModel } from '@/entities/user/model';
 import { initialState, tamagotchiModel } from '@/entities/tamagotchi/model';
 
+import { animationRefModel } from '@/entities/animationRef';
+
 export const appInitialState = {
   user: emptyUserState,
   tamagotchi: initialState,
@@ -20,6 +22,7 @@ export const store = configureStore({
   reducer: {
     user: userModel.reducer,
     tamagotchi: tamagotchiModel.reducer,
+    animationRef: animationRefModel.reducer,
   },
   preloadedState,
   middleware: (getDefaultMiddleware) => {
@@ -27,6 +30,6 @@ export const store = configureStore({
     if (__MODE__ === 'development') {
       middlewares.push(logger);
     }
-    return getDefaultMiddleware().concat(middlewares);
+    return getDefaultMiddleware({ serializableCheck: false }).concat(middlewares);
   },
 });
