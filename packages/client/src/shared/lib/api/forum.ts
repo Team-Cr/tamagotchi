@@ -17,17 +17,10 @@ export const ForumAPI = {
   ): AxiosResponse<Pick<Topic, 'id'>> =>
     axiosAppInstance.post(`${FORUM_URL}/${forumId}/${TOPIC_URL}`, payload),
   getComments: (topicId: number): AxiosResponse<Comment[]> =>
-    axiosAppInstance.get(`${COMMENT_URL}/${topicId}`),
+    axiosAppInstance.get(`${TOPIC_URL}/${topicId}/${COMMENT_URL}/`),
   createComment: (
     topicId: number,
     payload: Omit<Comment, 'id' | 'topicId' | 'createdAt' | 'updatedAt'>,
   ): AxiosResponse<Pick<Comment, 'id'>> =>
     axiosAppInstance.post(`${TOPIC_URL}/${topicId}/${COMMENT_URL}/`, payload),
 };
-
-// .post('/:forumId/topic', TopicController.create);
-
-// TopicAPI.get('', TopicController.request)
-//   .get('/:id', TopicController.find)
-//   .delete('/:id')
-//   .post('/:topicId/comment', CommentController.create);
