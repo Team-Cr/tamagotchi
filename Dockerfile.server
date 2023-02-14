@@ -32,15 +32,13 @@ EXPOSE $SERVER_PORT
 CMD [ "node", "/app/index.js" ]
 
 FROM nginx:alpine
+WORKDIR /app
 
 #!/bin/sh
 
-## Remove default nginx index page
-RUN rm -rf /usr/share/nginx/html/*
-
 COPY --from=builder /app/packages/server/nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /app/packages/client/ /usr/share/nginx/html
+COPY --from=builder /app/packages/client/dist /usr/share/nginx/html
 
-EXPOSE $SERVER_PORT 80
+EXPOSE $SERVER_PORT
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
