@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import css from './BackgroundAudioSwitcher.module.scss';
 
 export const BackgroundAudioSwitcher = () => {
-  const [audio, setAudio] = useState(undefined as unknown as HTMLAudioElement);
+  const [audio, setAudio] = useState<HTMLAudioElement>();
 
   const [isAudioOn, setIsAudioOn] = useState(false);
 
@@ -15,10 +15,13 @@ export const BackgroundAudioSwitcher = () => {
   }, []);
 
   useEffect(() => {
-    if (audio !== undefined) {
-      audio.loop = true;
-      audio.volume = 0.05;
-    }
+    if (audio === undefined) return;
+    audio.loop = true;
+    audio.volume = 0.05;
+
+    return () => {
+      audio.pause();
+    };
   }, [audio]);
 
   const toggleIsAudioOn = () => {
@@ -26,26 +29,13 @@ export const BackgroundAudioSwitcher = () => {
   };
 
   useEffect(() => {
-    if (audio !== undefined) {
-      if (isAudioOn) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
+    if (audio === undefined) return;
+    if (isAudioOn) {
+      audio.play();
+    } else {
+      audio.pause();
     }
   }, [audio, isAudioOn]);
-
-  useEffect(() => {
-    if (audio !== undefined) {
-      return () => {
-        audio.pause();
-      };
-    }
-  }, [audio]);
-
-  useEffect(() => {
-    console.log('isAudioOn:', isAudioOn);
-  }, [isAudioOn]);
 
   return (
     <div className={classNames(css.switcher)}>
