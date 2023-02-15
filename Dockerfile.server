@@ -14,8 +14,8 @@ COPY . .
 
 RUN yarn bootstrap \
     && rm -rf /app/packages/server/dist/ \
-    && yarn build:docker --scope=server
-
+    && rm -rf /app/packages/client/dist/ \
+    && yarn build:docker
 
 FROM node:$NODE_VERSION-buster-slim as production
 WORKDIR /app
