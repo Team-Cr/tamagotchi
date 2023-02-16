@@ -20,11 +20,10 @@ export default defineConfig({
     __MODE__: JSON.stringify(process.env.NODE_ENV),
   },
   build: {
+    emptyOutDir: false,
     rollupOptions: {
       output: {
-        entryFileNames: `assets/[name]-[hash].js`,
-        chunkFileNames: `assets/[name].js`,
-        assetFileNames: `assets/[name].[ext]`,
+        dir: 'dist/client',
       },
     },
   },
