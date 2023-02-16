@@ -6,4 +6,7 @@ export enum ROUTES {
   LeaderBoard = '/leaderboard',
   OAuth = '/oauth',
   NotFound = '*',
+  Forums = '/forums',
+  ForumTopics = '/forums/:id',
+  Topic = '/topic/:topicId',
 }

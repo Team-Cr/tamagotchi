@@ -1,8 +1,8 @@
+import { App } from '@/app/App';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
-import { appInitialState, store } from './app/store';
 import { StaticRouter } from 'react-router-dom/server';
-import { App } from '@/app/App';
+import { appInitialState, store } from './app/store';
 
 export function render(url: string | Partial<Location>) {
   const html =

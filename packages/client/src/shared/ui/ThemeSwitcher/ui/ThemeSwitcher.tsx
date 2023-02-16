@@ -1,13 +1,15 @@
-import css from './ThemeSwitcher.module.scss';
 import { useCallback, useEffect, useState } from 'react';
+import css from './ThemeSwitcher.module.scss';
 
 export const ThemeSwitcher = () => {
+  // TODO replace with database
   // const currentTheme = document.documentElement.dataset.theme;
   const currentTheme = 'light';
   const [toggled, setToggled] = useState(currentTheme ? currentTheme === 'light' : true);
 
   function setTheme(themeName: string) {
     localStorage.setItem('theme', themeName);
+    // TODO replace with database
     // document.documentElement.setAttribute('data-theme', themeName);
   }
 

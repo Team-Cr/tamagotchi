@@ -1,10 +1,10 @@
-import { AxiosResponse } from '@/shared/lib/api/types/axios';
-import { SigninData, User } from '@/shared/lib/api';
-import { axiosInstance } from '@/shared/lib/axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { emptyUserState, userModel } from '@/entities/user/model';
-import { SignUpData } from '@/shared/lib/api/types/auth';
+import { emptyUserState } from '@/entities/user/model';
 import { YandexOAuthResponse } from '@/processes/auth';
+import { SigninData, User } from '@/shared/lib/api';
+import { SignUpData } from '@/shared/lib/api/types/auth';
+import { AxiosResponse } from '@/shared/lib/api/types/axios';
+import { axiosAppInstance, axiosInstance } from '@/shared/lib/axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const AUTH_URL = 'auth';
 
@@ -31,6 +31,7 @@ export const AuthAPI = {
   signUp: (data: SignUpData): AxiosResponse => axiosInstance.post(Routes.SIGN_UP, data),
   logout: (): AxiosResponse => axiosInstance.post(Routes.LOGOUT),
   getUser: (): AxiosResponse<User> => axiosInstance.get(Routes.GET_USER),
+  storeUser: (id: User['id']): AxiosResponse<User['id']> => axiosAppInstance.post(`/user/${id}`),
 };
 
 export const AuthThunk = {
@@ -49,7 +50,8 @@ export const AuthThunk = {
     return emptyUserState;
   }),
   getUser: createAsyncThunk('auth/get_user', async () => {
-    const response = await AuthAPI.getUser();
-    return response.data;
+    const { data } = await AuthAPI.getUser();
+    await AuthAPI.storeUser(data.id);
+    return data;
   }),
 };

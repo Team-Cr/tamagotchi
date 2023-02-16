@@ -1,10 +1,11 @@
 import { Router } from 'express';
-import { TopicController } from '../controllers';
-import { CommentController } from '../controllers/CommentController';
+import { CommentController, TopicController } from '../controllers';
 
 export const TopicAPI = Router();
 
 TopicAPI.get('', TopicController.request)
   .get('/:id', TopicController.find)
   .delete('/:id')
+
+  .get('/:topicId/comment', CommentController.getByTopic)
   .post('/:topicId/comment', CommentController.create);

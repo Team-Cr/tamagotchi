@@ -9,10 +9,11 @@ body {
   display: flex;
   flex-direction: column;
 
-  max-width: 1440px;
+  width: 100vw;
   height: 100vh;
   height: fill-available;
-  margin: 0 auto;
+
+  // margin: 0 auto;
 
   font: var(--regular-font);
   color: var(--dark-color);
@@ -33,20 +34,22 @@ html[data-theme='light'] {
   --primary-color: #cf5c36;
   --success-color: #4ab00b;
   --input-color: #fff9c7;
+  --text-primary: #201d0c;
+  --text-secondary: #4c4c4c;
 }
 
 html[data-theme='dark'] {
   --medium-pink-color: #d58383;
   --dark-color: #201d0c;
-  --brown-color: #C79190;
+  --brown-color: #fad9d9;
   --light-pink-color: #ffefef;
   --background-color: #252630;
-  --secondary-color: #B7B9C1;
-  --secondary-dark-color: #FFFDEE;
+  --secondary-color: #b7b9c1;
+  --secondary-dark-color: #fffdee;
   --primary-color: #cf5c36;
   --success-color: #4ab00b;
   --input-color: #fff9c7;
-  --text-primary: #FFFDEE;
+  --text-primary: #fffdee;
   --text-secondary: #c5c2b5;
 }
 
