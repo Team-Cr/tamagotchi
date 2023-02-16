@@ -10,7 +10,7 @@ services:
       dockerfile: Dockerfile.client
     restart: always
     volumes:
-      - /cert:/var/www/ssl
+      - ./cert:/var/www/ssl
     ports:
       - "80:80"
       - "443:443"
