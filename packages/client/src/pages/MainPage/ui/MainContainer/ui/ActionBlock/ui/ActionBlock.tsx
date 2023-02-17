@@ -16,14 +16,10 @@ export interface ActionBlockProps {
 export const ActionBlock = (props: ActionBlockProps) => {
   const { handleUpdateBarsPoints, image, pointsForAction, text, keyboardKey, action } = props;
 
-  const [audio, setAudio] = useState<HTMLAudioElement>();
+  const [audio] = useState<HTMLAudioElement>(new Audio(ActionSound));
 
   useEffect(() => {
-    setAudio(new Audio(ActionSound));
-  }, []);
-
-  useEffect(() => {
-    if (audio !== undefined) {
+    if (typeof audio !== 'undefined') {
       audio.loop = false;
       audio.volume = 0.2;
     }
@@ -31,7 +27,7 @@ export const ActionBlock = (props: ActionBlockProps) => {
 
   const handleClick = useCallback(() => {
     handleUpdateBarsPoints(pointsForAction);
-    if (audio !== undefined) {
+    if (typeof audio !== 'undefined') {
       audio.play();
     }
     action();
@@ -41,7 +37,7 @@ export const ActionBlock = (props: ActionBlockProps) => {
     (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.key === keyboardKey) {
         handleUpdateBarsPoints(pointsForAction);
-        if (audio !== undefined) {
+        if (typeof audio !== 'undefined') {
           audio.play();
         }
         action();
