@@ -4,12 +4,11 @@ import {
   useNotifications,
 } from '@/app/providers/NotificationsProvider';
 import { LeaderboardConfig } from '@/pages/LeaderboardPage/ui/LeaderboardPage';
-import { LeaderboardAPI, LeaderboardData } from '@/shared/lib/api';
+import { LeaderboardAPI } from '@/shared/lib/api';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
 import { LevelOrHpBar } from '@/shared/ui/LevelOrHpBar';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import css from './MainHeader.module.scss';
-import { addLeaderboardLevel } from '@/entities/tamagotchi';
 
 export const MainHeader = () => {
   const { expMax, expCurrent, hpCurrent, hpMax, level } = useAppSelector(
@@ -22,8 +21,7 @@ export const MainHeader = () => {
 
   useEffect(() => {
     if (level !== 1) return;
-    LeaderboardAPI.all(LeaderboardConfig)
-    .catch((e) => console.log({ e }));
+    LeaderboardAPI.all(LeaderboardConfig).catch((e) => console.log({ e }));
   }, [dispatch, id, level]);
 
   const { sendNotification } = useNotifications();

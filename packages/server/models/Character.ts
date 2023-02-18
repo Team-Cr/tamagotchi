@@ -13,6 +13,9 @@ export class Character extends Model {
   @Column(DataType.DATE)
   lastActiveTime!: Date;
 
+  @Column(DataType.BOOLEAN)
+  hasSeenTutorial!: boolean;
+
   @ForeignKey(() => User)
   @Column(DataType.INTEGER)
   userId!: number;

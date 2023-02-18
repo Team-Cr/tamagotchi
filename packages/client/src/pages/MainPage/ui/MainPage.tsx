@@ -8,14 +8,12 @@ import { MainHeader } from './MainHeader';
 
 import css from './MainPage.module.scss';
 
-const hasSeenStartPage = false;
-
 const MainPage = () => {
-  const { hpCurrent } = useAppSelector((state) => state.tamagotchi);
+  const { hpCurrent, hasSeenTutorial } = useAppSelector((state) => state.tamagotchi);
 
   return (
     <TransitionBlock className={css.main}>
-      {!hasSeenStartPage && <StartPage />}
+      {!hasSeenTutorial && <StartPage />}
       {hpCurrent <= 0 && <EndPage />}
       <MainHeader />
       <MainContainer />
