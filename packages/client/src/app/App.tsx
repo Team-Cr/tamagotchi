@@ -4,6 +4,7 @@ import { setData } from '@/entities/tamagotchi';
 import { AuthThunk } from '@/processes/auth';
 import { CharacterAPI } from '@/shared/lib/api/character';
 import { useAppDispatch } from '@/shared/lib/redux';
+import { BackgroundAudioSwitcher } from '@/shared/ui/BackgroundAudioSwitcher';
 import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
 import { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
@@ -55,6 +56,7 @@ export const App = () => {
     <>
       <ThemeSwitcher />
       <AppRouter />
+      <BackgroundAudioSwitcher />
     </>
   );
 };
