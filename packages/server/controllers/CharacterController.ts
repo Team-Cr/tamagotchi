@@ -3,18 +3,11 @@ import type { BaseRESTService } from 'service';
 import { Character } from '../models/Character';
 import { pick } from '../utils/pick';
 
-const startHp = 50;
-const startExperience = 0;
-const hasSeenTutorial = false;
-
 export class CharacterController implements BaseRESTService {
   public static create = async (request: Request, response: Response) => {
     const { id } = request.params;
 
     const defaultData = {
-      experience: startExperience,
-      hp: startHp,
-      hasSeenTutorial,
       lastActiveTime: new Date(),
       userId: id,
     };

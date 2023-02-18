@@ -30,8 +30,6 @@ export const MainContainer = () => {
 
   return (
     <div className={css.main__container}>
-      {}
-
       <div className={css.main__container__image}>
         <AnimationSleepCat />
       </div>
