@@ -10,12 +10,12 @@ import {
   Model,
   Table,
 } from 'sequelize-typescript';
-import { User } from './User';
 import { Topic } from './Topic';
+import { User } from './User';
 
 @Table({ tableName: 'comments' })
 export class Comment extends Model {
-  @Length({ min: 5, max: 255 })
+  @Length({ min: 1, max: 255 })
   @Column(DataType.STRING)
   text!: string;
 

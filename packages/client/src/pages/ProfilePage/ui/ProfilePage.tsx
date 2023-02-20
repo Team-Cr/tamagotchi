@@ -76,13 +76,15 @@ const ProfilePage = () => {
           <ProfileInput label='Number' name={'phone'} value={phone} onChange={handleChange} />
         </div>
 
-        <Button color={'success'} onClick={saveChanges}>
-          Save changes
-        </Button>
+        <div className={css.profile__buttons}>
+          <Button color={'success'} onClick={saveChanges}>
+            Save changes
+          </Button>
 
-        <Button color={'transparent'} onClick={logout}>
-          &#60; Logout
-        </Button>
+          <Button color={'transparent'} onClick={logout}>
+            &#60; Logout
+          </Button>
+        </div>
 
         <ProfileModal
           login={basicData.login}

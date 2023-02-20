@@ -1,14 +1,29 @@
-import type { BaseRESTService } from 'service';
 import type { Request, Response } from 'express';
-import { Topic } from '../models/Topic';
-import { Forum } from '../models/Forum';
+import type { BaseRESTService } from 'service';
 import { Comment } from '../models/Comment';
+import { Forum } from '../models/Forum';
+import { Topic } from '../models/Topic';
 
 export class TopicController implements BaseRESTService {
-  public static request = async (_request: Request, response: Response) => {
-    const topic = await Topic.findAll();
+  public static request = async (request: Request, response: Response) => {
+    const { forumId } = request.params;
 
-    return response.status(200).json(topic);
+    if (forumId) {
+      try {
+        const topics = await Topic.findAll({
+          where: {
+            forum_id: forumId,
+          },
+        });
+
+        return response.status(200).json(topics);
+      } catch (err) {
+        return response.status(400).json({ reason: 'Wrong request', error: err });
+      }
+    } else {
+      const topics = await Topic.findAll();
+      return response.status(200).json(topics);
+    }
   };
 
   public static find = async (request: Request, response: Response) => {
@@ -20,15 +35,14 @@ export class TopicController implements BaseRESTService {
   };
 
   public static create = async (request: Request, response: Response) => {
-    const { body, params } = request;
-    const { forumId } = params;
+    const { body } = request;
+    const { forumId } = request.params;
 
     try {
       const forum = await Forum.findByPk(forumId);
       if (!forum) {
         return response.status(404).json({ reason: 'Forum not found' });
       }
-
       const topic = await Topic.create({ ...body, forumId });
       return response.status(200).json({ id: topic.id });
     } catch (err) {

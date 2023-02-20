@@ -8,6 +8,10 @@ type LeaderboardEntryProps = Omit<LeaderboardData, 'id'> & { checked: boolean };
 export const LeaderboardEntry = (props: LeaderboardEntryProps) => {
   const { avatarUrl, name, daysActive, level, checked } = props;
 
+  if (typeof level !== 'number') {
+    return null;
+  }
+
   return (
     <div className={classNames(css.entry, { [css.checked]: checked })}>
       <div className={css.entry__left_group}>

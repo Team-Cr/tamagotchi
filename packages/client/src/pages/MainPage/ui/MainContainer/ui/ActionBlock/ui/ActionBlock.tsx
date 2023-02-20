@@ -1,5 +1,6 @@
-import { KeyboardEvent, useCallback } from 'react';
+import { KeyboardEvent, useCallback, useEffect, useState } from 'react';
 import css from './ActionBlock.module.scss';
+import ActionSound from '@/shared/assets/sounds/actionSound.wav';
 
 type HandleUpdateBarsPointsType = ({ level, hp }: BarsPointsType) => void;
 
@@ -9,23 +10,40 @@ export interface ActionBlockProps {
   pointsForAction: BarsPointsType;
   handleUpdateBarsPoints: HandleUpdateBarsPointsType;
   keyboardKey: string;
+  action: () => void | undefined;
 }
 
 export const ActionBlock = (props: ActionBlockProps) => {
-  const { handleUpdateBarsPoints, image, pointsForAction, text, keyboardKey } = props;
+  const { handleUpdateBarsPoints, image, pointsForAction, text, keyboardKey, action } = props;
 
-  const handleClick = useCallback(
-    () => handleUpdateBarsPoints(pointsForAction),
-    [handleUpdateBarsPoints, pointsForAction],
-  );
+  const [audio] = useState<HTMLAudioElement>(new Audio(ActionSound));
+
+  useEffect(() => {
+    if (typeof audio !== 'undefined') {
+      audio.loop = false;
+      audio.volume = 0.2;
+    }
+  }, [audio]);
+
+  const handleClick = useCallback(() => {
+    handleUpdateBarsPoints(pointsForAction);
+    if (typeof audio !== 'undefined') {
+      audio.play();
+    }
+    action();
+  }, [handleUpdateBarsPoints, pointsForAction, audio, action]);
 
   const handleKeyboardClick = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.key === keyboardKey) {
         handleUpdateBarsPoints(pointsForAction);
+        if (typeof audio !== 'undefined') {
+          audio.play();
+        }
+        action();
       }
     },
-    [handleUpdateBarsPoints, pointsForAction, keyboardKey],
+    [keyboardKey, handleUpdateBarsPoints, pointsForAction, audio, action],
   );
 
   return (

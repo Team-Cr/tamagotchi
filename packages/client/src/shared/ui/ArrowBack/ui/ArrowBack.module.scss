@@ -1,7 +1,9 @@
 .arrow {
   cursor: pointer;
 
-  position: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
 
   display: flex;
   place-items: center;
@@ -9,7 +11,7 @@
   height: 100%;
   padding-left: var(--padding-left);
 
-  color: var(--dark-color);
+  color: var(--text-primary);
 
   background: none;
   border: none;
