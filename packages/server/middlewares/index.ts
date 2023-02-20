@@ -1,0 +1,1 @@
+export { proxyMiddleware } from './proxy';
