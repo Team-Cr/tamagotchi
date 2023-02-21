@@ -1,11 +1,12 @@
 import css from './ThemeSwitcher.module.scss';
 import { useCallback, useEffect, useState } from 'react';
-import { useAppSelector } from '@/shared/lib/redux';
-import { THEME } from '@/shared/lib/api/types/user';
-import { UserAPI } from '@/entities/user';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
+import { ConfigurationThunk } from '@/entities/configuration';
+import { THEME } from '@/shared/lib/api';
 
 export const ThemeSwitcher = () => {
-  const user = useAppSelector((state) => state.user);
+  const config = useAppSelector((state) => state.configuration);
+  const dispatch = useAppDispatch();
   const [toggled, setToggled] = useState(true);
 
   function setTheme(themeName: string) {
@@ -13,20 +14,21 @@ export const ThemeSwitcher = () => {
   }
 
   const handleThemeSwitch = useCallback(async () => {
-    setToggled(!toggled);
-    if (user.configuration?.id) {
-      await UserAPI.updateConfiguration(user.configuration.id, {
+    console.log(config);
+    dispatch(
+      ConfigurationThunk.updateConfiguration({
+        ...config,
         themeId: toggled ? THEME.DARK : THEME.LIGHT,
-      });
-      setTheme(toggled ? 'dark' : 'light');
-    }
-  }, [toggled, user.configuration]);
+      }),
+    );
+  }, [config, dispatch, toggled]);
 
   useEffect(() => {
-    const themeId = user.configuration?.themeId || THEME.LIGHT;
-    setToggled(themeId === THEME.LIGHT);
-    setTheme(themeId === THEME.LIGHT ? 'light' : 'dark');
-  }, [user.configuration]);
+    const themeId = config.themeId || THEME.LIGHT;
+    const isLight = themeId === THEME.LIGHT;
+    setToggled(isLight);
+    setTheme(isLight ? 'light' : 'dark');
+  }, [config, config.themeId]);
 
   return (
     <div className={css.switcher}>

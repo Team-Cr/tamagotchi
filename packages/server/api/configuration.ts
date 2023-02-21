@@ -3,4 +3,7 @@ import { ConfigurationController } from '../controllers';
 
 export const ConfigurationAPI = Router();
 
-ConfigurationAPI.patch('/:id', ConfigurationController.update);
+ConfigurationAPI.get('/:id', ConfigurationController.find).patch(
+  '/:id',
+  ConfigurationController.update,
+);

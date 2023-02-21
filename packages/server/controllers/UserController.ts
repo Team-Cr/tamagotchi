@@ -7,12 +7,11 @@ export class UserController implements BaseRESTService {
   public static create = async (request: Request, response: Response) => {
     const { id } = request.params;
 
-    await Configuration.findOrCreate({
-      where: { userId: id },
-    });
     const user = await User.findOrCreate({
       where: { id },
-      include: Configuration,
+    });
+    await Configuration.findOrCreate({
+      where: { userId: id },
     });
 
     return response.status(200).json(user);
