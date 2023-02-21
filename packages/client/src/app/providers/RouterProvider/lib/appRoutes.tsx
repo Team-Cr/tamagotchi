@@ -2,6 +2,7 @@ import {
   ForumPage,
   ForumTopicPage,
   ForumTopicsPage,
+  HowToPlay,
   LeaderboardPage,
   MainPage,
   OAuthPage,
@@ -62,5 +63,9 @@ export const appRoutes: AppRoute[] = [
     element: <OAuthPage />,
     route: ROUTES.OAuth,
     protectedType: 'login',
+  },
+  {
+    element: <HowToPlay />,
+    route: ROUTES.HowToPlay,
   },
 ];

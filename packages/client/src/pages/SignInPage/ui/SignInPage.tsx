@@ -14,74 +14,77 @@ import { TransitionBlock } from '@/widgets/Transitions';
 import { OAuthPanel } from '@/pages/SignInPage/ui/OAuthPanel';
 
 const SignInPage = () => {
-  const [form, setForm] = useState<SigninData>({ login: '', password: '' });
-  const dispatch = useAppDispatch();
+    const [form, setForm] = useState<SigninData>({ login: '', password: '' });
+    const dispatch = useAppDispatch();
 
-  const onSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      dispatch(AuthThunk.signIn(form));
-    },
-    [dispatch, form],
-  );
+    const onSubmit = useCallback(
+        (e: FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
+            dispatch(AuthThunk.signIn(form));
+        },
+        [dispatch, form],
+    );
 
-  const onChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.target;
-      setForm({ ...form, [name]: value });
-    },
-    [form],
-  );
+    const onChange = useCallback(
+        (e: ChangeEvent<HTMLInputElement>) => {
+            const { name, value } = e.target;
+            setForm({ ...form, [name]: value });
+        },
+        [form],
+    );
 
-  return (
-    <TransitionBlock>
-      <form onSubmit={onSubmit}>
-        <div className={styles.signin__container}>
-          <div className={styles.signin__title}>Welcome, catlover</div>
+    return (
+        <TransitionBlock>
+            <form onSubmit={onSubmit}>
+                <div className={styles.signin__container}>
+                    <div className={styles.signin__title}>Welcome, catlover</div>
+                    <div className={styles['signin__how-to-play']}>
+                        <Link href={ROUTES.HowToPlay}>
+                            How to play</Link>
+                    </div>
+                    <div className={styles.signin__pet}>
+                        <img className={styles.signin__img} src={image} alt='gatito' />
+                    </div>
 
-          <div className={styles.signin__pet}>
-            <img className={styles.signin__img} src={image} alt='gatito' />
-          </div>
+                    <div className={styles.signin__pet__create}>
+                        <Link href={ROUTES.SignUp} icon={iconLnk}>
+                            I want a new
+                        </Link>
+                    </div>
 
-          <div className={styles.signin__pet__create}>
-            <Link href={ROUTES.SignUp} icon={iconLnk}>
-              I want a new
-            </Link>
-          </div>
+                    <div className={styles.signin__fields}>
+                        <OAuthPanel />
 
-          <div className={styles.signin__fields}>
-            <OAuthPanel />
+                        <Input
+                            name='login'
+                            type='text'
+                            value={form.login}
+                            placeholder='Login'
+                            onChange={onChange}
+                        />
+                        <Input
+                            name='password'
+                            type='password'
+                            value={form.password}
+                            placeholder='Password'
+                            onChange={onChange}
+                        />
+                    </div>
 
-            <Input
-              name='login'
-              type='text'
-              value={form.login}
-              placeholder='Login'
-              onChange={onChange}
-            />
-            <Input
-              name='password'
-              type='password'
-              value={form.password}
-              placeholder='Password'
-              onChange={onChange}
-            />
-          </div>
-
-          <Button
-            className={styles.signin__button}
-            name='loginBtn'
-            size='large'
-            color='primary'
-            icon={iconBtn}
-            type='submit'
-          >
-            Visit my cat
-          </Button>
-        </div>
-      </form>
-    </TransitionBlock>
-  );
+                    <Button
+                        className={styles.signin__button}
+                        name='loginBtn'
+                        size='large'
+                        color='primary'
+                        icon={iconBtn}
+                        type='submit'
+                    >
+                        Visit my cat
+                    </Button>
+                </div>
+            </form>
+        </TransitionBlock>
+    );
 };
 
 export default SignInPage;

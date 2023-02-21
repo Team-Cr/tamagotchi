@@ -9,3 +9,4 @@ export { ProfilePage } from './ProfilePage';
 export { RegistrationPage } from './RegistrationPage';
 export { ServerErrorPage } from './ServerError';
 export { SignInPage } from './SignInPage';
+export { HowToPlay } from './HowToPlay';

@@ -9,4 +9,5 @@ export enum ROUTES {
   Forums = '/forums',
   ForumTopics = '/forums/:id',
   Topic = '/topic/:topicId',
+  HowToPlay = '/how-to-play',
 }
