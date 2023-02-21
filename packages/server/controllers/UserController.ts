@@ -2,7 +2,6 @@ import type { BaseRESTService } from 'service';
 import type { Request, Response } from 'express';
 import { User } from '../models/User';
 import { Configuration } from '../models/Configuration';
-import { THEME } from '../models/Theme';
 
 export class UserController implements BaseRESTService {
   public static create = async (request: Request, response: Response) => {
@@ -10,9 +9,6 @@ export class UserController implements BaseRESTService {
 
     await Configuration.findOrCreate({
       where: { userId: id },
-      defaults: {
-        themeId: THEME.DARK,
-      },
     });
     const user = await User.findOrCreate({
       where: { id },
