@@ -9,8 +9,8 @@
   padding: 4px 24px 8px;
 
   font: var(--regular-font);
-  font-size: 36px;
-  line-height: 36px;
+  font-size: var(--regular-font-size);
+  line-height: var(--regular-line-height);
   color: var(--text-primary);
   white-space: nowrap;
 

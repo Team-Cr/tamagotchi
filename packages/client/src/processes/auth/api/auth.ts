@@ -51,7 +51,9 @@ export const AuthThunk = {
   }),
   getUser: createAsyncThunk('auth/get_user', async () => {
     const { data } = await AuthAPI.getUser();
-    await AuthAPI.storeUser(data.id);
-    return data;
+    const user = await AuthAPI.storeUser(data.id);
+    // @ts-ignore
+    const userData = user.data[0];
+    return { ...data, ...userData };
   }),
 };

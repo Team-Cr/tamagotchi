@@ -1,4 +1,4 @@
-import { FC, DetailedHTMLProps, FormHTMLAttributes } from 'react';
+import { DetailedHTMLProps, FC, FormHTMLAttributes } from 'react';
 
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
@@ -29,13 +29,10 @@ export const RegistrationForm: FC<Props> = ({ ...props }) => {
         <Input placeholder='Login' type='text' name='login' />
         <Input placeholder='Password' type='password' name='password' />
       </div>
-      <Button type={'submit'} className={styles.form__btn}>
-        <div className={styles['form__btn-wrapper']}>
-          <Typography color='white' oneLine>
-            Hello, a new Friend
-          </Typography>
-          <img src={images.CatPixelImage} alt='cat-pixel-icon' />
-        </div>
+      <Button type={'submit'} icon={images.CatPixelImage}>
+        <Typography color='white' oneLine>
+          Hello, a new Friend
+        </Typography>
       </Button>
     </Form>
   );

@@ -10,15 +10,4 @@ export class ThemeController implements BaseRESTService {
 
     return response.status(200).json(theme);
   };
-
-  public static create = async (request: Request, response: Response) => {
-    const { body } = request;
-
-    try {
-      const theme = await Theme.create(body);
-      return response.status(200).json({ id: theme.id });
-    } catch {
-      return response.status(400).json({ reason: 'Wrong request' });
-    }
-  };
 }

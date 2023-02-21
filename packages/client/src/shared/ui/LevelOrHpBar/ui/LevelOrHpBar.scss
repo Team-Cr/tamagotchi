@@ -51,8 +51,8 @@
 
   &__text {
     position: absolute;
-    right: 90%;
-    bottom: 35%;
+    bottom: 45%;
+    left: 0;
 
     font:var(--title-font);
 
@@ -67,7 +67,7 @@
     }
 
     &.hp {
-      background: linear-gradient(180deg, #ffb1b1 0%, #ffb5b5 67.69%, #fd2424 67.7%, #fd2626 100%);
+      background: linear-gradient(180deg, #ffb1b1 0%, #ffb5b5 67.71%, #fd2424 67.7%, #fd2626 100%);
       // stylelint-disable-next-line
       -webkit-background-clip: text;
 

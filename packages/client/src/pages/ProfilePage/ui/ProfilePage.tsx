@@ -49,9 +49,7 @@ const ProfilePage = () => {
       <div className={css.profile__container}>
         <ProfileAvatar avatar={user.avatar} />
 
-        <Button size={'small'} onClick={showModal}>
-          Change password
-        </Button>
+        <Button onClick={showModal}>Change password</Button>
 
         <div className={css.profile__fields}>
           <ProfileInput

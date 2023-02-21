@@ -4,13 +4,13 @@ import { setData } from '@/entities/tamagotchi';
 import { AuthThunk } from '@/processes/auth';
 import { CharacterAPI } from '@/shared/lib/api/character';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { BackgroundAudioSwitcher } from '@/shared/ui/BackgroundAudioSwitcher';
-import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
 import { useNotifications } from './providers/NotificationsProvider';
 import { AppRouter } from './providers/RouterProvider';
 import './styles/index.scss';
+import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
+import { BackgroundAudioSwitcher } from '@/shared/ui/BackgroundAudioSwitcher';
 
 if (typeof navigator !== 'undefined' && __MODE__ === 'production') {
   startServiceWorker();
@@ -23,7 +23,6 @@ export const App = () => {
   const dispatch = useAppDispatch();
 
   dispatch(AuthThunk.getUser()).then(async ({ payload }) => {
-    // @ts-ignore
     const id = payload?.id as number | undefined;
 
     if (id) {
@@ -54,8 +53,8 @@ export const App = () => {
 
   return (
     <>
-      <ThemeSwitcher />
       <AppRouter />
+      <ThemeSwitcher />
       <BackgroundAudioSwitcher />
     </>
   );
