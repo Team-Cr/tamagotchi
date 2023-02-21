@@ -1,9 +1,27 @@
 version: "3.9"
 
 services:
-  server:
-    container_name: prakticum-server
-    image: prackicum-server
+  client:
+    container_name: tamagotchi-client
+    image: practicum-client
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    restart: always
+    volumes:
+      - ./cert:/var/www/ssl
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - tamagotchi_connect
+    depends_on:
+      - ssr
+
+  ssr:
+    container_name: tamagotchi-server
+    image: practicum-server
     build:
       context: .
       dockerfile: Dockerfile.server
@@ -25,9 +43,12 @@ services:
       - tamagotchi_connect
 
   postgres:
+    container_name: tamagotchi-postgres
     image: postgres:14
     ports:
       - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    expose:
+      - "80"
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_USER: ${POSTGRES_USER}
@@ -39,7 +60,7 @@ services:
       - tamagotchi_connect
 
   pgadmin:
-    container_name: pgadmin
+    container_name: tamagotchi-pgadmin
     image: dpage/pgadmin4:4.18
     restart: always
     environment:

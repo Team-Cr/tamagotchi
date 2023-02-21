@@ -8,3 +8,4 @@ lerna-debug.log
 *.tsbuildinfo
 .yalc
 yalc.lock
+/cert

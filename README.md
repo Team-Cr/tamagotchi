@@ -1,3 +1,5 @@
+### Игра: [Tamagotchi](https://tamagotchi-practicum.ru/)
+
 ### Как запускать?
 
 1. Убедитесь что у вас установлен `node` и `docker`
