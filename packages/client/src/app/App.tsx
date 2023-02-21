@@ -4,7 +4,9 @@ import { setData } from '@/entities/tamagotchi';
 import { AuthThunk } from '@/processes/auth';
 import { CharacterAPI } from '@/shared/lib/api/character';
 import { useAppDispatch } from '@/shared/lib/redux';
+import { SuspenseHelper } from '@/shared/lib/redux/suspenseHelper';
 import { BackgroundAudioSwitcher } from '@/shared/ui/BackgroundAudioSwitcher';
+import { Loader } from '@/shared/ui/Loader';
 import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
 import { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
@@ -54,9 +56,11 @@ export const App = () => {
 
   return (
     <>
-      <ThemeSwitcher />
-      <AppRouter />
-      <BackgroundAudioSwitcher />
+      <SuspenseHelper fallback={<Loader />}>
+        <ThemeSwitcher />
+        <AppRouter />
+        <BackgroundAudioSwitcher />
+      </SuspenseHelper>
     </>
   );
 };
