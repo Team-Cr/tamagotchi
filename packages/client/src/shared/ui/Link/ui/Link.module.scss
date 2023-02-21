@@ -8,7 +8,13 @@
 
   font: var(--regular-font);
   color: var(--text-primary);
-  text-decoration: none;
+  text-decoration: transparent;
+
+  transition: text-decoration ease-in-out .3s;
+
+  &:hover {
+    text-decoration: underline var(--text-primary);
+  }
 }
 
 .link__icon {
@@ -17,7 +23,8 @@
 
 .link__container {
   position: relative;
-
+  
+  width: fit-content;
   height: max-content;
 }
 

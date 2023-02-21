@@ -38,7 +38,9 @@ const SignInPage = () => {
       <form onSubmit={onSubmit}>
         <div className={styles.signin__container}>
           <div className={styles.signin__title}>Welcome, catlover</div>
-
+          <div className={styles['signin__how-to-play']}>
+            <Link href={ROUTES.HowToPlay}>How to play?</Link>
+          </div>
           <div className={styles.signin__pet}>
             <img className={styles.signin__img} src={image} alt='gatito' />
           </div>

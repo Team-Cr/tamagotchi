@@ -1,97 +1,113 @@
-.signin__container {
-  display: grid;
-  grid-template-columns: auto 1fr 0.4fr 1fr auto;
-  row-gap: 10px;
-  column-gap: 50px;
+.signin {
+  &__container {
+    display: grid;
+    grid-template-columns: auto 1fr 0.4fr 1fr auto;
+    row-gap: 10px;
+    column-gap: 50px;
 
-  max-width: 1440px;
-  margin: 0 auto;
+    max-width: 1440px;
+    margin: 0 auto;
 
-  text-align: center;
-}
+    text-align: center;
+  }
 
-.signin__title {
-  grid-column: 1 / 6;
-  grid-row: 1;
+  &__title {
+    grid-column: 1 / 6;
+    grid-row: 1;
 
-  padding: var(--padding-top) 0 0 0;
+    padding-top: var(--padding-top);
 
-  font: var(--title-font);
-  color: var(--text-primary);
-  text-align: center;
-}
+    font: var(--title-font);
+    color: var(--text-primary);
+    text-align: center;
+  }
 
-.signin__pet {
-  grid-column: 2;
-  grid-row: 2 / 6;
-}
+  &__how-to-play {
+    display: flex;
+    grid-column: 2 / 6;
+    grid-row: 2;
+    justify-content: center;
+  }
 
-.signin__pet__create {
-  display: flex;
-  grid-column: 2;
-  grid-row: 6;
-  align-items: center;
-  justify-content: center;
-}
+  &__pet {
+    grid-column: 2;
+    grid-row: 3 / 6;
 
-.signin__fields {
-  display: flex;
-  grid-column: 4;
-  grid-row: 3/4;
-  flex-direction: column;
-  gap: 25px;
+    &__create {
+      display: flex;
+      grid-column: 2;
+      grid-row: 6;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 
-  width: 100%;
-}
+  &__fields {
+    display: flex;
+    grid-column: 4;
+    grid-row: 3/4;
+    flex-direction: column;
+    gap: 25px;
 
-.signin__button {
-  grid-column: 4;
-  grid-row: 6;
+    width: 100%;
+  }
 
-  width: 100%;
+  &__button {
+    grid-column: 4;
+    grid-row: 6;
+
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .signin__container {
-    display: grid;
-    grid-template-columns: auto;
+  .signin {
+    &__container {
+      display: grid;
+      grid-template-columns: auto;
 
-    width: 100%;
-    padding: 30px;
-  }
+      width: 100%;
+      padding: 30px;
+    }
 
-  .signin__title {
-    display: none;
-  }
+    &__title {
+      display: none;
+    }
 
-  .signin__pet {
-    grid-column: 1;
-    grid-row: 1;
+    &__how-to-play {
+      grid-column: 1;
+      grid-row: 5;
+    }
 
-    margin-bottom: 50px;
-  }
+    &__pet {
+      grid-column: 1;
+      grid-row: 1;
 
-  .signin__fields {
-    grid-column: 1;
-    grid-row: 2;
-    gap: 15px;
+      margin-bottom: 50px;
 
-    margin-bottom: 70px;
-  }
+      &__create {
+        grid-column: 1;
+        grid-row: 4;
 
-  .signin__button {
-    grid-column: 1;
-    grid-row: 3;
-  }
+        padding-top: 20px;
+      }
+    }
 
-  .signin__pet__create {
-    grid-column: 1;
-    grid-row: 4;
+    &__fields {
+      grid-column: 1;
+      grid-row: 2;
+      gap: 15px;
 
-    padding-top: 20px;
-  }
+      margin-bottom: 70px;
+    }
 
-  .signin__img {
-    width: 200px;
+    &__button {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    &__img {
+      width: 200px;
+    }
   }
 }

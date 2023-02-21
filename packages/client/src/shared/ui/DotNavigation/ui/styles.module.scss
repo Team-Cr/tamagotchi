@@ -1,0 +1,87 @@
+$default-dot-color: orange;
+$dot-color: var(--primary-color, $default-dot-color);
+
+.tooltip {
+  position: absolute;
+  z-index: 2;
+  bottom: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 10px;
+
+  font-size: 11px;
+  line-height: 16px;
+  color: #fff;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: 0;
+
+  opacity: 0;
+  background-color: #151515;
+  border: 1px solid #383838;
+  border-radius: 3px;
+
+  &.side-nav-tooltip {
+    right: 100%;
+    bottom: auto;
+
+    display: block;
+
+    margin-right: 8px;
+    margin-bottom: 0;
+  }
+}
+
+.side-nav {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 200px;
+  margin: auto 20px auto 0;
+  padding: 0 8px;
+
+  &-link &-text {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  &-link {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 8px;
+    height: 8px;
+
+    background-color: $dot-color;
+    border-radius: 50%;
+
+    transition: all 400ms ease;
+
+    &:hover {
+      transform: scale(1.25);
+
+      background-color: $dot-color;
+
+      & > .tooltip {
+        opacity: 1;
+      }
+    }
+  }
+}

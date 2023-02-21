@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import css from './ArrowBack.module.scss';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 export interface ArrowBackProps {
   backTo?: string;
   className?: string;
@@ -10,12 +11,15 @@ export interface ArrowBackProps {
 
 // TODO add Link and typing by routes
 export const ArrowBack = (props: ArrowBackProps) => {
-  const { className = '' } = props;
+  const { className = '', backTo = '' } = props;
   const navigate = useNavigate();
 
   const goBack = useCallback(() => {
-    navigate(-1);
-  }, [navigate]);
+    if (!backTo) {
+      navigate(-1);
+    }
+    navigate(backTo);
+  }, [backTo, navigate]);
 
   return (
     <button className={classNames(css.arrow, className)} onClick={goBack}>
