@@ -8,7 +8,7 @@ import { Button } from '../../Button';
 import { ForumUserInfo } from '../../ForumUserInfo';
 import css from './ForumComment.module.scss';
 
-type ForumCommentProps = Comment & {
+export type ForumCommentProps = Comment & {
   onClickReply: (commentId: number) => void;
 };
 

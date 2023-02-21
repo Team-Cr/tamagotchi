@@ -1,13 +1,14 @@
 .footer {
   display: flex;
-  justify-content: end;
+  justify-content: center;
 
   width: 100%;
 }
 
 .footer__button {
+  display: flex;
+
   height: 100%;
-  padding: 0;
 
   svg {
     width: 50px;
