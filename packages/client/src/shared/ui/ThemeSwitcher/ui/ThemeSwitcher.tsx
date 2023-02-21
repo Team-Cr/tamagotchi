@@ -1,34 +1,34 @@
-import { useCallback, useEffect, useState } from 'react';
 import css from './ThemeSwitcher.module.scss';
+import { useCallback, useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/redux';
+import { ConfigurationThunk } from '@/entities/configuration';
+import { THEME } from '@/shared/lib/api';
 
 export const ThemeSwitcher = () => {
-  // TODO replace with database
-  // const currentTheme = document.documentElement.dataset.theme;
-  const currentTheme = 'light';
-  const [toggled, setToggled] = useState(currentTheme ? currentTheme === 'light' : true);
+  const config = useAppSelector((state) => state.configuration);
+  const dispatch = useAppDispatch();
+  const [toggled, setToggled] = useState(true);
 
   function setTheme(themeName: string) {
-    localStorage.setItem('theme', themeName);
-    // TODO replace with database
-    // document.documentElement.setAttribute('data-theme', themeName);
+    document.documentElement.setAttribute('data-theme', themeName);
   }
 
-  const handleThemeSwitch = useCallback(() => {
-    if (localStorage.getItem('theme') === 'dark') {
-      setTheme('light');
-    } else {
-      setTheme('dark');
-    }
-    setToggled(!toggled);
-  }, [toggled]);
+  const handleThemeSwitch = useCallback(async () => {
+    console.log(config);
+    dispatch(
+      ConfigurationThunk.updateConfiguration({
+        ...config,
+        themeId: toggled ? THEME.DARK : THEME.LIGHT,
+      }),
+    );
+  }, [config, dispatch, toggled]);
 
   useEffect(() => {
-    if (localStorage.getItem('theme') === 'dark') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  });
+    const themeId = config.themeId || THEME.LIGHT;
+    const isLight = themeId === THEME.LIGHT;
+    setToggled(isLight);
+    setTheme(isLight ? 'light' : 'dark');
+  }, [config, config.themeId]);
 
   return (
     <div className={css.switcher}>

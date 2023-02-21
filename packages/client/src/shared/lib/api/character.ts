@@ -1,6 +1,6 @@
 import { AxiosResponse } from '@/shared/lib/api/types/axios';
-import { axiosAppInstance } from '@/shared/lib/axios';
 import { CharacterData } from '@/shared/lib/api/types/character';
+import { axiosAppInstance } from '@/shared/lib/axios';
 import { URLHelper } from '@/shared/lib/URLHelper';
 
 const CHARACTER_URL = 'character';
@@ -18,5 +18,15 @@ export const CharacterAPI = {
     hp: CharacterData['hp'],
     experience: CharacterData['experience'],
   ): AxiosResponse<{ character: CharacterData }> =>
-    axiosAppInstance.patch(URLHelper.buildUrl(Routes.UPDATE_CHARACTER, { id }), { hp, experience }),
+    axiosAppInstance.patch(URLHelper.buildUrl(Routes.UPDATE_CHARACTER, { id }), {
+      hp,
+      experience,
+    }),
+  setHasSeenTutorial: (
+    id: CharacterData['userId'],
+    hasSeenTutorial: CharacterData['hasSeenTutorial'],
+  ): AxiosResponse =>
+    axiosAppInstance.patch(URLHelper.buildUrl(Routes.UPDATE_CHARACTER, { id }), {
+      hasSeenTutorial,
+    }),
 };

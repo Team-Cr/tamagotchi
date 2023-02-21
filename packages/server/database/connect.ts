@@ -1,7 +1,7 @@
 import { Sequelize, type SequelizeOptions } from 'sequelize-typescript';
 import path from 'path';
 import { Forum } from '../models/Forum';
-import { Theme } from '../models/Theme';
+import { THEME, Theme } from '../models/Theme';
 
 const { POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB, POSTGRES_PORT, POSTGRES_HOST } = process.env;
 
@@ -16,7 +16,6 @@ const sequelizeOption: SequelizeOptions = {
 
 export const sequelize = new Sequelize(sequelizeOption);
 
-// TODO add models
 const modelsPath = path.join(__dirname, '../models');
 sequelize.addModels([modelsPath]);
 console.log(sequelizeOption);
@@ -32,7 +31,10 @@ export async function dbConnect() {
     }
     const themes = await Theme.findAll();
     if (!themes.length) {
-      await Theme.bulkCreate([{ name: 'light' }, { name: 'dark' }]);
+      await Theme.bulkCreate([
+        { id: 1, name: THEME.LIGHT },
+        { id: 2, name: THEME.DARK },
+      ]);
     }
     console.log('Connection has been established successfully.');
   } catch (error) {

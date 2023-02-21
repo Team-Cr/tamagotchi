@@ -1,0 +1,19 @@
+.switcher {
+  position: absolute;
+  z-index: 1;
+  top: 2vh;
+  left: 2vw;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.img {
+  width: 80px;
+}
