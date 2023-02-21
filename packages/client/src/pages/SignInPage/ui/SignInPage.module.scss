@@ -1,112 +1,111 @@
 .signin {
-    &__container {
-        display: grid;
-        grid-template-columns: auto 1fr 0.4fr 1fr auto;
-        row-gap: 10px;
-        column-gap: 50px;
+  &__container {
+    display: grid;
+    grid-template-columns: auto 1fr 0.4fr 1fr auto;
+    row-gap: 10px;
+    column-gap: 50px;
 
-        max-width: 1440px;
-        margin: 0 auto;
+    max-width: 1440px;
+    margin: 0 auto;
 
-        text-align: center;
+    text-align: center;
+  }
+
+  &__title {
+    grid-column: 1 / 6;
+    grid-row: 1;
+
+    padding-top: var(--padding-top);
+
+    font: var(--title-font);
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  &__how-to-play {
+    grid-column: 2 / 6;
+    grid-row: 2;
+  }
+
+  &__pet {
+    grid-column: 2;
+    grid-row: 3 / 6;
+
+    &__create {
+      display: flex;
+      grid-column: 2;
+      grid-row: 6;
+      align-items: center;
+      justify-content: center;
     }
+  }
 
-    &__title {
-        grid-column: 1 / 6;
-        grid-row: 1;
+  &__fields {
+    display: flex;
+    grid-column: 4;
+    grid-row: 3/4;
+    flex-direction: column;
+    gap: 25px;
 
-        padding-top: var(--padding-top);
+    width: 100%;
+  }
 
-        font: var(--title-font);
-        color: var(--text-primary);
-        text-align: center;
-    }
+  &__button {
+    grid-column: 4;
+    grid-row: 6;
 
-    &__how-to-play {
-        grid-column: 2 / 6;
-        grid-row: 2;
-    }
-
-    &__pet {
-        grid-column: 2;
-        grid-row: 3 / 6;
-
-        &__create {
-            display: flex;
-            grid-column: 2;
-            grid-row: 6;
-            align-items: center;
-            justify-content: center;
-        }
-    }
-
-    &__fields {
-        display: flex;
-        grid-column: 4;
-        grid-row: 3/4;
-        flex-direction: column;
-        gap: 25px;
-
-        width: 100%;
-    }
-
-    &__button {
-        grid-column: 4;
-        grid-row: 6;
-
-        width: 100%;
-    }
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .signin {
-        &__container {
-            display: grid;
-            grid-template-columns: auto;
+  .signin {
+    &__container {
+      display: grid;
+      grid-template-columns: auto;
 
-            width: 100%;
-            padding: 30px;
-        }
-
-        &__title {
-            display: none;
-        }
-
-
-        &__how-to-play {
-            grid-column: 1;
-            grid-row: 5;
-        }
-
-        &__pet {
-            grid-column: 1;
-            grid-row: 1;
-
-            margin-bottom: 50px;
-
-            &__create {
-                grid-column: 1;
-                grid-row: 4;
-
-                padding-top: 20px;
-            }
-        }
-
-        &__fields {
-            grid-column: 1;
-            grid-row: 2;
-            gap: 15px;
-
-            margin-bottom: 70px;
-        }
-
-        &__button {
-            grid-column: 1;
-            grid-row: 3;
-        }
-
-        &__img {
-            width: 200px;
-        }
+      width: 100%;
+      padding: 30px;
     }
+
+    &__title {
+      display: none;
+    }
+
+    &__how-to-play {
+      grid-column: 1;
+      grid-row: 5;
+    }
+
+    &__pet {
+      grid-column: 1;
+      grid-row: 1;
+
+      margin-bottom: 50px;
+
+      &__create {
+        grid-column: 1;
+        grid-row: 4;
+
+        padding-top: 20px;
+      }
+    }
+
+    &__fields {
+      grid-column: 1;
+      grid-row: 2;
+      gap: 15px;
+
+      margin-bottom: 70px;
+    }
+
+    &__button {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    &__img {
+      width: 200px;
+    }
+  }
 }

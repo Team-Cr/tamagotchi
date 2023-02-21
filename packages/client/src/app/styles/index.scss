@@ -6,71 +6,71 @@
 
 html,
 body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    width: 100vw;
-    height: 100vh;
-    height: fill-available;
+  width: 100vw;
+  height: 100vh;
+  height: fill-available;
 
-    // margin: 0 auto;
+  // margin: 0 auto;
 
-    font: var(--regular-font);
-    color: var(--dark-color);
+  font: var(--regular-font);
+  color: var(--dark-color);
 
-    background-color: var(--background-color);
-    background-image: url('../../shared/assets/images/fish-pattern-inversed.png');
-    background-repeat: repeat;
+  background-color: var(--background-color);
+  background-image: url('../../shared/assets/images/fish-pattern-inversed.png');
+  background-repeat: repeat;
 }
 
 html[data-theme='light'] {
-    --medium-pink-color: #d58383;
-    --dark-color: #201d0c;
-    --brown-color: #793c3b;
-    --light-pink-color: #ffefef;
-    --background-color: #ffe761;
-    --secondary-color: #484848;
-    --secondary-dark-color: #7e7e7e;
-    --primary-color: #cf5c36;
-    --success-color: #4ab00b;
-    --input-color: #fff9c7;
-    --text-primary: #201d0c;
-    --text-secondary: #4c4c4c;
+  --medium-pink-color: #d58383;
+  --dark-color: #201d0c;
+  --brown-color: #793c3b;
+  --light-pink-color: #ffefef;
+  --background-color: #ffe761;
+  --secondary-color: #484848;
+  --secondary-dark-color: #7e7e7e;
+  --primary-color: #cf5c36;
+  --success-color: #4ab00b;
+  --input-color: #fff9c7;
+  --text-primary: #201d0c;
+  --text-secondary: #4c4c4c;
 }
 
 html[data-theme='dark'] {
-    --medium-pink-color: #d58383;
-    --dark-color: #201d0c;
-    --brown-color: #fad9d9;
-    --light-pink-color: #ffefef;
-    --background-color: #252630;
-    --secondary-color: #b7b9c1;
-    --secondary-dark-color: #fffdee;
-    --primary-color: #cf5c36;
-    --success-color: #4ab00b;
-    --input-color: #fff9c7;
-    --text-primary: #fffdee;
-    --text-secondary: #c5c2b5;
+  --medium-pink-color: #d58383;
+  --dark-color: #201d0c;
+  --brown-color: #fad9d9;
+  --light-pink-color: #ffefef;
+  --background-color: #252630;
+  --secondary-color: #b7b9c1;
+  --secondary-dark-color: #fffdee;
+  --primary-color: #cf5c36;
+  --success-color: #4ab00b;
+  --input-color: #fff9c7;
+  --text-primary: #fffdee;
+  --text-secondary: #c5c2b5;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-    margin: 0;
+  margin: 0;
 
-    font: var(--title-font);
+  font: var(--title-font);
 }
 
 @media screen and (max-width: 768px) {
-    body {
-        font: var(--m-regular-font);
-    }
+  body {
+    font: var(--m-regular-font);
+  }
 
-    h1 {
-        font: var(--m-title-font);
-    }
+  h1 {
+    font: var(--m-title-font);
+  }
 }
