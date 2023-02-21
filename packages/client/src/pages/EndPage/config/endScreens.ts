@@ -8,6 +8,6 @@ export interface EndScreen {
 
 export const endScreen: EndScreen = {
   title: 'Cat has a new home now',
-  text: 'He has been without food for too long. You can try again.',
+  text: 'He has been without food for too long. Game over.',
   imgSrc: CatDead,
 };

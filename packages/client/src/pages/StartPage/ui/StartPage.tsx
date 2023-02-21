@@ -1,5 +1,7 @@
 import ArrowRightSvg from '@/shared/assets/images/arrowRight.svg';
 import CrossSvg from '@/shared/assets/images/cross.svg';
+import { CharacterAPI } from '@/shared/lib/api/character';
+import { useAppSelector } from '@/shared/lib/redux';
 import { Button } from '@/shared/ui/Button';
 import { Modal } from '@/shared/ui/Modal';
 import { useCallback, useState } from 'react';
@@ -11,18 +13,22 @@ const screensNumber = StartScreens.length;
 const StartPage = () => {
   const [screenId, setScreenId] = useState(0);
   const [isStartPageActive, setIsStartPageActive] = useState(true);
+  const { id } = useAppSelector((state) => state.user);
 
-  const closeModal = useCallback(() => setIsStartPageActive(false), []);
+  const closeModal = useCallback(() => {
+    CharacterAPI.setHasSeenTutorial(id, true);
+    setIsStartPageActive(false);
+  }, [id]);
 
   const switchScreen = useCallback(() => {
     const nextId = screenId + 1;
 
     if (nextId >= screensNumber) {
-      setIsStartPageActive(false);
+      closeModal();
     } else {
       setScreenId(nextId);
     }
-  }, [screenId]);
+  }, [screenId, closeModal]);
 
   const isLastScreen = screenId === screensNumber - 1;
   const { title, text, imgSrc } = StartScreens[screenId];
