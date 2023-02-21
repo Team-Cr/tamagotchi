@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from 'sequelize-typescript';
 import { User } from './User';
-import { Theme } from './Theme';
+import { THEME, Theme } from './Theme';
 
 @Table({ tableName: 'configurations' })
 export class Configuration extends Model {
@@ -10,7 +10,10 @@ export class Configuration extends Model {
   userId!: number;
 
   @ForeignKey(() => Theme)
-  @Column(DataType.INTEGER)
+  @Column({
+    type: DataType.INTEGER,
+    defaultValue: THEME.LIGHT,
+  })
   themeId!: number;
 
   @BelongsTo(() => User)

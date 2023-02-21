@@ -78,13 +78,13 @@
 
   // medium
   --medium-button-font-size: calc(var(--regular-font-size) * 0.8);
-  --medium-button-line-height: calc(var(--regular-font-size) * 0.8);
+  --medium-button-line-height: var(--regular-font-size);
   --medium-button-padding: calc(var(--padding-top-button) * 0.8)
     calc(var(--padding-left-button) * 0.8);
 
   // m-medium
   --m-medium-button-font-size: calc(var(--m-regular-font-size) * 0.8);
-  --m-medium-button-line-height: calc(var(--m-regular-font-size) * 0.8);
+  --m-medium-button-line-height: var(--m-regular-font-size);
   --m-medium-button-padding: calc(var(--m-padding-top-button) * 0.8)
     calc(var(--m-padding-left-button) * 0.8);
 
@@ -107,69 +107,69 @@
   --m-padding-left-input: 40px;
 
   // fonts
-  --font-family: 'VT323';
+  --font-family: 'Press Start 2P';
 
   // title
-  --title-font-size: 96px;
+  --title-font-size: 42px;
   --title-font-weight: 400;
-  --title-line-height: 96px;
+  --title-line-height: 82px;
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --title-font: var(--title-font-weight) var(--title-font-size) / var(--title-line-height)
     var(--font-family);
 
   // main header title
-  --main-header-title-font-size: 150px;
+  --main-header-title-font-size: 64px;
   --main-header-title-font-weight: 400;
-  --main-header-title-line-height: 165px;
+  --main-header-title-line-height: 64px;
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --main-header-title-font: var(--main-header-title-font-weight) var(--main-header-title-font-size) /
     var(--main-header-title-line-height) var(--font-family);
 
   // action block title
-  --action-block-title-size: 80px;
+  --action-block-title-size: 32px;
   --action-block-title-font-weight: 400;
-  --action-block-title-line-height: 80px;
+  --action-block-title-line-height: 32px;
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --action-block-title-font: var(--action-block-title-font-weight) var(--action-block-title-size) /
     var(--action-block-title-line-height) var(--font-family);
 
   // regular
-  --regular-font-size: 48px;
+  --regular-font-size: 24px;
   --regular-font-weight: 400;
-  --regular-line-height: 48px;
+  --regular-line-height: 24px;
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --regular-font: var(--regular-font-weight) var(--regular-font-size) / var(--regular-line-height)
     var(--font-family);
 
   // regular-sm
-  --regular-sm-font-size: 40px;
+  --regular-sm-font-size: 14px;
   --regular-sm-font-weight: 400;
-  --regular-sm-line-height: 40px;
+  --regular-sm-line-height: 14px;
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --regular-sm-font: var(--regular-sm-font-weight) var(--regular-sm-font-size) /
     var(--regular-sm-line-height) var(--font-family);
 
   // mobile fonts
   // m-title
-  --m-title-font-size: 64px;
+  --m-title-font-size: 32px;
   --m-title-font-weight: 400;
-  --m-title-line-height: 64px;
+  --m-title-line-height: 32px;
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --m-title-font: var(--m-title-font-weight) var(--m-title-font-size) / var(--m-title-line-height)
     var(--font-family);
 
   // m-regular
-  --m-regular-font-size: 36px;
+  --m-regular-font-size: 24px;
   --m-regular-font-weight: 400;
-  --m-regular-line-height: 36px;
+  --m-regular-line-height: 24px;
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --m-regular-font: var(--m-regular-font-weight) var(--m-regular-font-size) /
     var(--m-regular-line-height) var(--font-family);
 
   // m-regular-sm
-  --m-regular-sm-sm-font-size: 28px;
+  --m-regular-sm-sm-font-size: 14px;
   --m-regular-sm-font-weight: 400;
-  --m-regular-sm-line-height: 28px;
+  --m-regular-sm-line-height: 14px;
   /* stylelint-disable-next-line scss/operator-no-newline-after */
   --m-regular-sm-font: var(--m-regular-sm-font-weight) var(--m-regular-sm-font-size) /
     var(--m-regular-sm-line-height) var(--font-family);

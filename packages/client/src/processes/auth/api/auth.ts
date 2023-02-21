@@ -37,13 +37,13 @@ export const AuthAPI = {
 export const AuthThunk = {
   signIn: createAsyncThunk('auth/sign_in', async (payload: SigninData) => {
     await AuthAPI.signIn(payload);
-    const response = await AuthAPI.getUser();
-    return response.data;
+    const { data } = await AuthAPI.getUser();
+    return data;
   }),
   signUp: createAsyncThunk('auth/sign_up', async (payload: SignUpData) => {
     await AuthAPI.signUp(payload);
-    const response = await AuthAPI.getUser();
-    return response.data;
+    const { data } = await AuthAPI.getUser();
+    return data;
   }),
   logout: createAsyncThunk('user/logout', async () => {
     await AuthAPI.logout();
