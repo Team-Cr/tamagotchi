@@ -2,7 +2,7 @@
 @import './variables/global';
 @import './themes/dark';
 
-@import 'https://fonts.googleapis.com/css2?family=VT323&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap';
 
 html,
 body {
@@ -19,11 +19,12 @@ body {
   color: var(--dark-color);
 
   background-color: var(--background-color);
-  background-image: url('../../shared/assets/images/fish-pattern-inversed.png');
+  background-image: var(--background-pattern);
   background-repeat: repeat;
 }
 
 html[data-theme='light'] {
+  --background-pattern: url('../../shared/assets/images/fish-pattern-inversed.png');
   --medium-pink-color: #d58383;
   --dark-color: #201d0c;
   --brown-color: #793c3b;
@@ -39,6 +40,7 @@ html[data-theme='light'] {
 }
 
 html[data-theme='dark'] {
+  --background-pattern: url('../../shared/assets/images/fish-pattern-dark.png');
   --medium-pink-color: #d58383;
   --dark-color: #201d0c;
   --brown-color: #fad9d9;

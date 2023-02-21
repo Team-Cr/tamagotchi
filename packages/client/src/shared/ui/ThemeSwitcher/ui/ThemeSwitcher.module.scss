@@ -26,7 +26,7 @@
       width: 37px;
       height: 37px;
 
-      background-color: var(--dark);
+      background-color: #323d72;
       border-radius: 50%;
       box-shadow: inset 18px -4px 0 0 var(--light);
 
@@ -40,13 +40,13 @@
     display: none;
 
     &:checked ~ .switcher__slider {
-      background-color: var(--light);
+      background-color: #17a3de;
     }
 
     &:checked ~ .switcher__slider::before {
       transform: translateX(45px);
 
-      background-color: var(--dark);
+      background-color: var(--background-color);
       box-shadow: none;
     }
   }
@@ -59,7 +59,7 @@
     width: 100%;
     height: 50px;
 
-    background-color: var(--dark);
+    background-color: #323d72;
     border-radius: 50px;
   }
 }

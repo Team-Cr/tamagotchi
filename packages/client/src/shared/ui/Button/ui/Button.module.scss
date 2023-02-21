@@ -34,7 +34,7 @@
   line-height: var(--large-button-line-height);
 
   .button_icon {
-    height: var(--large-button-font-size);
+    height: calc(var(--large-button-font-size) * 2);
   }
 }
 
@@ -44,7 +44,7 @@
     line-height: var(--m-large-button-line-height);
 
     .button_icon {
-      height: var(--m-large-button-font-size);
+      height: calc(var(--m-large-button-font-size) * 2);
     }
   }
 }
@@ -56,7 +56,7 @@
   line-height: var(--medium-button-line-height);
 
   .button_icon {
-    height: var(--medium-button-font-size);
+    height: calc(var(--medium-button-font-size) * 2);
   }
 }
 

@@ -8,6 +8,7 @@ import { createServer as createViteServer } from 'vite';
 import { dbConnect } from './database/connect';
 import { ApiRouter } from './api';
 import bodyParser from 'body-parser';
+import { proxyMiddleware } from './middlewares';
 
 dotenv.config();
 
@@ -42,6 +43,8 @@ async function startServer(isDev = process.env.NODE_ENV === 'development') {
 
     app.use(vite.middlewares);
   }
+
+  app.use('/api/ya', proxyMiddleware);
 
   app.use('/api', ApiRouter);
   app.get('/api', (_, res) => {

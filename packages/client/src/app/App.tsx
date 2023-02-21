@@ -4,13 +4,14 @@ import { setData } from '@/entities/tamagotchi';
 import { AuthThunk } from '@/processes/auth';
 import { CharacterAPI } from '@/shared/lib/api/character';
 import { useAppDispatch } from '@/shared/lib/redux';
-import { BackgroundAudioSwitcher } from '@/shared/ui/BackgroundAudioSwitcher';
-import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
 import { useEffect } from 'react';
 import { useFullscreen } from './providers/FullscreenProvider';
 import { useNotifications } from './providers/NotificationsProvider';
 import { AppRouter } from './providers/RouterProvider';
 import './styles/index.scss';
+import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
+import { BackgroundAudioSwitcher } from '@/shared/ui/BackgroundAudioSwitcher';
+import { ConfigurationThunk } from '@/entities/configuration';
 
 if (typeof navigator !== 'undefined' && __MODE__ === 'production') {
   startServiceWorker();
@@ -22,15 +23,14 @@ export const App = () => {
 
   const dispatch = useAppDispatch();
 
-  dispatch(AuthThunk.getUser()).then(async ({ payload }) => {
+  dispatch(AuthThunk.getUser()).then(({ payload }) => {
     // @ts-ignore
-    const id = payload?.id as number | undefined;
+    const userId = payload?.id;
+    dispatch(ConfigurationThunk.getConfiguration(userId));
 
-    if (id) {
-      await CharacterAPI.storeCharacter(id).then(({ data }) => {
-        dispatch(setData(data.character));
-      });
-    }
+    CharacterAPI.storeCharacter(userId).then(({ data }) => {
+      dispatch(setData(data.character));
+    });
   });
 
   useEffect(() => {
@@ -54,8 +54,8 @@ export const App = () => {
 
   return (
     <>
-      <ThemeSwitcher />
       <AppRouter />
+      <ThemeSwitcher />
       <BackgroundAudioSwitcher />
     </>
   );
