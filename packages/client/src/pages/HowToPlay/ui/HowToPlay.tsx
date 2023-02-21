@@ -2,9 +2,9 @@ import { FC } from 'react';
 import { ArrowBack } from '@/shared/ui/ArrowBack';
 import { DotNavigation } from '@/shared/ui/DotNavigation';
 
-import styles from './styles.module.scss';
+import styles from './HowToPlay.module.scss';
 
-const array = [
+const guideList = [
   {
     title: 'Welcome to Tamagochi',
     img: 'https://user-images.githubusercontent.com/52976585/205504775-6876cb2a-d411-4f07-8adf-e2303e8181ba.png',
@@ -20,15 +20,15 @@ const array = [
 ];
 
 export const HowToPlay: FC = () => {
-  const options = array.map((item) => ({
+  const options = guideList.map((item) => ({
     ...item,
-    id: item.title.replace(/[^\w]/g, '-'),
+    id: item.title.replace(/\W/g, '-'),
   }));
 
   return (
     <div className={styles.landing}>
       <DotNavigation options={options} />
-      <ArrowBack />
+      <ArrowBack backTo={'/login'} />
       {options.map((option) => (
         <img
           className={styles.img}

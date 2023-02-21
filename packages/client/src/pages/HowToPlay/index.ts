@@ -1,1 +1,1 @@
-export { HowToPlay } from './ui/';
+export { HowToPlay } from './ui/HowToPlay';
