@@ -5,6 +5,8 @@ import PixelBed from '@/shared/assets/images/MainIcons/PixelBed.png';
 import PixelDumbell from '@/shared/assets/images/MainIcons/PixelDumbell.png';
 import { Cat, CatConditions } from '@/shared/lib/game/cat';
 
+export const HP_DECREASE_INTERVAL = 3000;
+
 export interface ActionConfig {
   image: string;
   text: string;
