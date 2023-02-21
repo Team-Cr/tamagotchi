@@ -52,11 +52,4 @@ export const UserThunk = {
     const response = await UserAPI.updatePassword(payload);
     return response.data;
   }),
-  updateConfiguration: createAsyncThunk(
-    'user/update_configuration',
-    async (payload: { id: UserConfiguration['id']; configuration: UserConfigurationUpdate }) => {
-      const response = await UserAPI.updateConfiguration(payload.id, payload.configuration);
-      return response.data;
-    },
-  ),
 };
