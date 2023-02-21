@@ -14,13 +14,17 @@ export const ThemeSwitcher = () => {
   }
 
   const handleThemeSwitch = useCallback(async () => {
-    console.log(config);
-    dispatch(
-      ConfigurationThunk.updateConfiguration({
-        ...config,
-        themeId: toggled ? THEME.DARK : THEME.LIGHT,
-      }),
-    );
+    if (config.id) {
+      dispatch(
+        ConfigurationThunk.updateConfiguration({
+          ...config,
+          themeId: toggled ? THEME.DARK : THEME.LIGHT,
+        }),
+      );
+    } else {
+      setToggled(!toggled);
+      setTheme(!toggled ? 'light' : 'dark');
+    }
   }, [config, dispatch, toggled]);
 
   useEffect(() => {
