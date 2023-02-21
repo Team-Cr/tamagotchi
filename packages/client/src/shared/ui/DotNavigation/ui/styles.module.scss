@@ -1,5 +1,4 @@
 $default-dot-color: orange;
-
 $dot-color: var(--primary-color, $default-dot-color);
 
 .tooltip {
@@ -39,7 +38,9 @@ $dot-color: var(--primary-color, $default-dot-color);
 .side-nav {
   position: fixed;
   z-index: 9;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   left: auto;
 
   display: flex;
