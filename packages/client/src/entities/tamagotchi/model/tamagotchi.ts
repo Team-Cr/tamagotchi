@@ -5,6 +5,7 @@ export type Tamagotchi = {
   level: number;
   hpCurrent: number;
   hpMax: number;
+  hasSeenTutorial: boolean;
   expCurrent: number;
   expMax: number;
 };
@@ -13,6 +14,7 @@ export const initialState: Tamagotchi = {
   level: 1,
   hpCurrent: 100,
   hpMax: 100,
+  hasSeenTutorial: false,
   expCurrent: 0,
   expMax: 100,
 };
@@ -25,6 +27,7 @@ export const tamagotchiModel = createSlice({
       const { expMax } = state;
       const level = getLevel();
       state.hpCurrent = payload.hp;
+      state.hasSeenTutorial = payload.hasSeenTutorial;
       state.expCurrent = getExpCurrent();
       state.level = level;
 
