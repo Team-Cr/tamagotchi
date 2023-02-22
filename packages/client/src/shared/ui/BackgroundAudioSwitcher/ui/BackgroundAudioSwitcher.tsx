@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
 import BackgroundMusic from '@/shared/assets/sounds/backgroundMusic.mp3';
+// import BackgroundMusic from '@/shared/assets/sounds/actionSound.wav';
 import AudioOff from '@/shared/assets/images/audioOff.png';
 import AudioOn from '@/shared/assets/images/audioOn.png';
 import classNames from 'classnames';
 import css from './BackgroundAudioSwitcher.module.scss';
 
+const audio = new Audio(BackgroundMusic);
+
 export const BackgroundAudioSwitcher = () => {
-  const [audio, setAudio] = useState<HTMLAudioElement>();
 
   const [isAudioOn, setIsAudioOn] = useState(false);
-
-  useEffect(() => {
-    setAudio(new Audio(BackgroundMusic));
-  }, []);
 
   useEffect(() => {
     if (audio === undefined) return;
@@ -22,7 +20,7 @@ export const BackgroundAudioSwitcher = () => {
     return () => {
       audio.pause();
     };
-  }, [audio]);
+  }, []);
 
   const toggleIsAudioOn = () => {
     setIsAudioOn(!isAudioOn);
@@ -35,7 +33,7 @@ export const BackgroundAudioSwitcher = () => {
     } else {
       audio.pause();
     }
-  }, [audio, isAudioOn]);
+  }, [isAudioOn]);
 
   return (
     <div className={classNames(css.switcher)}>
