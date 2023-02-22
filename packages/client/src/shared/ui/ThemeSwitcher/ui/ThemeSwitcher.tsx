@@ -17,6 +17,7 @@ export const ThemeSwitcher = () => {
     setToggled(!toggled);
     const theme = toggled ? THEME.DARK : THEME.LIGHT;
     setTheme(toggled ? 'dark' : 'light');
+    localStorage.setItem('theme', String(theme));
 
     if (config.id) {
       dispatch(
@@ -25,13 +26,11 @@ export const ThemeSwitcher = () => {
           themeId: theme,
         }),
       );
-    } else {
-      localStorage.setItem('theme', String(theme));
     }
   }, [config, dispatch, toggled]);
 
   useEffect(() => {
-    const themeId = (config.id ? config.themeId : localStorage.getItem('theme')) || THEME.LIGHT;
+    const themeId = localStorage.getItem('theme') || config.themeId || THEME.LIGHT;
     const isLight = +themeId === THEME.LIGHT;
 
     setToggled(isLight);
