@@ -14,25 +14,29 @@ export const ThemeSwitcher = () => {
   }
 
   const handleThemeSwitch = useCallback(async () => {
+    setToggled(!toggled);
+    const theme = toggled ? THEME.DARK : THEME.LIGHT;
+    setTheme(toggled ? 'dark' : 'light');
+
     if (config.id) {
       dispatch(
         ConfigurationThunk.updateConfiguration({
           ...config,
-          themeId: toggled ? THEME.DARK : THEME.LIGHT,
+          themeId: theme,
         }),
       );
     } else {
-      setToggled(!toggled);
-      setTheme(!toggled ? 'light' : 'dark');
+      localStorage.setItem('theme', String(theme));
     }
   }, [config, dispatch, toggled]);
 
   useEffect(() => {
-    const themeId = config.themeId || THEME.LIGHT;
-    const isLight = themeId === THEME.LIGHT;
+    const themeId = (config.id ? config.themeId : localStorage.getItem('theme')) || THEME.LIGHT;
+    const isLight = +themeId === THEME.LIGHT;
+
     setToggled(isLight);
     setTheme(isLight ? 'light' : 'dark');
-  }, [config, config.themeId]);
+  }, [config]);
 
   return (
     <div className={css.switcher}>
