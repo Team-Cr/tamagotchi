@@ -26,11 +26,13 @@ export const App = () => {
   dispatch(AuthThunk.getUser()).then(({ payload }) => {
     // @ts-ignore
     const userId = payload?.id;
-    dispatch(ConfigurationThunk.getConfiguration(userId));
+    if (userId) {
+      dispatch(ConfigurationThunk.getConfiguration(userId));
 
-    CharacterAPI.storeCharacter(userId).then(({ data }) => {
-      dispatch(setData(data.character));
-    });
+      CharacterAPI.storeCharacter(userId).then(({ data }) => {
+        dispatch(setData(data.character));
+      });
+    }
   });
 
   useEffect(() => {

@@ -10,6 +10,7 @@ import css from './ForumTopicsPage.module.scss';
 
 const ForumTopicsPage = () => {
   const { state } = useLocation();
+
   const [entries, setEntries] = useState<Topic[]>([]);
   const [isModalActive, setIsModalActive] = useState(false);
 
@@ -28,7 +29,7 @@ const ForumTopicsPage = () => {
 
   const onCreateTopic = useCallback(
     async (forumId: number, title: string) => {
-      const topic = await ForumAPI.createTopic(forumId, {
+      await ForumAPI.createTopic(forumId, {
         title,
       });
 
@@ -39,8 +40,10 @@ const ForumTopicsPage = () => {
   );
 
   useEffect(() => {
-    getTopics();
-  }, [getTopics]);
+    if(state) {
+        getTopics();
+    }
+  }, [getTopics, state]);
 
   return (
     <>
@@ -62,7 +65,7 @@ const ForumTopicsPage = () => {
             key={index}
             {...data}
             title={data.title}
-            state={{ title: data.title, topicId: data.id }}
+            state={{ title: data.title, topicId: data.id, forumId: state.forumId }}
           />
         ))}
       </div>

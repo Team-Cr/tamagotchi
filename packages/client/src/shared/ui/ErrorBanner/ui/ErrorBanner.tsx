@@ -1,7 +1,8 @@
 import ServerErrorImage from '@/shared/assets/images/ServerError.png';
 import { ComponentProps } from '@/shared/ui/types';
-import { Link } from 'react-router-dom';
 import css from './ErrorBanner.module.scss';
+import { ROUTES } from '@/shared/constants/routes';
+import { Link } from '@/shared/ui/Link';
 
 interface ErrorBannerProps extends ComponentProps {
   message?: string;
@@ -15,11 +16,7 @@ export const ErrorBanner = (props: ErrorBannerProps) => {
     if (!hasRedirectButton) {
       return '';
     }
-    return (
-      <Link to={'/login'} className={css.error__link}>
-        {'< Go home'}
-      </Link>
-    );
+    return <Link href={ROUTES.Main}>{'< Go home'}</Link>;
   };
 
   return (

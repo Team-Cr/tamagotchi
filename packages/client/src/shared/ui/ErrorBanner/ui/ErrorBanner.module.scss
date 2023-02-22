@@ -2,16 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  height: 100vh;
 
   color: var(--text-primary);
 }
 
 .error {
-  font-size: 92px;
+  font-size: var(--title-font-size);
 }
 
 .error__message {
-  font-size: 72px;
+  font-size: var(--regular-font-size);
 }
 
 .error__link {

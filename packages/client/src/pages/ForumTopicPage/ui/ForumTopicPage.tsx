@@ -27,7 +27,7 @@ const ForumTopicPage = () => {
         setComments(data);
       })
       .catch((e) => console.log({ e }));
-  }, [setComments, state]);
+  }, [state]);
 
   useEffect(() => {
     getComments();
@@ -72,7 +72,7 @@ const ForumTopicPage = () => {
 
     setReplyId(undefined);
     setMessage('');
-  }, [replyId, message, user.id, state.topicId, getComments]);
+  }, [message, user.id, replyId, state.topicId, getComments]);
 
   const appendEmoji = useCallback(
     (emojiData: EmojiClickData) => {
