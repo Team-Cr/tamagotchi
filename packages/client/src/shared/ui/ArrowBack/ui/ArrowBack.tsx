@@ -17,8 +17,9 @@ export const ArrowBack = (props: ArrowBackProps) => {
   const goBack = useCallback(() => {
     if (!backTo) {
       navigate(-1);
+    } else {
+        navigate(backTo);
     }
-    navigate(backTo);
   }, [backTo, navigate]);
 
   return (

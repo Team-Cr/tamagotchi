@@ -10,7 +10,7 @@ import css from './ForumTopicsPage.module.scss';
 
 const ForumTopicsPage = () => {
   const { state } = useLocation();
-  console.log(state);
+
   const [entries, setEntries] = useState<Topic[]>([]);
   const [isModalActive, setIsModalActive] = useState(false);
 
@@ -40,8 +40,10 @@ const ForumTopicsPage = () => {
   );
 
   useEffect(() => {
-    getTopics();
-  }, [getTopics]);
+    if(state) {
+        getTopics();
+    }
+  }, [getTopics, state]);
 
   return (
     <>
